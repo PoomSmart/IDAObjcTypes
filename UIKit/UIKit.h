@@ -18,6 +18,8 @@ void UIGraphicsBeginImageContext(struct CGSize size);
 void UIGraphicsEndImageContext(void);
 
 CGFloat UIRoundToScale(CGFloat, CGFloat);
+CGFloat UIFloorToScale(CGFloat, CGFloat);
+CGFloat UICeilToScale(CGFloat, CGFloat);
 CGFloat UIFloorToViewScale(CGFloat, CGFloat);
 CGFloat UIRoundToViewScale(CGFloat, CGFloat);
 CGFloat UICeilToViewScale(CGFloat, CGFloat);

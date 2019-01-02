@@ -12,10 +12,15 @@ void CFDataGetBytes(CFDataRef theData, CFRange range, UInt8 *buffer);
 void CFArrayAppendValue(CFMutableArrayRef mDict, const void *value);
 void CFPreferencesSetAppValue(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID);
 void CFArrayRemoveValueAtIndex(CFMutableArrayRef theArray, CFIndex idx);
+void CFNotificationCenterAddObserver(CFNotificationCenterRef center, const void *observer, CFNotificationCallback callBack, CFStringRef name, const void *object, CFNotificationSuspensionBehavior suspensionBehavior);
+void CFNotificationCenterPostNotification(CFNotificationCenterRef center, CFNotificationName name, const void *object, CFDictionaryRef userInfo, Boolean deliverImmediately);
 
 CFAbsoluteTime CFAbsoluteTimeGetCurrent(void);
 
+CFNotificationCenterRef CFNotificationCenterGetDarwinNotifyCenter(void);
+
 CFPropertyListRef CFPreferencesCopyAppValue(CFStringRef key, CFStringRef applicationID);
+CFPropertyListRef CFPropertyListCreateDeepCopy(CFAllocatorRef allocator, CFPropertyListRef propertyList, CFOptionFlags mutabilityOption);
 
 CFMutableArrayRef CFArrayCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFArrayCallBacks *callBacks);
 

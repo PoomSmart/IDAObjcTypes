@@ -13,10 +13,10 @@ typedef struct opaqueCMFormatDescription *CMFormatDescriptionRef;
 
 typedef CMFormatDescriptionRef CMVideoFormatDescriptionRef;
 
-typedef struct {
+struct CMVideoDimensions {
     int32_t width;
     int32_t height;
-} CMVideoDimensions;
+};
 
 struct CMTime {
 	CMTimeValue	value;

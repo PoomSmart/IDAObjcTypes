@@ -20,6 +20,7 @@ id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic);
 void objc_copyWeak(id *dest, id *src);
 void objc_destroyWeak(id *object);
 void objc_storeStrong(id *object, id value);
+void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
 void objc_setProperty_nonatomic_copy(id self, SEL _cmd, id newValue, ptrdiff_t offset);
 void objc_enumerationMutation(id obj);
 void objc_autoreleasePoolPop(void *pool);
