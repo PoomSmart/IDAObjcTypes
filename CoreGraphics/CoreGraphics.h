@@ -10,6 +10,7 @@ struct CGRect CGContextGetPathBoundingBox(CGContextRef context);
 struct CGRect CGContextGetClipBoundingBox(CGContextRef c);
 struct CGRect CGPathGetBoundingBox(CGPathRef path);
 struct CGRect CGPathGetPathBoundingBox(CGPathRef path);
+struct CGRect CGRectStandardize(struct CGRect rect);
 
 struct CGPoint CGPointApplyAffineTransform(struct CGPoint point, struct CGAffineTransform t);
 struct CGPoint CGContextGetPathCurrentPoint(CGContextRef context);

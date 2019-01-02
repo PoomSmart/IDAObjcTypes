@@ -10,6 +10,7 @@
 #import "Foundation/FoundationTypes.h"
 #import "IOSurface/IOSurfaceTypes.h"
 #import "Kernel/KernelTypes.h"
+#import "objc/objcTypes.h"
 #import "UIKit/UIKitTypes.h"
 
 #endif

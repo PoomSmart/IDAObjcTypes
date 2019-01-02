@@ -1,3 +1,5 @@
+#import "../Types.h"
+
 typedef double CGFloat;
 
 struct CGPoint {

@@ -1,4 +1,5 @@
 #import "../Types.h"
+#import "objcTypes.h"
 
 id objc_autorelease(id value);
 id objc_autoreleaseReturnValue(id value);

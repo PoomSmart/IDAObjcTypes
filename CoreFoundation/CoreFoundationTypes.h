@@ -1,3 +1,5 @@
+#import "../Types.h"
+
 #define CFStringRef const __CFString *
 #define CFDictionaryRef const void *
 #define CFMutableDictionaryRef const void *

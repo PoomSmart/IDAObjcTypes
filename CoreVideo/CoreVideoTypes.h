@@ -1,3 +1,5 @@
+#import "../Types.h"
+
 typedef struct __CVBuffer *CVBufferRef;
 
 typedef CVBufferRef CVImageBufferRef;
