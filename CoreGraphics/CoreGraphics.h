@@ -93,6 +93,7 @@ void CGContextDrawLinearGradient(CGContextRef c, CGGradientRef gradient, struct 
 void CGContextBeginTransparencyLayer(CGContextRef c, CFDictionaryRef auxiliaryInfo);
 void CGContextBeginTransparencyLayerWithRect(CGContextRef c, struct CGRect rect, CFDictionaryRef auxInfo);
 void CGContextEndTransparencyLayer(CGContextRef c);
+void CGRectDivide(struct CGRect rect, struct CGRect *slice, struct CGRect *remainder, CGFloat amount, CGRectEdge edge);
 
 CGPathRef CGPathRetain(CGPathRef path);
 CGPathRef CGPathCreateWithEllipseInRect(struct CGRect rect, const struct CGAffineTransform *transform);

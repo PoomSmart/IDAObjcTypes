@@ -8,6 +8,7 @@ id objc_retainAutorelease(id value);
 id objc_retainAutoreleaseReturnValue(id value);
 id objc_retainAutoreleasedReturnValue(id value);
 id objc_unsafeClaimAutoreleasedReturnValue(id value);
+id objc_msgSendSuper(struct objc_super *super, SEL op, ...);
 id objc_msgSendSuper2(struct objc_super *super, SEL op, ...);
 id objc_initWeak(id *object, id value);
 id objc_loadWeakRetained(id *object);
@@ -55,6 +56,7 @@ Ivar class_getClassVariable(Class cls, const char *name);
 Ivar *class_copyIvarList(Class cls, unsigned int *outCount);
 
 Method class_getInstanceMethod(Class cls, SEL name);
+Method class_getClassMethod(Class cls, SEL name);
 Method *class_copyMethodList(Class cls, unsigned int *outCount);
 
 objc_property_t *protocol_copyPropertyList(Protocol *proto, unsigned int *outCount);

@@ -43,8 +43,8 @@ typedef int32_t CGPathElementType;
 typedef int32_t CGLineCap;
 typedef int32_t CGLineJoin;
 typedef uint32_t CGGradientDrawingOptions;
+typedef uint32_t CGRectEdge;
 typedef unsigned short CGFontIndex;
-typedef uint32_t CTFontOrientation;
 
 typedef CGFontIndex CGGlyph;
 

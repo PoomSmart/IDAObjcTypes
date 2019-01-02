@@ -20,6 +20,8 @@ void CTRunGetPositions(CTRunRef run, struct CFRange range, struct CGPoint *buffe
 void CTRunGetAdvances(CTRunRef run, struct CFRange range, struct CGSize *buffer);
 void CTRunGetStringIndices(CTRunRef run, struct CFRange range, CFIndex *buffer);
 void CTFrameGetLineOrigins(CTFrameRef frame, struct CFRange range, struct CGPoint *origins);
+void CTRunDraw(CTRunRef run, CGContextRef context, struct CFRange range);
+void CTFontDrawGlyphs(CTFontRef font, const CGGlyph *glyphs, const struct CGPoint *positions, size_t count, CGContextRef context);
 
 CTFontRef CTFontCreateWithName(CFStringRef name, CGFloat size, const struct CGAffineTransform *matrix);
 CTFontRef CTFontCreateWithNameAndOptions(CFStringRef name, CGFloat size, const struct CGAffineTransform *matrix, CTFontOptions options);

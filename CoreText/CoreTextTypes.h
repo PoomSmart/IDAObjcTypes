@@ -10,7 +10,7 @@ typedef struct __CTFramesetter *CTFramesetterRef;
 
 typedef uint32_t CTFontUIFontType;
 typedef uint32_t CTFontSymbolicTraits;
+typedef uint32_t CTRunStatus;
+typedef uint32_t CTFontOrientation;
 
 typedef CFOptionFlags CTFontOptions;
-
-typedef uint32_t CTRunStatus;

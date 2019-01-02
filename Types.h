@@ -1,6 +1,9 @@
 #ifndef IDATYPES_H_
 #define IDATYPES_H_
 
+typedef float Float32;
+typedef double Float64;
+
 #import "Kernel/KernelTypes.h"
 #import "CoreFoundation/CoreFoundationTypes.h"
 #import "CoreGraphics/CoreGraphicsTypes.h"
