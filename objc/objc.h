@@ -97,6 +97,7 @@ void objc_msgSend_stret(id self, SEL op, ...);
 void objc_msgSendSuper2_stret(struct objc_super *super, SEL op,...);
 void objc_moveWeak(id *dest, id *src);
 void objc_registerProtocol(Protocol *proto);
+void objc_release(id value);
 void objc_terminate(void);
 void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic, BOOL hasStrong);
 void protocol_addMethodDescription(Protocol *proto, SEL name, const char *types, BOOL isRequiredMethod, BOOL isInstanceMethod);
