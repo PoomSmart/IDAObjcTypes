@@ -5,7 +5,11 @@
 #import "CoreGraphics/CoreGraphicsTypes.h"
 #import "CoreMedia/CoreMediaTypes.h"
 #import "CoreText/CoreTextTypes.h"
+#import "CoreVideo/CoreVideoTypes.h"
+#import "Darwin/DarwinTypes.h"
 #import "Foundation/FoundationTypes.h"
+#import "IOSurface/IOSurfaceTypes.h"
+#import "Kernel/KernelTypes.h"
 #import "UIKit/UIKitTypes.h"
 
 #endif

@@ -52,3 +52,5 @@ struct CGPathElement {
 };
 
 typedef void (*CGPathApplierFunction)(void *info, const CGPathElement *element);
+
+struct CGAffineTransform CGAffineTransformIdentity;

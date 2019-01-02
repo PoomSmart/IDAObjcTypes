@@ -1,0 +1,1 @@
+typedef struct __IOSurface *IOSurfaceRef;

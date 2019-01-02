@@ -5,6 +5,22 @@ CGPathRef CTFontCreatePathForGlyph(CTFontRef font, CGGlyph glyph, const struct C
 
 CGGlyph CTFontGetGlyphWithName(CTFontRef font, CFStringRef glyphName);
 
+const CGGlyph *CTRunGetGlyphsPtr(CTRunRef run);
+const struct CGPoint *CTRunGetPositionsPtr(CTRunRef run);
+const struct CGSize *CTRunGetAdvancesPtr(CTRunRef run);
+const CFIndex *CTRunGetStringIndicesPtr(CTRunRef run);
+
+CTRunStatus CTRunGetStatus(CTRunRef run);
+
+struct CFRange CTRunGetStringRange(CTRunRef run);
+
+void CTFontGetVerticalTranslationsForGlyphs(CTFontRef font, const CGGlyph *glyphs, struct CGSize *translations, CFIndex count);
+void CTRunGetGlyphs(CTRunRef run, struct CFRange range, CGGlyph *buffer);
+void CTRunGetPositions(CTRunRef run, struct CFRange range, struct CGPoint *buffer);
+void CTRunGetAdvances(CTRunRef run, struct CFRange range, struct CGSize *buffer);
+void CTRunGetStringIndices(CTRunRef run, struct CFRange range, CFIndex *buffer);
+void CTFrameGetLineOrigins(CTFrameRef frame, struct CFRange range, struct CGPoint *origins);
+
 CTFontRef CTFontCreateWithName(CFStringRef name, CGFloat size, const struct CGAffineTransform *matrix);
 CTFontRef CTFontCreateWithNameAndOptions(CFStringRef name, CGFloat size, const struct CGAffineTransform *matrix, CTFontOptions options);
 CTFontRef CTFontCreateWithFontDescriptor(CTFontDescriptorRef descriptor, CGFloat size, const struct CGAffineTransform *matrix);
@@ -17,6 +33,19 @@ CTFontRef CTFontCreateForString(CTFontRef currentFont, CFStringRef string, struc
 
 struct CGRect CTFontGetBoundingRectsForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph *glyphs, struct CGRect *boundingRects, CFIndex count);
 
-double CTFontGetAdvancesForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph *glyphs, struct CGSize *advances, CFIndex count);
+struct CGSize CTFramesetterSuggestFrameSizeWithConstraints(CTFramesetterRef framesetter, struct CFRange stringRange, CFDictionaryRef frameAttributes, struct CGSize constraints, struct CFRange *fitRange);
 
-void CTFontGetVerticalTranslationsForGlyphs(CTFontRef font, const CGGlyph *glyphs, struct CGSize *translations, CFIndex count);
+CFDictionaryRef CTRunGetAttributes(CTRunRef run);
+
+CFArrayRef CTLineGetGlyphRuns(CTLineRef line);
+CFArrayRef CTFrameGetLines(CTFrameRef frame);
+
+CTFrameRef CTFramesetterCreateFrame(CTFramesetterRef framesetter, struct CFRange stringRange, CGPathRef path, CFDictionaryRef frameAttributes);
+
+CTFramesetterRef CTFramesetterCreateWithAttributedString(CFAttributedStringRef string);
+
+CTTypesetterRef CTFramesetterGetTypesetter(CTFramesetterRef framesetter);
+
+CFIndex CTRunGetGlyphCount(CTRunRef run);
+
+double CTFontGetAdvancesForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph *glyphs, struct CGSize *advances, CFIndex count);

@@ -24,3 +24,5 @@ int32_t CMTimeCompare(struct CMTime time1, struct CMTime time2);
 CFStringRef CMTimeCopyDescription(CFAllocatorRef allocator, struct CMTime time);
 
 CFDictionaryRef CMTimeCopyAsDictionary(struct CMTime time, CFAllocatorRef allocator);
+
+OSStatus CMVideoFormatDescriptionCreateForImageBuffer(CFAllocatorRef allocator, CVImageBufferRef imageBuffer, CMVideoFormatDescriptionRef *formatDescriptionOut);

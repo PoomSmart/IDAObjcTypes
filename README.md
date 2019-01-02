@@ -13,7 +13,10 @@ More to be added as the owner reverses more binaries.
 - CoreGraphics
 - CoreMedia
 - CoreText
+- CoreVideo
 - Foundation
+- IOSurface
+- Kernel
 - MobileGestalt
 - objc
 - UIKit

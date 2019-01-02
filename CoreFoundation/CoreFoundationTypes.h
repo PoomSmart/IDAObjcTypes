@@ -27,9 +27,10 @@ typedef CFTimeInterval CFAbsoluteTime;
 
 typedef Boolean	(*CFArrayEqualCallBack)(const void *value1, const void *value2);
 
-typedef struct __CFAllocator CFAllocatorRef;
-typedef struct __CFBoolean CFBooleanRef;
-typedef struct __CFData CFDataRef;
+typedef struct __CFAllocator *CFAllocatorRef;
+typedef struct __CFBoolean *CFBooleanRef;
+typedef struct __CFData *CFDataRef;
+typedef struct __CFAttributedString *CFAttributedStringRef;
 
 struct CFArrayCallBacks {
     CFIndex	version;
