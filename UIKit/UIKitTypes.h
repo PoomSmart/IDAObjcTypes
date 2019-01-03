@@ -9,3 +9,5 @@ typedef struct UIEdgeInsets {
 typedef struct UIOffset {
     CGFloat horizontal, vertical;
 } UIOffset;
+
+UIOffset UIOffsetZero;

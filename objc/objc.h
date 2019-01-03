@@ -22,6 +22,12 @@ id objc_retainBlock(id value);
 id object_getIvar(id obj, Ivar ivar);
 id method_invoke(id receiver, Method m, ...);
 
+#ifdef x86
+double objc_msgSend_fpret(id self, SEL op, ...);
+#else
+long double objc_msgSend_fpret(id self, SEL op, ...);
+#endif
+
 Class objc_lookUpClass(const char *name);
 Class object_getClass(id obj);
 Class class_getSuperclass(Class cls);

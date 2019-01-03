@@ -4,8 +4,8 @@
 #define CFMutableArrayRef const void *
 
 typedef struct __CFError *CFErrorRef;
-typedef struct __CFAllocator *CFAllocatorRef;
-typedef struct __CFString *CFStringRef;
+typedef const struct __CFAllocator *CFAllocatorRef;
+typedef const struct __CFString *CFStringRef;
 typedef struct __CFString *CFMutableStringRef;
 typedef const struct __CFDictionary *CFDictionaryRef;
 typedef struct __CFDictionary *CFMutableDictionaryRef;
@@ -22,6 +22,8 @@ typedef struct __CFSet *CFSetRef;
 typedef struct __CFSet *CFMutableSetRef;
 
 typedef const void *CFTypeRef;
+
+typedef CFTypeRef CFPropertyListRef;
 
 typedef long CFIndex;
 
@@ -46,8 +48,6 @@ typedef double CFTimeInterval;
 
 typedef CFStringRef CFNotificationName;
 typedef CFStringRef CFErrorDomain;
-
-typedef CFTypeRef CFPropertyListRef;
 
 typedef CFComparisonResult (*CFComparatorFunction)(const void *val1, const void *val2, void *context);
 
@@ -135,3 +135,10 @@ struct CFStringInlineBuffer {
     CFIndex bufferedRangeStart;
     CFIndex bufferedRangeEnd;
 };
+
+const CFAllocatorRef kCFAllocatorDefault;
+const CFAllocatorRef kCFAllocatorSystemDefault;
+const CFAllocatorRef kCFAllocatorMalloc;
+const CFAllocatorRef kCFAllocatorMallocZone;
+const CFAllocatorRef kCFAllocatorNull;
+const CFAllocatorRef kCFAllocatorUseContext;
