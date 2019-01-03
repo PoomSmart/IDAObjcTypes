@@ -1,8 +1,8 @@
 #import "../Types.h"
 #import "UIKitTypes.h"
 
-id UIImagePNGRepresentation(id image);
-id UIImageJPEGRepresentation(id image, CGFloat compressionQuality);
+NSData *UIImagePNGRepresentation(UIImage *image);
+NSData *UIImageJPEGRepresentation(UIImage *image, CGFloat compressionQuality);
 
 CGRect UIRectCenteredAboutPoint(CGRect, CGPoint, CGFloat, CGFloat);
 CGRect UIRectCenteredAboutPointScale(CGRect, CGPoint);

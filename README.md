@@ -21,4 +21,5 @@ More to be added as the owner reverses more binaries.
 - Kernel
 - MobileGestalt
 - objc
+- os
 - UIKit

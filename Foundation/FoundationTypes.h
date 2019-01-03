@@ -8,7 +8,9 @@ typedef unsigned long long NSUInteger;
 typedef long long NSInteger;
 #endif
 
-typedef struct __NSString NSString;
+typedef struct __NSString *NSString;
+typedef struct __NSData *NSData;
+
 typedef unsigned long long NSAlignmentOptions;
 typedef NSUInteger NSRectEdge;
 

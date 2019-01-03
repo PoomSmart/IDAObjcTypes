@@ -18,6 +18,7 @@ typedef UInt8 UTF8Char;
 #import "Foundation/FoundationTypes.h"
 #import "IOSurface/IOSurfaceTypes.h"
 #import "objc/objcTypes.h"
+#import "os/osTypes.h"
 #import "UIKit/UIKitTypes.h"
 
 #endif
