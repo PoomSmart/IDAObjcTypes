@@ -41,3 +41,4 @@ BOOL NSIntersectsRect(NSRect aRect, NSRect bRect);
 Class NSClassFromString(CFStringRef string);
 
 void NSDivideRect(NSRect inRect, NSRect *slice, NSRect *rem, CGFloat amount, NSRectEdge edge);
+void NSLog(NSString *format, ...);

@@ -3,6 +3,10 @@
 
 CFTypeID CGPathGetTypeID(void);
 
+CFDictionaryRef CGRectCreateDictionaryRepresentation(struct CGRect rect);
+CFDictionaryRef CGSizeCreateDictionaryRepresentation(struct CGSize size);
+CFDictionaryRef CGPointCreateDictionaryRepresentation(struct CGPoint point);
+
 struct CGRect CGRectInset(struct CGRect rect, CGFloat dx, CGFloat dy);
 struct CGRect CGRectUnion(struct CGRect rect1, struct CGRect rect2);
 struct CGRect CGRectApplyAffineTransform(struct CGRect rect, struct CGAffineTransform t);
@@ -11,6 +15,8 @@ struct CGRect CGContextGetClipBoundingBox(CGContextRef c);
 struct CGRect CGPathGetBoundingBox(CGPathRef path);
 struct CGRect CGPathGetPathBoundingBox(CGPathRef path);
 struct CGRect CGRectStandardize(struct CGRect rect);
+struct CGRect CGRectOffset(struct CGRect rect, CGFloat dx, CGFloat dy);
+struct CGRect CGRectIntegral(struct CGRect rect);
 
 struct CGPoint CGPointApplyAffineTransform(struct CGPoint point, struct CGAffineTransform t);
 struct CGPoint CGContextGetPathCurrentPoint(CGContextRef context);
@@ -108,10 +114,12 @@ CGMutablePathRef CGPathCreateMutable(void);
 CGMutablePathRef CGPathCreateMutableCopy(CGPathRef path);
 CGMutablePathRef CGPathCreateMutableCopyByTransformingPath(CGPathRef path, const struct CGAffineTransform *transform);
 
+CGImageRef CGImageCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGColorSpaceRef space, CGBitmapInfo bitmapInfo, CGDataProviderRef provider, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageMaskCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGDataProviderRef provider, const CGFloat *decode, bool shouldInterpolate);
 
 CGContextRef CGContextRetain(CGContextRef c);
 
+CGColorSpaceRef CGImageGetColorSpace(CGImageRef image);
 CGColorSpaceRef CGColorGetColorSpace(CGColorRef color);
 
 CGGradientRef CGGradientCreateWithColors(CGColorSpaceRef space, CFArrayRef colors, const CGFloat *locations);
@@ -134,6 +142,7 @@ size_t CGImageGetBytesPerRow(CGImageRef image);
 
 bool CGRectEqualToRect(struct CGRect rect1, struct CGRect rect2);
 bool CGRectIsNull(struct CGRect rect);
+bool CGRectIsEmpty(struct CGRect rect);
 bool CGRectContainsPoint(struct CGRect rect, struct CGPoint point);
 bool CGAffineTransformIsIdentity(struct CGAffineTransform t);
 bool CGAffineTransformEqualToTransform(struct CGAffineTransform t1, struct CGAffineTransform t2);
@@ -144,6 +153,9 @@ bool CGPathEqualToPath(CGPathRef path1, CGPathRef path2);
 bool CGPathIsEmpty(CGPathRef path);
 bool CGPathIsRect(CGPathRef path, struct CGRect *rect);
 bool CGPathContainsPoint(CGPathRef path, const struct CGAffineTransform *m, struct CGPoint point, bool eoFill);
+bool CGRectMakeWithDictionaryRepresentation(CFDictionaryRef dict, struct CGRect *rect);
+bool CGSizeMakeWithDictionaryRepresentation(CFDictionaryRef dict, struct CGSize *size);
+bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict, struct CGPoint *point);
 
 struct CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d, CGFloat tx, CGFloat ty);
 struct CGAffineTransform CGAffineTransformMakeScale(CGFloat sx, CGFloat sy);
