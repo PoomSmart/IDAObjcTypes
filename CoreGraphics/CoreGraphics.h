@@ -17,6 +17,7 @@ CGRect CGPathGetPathBoundingBox(CGPathRef path);
 CGRect CGRectStandardize(CGRect rect);
 CGRect CGRectOffset(CGRect rect, CGFloat dx, CGFloat dy);
 CGRect CGRectIntegral(CGRect rect);
+CGRect CGRectIntersection(CGRect r1, CGRect r2);
 
 CGPoint CGPointApplyAffineTransform(CGPoint point, CGAffineTransform t);
 CGPoint CGContextGetPathCurrentPoint(CGContextRef context);
@@ -143,7 +144,10 @@ size_t CGImageGetBytesPerRow(CGImageRef image);
 bool CGRectEqualToRect(CGRect rect1, CGRect rect2);
 bool CGRectIsNull(CGRect rect);
 bool CGRectIsEmpty(CGRect rect);
+bool CGRectIsInfinite(CGRect rect);
 bool CGRectContainsPoint(CGRect rect, CGPoint point);
+bool CGRectContainsRect(CGRect rect1, CGRect rect2);
+bool CGRectIntersectsRect(CGRect rect1, CGRect rect2);
 bool CGAffineTransformIsIdentity(CGAffineTransform t);
 bool CGAffineTransformEqualToTransform(CGAffineTransform t1, CGAffineTransform t2);
 bool CGContextIsPathEmpty(CGContextRef context);

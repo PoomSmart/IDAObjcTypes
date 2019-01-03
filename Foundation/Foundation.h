@@ -1,6 +1,8 @@
 #import "../Types.h"
 #import "FoundationTypes.h"
 
+SEL NSSelectorFromString(NSString *aSelectorName);
+
 CGFloat NSWidth(NSRect aRect);
 CGFloat NSHeight(NSRect aRect);
 CGFloat NSMaxX(NSRect aRect);
@@ -12,6 +14,7 @@ CGFloat NSMinY(NSRect aRect);
 
 NSString *NSStringFromClass(Class aClass);
 NSString *NSStringFromProtocol(Protocol *proto);
+NSString *NSStringFromBOOL(BOOL theBOOL);
 NSString *NSStringFromSelector(SEL aSelector);
 NSString *NSStringFromPoint(NSPoint aPoint);
 NSString *NSStringFromSize(NSSize aSize);
@@ -40,5 +43,10 @@ BOOL NSIntersectsRect(NSRect aRect, NSRect bRect);
 
 Class NSClassFromString(CFStringRef string);
 
+Protocol *NSProtocolFromString(NSString *namestr);
+
+void *NSPushAutoreleasePool(NSUInteger capacity);
+
+void NSPopAutoreleasePool(void *token);
 void NSDivideRect(NSRect inRect, NSRect *slice, NSRect *rem, CGFloat amount, NSRectEdge edge);
 void NSLog(NSString *format, ...);

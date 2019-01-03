@@ -4,5 +4,15 @@
 os_log_t os_log_create(const char *subsystem, const char *category);
 
 bool os_log_type_enabled(os_log_t oslog, os_log_type_t type);
+bool os_unfair_lock_trylock(os_unfair_lock_t lock);
 
 void _os_log_impl(void *dso, os_log_t log, os_log_type_t type, const char *format, uint8_t *buf, unsigned int size);
+void _os_log_error_impl(void *dso, os_log_t log, os_log_type_t type, const char *format, uint8_t *buf, unsigned int size);
+void _os_log_fault_impl(void *dso, os_log_t log, os_log_type_t type, const char *format, uint8_t *buf, unsigned int size);
+void _os_log_internal(void *dso, os_log_t log, os_log_type_t type, const char *message, ...);
+
+void os_unfair_lock_lock(os_unfair_lock_t lock);
+void os_unfair_lock_unlock(os_unfair_lock_t lock);
+void os_release(void *object);
+
+void *os_retain(void *object);
