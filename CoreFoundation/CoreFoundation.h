@@ -8,9 +8,12 @@ CFTypeRef CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
 CFTypeID CFGetTypeID(CFTypeRef cf);
 CFTypeID CFBooleanGetTypeID(void);
 CFTypeID CFDictionaryGetTypeID(void);
+CFTypeID CFArrayGetTypeID(void);
 CFTypeID CFCharacterSetGetTypeID(void);
 CFTypeID CFDataGetTypeID(void);
 CFTypeID CFStringGetTypeID(void);
+CFTypeID CFNumberGetTypeID(void);
+CFTypeID CFNullGetTypeID(void);
 
 double CFStringGetDoubleValue(CFStringRef str);
 
@@ -19,6 +22,7 @@ SInt32 CFStringGetIntValue(CFStringRef str);
 CFHashCode CFHash(CFTypeRef cf);
 
 CFComparisonResult CFStringCompare(CFStringRef theString1, CFStringRef theString2, CFStringCompareFlags compareOptions);
+CFComparisonResult CFNumberCompare(CFNumberRef number, CFNumberRef otherNumber, void *context);
 
 struct CFRange CFDataFind(CFDataRef theData, CFDataRef dataToFind, struct CFRange searchRange, CFDataSearchFlags compareOptions);
 struct CFRange CFStringFind(CFStringRef theString, CFStringRef stringToFind, CFStringCompareFlags compareOptions);
@@ -39,11 +43,15 @@ UInt8 *CFDataGetMutableBytePtr(CFMutableDataRef theData);
 void CFLog(int32_t level, CFStringRef format, ...);
 void CFShow(CFTypeRef obj);
 void CFRelease(CFTypeRef cf);
-void CFDataGetBytes(CFDataRef theData, CFRange range, UInt8 *buffer);
 void CFArrayAppendValue(CFMutableArrayRef mDict, const void *value);
 void CFArrayAppendArray(CFMutableArrayRef theArray, CFArrayRef otherArray, struct CFRange otherRange);
-void CFPreferencesSetAppValue(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID);
 void CFArrayRemoveValueAtIndex(CFMutableArrayRef theArray, CFIndex idx);
+void CFArrayReplaceValues(CFMutableArrayRef theArray, struct CFRange range, const void **newValues, CFIndex newCount);
+void CFArrayInsertValueAtIndex(CFMutableArrayRef theArray, CFIndex idx, const void *value);
+void CFArraySetValueAtIndex(CFMutableArrayRef theArray, CFIndex idx, const void *value);
+void CFArraySortValues(CFMutableArrayRef theArray, struct CFRange range, CFComparatorFunction comparator, void *context);
+void CFArrayApplyFunction(CFArrayRef theArray, CFRange range, CFArrayApplierFunction applier, void *context);
+void CFPreferencesSetAppValue(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID);
 void CFNotificationCenterAddObserver(CFNotificationCenterRef center, const void *observer, CFNotificationCallback callBack, CFStringRef name, const void *object, CFNotificationSuspensionBehavior suspensionBehavior);
 void CFNotificationCenterPostNotification(CFNotificationCenterRef center, CFNotificationName name, const void *object, CFDictionaryRef userInfo, Boolean deliverImmediately);
 void CFCharacterSetAddCharactersInRange(CFMutableCharacterSetRef theSet, struct CFRange theRange);
@@ -91,10 +99,15 @@ void CFStringGetParagraphBounds(CFStringRef string, struct CFRange range, CFInde
 CFErrorRef CFErrorCreate(CFAllocatorRef allocator, CFErrorDomain domain, CFIndex code, CFDictionaryRef userInfo);
 CFErrorRef CFErrorCreateWithUserInfoKeysAndValues(CFAllocatorRef allocator, CFErrorDomain domain, CFIndex code, const void *const *userInfoKeys, const void *const *userInfoValues, CFIndex numUserInfoValues);
 
+CFNumberRef CFNumberCreate(CFAllocatorRef allocator, CFNumberType theType, const void *valuePtr);
+
+CFNumberType CFNumberGetType(CFNumberRef number);
+
 CFDataRef CFDataCreate(CFAllocatorRef allocator, const UInt8 *bytes, CFIndex length);
 CFDataRef CFDataCreateCopy(CFAllocatorRef allocator, CFDataRef theData);
 CFDataRef CFDataCreateWithBytesNoCopy(CFAllocatorRef allocator, const UInt8 *bytes, CFIndex length, CFAllocatorRef bytesDeallocator);
 CFDataRef CFCharacterSetCreateBitmapRepresentation(CFAllocatorRef alloc, CFCharacterSetRef theSet);
+CFDataRef CFStringCreateExternalRepresentation(CFAllocatorRef alloc, CFStringRef theString, CFStringEncoding encoding, UInt8 lossByte);
 
 CFMutableDataRef CFDataCreateMutable(CFAllocatorRef allocator, CFIndex capacity);
 CFMutableDataRef CFDataCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDataRef theData);
@@ -125,7 +138,10 @@ CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFInd
 CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);
 
 CFMutableArrayRef CFArrayCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFArrayCallBacks *callBacks);
+CFMutableArrayRef CFArrayCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFArrayRef theArray);
 
+CFArrayRef CFArrayCreate(CFAllocatorRef allocator, const void **values, CFIndex numValues, const CFArrayCallBacks *callBacks);
+CFArrayRef CFArrayCreateCopy(CFAllocatorRef allocator, CFArrayRef theArray);
 CFArrayRef CFStringCreateArrayBySeparatingStrings(CFAllocatorRef alloc, CFStringRef theString, CFStringRef separatorString);
 CFArrayRef CFStringCreateArrayWithFindResults(CFAllocatorRef alloc, CFStringRef theString, CFStringRef stringToFind, struct CFRange rangeToSearch, CFStringCompareFlags compareOptions);
 
@@ -168,6 +184,8 @@ Boolean CFStringHasPrefix(CFStringRef theString, CFStringRef prefix);
 Boolean CFStringHasSuffix(CFStringRef theString, CFStringRef suffix);
 Boolean CFStringTransform(CFMutableStringRef string, struct CFRange *range, CFStringRef transform, Boolean reverse);
 Boolean CFStringGetCString(CFStringRef theString, char *buffer, CFIndex bufferSize, CFStringEncoding encoding);
+Boolean CFNumberGetValue(CFNumberRef number, CFNumberType theType, void *valuePtr);
+Boolean CFNumberIsFloatType(CFNumberRef number);
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
 
 CFIndex CFArrayGetCount(const void *dict);
@@ -181,3 +199,4 @@ CFIndex CFStringFindAndReplace(CFMutableStringRef theString, CFStringRef stringT
 CFIndex CFStringGetLength(CFStringRef theString);
 CFIndex CFStringGetBytes(CFStringRef theString, struct CFRange range, CFStringEncoding encoding, UInt8 lossByte, Boolean isExternalRepresentation, UInt8 *buffer, CFIndex maxBufLen, CFIndex *usedBufLen);
 CFIndex CFStringGetMaximumSizeForEncoding(CFIndex length, CFStringEncoding encoding);
+CFIndex CFNumberGetByteSize(CFNumberRef number);

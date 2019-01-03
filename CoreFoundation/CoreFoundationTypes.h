@@ -11,6 +11,7 @@ typedef const struct __CFDictionary *CFDictionaryRef;
 typedef struct __CFDictionary *CFMutableDictionaryRef;
 typedef struct __CFLocale *CFLocaleRef;
 typedef struct __CFBoolean *CFBooleanRef;
+typedef struct __CFNumber *CFNumberRef;
 typedef struct __CFData *CFDataRef;
 typedef struct __CFData *CFMutableDataRef;
 typedef struct __CFAttributedString *CFAttributedStringRef;
@@ -35,6 +36,7 @@ typedef CFIndex CFComparisonResult;
 typedef CFIndex CFStringNormalizationForm;
 typedef CFIndex CFStringCharacterClusterType;
 typedef CFIndex CFSystemVersion;
+typedef CFIndex CFNumberType;
 
 typedef UInt32 CFStringEncoding;
 
@@ -45,7 +47,10 @@ typedef CFStringRef CFErrorDomain;
 
 typedef CFTypeRef CFPropertyListRef;
 
+typedef CFComparisonResult (*CFComparatorFunction)(const void *val1, const void *val2, void *context);
+
 typedef const void *(*CFArrayRetainCallBack)(CFAllocatorRef allocator, const void *value);
+typedef void (*CFArrayApplierFunction)(const void *value, void *context);
 typedef void (*CFArrayReleaseCallBack)(CFAllocatorRef allocator, const void *value);
 typedef void (*CFNotificationCallback)(CFNotificationCenterRef center, void *observer, CFNotificationName name, const void *object, CFDictionaryRef userInfo);
 
@@ -64,6 +69,7 @@ struct CFArrayCallBacks {
 };
 
 typedef const void *(*CFDictionaryRetainCallBack)(CFAllocatorRef allocator, const void *value);
+typedef void (*CFDictionaryApplierFunction)(const void *key, const void *value, void *context);
 typedef void (*CFDictionaryReleaseCallBack)(CFAllocatorRef allocator, const void *value);
 typedef CFStringRef	(*CFDictionaryCopyDescriptionCallBack)(const void *value);
 typedef Boolean	(*CFDictionaryEqualCallBack)(const void *value1, const void *value2);
@@ -90,8 +96,6 @@ typedef struct {
 } CFDictionaryValueCallBacks;
 
 const CFDictionaryValueCallBacks kCFTypeDictionaryValueCallBacks;
-
-typedef void (*CFDictionaryApplierFunction)(const void *key, const void *value, void *context);
 
 struct CFRange {
     CFIndex location;
