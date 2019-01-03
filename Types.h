@@ -3,6 +3,10 @@
 
 typedef float Float32;
 typedef double Float64;
+typedef UInt32 UTF32Char;
+typedef UInt16 UniChar;
+typedef UInt16 UTF16Char;
+typedef UInt8 UTF8Char;
 
 #import "Kernel/KernelTypes.h"
 #import "CoreFoundation/CoreFoundationTypes.h"
