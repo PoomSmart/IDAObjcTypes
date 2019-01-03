@@ -62,5 +62,6 @@ typedef void (*CGPathApplierFunction)(void *info, const CGPathElement *element);
 CGAffineTransform CGAffineTransformIdentity;
 
 CGRect CGRectZero;
+CGRect CGRectNull;
 CGSize CGSizeZero;
 CGPoint CGPointZero;

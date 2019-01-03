@@ -1,6 +1,7 @@
 #import "../Types.h"
 #import "objcTypes.h"
 
+id objc_constructInstance(Class cls, void *bytes);
 id objc_autorelease(id value);
 id objc_autoreleaseReturnValue(id value);
 id objc_retain(id value);
@@ -29,6 +30,9 @@ long double objc_msgSend_fpret(id self, SEL op, ...);
 #endif
 
 Class objc_lookUpClass(const char *name);
+Class objc_getRequiredClass(const char *name);
+Class objc_initializeClassPair(Class superclass, const char *name, Class cls, Class metacls);
+Class objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes);
 Class object_getClass(id obj);
 Class class_getSuperclass(Class cls);
 
@@ -43,6 +47,7 @@ IMP class_getMethodImplementation(Class cls, SEL name);
 char *method_copyArgumentType(Method m, unsigned int index);
 char *method_copyReturnType(Method m);
 
+const char **objc_copyImageNames(unsigned int *outCount);
 const char *object_getClassName(id obj);
 const char *protocol_getName(Protocol *proto);
 const char *sel_getName(SEL sel);
@@ -88,11 +93,17 @@ BOOL sel_isEqual(SEL lhs, SEL rhs);
 BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types);
 BOOL class_isMetaClass(Class cls);
 BOOL class_addIvar(Class cls, const char *name, size_t size, uint8_t alignment, const char *types);
+BOOL class_addProperty(Class cls, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount);
+BOOL class_addProtocol(Class cls, Protocol *protocol);
 
+void objc_registerClassPair(Class cls);
+void objc_disposeClassPair(Class cls);
+void objc_removeAssociatedObjects(id object);
 void objc_copyWeak(id *dest, id *src);
 void objc_destroyWeak(id *object);
 void objc_storeStrong(id *object, id value);
 void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);
+void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL atomic, BOOL shouldCopy);
 void objc_setProperty_atomic(id self, SEL _cmd, id newValue, ptrdiff_t offset);
 void objc_setProperty_atomic_copy(id self, SEL _cmd, id newValue, ptrdiff_t offset);
 void objc_setProperty_nonatomic(id self, SEL _cmd, id newValue, ptrdiff_t offset);

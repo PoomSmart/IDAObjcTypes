@@ -21,6 +21,8 @@ SInt32 CFStringGetIntValue(CFStringRef str);
 
 CFHashCode CFHash(CFTypeRef cf);
 
+CFStringEncoding CFStringGetSystemEncoding(void);
+
 CFComparisonResult CFStringCompare(CFStringRef theString1, CFStringRef theString2, CFStringCompareFlags compareOptions);
 CFComparisonResult CFStringCompareWithOptions(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFStringCompareFlags compareOptions);
 CFComparisonResult CFNumberCompare(CFNumberRef number, CFNumberRef otherNumber, void *context);
