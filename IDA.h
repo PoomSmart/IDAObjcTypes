@@ -1,5 +1,6 @@
 // #define x86
 #import "Types.h"
+#import "dyld/dyld.h"
 #import "CoreFoundation/CoreFoundation.h"
 #import "CoreGraphics/CoreGraphics.h"
 #import "CoreMedia/CoreMedia.h"
@@ -13,3 +14,4 @@
 #import "UIKit/UIKit.h"
 #import "objc/objc.h"
 #import "os/os.h"
+#import "xpc/xpc.h"

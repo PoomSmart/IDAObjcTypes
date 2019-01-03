@@ -20,6 +20,8 @@ More to be added as the owner reverses more binaries.
 - IOSurface
 - Kernel
 - MobileGestalt
+- UIKit
+- dyld
 - objc
 - os
-- UIKit
+- xpc

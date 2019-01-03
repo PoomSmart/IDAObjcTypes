@@ -9,6 +9,7 @@ typedef UInt16 UTF16Char;
 typedef UInt8 UTF8Char;
 
 #import "Kernel/KernelTypes.h"
+#import "dyld/dyldTypes.h"
 #import "CoreFoundation/CoreFoundationTypes.h"
 #import "CoreGraphics/CoreGraphicsTypes.h"
 #import "CoreMedia/CoreMediaTypes.h"
@@ -20,5 +21,6 @@ typedef UInt8 UTF8Char;
 #import "objc/objcTypes.h"
 #import "os/osTypes.h"
 #import "UIKit/UIKitTypes.h"
+#import "xpc/xpcTypes.h"
 
 #endif

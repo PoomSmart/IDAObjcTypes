@@ -15,3 +15,5 @@ void dispatch_barrier_sync(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_block_cancel(dispatch_block_t block);
 
 dispatch_block_t dispatch_block_create(dispatch_block_flags_t flags, dispatch_block_t block);
+
+bool os_variant_has_internal_content(const char *subsystem);

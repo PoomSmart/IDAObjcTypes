@@ -36,6 +36,8 @@ NSRect NSIntegralRectWithOptions(NSRect aRect, NSAlignmentOptions opts);
 NSRect NSIntersectionRect(NSRect aRect, NSRect bRect);
 NSRect NSMakeRect(CGFloat x, CGFloat y, CGFloat w, CGFloat h);
 
+NSRange NSUnionRange(NSRange range1, NSRange range2);
+
 BOOL NSContainsRect(NSRect aRect, NSRect bRect);
 BOOL NSEqualRects(NSRect aRect, NSRect bRect);
 BOOL NSIsEmptyRect(NSRect aRect);
@@ -46,7 +48,9 @@ Class NSClassFromString(CFStringRef string);
 Protocol *NSProtocolFromString(NSString *namestr);
 
 void *NSPushAutoreleasePool(NSUInteger capacity);
+void *NSZoneMalloc(NSZone *zone, NSUInteger size);
 
 void NSPopAutoreleasePool(void *token);
 void NSDivideRect(NSRect inRect, NSRect *slice, NSRect *rem, CGFloat amount, NSRectEdge edge);
 void NSLog(NSString *format, ...);
+void NSZoneFree(NSZone *zone, void *ptr);

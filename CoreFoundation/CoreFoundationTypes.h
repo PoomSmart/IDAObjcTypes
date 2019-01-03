@@ -1,10 +1,9 @@
 #import "../Types.h"
 
-#define CFArrayRef const void *
-#define CFMutableArrayRef const void *
-
 typedef struct __CFError *CFErrorRef;
 typedef const struct __CFAllocator *CFAllocatorRef;
+typedef struct __CFArray *CFArrayRef;
+typedef struct __CFArray *CFMutableArrayRef;
 typedef const struct __CFString *CFStringRef;
 typedef struct __CFString *CFMutableStringRef;
 typedef const struct __CFDictionary *CFDictionaryRef;
