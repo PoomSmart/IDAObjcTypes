@@ -18,6 +18,8 @@ typedef struct __CFAttributedString *CFAttributedStringRef;
 typedef struct __CFNotificationCenter *CFNotificationCenterRef;
 typedef struct __CFCharacterSet *CFCharacterSetRef;
 typedef struct __CFCharacterSet *CFMutableCharacterSetRef;
+typedef struct __CFSet *CFSetRef;
+typedef struct __CFSet *CFMutableSetRef;
 
 typedef const void *CFTypeRef;
 
@@ -96,6 +98,21 @@ typedef struct {
 } CFDictionaryValueCallBacks;
 
 const CFDictionaryValueCallBacks kCFTypeDictionaryValueCallBacks;
+
+typedef const void *(*CFSetRetainCallBack)(CFAllocatorRef allocator, const void *value);
+typedef void (*CFSetReleaseCallBack)(CFAllocatorRef allocator, const void *value);
+typedef CFStringRef	(*CFSetCopyDescriptionCallBack)(const void *value);
+typedef Boolean	(*CFSetEqualCallBack)(const void *value1, const void *value2);
+typedef CFHashCode (*CFSetHashCallBack)(const void *value);
+
+typedef struct {
+    CFIndex	version;
+    CFSetRetainCallBack	retain;
+    CFSetReleaseCallBack release;
+    CFSetCopyDescriptionCallBack copyDescription;
+    CFSetEqualCallBack equal;
+    CFSetHashCallBack hash;
+} CFSetCallBacks;
 
 typedef struct CFRange {
     CFIndex location;

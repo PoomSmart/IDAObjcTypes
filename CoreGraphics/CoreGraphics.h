@@ -2,6 +2,7 @@
 #import "CoreGraphicsTypes.h"
 
 CFTypeID CGPathGetTypeID(void);
+CFTypeID CGImageGetTypeID(void);
 
 CFDictionaryRef CGRectCreateDictionaryRepresentation(CGRect rect);
 CFDictionaryRef CGSizeCreateDictionaryRepresentation(CGSize size);
@@ -117,6 +118,7 @@ CGMutablePathRef CGPathCreateMutableCopyByTransformingPath(CGPathRef path, const
 
 CGImageRef CGImageCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGColorSpaceRef space, CGBitmapInfo bitmapInfo, CGDataProviderRef provider, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageMaskCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGDataProviderRef provider, const CGFloat *decode, bool shouldInterpolate);
+CGImageRef CGImageRetain(CGImageRef image);
 
 CGContextRef CGContextRetain(CGContextRef c);
 

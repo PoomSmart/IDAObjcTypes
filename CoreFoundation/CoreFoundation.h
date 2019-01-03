@@ -22,6 +22,7 @@ SInt32 CFStringGetIntValue(CFStringRef str);
 CFHashCode CFHash(CFTypeRef cf);
 
 CFComparisonResult CFStringCompare(CFStringRef theString1, CFStringRef theString2, CFStringCompareFlags compareOptions);
+CFComparisonResult CFStringCompareWithOptions(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFStringCompareFlags compareOptions);
 CFComparisonResult CFNumberCompare(CFNumberRef number, CFNumberRef otherNumber, void *context);
 
 CFRange CFDataFind(CFDataRef theData, CFDataRef dataToFind, CFRange searchRange, CFDataSearchFlags compareOptions);
@@ -32,6 +33,7 @@ CFRange CFStringGetRangeOfCharacterClusterAtIndex(CFStringRef string, CFIndex ch
 const char *CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
 const void *CFArrayGetValueAtIndex(CFArrayRef theArray, CFIndex idx);
 const void *CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
+const void *CFSetGetValue(CFSetRef theSet, const void *value);
 
 const UniChar *CFStringGetCharactersPtr(CFStringRef theString);
 UniChar CFStringGetCharacterAtIndex(CFStringRef theString, CFIndex idx);
@@ -48,12 +50,19 @@ void CFArrayAppendArray(CFMutableArrayRef theArray, CFArrayRef otherArray, CFRan
 void CFArrayRemoveValueAtIndex(CFMutableArrayRef theArray, CFIndex idx);
 void CFArrayReplaceValues(CFMutableArrayRef theArray, CFRange range, const void **newValues, CFIndex newCount);
 void CFArrayInsertValueAtIndex(CFMutableArrayRef theArray, CFIndex idx, const void *value);
+void CFArrayGetValues(CFArrayRef theArray, CFRange range, const void **values);
 void CFArraySetValueAtIndex(CFMutableArrayRef theArray, CFIndex idx, const void *value);
 void CFArraySortValues(CFMutableArrayRef theArray, CFRange range, CFComparatorFunction comparator, void *context);
+void CFArrayRemoveAllValues(CFMutableArrayRef theArray);
 void CFArrayApplyFunction(CFArrayRef theArray, CFRange range, CFArrayApplierFunction applier, void *context);
+void CFPreferencesSetValue(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 void CFPreferencesSetAppValue(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID);
+void CFPreferencesSetMultiple(CFDictionaryRef keysToSet, CFArrayRef keysToRemove, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
+void CFPreferencesAddSuitePreferencesToApp(CFStringRef applicationID, CFStringRef suiteID);
+void CFPreferencesRemoveSuitePreferencesFromApp(CFStringRef applicationID, CFStringRef suiteID);
 void CFNotificationCenterAddObserver(CFNotificationCenterRef center, const void *observer, CFNotificationCallback callBack, CFStringRef name, const void *object, CFNotificationSuspensionBehavior suspensionBehavior);
 void CFNotificationCenterPostNotification(CFNotificationCenterRef center, CFNotificationName name, const void *object, CFDictionaryRef userInfo, Boolean deliverImmediately);
+void CFNotificationCenterRemoveObserver(CFNotificationCenterRef center, const void *observer, CFNotificationName name, const void *object);
 void CFCharacterSetAddCharactersInRange(CFMutableCharacterSetRef theSet, CFRange theRange);
 void CFCharacterSetAddCharactersInString(CFMutableCharacterSetRef theSet, CFStringRef theString);
 void CFCharacterSetIntersect(CFMutableCharacterSetRef theSet, CFCharacterSetRef theOtherSet);
@@ -95,6 +104,15 @@ void CFStringTrimWhitespace(CFMutableStringRef theString);
 void CFStringGetCharacters(CFStringRef theString, CFRange range, UniChar *buffer);
 void CFStringInitInlineBuffer(CFStringRef str, CFStringInlineBuffer *buf, CFRange range);
 void CFStringGetParagraphBounds(CFStringRef string, CFRange range, CFIndex *parBeginIndex, CFIndex *parEndIndex, CFIndex *contentsEndIndex);
+void CFSetAddValue(CFMutableSetRef theSet, const void *value);
+void CFSetSetValue(CFMutableSetRef theSet, const void *value);
+void CFSetReplaceValue(CFMutableSetRef theSet, const void *value);
+void CFSetRemoveValue(CFMutableSetRef theSet, const void *value);
+void CFSetRemoveAllValues(CFMutableSetRef theSet);
+void CFSetGetValues(CFSetRef theSet, const void **values);
+void CFAllocatorSetDefault(CFAllocatorRef allocator);
+
+CFAllocatorRef CFAllocatorGetDefault(void);
 
 CFErrorRef CFErrorCreate(CFAllocatorRef allocator, CFErrorDomain domain, CFIndex code, CFDictionaryRef userInfo);
 CFErrorRef CFErrorCreateWithUserInfoKeysAndValues(CFAllocatorRef allocator, CFErrorDomain domain, CFIndex code, const void *const *userInfoKeys, const void *const *userInfoValues, CFIndex numUserInfoValues);
@@ -122,6 +140,9 @@ CFCharacterSetRef CFCharacterSetCreateWithCharactersInString(CFAllocatorRef allo
 CFCharacterSetRef CFCharacterSetCreateWithBitmapRepresentation(CFAllocatorRef alloc, CFDataRef theData);
 CFCharacterSetRef CFCharacterSetGetPredefined(CFCharacterSetPredefinedSet theSetIdentifier);
 
+CFMutableSetRef CFSetCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFSetCallBacks *callBacks);
+CFMutableSetRef CFSetCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFSetRef theSet);
+
 CFAbsoluteTime CFAbsoluteTimeGetCurrent(void);
 
 CFNotificationCenterRef CFNotificationCenterGetDarwinNotifyCenter(void);
@@ -133,6 +154,7 @@ CFPropertyListRef CFPropertyListCreateDeepCopy(CFAllocatorRef allocator, CFPrope
 
 CFDictionaryRef CFDictionaryCreate(CFAllocatorRef allocator, const void **keys, const void **values, CFIndex numValues, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);
 CFDictionaryRef CFDictionaryCreateCopy(CFAllocatorRef allocator, CFDictionaryRef theDict);
+CFDictionaryRef CFPreferencesCopyMultiple(CFArrayRef keysToFetch, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 
 CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);
 CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);
@@ -144,6 +166,7 @@ CFArrayRef CFArrayCreate(CFAllocatorRef allocator, const void **values, CFIndex 
 CFArrayRef CFArrayCreateCopy(CFAllocatorRef allocator, CFArrayRef theArray);
 CFArrayRef CFStringCreateArrayBySeparatingStrings(CFAllocatorRef alloc, CFStringRef theString, CFStringRef separatorString);
 CFArrayRef CFStringCreateArrayWithFindResults(CFAllocatorRef alloc, CFStringRef theString, CFStringRef stringToFind, CFRange rangeToSearch, CFStringCompareFlags compareOptions);
+CFArrayRef CFPreferencesCopyKeyList(CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 
 CFMutableStringRef CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength);
 CFMutableStringRef CFStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFStringRef theString);
@@ -169,7 +192,9 @@ Boolean CFEqual(CFTypeRef cf1, CFTypeRef cf2);
 Boolean CFBooleanGetValue(CFBooleanRef boolean);
 Boolean CFArrayContainsValue(CFArrayRef theArray, CFRange range, const void *value);
 Boolean CFPreferencesAppSynchronize(CFStringRef appID);
+Boolean CFPreferencesAppValueIsForced(CFStringRef key, CFStringRef applicationID);
 Boolean CFPreferencesGetAppBooleanValue(CFStringRef key, CFStringRef applicationID, Boolean *keyExistsAndHasValidFormat);
+Boolean CFPreferencesSynchronize(CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 Boolean CFCharacterSetHasMemberInPlane(CFCharacterSetRef theSet, CFIndex thePlane);
 Boolean CFCharacterSetIsCharacterMember(CFCharacterSetRef theSet, UniChar theChar);
 Boolean CFCharacterSetIsLongCharacterMember(CFCharacterSetRef theSet, UTF32Char theChar);
@@ -186,8 +211,13 @@ Boolean CFStringTransform(CFMutableStringRef string, CFRange *range, CFStringRef
 Boolean CFStringGetCString(CFStringRef theString, char *buffer, CFIndex bufferSize, CFStringEncoding encoding);
 Boolean CFNumberGetValue(CFNumberRef number, CFNumberType theType, void *valuePtr);
 Boolean CFNumberIsFloatType(CFNumberRef number);
+Boolean CFSetContainsValue(CFSetRef theSet, const void *value);
+Boolean CFSetGetValueIfPresent(CFSetRef theSet, const void *candidate, const void **value);
+
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
 
+CFIndex CFArrayGetFirstIndexOfValue(CFArrayRef theArray, CFRange range, const void *value);
+CFIndex CFArrayGetLastIndexOfValue(CFArrayRef theArray, CFRange range, const void *value);
 CFIndex CFArrayGetCount(const void *dict);
 CFIndex CFPreferencesGetAppIntegerValue(CFStringRef key, CFStringRef applicationID, Boolean *keyExistsAndHasValidFormat);
 CFIndex CFDataGetLength(CFDataRef theData);
@@ -200,3 +230,4 @@ CFIndex CFStringGetLength(CFStringRef theString);
 CFIndex CFStringGetBytes(CFStringRef theString, CFRange range, CFStringEncoding encoding, UInt8 lossByte, Boolean isExternalRepresentation, UInt8 *buffer, CFIndex maxBufLen, CFIndex *usedBufLen);
 CFIndex CFStringGetMaximumSizeForEncoding(CFIndex length, CFStringEncoding encoding);
 CFIndex CFNumberGetByteSize(CFNumberRef number);
+CFIndex CFSetGetCount(CFSetRef theSet);
