@@ -97,10 +97,10 @@ typedef struct {
 
 const CFDictionaryValueCallBacks kCFTypeDictionaryValueCallBacks;
 
-struct CFRange {
+typedef struct CFRange {
     CFIndex location;
     CFIndex length;
-};
+} CFRange;
 
 struct CFCharacterSetInlineBuffer {
     CFCharacterSetRef cset;
@@ -114,7 +114,7 @@ struct CFStringInlineBuffer {
     UniChar buffer[64];
     CFStringRef theString;
     const UniChar *directBuffer;
-    struct CFRange rangeToBuffer;
+    CFRange rangeToBuffer;
     CFIndex bufferedRangeStart;
     CFIndex bufferedRangeEnd;
 };

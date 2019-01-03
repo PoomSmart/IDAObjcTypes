@@ -1,30 +1,34 @@
 #import "../Types.h"
 
+#ifdef x86
+typedef float CGFloat;
+#else
 typedef double CGFloat;
+#endif
 
-struct CGPoint {
+typedef struct CGPoint {
     CGFloat x;
     CGFloat y;
-};
+} CGPoint;
 
-struct CGSize {
+typedef struct CGSize {
     CGFloat width;
     CGFloat height;
-};
+} CGSize;
 
-struct CGRect {
+typedef struct CGRect {
     CGPoint origin;
     CGSize size;
-};
+} CGRect;
 
-struct CGAffineTransform {
+typedef struct CGAffineTransform {
    CGFloat a;
    CGFloat b;
    CGFloat c;
    CGFloat d;
    CGFloat tx;
    CGFloat ty;
-};
+} CGAffineTransform;
 
 typedef struct CGContext *CGContextRef;
 typedef struct CGImage *CGImageRef;
@@ -50,9 +54,13 @@ typedef CGFontIndex CGGlyph;
 
 struct CGPathElement {
     CGPathElementType type;
-    struct CGPoint *points;
+    CGPoint *points;
 };
 
 typedef void (*CGPathApplierFunction)(void *info, const CGPathElement *element);
 
-struct CGAffineTransform CGAffineTransformIdentity;
+CGAffineTransform CGAffineTransformIdentity;
+
+CGRect CGRectZero;
+CGSize CGSizeZero;
+CGPoint CGPointZero;

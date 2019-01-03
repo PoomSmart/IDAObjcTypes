@@ -1,9 +1,9 @@
 #import "../Types.h"
 
-struct UIEdgeInsets {
+typedef struct UIEdgeInsets {
     CGFloat top, left, bottom, right;
-};
+} UIEdgeInsets;
 
-struct UIOffset {
+typedef struct UIOffset {
     CGFloat horizontal, vertical;
-};
+} UIOffset;

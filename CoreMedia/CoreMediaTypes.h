@@ -13,21 +13,21 @@ typedef struct opaqueCMFormatDescription *CMFormatDescriptionRef;
 
 typedef CMFormatDescriptionRef CMVideoFormatDescriptionRef;
 
-struct CMVideoDimensions {
+typedef struct CMVideoDimensions {
     int32_t width;
     int32_t height;
-};
+} CMVideoDimensions;
 
-struct CMTime {
+typedef struct CMTime {
 	CMTimeValue	value;
 	CMTimeScale	timescale;
 	CMTimeFlags	flags;
 	CMTimeEpoch	epoch;
-};
+} CMTime;
 
-struct CMTimeRange {
+typedef struct CMTimeRange {
     struct CMTime duration;
     struct CMTime start;
-};
+} CMTimeRange;
 
 struct CMTime kCMTimeZero;

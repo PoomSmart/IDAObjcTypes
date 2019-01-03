@@ -17,12 +17,12 @@ NSString *NSStringFromPoint(NSPoint aPoint);
 NSString *NSStringFromSize(NSSize aSize);
 NSString *NSStringFromRect(NSRect aRect);
 NSString *NSStringFromRange(NSRange range);
-NSString *NSStringFromCGRect(struct CGRect rect);
-NSString *NSStringFromCGSize(struct CGSize size);
-NSString *NSStringFromCGPoint(struct CGPoint point);
-NSString *NSStringFromCGAffineTransform(struct CGAffineTransform t);
-NSString *NSStringFromUIEdgeInsets(struct UIEdgeInsets insets);
-NSString *NSStringFromUIOffset(struct UIOffset offset);
+NSString *NSStringFromCGRect(CGRect rect);
+NSString *NSStringFromCGSize(CGSize size);
+NSString *NSStringFromCGPoint(CGPoint point);
+NSString *NSStringFromCGAffineTransform(CGAffineTransform t);
+NSString *NSStringFromUIEdgeInsets(UIEdgeInsets insets);
+NSString *NSStringFromUIOffset(UIOffset offset);
 NSString *NSHomeDirectory(void);
 NSString *NSTemporaryDirectory(void);
 
