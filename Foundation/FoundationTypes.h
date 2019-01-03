@@ -11,10 +11,14 @@ typedef long long NSInteger;
 typedef struct __NSObject NSObject;
 typedef struct __NSString NSString;
 typedef struct __NSData NSData;
+typedef struct __NSArray NSArray;
 typedef struct _NSZone NSZone;
 
 typedef unsigned long long NSAlignmentOptions;
+
 typedef NSUInteger NSRectEdge;
+typedef NSUInteger NSSearchPathDirectory;
+typedef NSUInteger NSSearchPathDomainMask;
 
 typedef struct NSFastEnumerationState {
     unsigned long state;

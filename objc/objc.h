@@ -21,6 +21,8 @@ id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic);
 id objc_getMetaClass(const char *name);
 id objc_retainBlock(id value);
 id object_getIvar(id obj, Ivar ivar);
+id object_dispose(id obj);
+id class_createInstance(Class cls, size_t extraBytes);
 id method_invoke(id receiver, Method m, ...);
 
 #ifdef x86
@@ -34,7 +36,9 @@ Class objc_getRequiredClass(const char *name);
 Class objc_initializeClassPair(Class superclass, const char *name, Class cls, Class metacls);
 Class objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes);
 Class object_getClass(id obj);
+Class object_setClass(id obj, Class cls);
 Class class_getSuperclass(Class cls);
+Class class_setSuperclass(Class cls, Class newSuper);
 
 Protocol *objc_getProtocol(const char *name);
 Protocol *objc_allocateProtocol(const char *name);
@@ -47,6 +51,8 @@ IMP class_getMethodImplementation(Class cls, SEL name);
 char *method_copyArgumentType(Method m, unsigned int index);
 char *method_copyReturnType(Method m);
 
+const uint8_t *class_getIvarLayout(Class cls);
+
 const char **objc_copyImageNames(unsigned int *outCount);
 const char *object_getClassName(id obj);
 const char *protocol_getName(Protocol *proto);
@@ -57,6 +63,7 @@ const char *method_getTypeEncoding(Method m);
 const char *ivar_getName(Ivar v);
 const char *ivar_getTypeEncoding(Ivar v);
 const char *class_getName(Class cls);
+const char *class_getImageName(Class cls);
 
 SEL sel_registerName(const char *str);
 SEL sel_getUid(const char *str);
@@ -65,12 +72,15 @@ SEL method_getName(Method m);
 Ivar class_getInstanceVariable(Class cls, const char *name);
 Ivar class_getClassVariable(Class cls, const char *name);
 Ivar *class_copyIvarList(Class cls, unsigned int *outCount);
+Ivar object_setInstanceVariable(id obj, const char *name, void *value);
+Ivar object_getInstanceVariable(id obj, const char *name, void **outValue);
 
 Method class_getInstanceMethod(Class cls, SEL name);
 Method class_getClassMethod(Class cls, SEL name);
 Method *class_copyMethodList(Class cls, unsigned int *outCount);
 
 objc_property_t *protocol_copyPropertyList(Protocol *proto, unsigned int *outCount);
+objc_property_t class_getProperty(Class cls, const char *name);
 objc_property_t *class_copyPropertyList(Class cls, unsigned int *outCount);
 
 objc_property_attribute_t *property_copyAttributeList(objc_property_t property, unsigned int *outCount);
@@ -79,6 +89,7 @@ struct objc_method_description protocol_getMethodDescription(Protocol *proto, SE
 struct objc_method_description *protocol_copyMethodDescriptionList(Protocol *proto, BOOL isRequiredMethod, BOOL isInstanceMethod, unsigned int *outCount);
 struct objc_method_description *method_getDescription(Method m);
 
+int objc_getClassList(Class *buffer, int bufferCount);
 int objc_sync_enter(id obj);
 int objc_sync_exit(id obj);
 
@@ -95,6 +106,7 @@ BOOL class_isMetaClass(Class cls);
 BOOL class_addIvar(Class cls, const char *name, size_t size, uint8_t alignment, const char *types);
 BOOL class_addProperty(Class cls, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount);
 BOOL class_addProtocol(Class cls, Protocol *protocol);
+BOOL class_respondsToSelector(Class cls, SEL sel);
 
 void objc_registerClassPair(Class cls);
 void objc_disposeClassPair(Class cls);
@@ -117,6 +129,7 @@ void objc_registerProtocol(Protocol *proto);
 void objc_release(id value);
 void objc_terminate(void);
 void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic, BOOL hasStrong);
+void object_setIvar(id obj, Ivar ivar, id value);
 void protocol_addMethodDescription(Protocol *proto, SEL name, const char *types, BOOL isRequiredMethod, BOOL isInstanceMethod);
 void protocol_addProtocol(Protocol *proto, Protocol *addition);
 void protocol_addProperty(Protocol *proto, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount, BOOL isRequiredProperty, BOOL isInstanceProperty);
@@ -126,3 +139,4 @@ void method_getArgumentType(Method m, unsigned int index, char *dst, size_t dst_
 void method_exchangeImplementations(Method m1, Method m2);
 
 void *objc_autoreleasePoolPush(void);
+void *object_getIndexedIvars(id obj);

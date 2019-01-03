@@ -3,6 +3,8 @@
 
 uint32_t notify_register_dispatch(const char *name, int *out_token, dispatch_queue_t queue, notify_handler_t handler);
 
+size_t dispatch_data_get_size(dispatch_data_t data);
+
 void dispatch_once(dispatch_block_t block);
 void dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_async(dispatch_queue_t queue, dispatch_block_t block);
@@ -16,4 +18,11 @@ void dispatch_block_cancel(dispatch_block_t block);
 
 dispatch_block_t dispatch_block_create(dispatch_block_flags_t flags, dispatch_block_t block);
 
+dispatch_data_t dispatch_data_create(const void *buffer, size_t size, dispatch_queue_t queue, dispatch_block_t destructor);
+dispatch_data_t dispatch_data_create_map(dispatch_data_t data, const void **buffer_ptr, size_t *size_ptr);
+dispatch_data_t dispatch_data_create_concat(dispatch_data_t data1, dispatch_data_t data2);
+dispatch_data_t dispatch_data_create_subrange(dispatch_data_t data, size_t offset, size_t length);
+dispatch_data_t dispatch_data_copy_region(dispatch_data_t data, size_t location, size_t *offset_ptr);
+
 bool os_variant_has_internal_content(const char *subsystem);
+bool dispatch_data_apply(dispatch_data_t data, dispatch_data_applier_t applier);

@@ -10,6 +10,7 @@ CGRect UIRectCenteredAboutPointScale(CGRect, CGPoint);
 CGPoint UIRectGetCenter(CGRect rect);
 
 void UIRectFill(CGRect rect);
+void UIRectFillUsingBlendMode(CGRect rect, CGBlendMode blendMode);
 void UIRectClip(CGRect rect);
 void UIGraphicsPushContext(CGContextRef context);
 void UIGraphicsPopContext(void);

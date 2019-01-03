@@ -13,6 +13,7 @@ CFTypeID CFCharacterSetGetTypeID(void);
 CFTypeID CFDataGetTypeID(void);
 CFTypeID CFStringGetTypeID(void);
 CFTypeID CFNumberGetTypeID(void);
+CFTypeID CFSetGetTypeID(void);
 CFTypeID CFNullGetTypeID(void);
 
 double CFStringGetDoubleValue(CFStringRef str);
@@ -112,6 +113,7 @@ void CFSetReplaceValue(CFMutableSetRef theSet, const void *value);
 void CFSetRemoveValue(CFMutableSetRef theSet, const void *value);
 void CFSetRemoveAllValues(CFMutableSetRef theSet);
 void CFSetGetValues(CFSetRef theSet, const void **values);
+void CFSetApplyFunction(CFSetRef theSet, CFSetApplierFunction applier, void *context);
 void CFAllocatorSetDefault(CFAllocatorRef allocator);
 
 CFAllocatorRef CFAllocatorGetDefault(void);
@@ -153,6 +155,7 @@ CFNotificationCenterRef CFNotificationCenterGetLocalCenter(void);
 CFPropertyListRef CFPreferencesCopyValue(CFStringRef key, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 CFPropertyListRef CFPreferencesCopyAppValue(CFStringRef key, CFStringRef applicationID);
 CFPropertyListRef CFPropertyListCreateDeepCopy(CFAllocatorRef allocator, CFPropertyListRef propertyList, CFOptionFlags mutabilityOption);
+CFPropertyListRef CFPropertyListCreateWithData(CFAllocatorRef allocator, CFDataRef data, CFOptionFlags options, CFPropertyListFormat *format, CFErrorRef *error);
 
 CFDictionaryRef CFDictionaryCreate(CFAllocatorRef allocator, const void **keys, const void **values, CFIndex numValues, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);
 CFDictionaryRef CFDictionaryCreateCopy(CFAllocatorRef allocator, CFDictionaryRef theDict);
@@ -189,6 +192,7 @@ CFStringRef CFStringCreateWithFormatAndArguments(CFAllocatorRef alloc, CFDiction
 CFStringRef CFStringCreateWithCString(CFAllocatorRef alloc, const char *cStr, CFStringEncoding encoding);
 CFStringRef CFStringCreateWithCStringNoCopy(CFAllocatorRef alloc, const char *cStr, CFStringEncoding encoding, CFAllocatorRef contentsDeallocator);
 CFStringRef CFStringCreateWithSubstring(CFAllocatorRef alloc, CFStringRef str, CFRange range);
+CFStringRef CFStringTokenizerCopyBestStringLanguage(CFStringRef string, CFRange range);
 
 Boolean CFEqual(CFTypeRef cf1, CFTypeRef cf2);
 Boolean CFBooleanGetValue(CFBooleanRef boolean);
@@ -211,6 +215,7 @@ Boolean CFStringHasPrefix(CFStringRef theString, CFStringRef prefix);
 Boolean CFStringHasSuffix(CFStringRef theString, CFStringRef suffix);
 Boolean CFStringTransform(CFMutableStringRef string, CFRange *range, CFStringRef transform, Boolean reverse);
 Boolean CFStringGetCString(CFStringRef theString, char *buffer, CFIndex bufferSize, CFStringEncoding encoding);
+Boolean CFStringGetFileSystemRepresentation(CFStringRef string, char *buffer, CFIndex maxBufLen);
 Boolean CFNumberGetValue(CFNumberRef number, CFNumberType theType, void *valuePtr);
 Boolean CFNumberIsFloatType(CFNumberRef number);
 Boolean CFSetContainsValue(CFSetRef theSet, const void *value);
@@ -231,5 +236,6 @@ CFIndex CFStringFindAndReplace(CFMutableStringRef theString, CFStringRef stringT
 CFIndex CFStringGetLength(CFStringRef theString);
 CFIndex CFStringGetBytes(CFStringRef theString, CFRange range, CFStringEncoding encoding, UInt8 lossByte, Boolean isExternalRepresentation, UInt8 *buffer, CFIndex maxBufLen, CFIndex *usedBufLen);
 CFIndex CFStringGetMaximumSizeForEncoding(CFIndex length, CFStringEncoding encoding);
+CFIndex CFStringGetMaximumSizeOfFileSystemRepresentation(CFStringRef string);
 CFIndex CFNumberGetByteSize(CFNumberRef number);
 CFIndex CFSetGetCount(CFSetRef theSet);

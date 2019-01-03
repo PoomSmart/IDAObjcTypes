@@ -38,6 +38,7 @@ typedef CFIndex CFCharacterSetPredefinedSet;
 typedef CFIndex CFComparisonResult;
 typedef CFIndex CFStringNormalizationForm;
 typedef CFIndex CFStringCharacterClusterType;
+typedef CFIndex CFPropertyListFormat;
 typedef CFIndex CFSystemVersion;
 
 typedef UInt32 CFStringEncoding;
@@ -99,6 +100,7 @@ const CFDictionaryValueCallBacks kCFTypeDictionaryValueCallBacks;
 
 typedef const void *(*CFSetRetainCallBack)(CFAllocatorRef allocator, const void *value);
 typedef void (*CFSetReleaseCallBack)(CFAllocatorRef allocator, const void *value);
+typedef void (*CFSetApplierFunction)(const void *value, void *context);
 typedef CFStringRef	(*CFSetCopyDescriptionCallBack)(const void *value);
 typedef Boolean	(*CFSetEqualCallBack)(const void *value1, const void *value2);
 typedef CFHashCode (*CFSetHashCallBack)(const void *value);

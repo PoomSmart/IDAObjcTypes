@@ -42,6 +42,7 @@ typedef struct CGPath *CGMutablePathRef;
 typedef int32_t CGPathDrawingMode;
 typedef uint32_t CGImageAlphaInfo;
 typedef uint32_t CGBitmapInfo;
+typedef int32_t CGBlendMode;
 typedef int32_t CGColorRenderingIntent;
 typedef int32_t CGPathElementType;
 typedef int32_t CGLineCap;
