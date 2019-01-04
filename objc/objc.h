@@ -15,6 +15,7 @@ id objc_initWeak(id *object, id value);
 id objc_loadWeakRetained(id *object);
 id objc_loadWeak(id *object);
 id objc_storeWeak(id *object, id value);
+id objc_storeWeakOrNil(id *location, id obj);
 id objc_getClass(const char *name);
 id objc_getAssociatedObject(id object, const void *key);
 id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic);
@@ -32,9 +33,11 @@ long double objc_msgSend_fpret(id self, SEL op, ...);
 #endif
 
 Class objc_lookUpClass(const char *name);
+Class objc_getFutureClass(const char *name);
 Class objc_getRequiredClass(const char *name);
 Class objc_initializeClassPair(Class superclass, const char *name, Class cls, Class metacls);
 Class objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes);
+Class objc_duplicateClass(Class original, const char *name, size_t extraBytes);
 Class object_getClass(id obj);
 Class object_setClass(id obj, Class cls);
 Class class_getSuperclass(Class cls);
@@ -42,11 +45,13 @@ Class class_setSuperclass(Class cls, Class newSuper);
 
 Protocol *objc_getProtocol(const char *name);
 Protocol *objc_allocateProtocol(const char *name);
+Protocol **class_copyProtocolList(Class cls, unsigned int *outCount);
 
 IMP method_getImplementation(Method m);
 IMP method_setImplementation(Method m, IMP imp);
 IMP class_replaceMethod(Class cls, SEL name, IMP imp, const char *types);
 IMP class_getMethodImplementation(Class cls, SEL name);
+IMP object_getMethodImplementation(id obj, SEL name);
 
 char *method_copyArgumentType(Method m, unsigned int index);
 char *method_copyReturnType(Method m);
@@ -139,4 +144,5 @@ void method_getArgumentType(Method m, unsigned int index, char *dst, size_t dst_
 void method_exchangeImplementations(Method m1, Method m2);
 
 void *objc_autoreleasePoolPush(void);
+void *objc_destructInstance(id obj);
 void *object_getIndexedIvars(id obj);

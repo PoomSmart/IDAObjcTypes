@@ -12,6 +12,7 @@ If you work on 32-bit binaries, you may want to uncomment `#define x86` in `IDA.
 ## Included Frameworks/Libraries
 More to be added as the owner reverses more binaries.
 - AudioToolbox
+- AVFoundation
 - CommonCrypto
 - CoreAudio
 - CoreFoundation
@@ -30,4 +31,5 @@ More to be added as the owner reverses more binaries.
 - objc
 - os
 - pthread
+- sandbox
 - xpc

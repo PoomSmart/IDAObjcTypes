@@ -16,10 +16,12 @@ bool dispatch_data_apply(dispatch_data_t data, dispatch_data_applier_t applier);
 
 char **backtrace_symbols(void * const *array, int size);
 void *__memcpy_chk(void *dest, const void *src, size_t len, size_t dstlen);
+void *__memmove_chk (void *dest, const void *src, size_t len, size_t dstlen);
 void *__strncpy_chk(char *dest, char *src, size_t len, size_t dstlen);
 
 void backtrace_symbols_fd(void * const *array, int size, int fd);
 void dispatch_once(dispatch_block_t block);
+void dispatch_apply(size_t iterations, dispatch_queue_t queue, void (*block)(size_t));
 void dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_async(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_after(dispatch_time_t when, dispatch_queue_t queue, dispatch_block_t block);

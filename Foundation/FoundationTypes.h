@@ -9,6 +9,7 @@ typedef long long NSInteger;
 #endif
 
 typedef struct __NSObject NSObject;
+typedef struct __NSValue NSValue;
 typedef struct __NSString NSString;
 typedef struct __NSData NSData;
 typedef struct __NSArray NSArray;
