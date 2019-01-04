@@ -11,6 +11,7 @@ typedef UInt8 UTF8Char;
 #import "Kernel/KernelTypes.h"
 #import "dyld/dyldTypes.h"
 #import "AudioToolbox/AudioToolboxTypes.h"
+#import "CommonCrypto/CommonCryptoTypes.h"
 #import "CoreAudio/CoreAudioTypes.h"
 #import "CoreFoundation/CoreFoundationTypes.h"
 #import "CoreGraphics/CoreGraphicsTypes.h"

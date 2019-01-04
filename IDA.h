@@ -2,6 +2,7 @@
 #import "Types.h"
 #import "dyld/dyld.h"
 #import "AudioToolbox/AudioToolbox.h"
+#import "CommonCrypto/CommonCrypto.h"
 #import "CoreAudio/CoreAudio.h"
 #import "CoreFoundation/CoreFoundation.h"
 #import "CoreGraphics/CoreGraphics.h"

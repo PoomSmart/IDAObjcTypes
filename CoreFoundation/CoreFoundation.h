@@ -11,6 +11,7 @@ const void *CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
 const void *CFSetGetValue(CFSetRef theSet, const void *value);
 void *CFAllocatorAllocate(CFAllocatorRef allocator, CFIndex size, CFOptionFlags hint);
 void *CFAllocatorReallocate(CFAllocatorRef allocator, void *ptr, CFIndex newsize, CFOptionFlags hint);
+void *CFBundleGetFunctionPointerForName(CFBundleRef bundle, CFStringRef functionName);
 
 const UniChar *CFStringGetCharactersPtr(CFStringRef theString);
 UniChar CFStringGetCharacterAtIndex(CFStringRef theString, CFIndex idx);
@@ -205,6 +206,7 @@ CFArrayRef CFBundleGetAllBundles(void);
 CFArrayRef CFBundleCopyResourceURLsOfType(CFBundleRef bundle, CFStringRef resourceType, CFStringRef subDirName);
 CFArrayRef CFBundleCopyResourceURLsOfTypeInDirectory(CFURLRef bundleURL, CFStringRef resourceType, CFStringRef subDirName);
 CFArrayRef CFBundleCopyResourceURLsOfTypeForLocalization(CFBundleRef bundle, CFStringRef resourceType, CFStringRef subDirName, CFStringRef localizationName);
+CFArrayRef CFBundleCopyLocalizationsForPreferences(CFArrayRef locArray, CFArrayRef prefArray);
 
 CFMutableStringRef CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength);
 CFMutableStringRef CFStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFStringRef theString);
@@ -235,6 +237,7 @@ CFBundleRef CFBundleGetBundleWithIdentifier(CFStringRef bundleID);
 CFBundleRef CFBundleGetMainBundle(void);
 
 CFURLRef CFBundleCopyBundleURL(CFBundleRef bundle);
+CFURLRef CFBundleCopyResourcesDirectoryURL(CFBundleRef bundle);
 CFURLRef CFBundleCopyResourceURL(CFBundleRef bundle, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName);
 CFURLRef CFBundleCopyResourceURLInDirectory(CFURLRef bundleURL, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName);
 CFURLRef CFBundleCopyResourceURLForLocalization(CFBundleRef bundle, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName, CFStringRef localizationName);
