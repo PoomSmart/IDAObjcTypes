@@ -2,6 +2,10 @@
 
 typedef NSObject *dispatch_group_t;
 typedef NSObject *dispatch_data_t;
+typedef NSObject *dispatch_queue_attr_t;
+
+typedef unsigned int qos_class_t;
+typedef qos_class_t dispatch_qos_class_t;
 
 typedef unsigned long dispatch_block_flags_t;
 

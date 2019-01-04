@@ -31,6 +31,8 @@ NSString *NSStringFromUIOffset(UIOffset offset);
 NSString *NSHomeDirectory(void);
 NSString *NSTemporaryDirectory(void);
 
+NSDictionary *_NSDictionaryOfVariableBindings(NSString *commaSeparatedKeysString, id firstValue, ...);
+
 NSArray *NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NSSearchPathDomainMask domainMask, BOOL expandTilde);
 
 NSRect NSUnionRect(NSRect aRect, NSRect bRect);

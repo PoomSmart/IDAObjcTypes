@@ -21,8 +21,11 @@ void UIGraphicsEndImageContext(void);
 CGFloat UIRoundToScale(CGFloat, CGFloat);
 CGFloat UIFloorToScale(CGFloat, CGFloat);
 CGFloat UICeilToScale(CGFloat, CGFloat);
-CGFloat UIFloorToViewScale(CGFloat, CGFloat);
-CGFloat UIRoundToViewScale(CGFloat, CGFloat);
-CGFloat UICeilToViewScale(CGFloat, CGFloat);
+CGFloat UIFloorToViewScale(CGFloat);
+CGFloat UIRoundToViewScale(CGFloat);
+CGFloat UICeilToViewScale(CGFloat);
+CGFloat UIFloorToScreenScale(CGFloat);
+CGFloat UIRoundToScreenScale(CGFloat);
+CGFloat UICeilToScreenScale(CGFloat);
 
 CGContextRef UIGraphicsGetCurrentContext(void);
