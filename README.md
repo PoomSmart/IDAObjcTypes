@@ -11,11 +11,14 @@ If you work on 32-bit binaries, you may want to uncomment `#define x86` in `IDA.
 
 ## Included Frameworks/Libraries
 More to be added as the owner reverses more binaries.
+- AudioToolbox
+- CoreAudio
 - CoreFoundation
 - CoreGraphics
 - CoreMedia
 - CoreText
 - CoreVideo
+- Darwin
 - Foundation
 - IOSurface
 - Kernel
@@ -24,4 +27,5 @@ More to be added as the owner reverses more binaries.
 - dyld
 - objc
 - os
+- pthread
 - xpc

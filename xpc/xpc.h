@@ -9,6 +9,7 @@ xpc_connection_t xpc_connection_create_mach_service(const char *name, dispatch_q
 xpc_connection_t xpc_dictionary_get_remote_connection(xpc_object_t xdict);
 xpc_connection_t xpc_array_create_connection(xpc_object_t xarray, size_t index);
 
+xpc_object_t xpc_data_create_with_dispatch_data(dispatch_data_t ddata);
 xpc_object_t xpc_connection_send_message_with_reply_sync(xpc_connection_t connection, xpc_object_t message);
 xpc_object_t xpc_connection_copy_entitlement_value(xpc_connection_t, const char* entitlement);
 xpc_object_t xpc_dictionary_create(const char *const *keys, xpc_object_t const *values, size_t count);
@@ -27,6 +28,7 @@ bool xpc_dictionary_apply(xpc_object_t xdict, xpc_dictionary_applier_t applier);
 bool xpc_dictionary_get_bool(xpc_object_t xdict, const char *key);
 bool xpc_array_apply(xpc_object_t xarray, xpc_array_applier_t applier);
 bool xpc_array_get_bool(xpc_object_t xarray, size_t index);
+bool xpc_bool_get_value(xpc_object_t xbool);
 
 double xpc_dictionary_get_double(xpc_object_t xdict, const char *key);
 double xpc_array_get_double(xpc_object_t xarray, size_t index);
@@ -85,6 +87,7 @@ void xpc_dictionary_set_double(xpc_object_t xdict, const char *key, double value
 void xpc_dictionary_set_string(xpc_object_t xdict, const char *key, const char *string);
 void xpc_dictionary_set_int64(xpc_object_t xdict, const char *key, int64_t value);
 void xpc_dictionary_set_uint64(xpc_object_t xdict, const char *key, uint64_t value);
+void xpc_dictionary_set_data(xpc_object_t xdict, const char *key, const void *bytes, size_t length);
 void xpc_dictionary_set_date(xpc_object_t xdict, const char *key, int64_t value);
 void xpc_dictionary_set_value(xpc_object_t xdict, const char *key, xpc_object_t value);
 void xpc_dictionary_set_fd(xpc_object_t xdict, const char *key, int fd);
@@ -94,6 +97,7 @@ void xpc_transaction_end(void);
 void xpc_transaction_exit_clean(void);
 void xpc_track_activity(void);
 
+const void *xpc_dictionary_get_data(xpc_object_t xdict, const char *key, size_t *length);
 const void *xpc_array_get_data(xpc_object_t xarray, size_t index, size_t *length);
 void *xpc_connection_get_context(xpc_connection_t connection);
 

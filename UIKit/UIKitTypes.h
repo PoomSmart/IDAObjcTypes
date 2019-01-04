@@ -11,3 +11,5 @@ typedef struct UIOffset {
 } UIOffset;
 
 UIOffset UIOffsetZero;
+
+typedef NSString *UIContentSizeCategory;

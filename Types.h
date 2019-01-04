@@ -10,6 +10,8 @@ typedef UInt8 UTF8Char;
 
 #import "Kernel/KernelTypes.h"
 #import "dyld/dyldTypes.h"
+#import "AudioToolbox/AudioToolboxTypes.h"
+#import "CoreAudio/CoreAudioTypes.h"
 #import "CoreFoundation/CoreFoundationTypes.h"
 #import "CoreGraphics/CoreGraphicsTypes.h"
 #import "CoreMedia/CoreMediaTypes.h"
@@ -20,6 +22,7 @@ typedef UInt8 UTF8Char;
 #import "IOSurface/IOSurfaceTypes.h"
 #import "objc/objcTypes.h"
 #import "os/osTypes.h"
+#import "pthread/pthreadTypes.h"
 #import "UIKit/UIKitTypes.h"
 #import "xpc/xpcTypes.h"
 

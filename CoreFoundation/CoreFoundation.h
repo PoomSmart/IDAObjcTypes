@@ -1,37 +1,9 @@
 #import "../Types.h"
 #import "CoreFoundationTypes.h"
 
-CFTypeRef CFRetain(CFTypeRef cf);
-CFTypeRef CFAutorelease(CFTypeRef arg);
-CFTypeRef CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
-
-CFTypeID CFGetTypeID(CFTypeRef cf);
-CFTypeID CFBooleanGetTypeID(void);
-CFTypeID CFDictionaryGetTypeID(void);
-CFTypeID CFArrayGetTypeID(void);
-CFTypeID CFCharacterSetGetTypeID(void);
-CFTypeID CFDataGetTypeID(void);
-CFTypeID CFStringGetTypeID(void);
-CFTypeID CFNumberGetTypeID(void);
-CFTypeID CFSetGetTypeID(void);
-CFTypeID CFNullGetTypeID(void);
-
 double CFStringGetDoubleValue(CFStringRef str);
 
 SInt32 CFStringGetIntValue(CFStringRef str);
-
-CFHashCode CFHash(CFTypeRef cf);
-
-CFStringEncoding CFStringGetSystemEncoding(void);
-
-CFComparisonResult CFStringCompare(CFStringRef theString1, CFStringRef theString2, CFStringCompareFlags compareOptions);
-CFComparisonResult CFStringCompareWithOptions(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFStringCompareFlags compareOptions);
-CFComparisonResult CFNumberCompare(CFNumberRef number, CFNumberRef otherNumber, void *context);
-
-CFRange CFDataFind(CFDataRef theData, CFDataRef dataToFind, CFRange searchRange, CFDataSearchFlags compareOptions);
-CFRange CFStringFind(CFStringRef theString, CFStringRef stringToFind, CFStringCompareFlags compareOptions);
-CFRange CFStringGetRangeOfComposedCharactersAtIndex(CFStringRef theString, CFIndex theIndex);
-CFRange CFStringGetRangeOfCharacterClusterAtIndex(CFStringRef string, CFIndex charIndex, CFStringCharacterClusterType type);
 
 const char *CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
 const void *CFArrayGetValueAtIndex(CFArrayRef theArray, CFIndex idx);
@@ -116,7 +88,40 @@ void CFSetGetValues(CFSetRef theSet, const void **values);
 void CFSetApplyFunction(CFSetRef theSet, CFSetApplierFunction applier, void *context);
 void CFAllocatorSetDefault(CFAllocatorRef allocator);
 
+CFTypeRef CFRetain(CFTypeRef cf);
+CFTypeRef CFAutorelease(CFTypeRef arg);
+CFTypeRef CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
+CFTypeRef CFMakeCollectable(CFTypeRef cf);
+
+CFTypeRef _CFRuntimeCreateInstance(CFAllocatorRef allocator, CFTypeID typeID, CFIndex extraBytes, unsigned char *category);
+
+CFTypeID CFGetTypeID(CFTypeRef cf);
+CFTypeID CFBooleanGetTypeID(void);
+CFTypeID CFDictionaryGetTypeID(void);
+CFTypeID CFArrayGetTypeID(void);
+CFTypeID CFCharacterSetGetTypeID(void);
+CFTypeID CFDataGetTypeID(void);
+CFTypeID CFStringGetTypeID(void);
+CFTypeID CFNumberGetTypeID(void);
+CFTypeID CFSetGetTypeID(void);
+CFTypeID CFNullGetTypeID(void);
+
+CFHashCode CFHash(CFTypeRef cf);
+
+CFStringEncoding CFStringGetSystemEncoding(void);
+CFStringEncoding CFStringConvertNSStringEncodingToEncoding(unsigned long encoding);
+
+CFComparisonResult CFStringCompare(CFStringRef theString1, CFStringRef theString2, CFStringCompareFlags compareOptions);
+CFComparisonResult CFStringCompareWithOptions(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFStringCompareFlags compareOptions);
+CFComparisonResult CFNumberCompare(CFNumberRef number, CFNumberRef otherNumber, void *context);
+
+CFRange CFDataFind(CFDataRef theData, CFDataRef dataToFind, CFRange searchRange, CFDataSearchFlags compareOptions);
+CFRange CFStringFind(CFStringRef theString, CFStringRef stringToFind, CFStringCompareFlags compareOptions);
+CFRange CFStringGetRangeOfComposedCharactersAtIndex(CFStringRef theString, CFIndex theIndex);
+CFRange CFStringGetRangeOfCharacterClusterAtIndex(CFStringRef string, CFIndex charIndex, CFStringCharacterClusterType type);
+
 CFAllocatorRef CFAllocatorGetDefault(void);
+CFAllocatorRef CFGetAllocator(CFTypeRef cf);
 
 CFErrorRef CFErrorCreate(CFAllocatorRef allocator, CFErrorDomain domain, CFIndex code, CFDictionaryRef userInfo);
 CFErrorRef CFErrorCreateWithUserInfoKeysAndValues(CFAllocatorRef allocator, CFErrorDomain domain, CFIndex code, const void *const *userInfoKeys, const void *const *userInfoValues, CFIndex numUserInfoValues);
