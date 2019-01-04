@@ -19,6 +19,7 @@ typedef UInt8 UTF8Char;
 #import "CoreVideo/CoreVideoTypes.h"
 #import "Darwin/DarwinTypes.h"
 #import "Foundation/FoundationTypes.h"
+#import "IOKit/IOKitTypes.h"
 #import "IOSurface/IOSurfaceTypes.h"
 #import "objc/objcTypes.h"
 #import "os/osTypes.h"

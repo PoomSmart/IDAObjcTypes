@@ -5,6 +5,20 @@ uint32_t notify_register_dispatch(const char *name, int *out_token, dispatch_que
 
 size_t dispatch_data_get_size(dispatch_data_t data);
 
+size_t __strlcpy_chk (char *dest, char *src, size_t len, size_t dstlen);
+
+int backtrace(void **array, int size);
+
+long dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
+
+bool os_variant_has_internal_content(const char *subsystem);
+bool dispatch_data_apply(dispatch_data_t data, dispatch_data_applier_t applier);
+
+char **backtrace_symbols(void * const *array, int size);
+void *__memcpy_chk(void *dest, const void *src, size_t len, size_t dstlen);
+void *__strncpy_chk(char *dest, char *src, size_t len, size_t dstlen);
+
+void backtrace_symbols_fd(void * const *array, int size, int fd);
 void dispatch_once(dispatch_block_t block);
 void dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_async(dispatch_queue_t queue, dispatch_block_t block);
@@ -28,8 +42,3 @@ dispatch_queue_t dispatch_pthread_root_queue_create(const char *label, unsigned 
 
 dispatch_queue_attr_t dispatch_queue_attr_make_with_qos_class(dispatch_queue_attr_t attr, dispatch_qos_class_t qos_class, int relative_priority);
 dispatch_queue_attr_t dispatch_queue_attr_make_with_overcommit(dispatch_queue_attr_t attr, bool overcommit);
-
-long dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
-
-bool os_variant_has_internal_content(const char *subsystem);
-bool dispatch_data_apply(dispatch_data_t data, dispatch_data_applier_t applier);

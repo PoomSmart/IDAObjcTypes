@@ -10,6 +10,7 @@
 #import "CoreVideo/CoreVideo.h"
 #import "Darwin/Darwin.h"
 #import "Foundation/Foundation.h"
+#import "IOKit/IOKit.h"
 #import "IOSurface/IOSurface.h"
 #import "Kernel/Kernel.h"
 #import "MobileGestalt/MobileGestalt.h"

@@ -5,6 +5,8 @@ os_log_t os_log_create(const char *subsystem, const char *category);
 
 os_activity_t _os_activity_create(void *dso, const char *description, os_activity_t activity, os_activity_flag_t flags);
 
+os_transaction_t os_transaction_create(const char *description);
+
 bool os_log_type_enabled(os_log_t oslog, os_log_type_t type);
 bool os_unfair_lock_trylock(os_unfair_lock_t lock);
 

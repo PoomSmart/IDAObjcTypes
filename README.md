@@ -20,6 +20,7 @@ More to be added as the owner reverses more binaries.
 - CoreVideo
 - Darwin
 - Foundation
+- IOKit
 - IOSurface
 - Kernel
 - MobileGestalt
