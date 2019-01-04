@@ -2,14 +2,21 @@
 
 #ifdef x86
 #define __PTHREAD_SIZE__ 4088
+#define __PTHREAD_ATTR_SIZE__ 36
 #else
 #define __PTHREAD_SIZE__ 8176
+#define __PTHREAD_ATTR_SIZE__ 56
 #endif
 
 struct __darwin_pthread_handler_rec {
 	void (*__routine)(void *);
 	void *__arg;
 	struct __darwin_pthread_handler_rec *__next;
+};
+
+struct _opaque_pthread_attr_t {
+    long __sig;
+    char __opaque[__PTHREAD_ATTR_SIZE__];
 };
 
 struct _opaque_pthread_t {
@@ -19,4 +26,7 @@ struct _opaque_pthread_t {
 };
 
 typedef struct _opaque_pthread_t *__darwin_pthread_t;
+typedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;
+
 typedef __darwin_pthread_t pthread_t;
+typedef __darwin_pthread_attr_t	pthread_attr_t;

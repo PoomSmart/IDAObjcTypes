@@ -156,6 +156,21 @@ typedef CFIndex CFNumberType; enum {
     kCFNumberMaxType = 16
 };
 
+typedef struct __CFRuntimeClass {
+    CFIndex version;
+    const char *className;
+    void (*init)(CFTypeRef cf);
+    CFTypeRef (*copy)(CFAllocatorRef allocator, CFTypeRef cf);
+    void (*finalize)(CFTypeRef cf);
+    Boolean (*equal)(CFTypeRef cf1, CFTypeRef cf2);
+    CFHashCode (*hash)(CFTypeRef cf);
+    CFStringRef (*copyFormattingDesc)(CFTypeRef cf, CFDictionaryRef formatOptions);
+    CFStringRef (*copyDebugDesc)(CFTypeRef cf);
+    void (*reclaim)(CFTypeRef cf);
+    uint32_t (*refcount)(intptr_t op, CFTypeRef cf);
+    uintptr_t requiredAlignment;
+} CFRuntimeClass;
+
 const CFAllocatorRef kCFAllocatorDefault;
 const CFAllocatorRef kCFAllocatorSystemDefault;
 const CFAllocatorRef kCFAllocatorMalloc;

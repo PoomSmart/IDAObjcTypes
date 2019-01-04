@@ -106,6 +106,8 @@ CFTypeID CFNumberGetTypeID(void);
 CFTypeID CFSetGetTypeID(void);
 CFTypeID CFNullGetTypeID(void);
 
+CFTypeID _CFRuntimeRegisterClass(const CFRuntimeClass *const cls);
+
 CFHashCode CFHash(CFTypeRef cf);
 
 CFStringEncoding CFStringGetSystemEncoding(void);
