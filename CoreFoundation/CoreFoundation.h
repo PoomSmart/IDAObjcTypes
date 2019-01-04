@@ -97,6 +97,9 @@ void CFReadStreamScheduleWithRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoo
 void CFReadStreamUnscheduleFromRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
 void CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 
+void _CFNonObjCRelease(CFTypeRef cf);
+void _CFRuntimeBridgeClasses(CFTypeID cfType, const char *className);
+
 CFTypeRef CFRetain(CFTypeRef cf);
 CFTypeRef CFAutorelease(CFTypeRef arg);
 CFTypeRef CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
@@ -105,6 +108,7 @@ CFTypeRef CFReadStreamCopyProperty(CFReadStreamRef stream, CFStreamPropertyKey p
 
 CFTypeRef _CFRuntimeCreateInstance(CFAllocatorRef allocator, CFTypeID typeID, CFIndex extraBytes, unsigned char *category);
 CFTypeRef _CFTryRetain(CFTypeRef);
+CFTypeRef _CFNonObjCRetain(CFTypeRef cf);
 
 CFTypeID CFGetTypeID(CFTypeRef cf);
 CFTypeID CFBooleanGetTypeID(void);
@@ -122,6 +126,8 @@ CFTypeID CFNullGetTypeID(void);
 CFTypeID _CFRuntimeRegisterClass(const CFRuntimeClass *const cls);
 
 CFHashCode CFHash(CFTypeRef cf);
+
+CFHashCode _CFNonObjCHash(CFTypeRef cf);
 
 CFStringEncoding CFStringGetSystemEncoding(void);
 CFStringEncoding CFStringConvertNSStringEncodingToEncoding(unsigned long encoding);
@@ -272,6 +278,9 @@ Boolean CFReadStreamOpen(CFReadStreamRef stream);
 Boolean CFReadStreamHasBytesAvailable(CFReadStreamRef stream);
 
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
+Boolean _CFIsDeallocating(CFTypeRef);
+Boolean _CFIsObjC(CFTypeID typeID, CFTypeRef obj);
+Boolean _CFNonObjCEqual(CFTypeRef cf1, CFTypeRef cf2);
 
 CFIndex CFArrayGetFirstIndexOfValue(CFArrayRef theArray, CFRange range, const void *value);
 CFIndex CFArrayGetLastIndexOfValue(CFArrayRef theArray, CFRange range, const void *value);

@@ -22,6 +22,7 @@ uint64_t CMClockConvertHostTimeToSystemUnits(CMTime hostTime);
 size_t CMSampleBufferGetSampleSize(CMSampleBufferRef sbuf, CMItemIndex sampleIndex);
 size_t CMSampleBufferGetTotalSampleSize(CMSampleBufferRef sbuf);
 
+void CMTimeShow(CMTime time);
 void CMNotificationCenterPostNotification(CFNotificationCenterRef center, CFNotificationName name, const void *object, CFDictionaryRef userInfo);
 
 const AudioStreamBasicDescription *CMAudioFormatDescriptionGetStreamBasicDescription(CMAudioFormatDescriptionRef desc);
