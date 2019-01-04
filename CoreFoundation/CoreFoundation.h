@@ -95,6 +95,7 @@ void CFAllocatorDeallocate(CFAllocatorRef allocator, void *ptr);
 void CFReadStreamClose(CFReadStreamRef stream);
 void CFReadStreamScheduleWithRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
 void CFReadStreamUnscheduleFromRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
+void CFWriteStreamClose(CFWriteStreamRef stream);
 void CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 
 void _CFNonObjCRelease(CFTypeRef cf);
@@ -178,6 +179,8 @@ CFCharacterSetRef CFCharacterSetGetPredefined(CFCharacterSetPredefinedSet theSet
 CFMutableSetRef CFSetCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFSetCallBacks *callBacks);
 CFMutableSetRef CFSetCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFSetRef theSet);
 
+CFSetRef CFSetCreate(CFAllocatorRef allocator, const void **values, CFIndex numValues, const CFSetCallBacks *callBacks);
+
 CFAbsoluteTime CFAbsoluteTimeGetCurrent(void);
 
 CFNotificationCenterRef CFNotificationCenterGetDarwinNotifyCenter(void);
@@ -191,6 +194,10 @@ CFPropertyListRef CFPropertyListCreateWithStream(CFAllocatorRef allocator, CFRea
 
 CFReadStreamRef CFReadStreamCreateWithFile(CFAllocatorRef alloc, CFURLRef fileURL);
 CFReadStreamRef CFReadStreamCreateWithBytesNoCopy(CFAllocatorRef alloc, const UInt8 *bytes, CFIndex length, CFAllocatorRef bytesDeallocator);
+
+CFWriteStreamRef CFWriteStreamCreateWithFile(CFAllocatorRef alloc, CFURLRef fileURL);
+CFWriteStreamRef CFWriteStreamCreateWithBuffer(CFAllocatorRef alloc, UInt8 *buffer, CFIndex bufferCapacity);
+CFWriteStreamRef CFWriteStreamCreateWithAllocatedBuffers(CFAllocatorRef alloc, CFAllocatorRef bufferAllocator);
 
 CFDictionaryRef CFDictionaryCreate(CFAllocatorRef allocator, const void **keys, const void **values, CFIndex numValues, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);
 CFDictionaryRef CFDictionaryCreateCopy(CFAllocatorRef allocator, CFDictionaryRef theDict);
@@ -213,6 +220,7 @@ CFArrayRef CFBundleCopyResourceURLsOfType(CFBundleRef bundle, CFStringRef resour
 CFArrayRef CFBundleCopyResourceURLsOfTypeInDirectory(CFURLRef bundleURL, CFStringRef resourceType, CFStringRef subDirName);
 CFArrayRef CFBundleCopyResourceURLsOfTypeForLocalization(CFBundleRef bundle, CFStringRef resourceType, CFStringRef subDirName, CFStringRef localizationName);
 CFArrayRef CFBundleCopyLocalizationsForPreferences(CFArrayRef locArray, CFArrayRef prefArray);
+CFArrayRef CFBundleCopyBundleLocalizations(CFBundleRef bundle);
 
 CFMutableStringRef CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength);
 CFMutableStringRef CFStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFStringRef theString);
@@ -237,6 +245,9 @@ CFStringRef CFStringCreateWithCStringNoCopy(CFAllocatorRef alloc, const char *cS
 CFStringRef CFStringCreateWithSubstring(CFAllocatorRef alloc, CFStringRef str, CFRange range);
 CFStringRef CFStringCreateWithFileSystemRepresentation(CFAllocatorRef alloc, const char *buffer);
 CFStringRef CFStringTokenizerCopyBestStringLanguage(CFStringRef string, CFRange range);
+CFStringRef CFBundleGetIdentifier(CFBundleRef bundle);
+CFStringRef CFBundleCopyLocalizedString(CFBundleRef bundle, CFStringRef key, CFStringRef value, CFStringRef tableName);
+CFStringRef CFBundleCopyLocalizedStringForLocalization(CFBundleRef bundle, CFStringRef key, CFStringRef value, CFStringRef tableName, CFStringRef localizationName);
 
 CFBundleRef CFBundleCreate(CFAllocatorRef allocator, CFURLRef bundleURL);
 CFBundleRef CFBundleGetBundleWithIdentifier(CFStringRef bundleID);
@@ -276,6 +287,7 @@ Boolean CFSetContainsValue(CFSetRef theSet, const void *value);
 Boolean CFSetGetValueIfPresent(CFSetRef theSet, const void *candidate, const void **value);
 Boolean CFReadStreamOpen(CFReadStreamRef stream);
 Boolean CFReadStreamHasBytesAvailable(CFReadStreamRef stream);
+Boolean CFWriteStreamOpen(CFWriteStreamRef stream);
 
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
 Boolean _CFIsDeallocating(CFTypeRef);
@@ -300,5 +312,7 @@ CFIndex CFStringGetMaximumSizeOfFileSystemRepresentation(CFStringRef string);
 CFIndex CFNumberGetByteSize(CFNumberRef number);
 CFIndex CFSetGetCount(CFSetRef theSet);
 CFIndex CFReadStreamRead(CFReadStreamRef stream, UInt8 *buffer, CFIndex bufferLength);
+CFIndex CFWriteStreamWrite(CFWriteStreamRef stream, const UInt8 *buffer, CFIndex bufferLength);
 CFIndex CFErrorGetCode(CFErrorRef err);
 CFIndex CFAllocatorGetPreferredSizeForSize(CFAllocatorRef allocator, CFIndex size, CFOptionFlags hint);
+CFIndex CFPropertyListWrite(CFPropertyListRef propertyList, CFWriteStreamRef stream, CFPropertyListFormat format, CFOptionFlags options, CFErrorRef *error);

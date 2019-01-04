@@ -23,6 +23,7 @@ typedef struct __CFCharacterSet *CFMutableCharacterSetRef;
 typedef struct __CFSet *CFSetRef;
 typedef struct __CFSet *CFMutableSetRef;
 typedef struct __CFReadStream *CFReadStreamRef;
+typedef struct __CFWriteStream *CFWriteStreamRef;
 
 typedef const void *CFTypeRef;
 typedef const unsigned char *ConstStr255Param;
