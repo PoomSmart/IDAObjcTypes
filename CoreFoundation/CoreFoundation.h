@@ -3,6 +3,8 @@
 
 double CFStringGetDoubleValue(CFStringRef str);
 
+bool CFUniCharIsMemberOf(UTF32Char theChar, uint32_t charset);
+
 SInt32 CFStringGetIntValue(CFStringRef str);
 
 const char *CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
@@ -137,6 +139,11 @@ CFComparisonResult CFStringCompare(CFStringRef theString1, CFStringRef theString
 CFComparisonResult CFStringCompareWithOptions(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFStringCompareFlags compareOptions);
 CFComparisonResult CFNumberCompare(CFNumberRef number, CFNumberRef otherNumber, void *context);
 
+CFUUIDRef CFUUIDCreate(CFAllocatorRef alloc);
+CFUUIDRef CFUUIDCreateFromString(CFAllocatorRef alloc, CFStringRef uuidStr);
+CFUUIDRef CFUUIDCreateFromUUIDBytes(CFAllocatorRef alloc, CFUUIDBytes bytes);
+CFUUIDRef CFUUIDCreateWithBytes(CFAllocatorRef alloc, UInt8 byte0, UInt8 byte1, UInt8 byte2, UInt8 byte3, UInt8 byte4, UInt8 byte5, UInt8 byte6, UInt8 byte7, UInt8 byte8, UInt8 byte9, UInt8 byte10, UInt8 byte11, UInt8 byte12, UInt8 byte13, UInt8 byte14, UInt8 byte15);
+
 CFRange CFDataFind(CFDataRef theData, CFDataRef dataToFind, CFRange searchRange, CFDataSearchFlags compareOptions);
 CFRange CFStringFind(CFStringRef theString, CFStringRef stringToFind, CFStringCompareFlags compareOptions);
 CFRange CFStringGetRangeOfComposedCharactersAtIndex(CFStringRef theString, CFIndex theIndex);
@@ -248,6 +255,9 @@ CFStringRef CFStringTokenizerCopyBestStringLanguage(CFStringRef string, CFRange 
 CFStringRef CFBundleGetIdentifier(CFBundleRef bundle);
 CFStringRef CFBundleCopyLocalizedString(CFBundleRef bundle, CFStringRef key, CFStringRef value, CFStringRef tableName);
 CFStringRef CFBundleCopyLocalizedStringForLocalization(CFBundleRef bundle, CFStringRef key, CFStringRef value, CFStringRef tableName, CFStringRef localizationName);
+CFStringRef CFUUIDCreateString(CFAllocatorRef alloc, CFUUIDRef uuid);
+
+CFStringRef _CFGetProductName(void);
 
 CFBundleRef CFBundleCreate(CFAllocatorRef allocator, CFURLRef bundleURL);
 CFBundleRef CFBundleGetBundleWithIdentifier(CFStringRef bundleID);

@@ -22,6 +22,46 @@ typedef NSUInteger NSRectEdge;
 typedef NSUInteger NSSearchPathDirectory;
 typedef NSUInteger NSSearchPathDomainMask;
 
+struct _NSMapTable;
+
+struct _NSMapNode {
+    void *key;
+    void *value;
+    struct _NSMapNode *next;
+};
+
+typedef struct _NSMapTableKeyCallBacks {
+    unsigned (*hash)(struct _NSMapTable *table, const void *anObject);
+    BOOL (*isEqual)(struct _NSMapTable *table, const void *anObject1, const void *anObject2);
+    void (*retain)(struct _NSMapTable *table, const void *anObject);
+    void (*release)(struct _NSMapTable *table, void *anObject);
+    NSString  *(*describe)(struct _NSMapTable *table, const void *anObject);
+    const void *notAKeyMarker;
+} NSMapTableKeyCallBacks;
+
+typedef struct _NSMapTableValueCallBacks {
+    void (*retain)(struct _NSMapTable *table, const void *anObject);
+    void (*release)(struct _NSMapTable *table, void *anObject);
+    NSString  *(*describe)(struct _NSMapTable *table, const void *anObject);
+} NSMapTableValueCallBacks;
+
+typedef struct _NSMapTable {
+    struct _NSMapNode **nodes;
+    unsigned int hashSize;
+    unsigned int itemsCount;
+    NSMapTableKeyCallBacks keyCallbacks;
+    NSMapTableValueCallBacks valueCallbacks;
+    NSZone *zone;
+    BOOL keysInvisible;
+    BOOL valuesInvisible;
+} NSMapTable;
+
+typedef struct NSMapEnumerator {
+    struct _NSMapTable *table;
+    struct _NSMapNode *node;
+    int bucket;
+} NSMapEnumerator;
+
 typedef struct NSFastEnumerationState {
     unsigned long state;
     id *itemsPtr;

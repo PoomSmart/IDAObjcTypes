@@ -106,6 +106,7 @@ unsigned int method_getNumberOfArguments(Method m);
 
 BOOL protocol_conformsToProtocol(Protocol *proto, Protocol *other);
 BOOL sel_isEqual(SEL lhs, SEL rhs);
+BOOL class_conformsToProtocol(Class cls, Protocol *protocol);
 BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types);
 BOOL class_isMetaClass(Class cls);
 BOOL class_addIvar(Class cls, const char *name, size_t size, uint8_t alignment, const char *types);

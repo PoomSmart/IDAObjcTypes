@@ -1,6 +1,14 @@
 #import "../Types.h"
 #import "DarwinTypes.h"
 
+struct __float2 { float __sinval; float __cosval; };
+struct __double2 { double __sinval; double __cosval; };
+
+struct __float2 __sincosf_stret(float);
+struct __double2 __sincos_stret(double);
+struct __float2 __sincospif_stret(float);
+struct __double2 __sincospi_stret(double);
+
 uint32_t notify_register_dispatch(const char *name, int *out_token, dispatch_queue_t queue, notify_handler_t handler);
 
 size_t dispatch_data_get_size(dispatch_data_t data);
@@ -14,11 +22,15 @@ long dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
 bool os_variant_has_internal_content(const char *subsystem);
 bool dispatch_data_apply(dispatch_data_t data, dispatch_data_applier_t applier);
 
+double __exp10(double);
+
 char **backtrace_symbols(void * const *array, int size);
+void *bsearch_b(const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
 void *__memcpy_chk(void *dest, const void *src, size_t len, size_t dstlen);
 void *__memmove_chk (void *dest, const void *src, size_t len, size_t dstlen);
 void *__strncpy_chk(char *dest, char *src, size_t len, size_t dstlen);
 
+void abort_report_np(const char *, ...);
 void backtrace_symbols_fd(void * const *array, int size, int fd);
 void dispatch_once(dispatch_block_t block);
 void dispatch_apply(size_t iterations, dispatch_queue_t queue, void (*block)(size_t));

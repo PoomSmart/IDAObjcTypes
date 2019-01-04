@@ -38,27 +38,39 @@ typedef struct CGGradient *CGGradientRef;
 typedef struct CGDataProvider *CGDataProviderRef;
 typedef const struct CGPath *CGPathRef;
 typedef struct CGPath *CGMutablePathRef;
+typedef struct CGPattern *CGPatternRef;
 
 typedef int32_t CGPathDrawingMode;
-typedef uint32_t CGImageAlphaInfo;
-typedef uint32_t CGBitmapInfo;
+typedef int32_t CGPatternTiling;
 typedef int32_t CGBlendMode;
 typedef int32_t CGColorRenderingIntent;
 typedef int32_t CGPathElementType;
 typedef int32_t CGLineCap;
 typedef int32_t CGLineJoin;
+typedef uint32_t CGImageAlphaInfo;
+typedef uint32_t CGBitmapInfo;
 typedef uint32_t CGGradientDrawingOptions;
 typedef uint32_t CGRectEdge;
+
 typedef unsigned short CGFontIndex;
 
 typedef CGFontIndex CGGlyph;
 
-struct CGPathElement {
+typedef struct CGPathElement {
     CGPathElementType type;
     CGPoint *points;
-};
+} CGPathElement;
 
 typedef void (*CGPathApplierFunction)(void *info, const CGPathElement *element);
+
+typedef void (*CGPatternDrawPatternCallback)(void *info, CGContextRef context);
+typedef void (*CGPatternReleaseInfoCallback)(void *info);
+
+typedef struct CGPatternCallbacks {
+    unsigned int version;
+    CGPatternDrawPatternCallback drawPattern;
+    CGPatternReleaseInfoCallback releaseInfo;
+} CGPatternCallbacks;
 
 CGAffineTransform CGAffineTransformIdentity;
 

@@ -3,6 +3,8 @@
 
 CFTypeID CGPathGetTypeID(void);
 CFTypeID CGImageGetTypeID(void);
+CFTypeID CGColorGetTypeID(void);
+CFTypeID CGPatternGetTypeID(void);
 
 CFDictionaryRef CGRectCreateDictionaryRepresentation(CGRect rect);
 CFDictionaryRef CGSizeCreateDictionaryRepresentation(CGSize size);
@@ -34,6 +36,10 @@ CGFloat CGRectGetMinX(CGRect rect);
 CGFloat CGRectGetMaxY(CGRect rect);
 CGFloat CGRectGetMidY(CGRect rect);
 CGFloat CGRectGetMinY(CGRect rect);
+CGFloat CGColorGetAlpha(CGColorRef color);
+CGFloat CGContextGetAlpha(CGContextRef c);
+
+CGBlendMode CGContextGetBlendMode(CGContextRef c);
 
 void CGContextSaveGState(CGContextRef c);
 void CGContextRestoreGState(CGContextRef c);
@@ -41,6 +47,7 @@ void CGContextScaleCTM(CGContextRef c, CGFloat sx, CGFloat sy);
 void CGContextTranslateCTM(CGContextRef c, CGFloat tx, CGFloat ty);
 void CGContextRotateCTM(CGContextRef c, CGFloat angle);
 void CGContextConcatCTM(CGContextRef c, CGAffineTransform transform);
+void CGContextSetBlendMode(CGContextRef c, CGBlendMode mode);
 void CGContextSetLineWidth(CGContextRef c, CGFloat width);
 void CGContextBeginPath(CGContextRef c);
 void CGContextMoveToPoint(CGContextRef c, CGFloat x, CGFloat y);
@@ -55,9 +62,11 @@ void CGContextAddEllipseInRect(CGContextRef context, CGRect rect);
 void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y, CGFloat radius, CGFloat startAngle, CGFloat endAngle, int clockwise);
 void CGContextAddArcToPoint(CGContextRef c, CGFloat x1, CGFloat y1, CGFloat x2, CGFloat y2, CGFloat radius);
 void CGContextReplacePathWithStrokedPath(CGContextRef c);
+void CGContextAddPath(CGContextRef c, CGPathRef path);
 void CGContextFillPath(CGContextRef c);
 void CGContextEOFillPath(CGContextRef c);
 void CGContextStrokePath(CGContextRef c);
+void CGContextDrawImage(CGContextRef c, CGRect rect, CGImageRef image);
 void CGContextFillRect(CGContextRef c, CGRect rect);
 void CGContextFillRects(CGContextRef c, const CGRect rects[], size_t count);
 void CGContextStrokeRect(CGContextRef c, CGRect rect);
@@ -79,6 +88,7 @@ void CGContextSynchronize(CGContextRef c);
 void CGContextEndPage(CGContextRef c);
 void CGContextBeginPage(CGContextRef c, const CGRect *mediaBox);
 void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode);
+void CGContextClear(CGContextRef c);
 void CGGradientRelease(CGGradientRef gradient);
 void CGImageRelease(CGImageRef image);
 void CGPathAddPath(CGMutablePathRef path1, const CGAffineTransform *m, CGPathRef path2);
@@ -102,6 +112,8 @@ void CGContextBeginTransparencyLayer(CGContextRef c, CFDictionaryRef auxiliaryIn
 void CGContextBeginTransparencyLayerWithRect(CGContextRef c, CGRect rect, CFDictionaryRef auxInfo);
 void CGContextEndTransparencyLayer(CGContextRef c);
 void CGRectDivide(CGRect rect, CGRect *slice, CGRect *remainder, CGFloat amount, CGRectEdge edge);
+void CGColorRelease(CGColorRef color);
+void CGPatternRelease(CGPatternRef pattern);
 
 CGPathRef CGPathRetain(CGPathRef path);
 CGPathRef CGPathCreateWithEllipseInRect(CGRect rect, const CGAffineTransform *transform);
@@ -122,8 +134,25 @@ CGImageRef CGImageRetain(CGImageRef image);
 
 CGContextRef CGContextRetain(CGContextRef c);
 
+CGColorRef CGColorRetain(CGColorRef color);
+CGColorRef CGColorGetConstantColor(CFStringRef colorName);
+CGColorRef CGColorCreate(CGColorSpaceRef space, const CGFloat *components);
+CGColorRef CGColorCreateCopy(CGColorRef color);
+CGColorRef CGColorCreateCopyWithAlpha(CGColorRef color, CGFloat alpha);
+CGColorRef CGColorCreateGenericGray(CGFloat gray, CGFloat alpha);
+CGColorRef CGColorCreateGenericRGB(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+CGColorRef CGColorCreateGenericCMYK(CGFloat cyan, CGFloat magenta, CGFloat yellow, CGFloat black, CGFloat alpha);
+CGColorRef CGColorCreateWithPattern(CGColorSpaceRef space, CGPatternRef pattern, const CGFloat *components);
+CGColorRef CGColorCreateCopyByMatchingToColorSpace(CGColorSpaceRef, CGColorRenderingIntent intent, CGColorRef color, CFDictionaryRef options);
+
 CGColorSpaceRef CGImageGetColorSpace(CGImageRef image);
 CGColorSpaceRef CGColorGetColorSpace(CGColorRef color);
+
+CGColorRenderingIntent CGImageGetRenderingIntent(CGImageRef image);
+
+CGPatternRef CGPatternRetain(CGPatternRef pattern);
+CGPatternRef CGPatternCreate(void *info, CGRect bounds, CGAffineTransform matrix, CGFloat xStep, CGFloat yStep, CGPatternTiling tiling, bool isColored, const CGPatternCallbacks *callbacks);
+CGPatternRef CGColorGetPattern(CGColorRef color);
 
 CGGradientRef CGGradientCreateWithColors(CGColorSpaceRef space, CFArrayRef colors, const CGFloat *locations);
 
@@ -133,15 +162,15 @@ CGBitmapInfo CGImageGetBitmapInfo(CGImageRef image);
 
 CGDataProviderRef CGImageGetDataProvider(CGImageRef image);
 
-CGColorRenderingIntent CGImageGetRenderingIntent(CGImageRef image);
-
 const CGFloat *CGImageGetDecode(CGImageRef image);
+const CGFloat *CGColorGetComponents(CGColorRef color);
 
 size_t CGImageGetWidth(CGImageRef image);
 size_t CGImageGetHeight(CGImageRef image);
 size_t CGImageGetBitsPerComponent(CGImageRef image);
 size_t CGImageGetBitsPerPixel(CGImageRef image);
 size_t CGImageGetBytesPerRow(CGImageRef image);
+size_t CGColorGetNumberOfComponents(CGColorRef color);
 
 bool CGRectEqualToRect(CGRect rect1, CGRect rect2);
 bool CGRectIsNull(CGRect rect);
@@ -162,6 +191,7 @@ bool CGPathContainsPoint(CGPathRef path, const CGAffineTransform *m, CGPoint poi
 bool CGRectMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGRect *rect);
 bool CGSizeMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGSize *size);
 bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGPoint *point);
+bool CGColorEqualToColor(CGColorRef color1, CGColorRef color2);
 
 CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d, CGFloat tx, CGFloat ty);
 CGAffineTransform CGAffineTransformMakeScale(CGFloat sx, CGFloat sy);

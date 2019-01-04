@@ -13,6 +13,7 @@ CGFloat NSMidY(NSRect aRect);
 CGFloat NSMinY(NSRect aRect);
 
 NSUInteger NSRoundUpToMultipleOfPageSize(NSUInteger bytes);
+NSUInteger NSPageSize(void);
 
 NSString *NSStringFromClass(Class aClass);
 NSString *NSStringFromProtocol(Protocol *proto);
@@ -49,17 +50,34 @@ BOOL NSContainsRect(NSRect aRect, NSRect bRect);
 BOOL NSEqualRects(NSRect aRect, NSRect bRect);
 BOOL NSIsEmptyRect(NSRect aRect);
 BOOL NSIntersectsRect(NSRect aRect, NSRect bRect);
+BOOL NSMapMember(NSMapTable *table, const void *key, void **originalKey, void **value);
+BOOL NSNextMapEnumeratorPair(NSMapEnumerator *enumerator, void **key, void **value);
+BOOL NSEqualSizes(NSSize aSize, NSSize bSize);
 
 Class NSClassFromString(CFStringRef string);
 
 Protocol *NSProtocolFromString(NSString *namestr);
 
+NSMapEnumerator NSEnumerateMapTable(NSMapTable *table);
+
+unsigned __NSHashCString(void *table, const void *anObject);
+
 const char *NSGetSizeAndAlignment(const char *typePtr, NSUInteger *sizep, NSUInteger *alignp);
 
 void *NSPushAutoreleasePool(NSUInteger capacity);
 void *NSZoneMalloc(NSZone *zone, NSUInteger size);
+void *NSMapInsertIfAbsent(NSMapTable *table, const void *key, const void *value);
+void *NSMapGet(NSMapTable *table, const void *key);
 
+NSArray *NSAllMapTableKeys(NSMapTable *table);
+NSArray *NSAllMapTableValues(NSMapTable *table);
+
+void NSRequestConcreteImplementation(id self, SEL _cmd, Class absClass);
 void NSPopAutoreleasePool(void *token);
 void NSDivideRect(NSRect inRect, NSRect *slice, NSRect *rem, CGFloat amount, NSRectEdge edge);
 void NSLog(NSString *format, ...);
 void NSZoneFree(NSZone *zone, void *ptr);
+void NSMapInsert(NSMapTable *table, const void *key, const void *value);
+void NSMapInsertKnownAbsent(NSMapTable *table, const void *key, const void *value);
+void NSMapRemove(NSMapTable *table, const void *key);
+void NSEndMapTableEnumeration(NSMapEnumerator *enumerator);
