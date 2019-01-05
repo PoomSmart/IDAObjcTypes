@@ -1,3 +1,6 @@
+#ifndef FOUNDATION_H_
+#define FOUNDATION_H_
+
 #import "../CoreGraphics/Types.h"
 #import "../objc/Types.h"
 
@@ -79,3 +82,5 @@ typedef struct _NSRange {
 typedef CGPoint *NSPoint;
 typedef CGSize *NSSize;
 typedef CGRect *NSRect;
+
+#endif
