@@ -1,5 +1,6 @@
 #import "../Types.h"
-#import "CoreTextTypes.h"
+#import "../CoreGraphics/Types.h"
+#import "Types.h"
 
 CGPathRef CTFontCreatePathForGlyph(CTFontRef font, CGGlyph glyph, const CGAffineTransform *matrix);
 

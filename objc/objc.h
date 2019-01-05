@@ -1,5 +1,5 @@
 #import "../Types.h"
-#import "objcTypes.h"
+#import "Types.h"
 
 id objc_constructInstance(Class cls, void *bytes);
 id objc_autorelease(id value);

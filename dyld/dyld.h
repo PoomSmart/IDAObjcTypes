@@ -1,7 +1,7 @@
 #import "../Types.h"
-#import "dyldTypes.h"
+#import "Types.h"
 
-int _dyld_func_lookup(const char* dyld_func_name, void **address);
+int _dyld_func_lookup(const char *dyld_func_name, void **address);
 
 uint32_t dyld_get_program_sdk_version(void);
 uint32_t dyld_get_min_os_version(const struct mach_header *mh);

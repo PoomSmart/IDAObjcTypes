@@ -1,4 +1,5 @@
-#import "../Types.h"
+#import "../CoreGraphics/Types.h"
+#import "../objc/Types.h"
 
 #ifdef x86
 typedef unsigned int NSUInteger;

@@ -1,5 +1,7 @@
 #import "../Types.h"
-#import "CoreVideoTypes.h"
+#import "../CoreFoundation/Types.h"
+#import "../IOSurface/Types.h"
+#import "Types.h"
 
 void *CVPixelBufferGetBaseAddress(CVPixelBufferRef pixelBuffer);
 void *CVPixelBufferGetBaseAddressOfPlane(CVPixelBufferRef pixelBuffer, size_t planeIndex);

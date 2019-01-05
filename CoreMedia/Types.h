@@ -1,3 +1,6 @@
+#ifndef COREMEDIA_H_
+#define COREMEDIA_H_
+
 #import "../Types.h"
 
 typedef int64_t CMTimeValue;
@@ -56,3 +59,5 @@ typedef struct CMSampleTimingInfo {
 } CMSampleTimingInfo;
 
 CMTime kCMTimeZero;
+
+#endif

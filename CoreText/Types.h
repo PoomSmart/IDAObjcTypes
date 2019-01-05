@@ -1,3 +1,6 @@
+#ifndef CORETEXT_H_
+#define CORETEXT_H_
+
 #import "../Types.h"
 
 typedef struct __CTFont *CTFontRef;
@@ -14,3 +17,5 @@ typedef uint32_t CTRunStatus;
 typedef uint32_t CTFontOrientation;
 
 typedef CFOptionFlags CTFontOptions;
+
+#endif

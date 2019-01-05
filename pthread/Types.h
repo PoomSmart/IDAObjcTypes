@@ -1,4 +1,5 @@
-#import "../Types.h"
+#ifndef DARWIN_H_
+#define DARWIN_H_
 
 #ifdef x86
 #define __PTHREAD_SIZE__ 4088
@@ -30,3 +31,5 @@ typedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;
 
 typedef __darwin_pthread_t pthread_t;
 typedef __darwin_pthread_attr_t	pthread_attr_t;
+
+#endif

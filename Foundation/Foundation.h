@@ -1,5 +1,5 @@
 #import "../Types.h"
-#import "FoundationTypes.h"
+#import "Types.h"
 
 SEL NSSelectorFromString(NSString *aSelectorName);
 

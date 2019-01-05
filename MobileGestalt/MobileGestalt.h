@@ -1,4 +1,5 @@
 #import "../Types.h"
+#import "../CoreFoundation/Types.h"
 
 SInt32 MGGetSInt32Answer(CFStringRef key, SInt32 defaultVal);
 

@@ -1,5 +1,7 @@
 #import "../Types.h"
-#import "CoreMediaTypes.h"
+#import "../CoreFoundation/Types.h"
+#import "../CoreVideo/Types.h"
+#import "Types.h"
 
 Boolean CMFormatDescriptionEqual(CMFormatDescriptionRef formatDescription, CMFormatDescriptionRef otherFormatDescription);
 Boolean CMFormatDescriptionEqualIgnoringExtensionKeys(CMFormatDescriptionRef formatDescription, CMFormatDescriptionRef otherFormatDescription, CFTypeRef formatDescriptionExtensionKeysToIgnore, CFTypeRef sampleDescriptionExtensionAtomKeysToIgnore);

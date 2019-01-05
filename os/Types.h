@@ -1,4 +1,5 @@
-#import "../Types.h"
+#ifndef OS_H_
+#define OS_H_
 
 typedef struct os_log_s *os_log_t;
 typedef struct os_unfair_lock_s *os_unfair_lock_t;
@@ -39,3 +40,5 @@ typedef union {
 	OS_LOCK_T_MEMBER(eliding);
 	OS_LOCK_T_MEMBER(transactional);
 } os_lock_t;
+
+#endif

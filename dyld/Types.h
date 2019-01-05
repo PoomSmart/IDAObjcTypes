@@ -1,4 +1,5 @@
-#import "../Types.h"
+#ifndef DYLD_H_
+#define DYLD_H_
 
 typedef struct dyld_unwind_sections {
 	const struct mach_header *mh;
@@ -7,3 +8,5 @@ typedef struct dyld_unwind_sections {
 	const void *compact_unwind_section;
 	uintptr_t compact_unwind_section_length;
 } dyld_unwind_sections;
+
+#endif

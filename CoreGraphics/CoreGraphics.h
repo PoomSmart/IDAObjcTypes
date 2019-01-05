@@ -1,5 +1,5 @@
-#import "../Types.h"
-#import "CoreGraphicsTypes.h"
+#import "../CoreFoundation/Types.h"
+#import "Types.h"
 
 CFTypeID CGPathGetTypeID(void);
 CFTypeID CGImageGetTypeID(void);

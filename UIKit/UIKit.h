@@ -1,5 +1,5 @@
 #import "../Types.h"
-#import "UIKitTypes.h"
+#import "Types.h"
 
 NSData *UIImagePNGRepresentation(UIImage *image);
 NSData *UIImageJPEGRepresentation(UIImage *image, CGFloat compressionQuality);

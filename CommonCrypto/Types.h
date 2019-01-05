@@ -1,3 +1,6 @@
+#ifndef COMMONCRYPTO_H_
+#define COMMONCRYPTO_H_
+
 #import "../Types.h"
 
 typedef uint32_t CC_LONG;
@@ -71,3 +74,5 @@ typedef struct CC_SHA512state_st {
 
 #define CC_SHA512_DIGEST_LENGTH 64
 #define CC_SHA512_BLOCK_BYTES 128
+
+#endif

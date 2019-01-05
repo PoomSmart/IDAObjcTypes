@@ -1,3 +1,6 @@
+#ifndef COREFOUNDATION_H_
+#define COREFOUNDATION_H_
+
 #import "../Types.h"
 
 typedef struct __CFError *CFErrorRef;
@@ -228,3 +231,5 @@ const CFAllocatorRef kCFAllocatorMalloc;
 const CFAllocatorRef kCFAllocatorMallocZone;
 const CFAllocatorRef kCFAllocatorNull;
 const CFAllocatorRef kCFAllocatorUseContext;
+
+#endif

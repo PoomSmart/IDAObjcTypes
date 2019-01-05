@@ -1,3 +1,6 @@
+#ifndef COREGRAPHICS_H_
+#define COREGRAPHICS_H_
+
 #import "../Types.h"
 
 #ifdef x86
@@ -78,3 +81,5 @@ CGRect CGRectZero;
 CGRect CGRectNull;
 CGSize CGSizeZero;
 CGPoint CGPointZero;
+
+#endif

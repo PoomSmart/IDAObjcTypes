@@ -1,4 +1,8 @@
-#import "../Types.h"
+#ifndef UIKIT_H_
+#define UIKIT_H_
+
+#import "../CoreFoundation/Types.h"
+#import "../Foundation/Types.h"
 
 typedef struct __UIImage *UIImage;
 
@@ -12,4 +16,8 @@ typedef struct UIOffset {
 
 UIOffset UIOffsetZero;
 
+UIEdgeInsets UIEdgeInsetsZero;
+
 typedef NSString *UIContentSizeCategory;
+
+#endif

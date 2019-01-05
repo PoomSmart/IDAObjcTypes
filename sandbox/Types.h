@@ -1,4 +1,5 @@
-#import "../Types.h"
+#ifndef SANDBOX_H_
+#define SANDBOX_H_
 
 enum sandbox_filter_type {
     SANDBOX_FILTER_NONE,
@@ -20,3 +21,5 @@ typedef struct {
 extern const char *const APP_SANDBOX_READ;
 extern const char *const APP_SANDBOX_READ_WRITE;
 extern const enum sandbox_filter_type SANDBOX_CHECK_NO_REPORT;
+
+#endif

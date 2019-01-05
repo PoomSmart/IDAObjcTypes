@@ -1,5 +1,5 @@
 #import "../Types.h"
-#import "CoreFoundationTypes.h"
+#import "Types.h"
 
 double CFStringGetDoubleValue(CFStringRef str);
 

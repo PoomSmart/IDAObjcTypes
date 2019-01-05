@@ -1,3 +1,6 @@
+#ifndef COREAUDIO_H_
+#define COREAUDIO_H_
+
 #import "../Types.h"
 
 typedef UInt32 AudioChannelLabel;
@@ -49,3 +52,5 @@ typedef struct AudioChannelLayout {
     UInt32 mNumberChannelDescriptions;
     AudioChannelDescription mChannelDescriptions[kVariableLengthArray];
 } AudioChannelLayout;
+
+#endif

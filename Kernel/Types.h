@@ -1,4 +1,5 @@
-#import "../Types.h"
+#ifndef KERNEL_H_
+#define KERNEL_H_
 
 #define kVariableLengthArray 1
 
@@ -10,3 +11,5 @@ typedef SInt32 OSStatus;
 typedef FourCharCode OSType;
 
 class OSObject;
+
+#endif
