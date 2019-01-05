@@ -49,6 +49,7 @@ void CFCharacterSetAddCharactersInString(CFMutableCharacterSetRef theSet, CFStri
 void CFCharacterSetIntersect(CFMutableCharacterSetRef theSet, CFCharacterSetRef theOtherSet);
 void CFCharacterSetInvert(CFMutableCharacterSetRef theSet);
 void CFCharacterSetUnion(CFMutableCharacterSetRef theSet, CFCharacterSetRef theOtherSet);
+void CFCharacterSetCompact(CFMutableCharacterSetRef theSet);
 void CFCharacterSetInitInlineBuffer(CFCharacterSetRef cset, CFCharacterSetInlineBuffer *buffer);
 void CFDataAppendBytes(CFMutableDataRef theData, const UInt8 *bytes, CFIndex length);
 void CFDataDeleteBytes(CFMutableDataRef theData, CFRange range);

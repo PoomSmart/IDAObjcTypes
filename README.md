@@ -20,6 +20,7 @@ More to be added as the owner reverses more binaries.
 - CoreMedia
 - CoreText
 - CoreVideo
+- CydiaSubstrate (if you ever want to RE tweaks)
 - Darwin
 - Foundation
 - IOKit

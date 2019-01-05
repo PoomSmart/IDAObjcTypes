@@ -10,6 +10,7 @@
 #import "CoreMedia/CoreMedia.h"
 #import "CoreText/CoreText.h"
 #import "CoreVideo/CoreVideo.h"
+#import "CydiaSubstrate/CydiaSubstrate.h"
 #import "Darwin/Darwin.h"
 #import "Foundation/Foundation.h"
 #import "IOKit/IOKit.h"
