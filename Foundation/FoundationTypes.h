@@ -13,6 +13,7 @@ typedef struct __NSValue NSValue;
 typedef struct __NSString NSString;
 typedef struct __NSData NSData;
 typedef struct __NSArray NSArray;
+typedef struct __NSArray NSMutableArray;
 typedef struct __NSDictionary NSDictionary;
 typedef struct _NSZone NSZone;
 
