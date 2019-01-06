@@ -46,6 +46,7 @@ typedef double CFTimeInterval;
 
 typedef CFOptionFlags CFDataSearchFlags;
 typedef CFOptionFlags CFStringCompareFlags;
+typedef CFOptionFlags CFURLBookmarkResolutionOptions;
 
 typedef CFIndex CFNotificationSuspensionBehavior;
 typedef CFIndex CFCharacterSetPredefinedSet;
@@ -55,6 +56,8 @@ typedef CFIndex CFStringCharacterClusterType;
 typedef CFIndex CFPropertyListFormat;
 typedef CFIndex CFSystemVersion;
 typedef CFIndex CFStreamStatus;
+typedef CFIndex CFURLPathStyle;
+typedef CFIndex CFURLComponentType;
 
 typedef UInt32 CFStringEncoding;
 
@@ -231,5 +234,10 @@ const CFAllocatorRef kCFAllocatorMalloc;
 const CFAllocatorRef kCFAllocatorMallocZone;
 const CFAllocatorRef kCFAllocatorNull;
 const CFAllocatorRef kCFAllocatorUseContext;
+
+const CFArrayCallBacks kCFTypeArrayCallBacks;
+
+const CFBooleanRef kCFBooleanTrue;
+const CFBooleanRef kCFBooleanFalse;
 
 #endif

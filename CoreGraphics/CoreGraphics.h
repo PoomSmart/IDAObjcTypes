@@ -5,10 +5,21 @@ CFTypeID CGPathGetTypeID(void);
 CFTypeID CGImageGetTypeID(void);
 CFTypeID CGColorGetTypeID(void);
 CFTypeID CGPatternGetTypeID(void);
+CFTypeID CGFontGetTypeID(void);
+
+CFTypeRef CGCFRetain(CFTypeRef cf);
+CFTypeRef CGTypeCreateInstance(CFTypeID typeID, CFIndex extraBytes);
+CFTypeRef CGCFDictionaryGetValueWithType(CFDictionaryRef theDict, const void *key, CFTypeID typeID);
 
 CFDictionaryRef CGRectCreateDictionaryRepresentation(CGRect rect);
 CFDictionaryRef CGSizeCreateDictionaryRepresentation(CGSize size);
 CFDictionaryRef CGPointCreateDictionaryRepresentation(CGPoint point);
+
+CFMutableDictionaryRef CGCFDictionaryCreate(void);
+CFMutableDictionaryRef CGCFDictionaryCreateCopy(CFDictionaryRef theDict);
+
+CFArrayRef CGCFDictionaryCopyKeys(CFDictionaryRef theDict, const CFArrayCallBacks *callBacks);
+CFArrayRef CGCFDictionaryCopyValues(CFDictionaryRef theDict, const CFArrayCallBacks *callBacks);
 
 CGRect CGRectInset(CGRect rect, CGFloat dx, CGFloat dy);
 CGRect CGRectUnion(CGRect rect1, CGRect rect2);
@@ -114,6 +125,16 @@ void CGContextEndTransparencyLayer(CGContextRef c);
 void CGRectDivide(CGRect rect, CGRect *slice, CGRect *remainder, CGFloat amount, CGRectEdge edge);
 void CGColorRelease(CGColorRef color);
 void CGPatternRelease(CGPatternRef pattern);
+void CGFontRelease(CGFontRef font);
+
+void CGPostError(const char *format, ...);
+void CGCFRelease(CFTypeRef cf);
+void CGCFDictionaryApplyBlock(CFDictionaryRef theDict, void *context);
+void CGCFDictionarySetCString(CFMutableDictionaryRef theDict, const char *cStr);
+void CGCFDictionarySetBoolean(CFMutableDictionaryRef theDict, const void *key, bool value);
+void CGCFDictionarySetFloat(CFMutableDictionaryRef theDict, const void *key, double value);
+void CGCFDictionarySetNumber(CFMutableDictionaryRef theDict, const void *key, CFNumberType type, const void *valuePtr);
+void CGCFDictionarySetCFTypeRef(CFMutableDictionaryRef theDict, const void *key, const void *value);
 
 CGPathRef CGPathRetain(CGPathRef path);
 CGPathRef CGPathCreateWithEllipseInRect(CGRect rect, const CGAffineTransform *transform);
@@ -131,6 +152,17 @@ CGMutablePathRef CGPathCreateMutableCopyByTransformingPath(CGPathRef path, const
 CGImageRef CGImageCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGColorSpaceRef space, CGBitmapInfo bitmapInfo, CGDataProviderRef provider, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageMaskCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGDataProviderRef provider, const CGFloat *decode, bool shouldInterpolate);
 CGImageRef CGImageRetain(CGImageRef image);
+
+CGFontRef CGFontRetain(CGFontRef font);
+CGFontRef CGFontCreateWithFontName(CFStringRef name);
+CGFontRef CGFontCreateWithDataProvider(CGDataProviderRef provider);
+CGFontRef CGFontCreateCopyWithVariations(CGFontRef font, CFDictionaryRef variations);
+
+CGFontRef CGFontCreateWithName(const char *name);
+CGFontRef CGFontCreateMatchingFont(const char *, const char *, int, bool, CGFloat);
+
+CFMutableArrayRef CGFontCreateFontsWithPath(CFStringRef path);
+CFMutableArrayRef CGCFArrayCreate(void);
 
 CGContextRef CGContextRetain(CGContextRef c);
 
@@ -192,6 +224,9 @@ bool CGRectMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGRect *rect);
 bool CGSizeMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGSize *size);
 bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGPoint *point);
 bool CGColorEqualToColor(CGColorRef color1, CGColorRef color2);
+
+bool CGCFDictionaryGetBoolean(CFDictionaryRef theDict, const void *key, bool *result);
+bool CGCFDictionaryGetCFTypeRef(CFDictionaryRef theDict, const void *key, CFTypeID typeID, CFTypeRef *valuePtr);
 
 CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d, CGFloat tx, CGFloat ty);
 CGAffineTransform CGAffineTransformMakeScale(CGFloat sx, CGFloat sy);

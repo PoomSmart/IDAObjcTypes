@@ -42,6 +42,7 @@ typedef struct CGDataProvider *CGDataProviderRef;
 typedef const struct CGPath *CGPathRef;
 typedef struct CGPath *CGMutablePathRef;
 typedef struct CGPattern *CGPatternRef;
+typedef struct CGFont *CGFontRef;
 
 typedef int32_t CGPathDrawingMode;
 typedef int32_t CGPatternTiling;

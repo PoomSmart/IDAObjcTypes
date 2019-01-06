@@ -6,6 +6,7 @@ double CFStringGetDoubleValue(CFStringRef str);
 bool CFUniCharIsMemberOf(UTF32Char theChar, uint32_t charset);
 
 SInt32 CFStringGetIntValue(CFStringRef str);
+SInt32 CFURLGetPortNumber(CFURLRef anURL);
 
 const char *CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
 const void *CFArrayGetValueAtIndex(CFArrayRef theArray, CFIndex idx);
@@ -123,6 +124,7 @@ CFTypeID CFDataGetTypeID(void);
 CFTypeID CFStringGetTypeID(void);
 CFTypeID CFNumberGetTypeID(void);
 CFTypeID CFSetGetTypeID(void);
+CFTypeID CFURLGetTypeID(void);
 CFTypeID CFNotificationCenterGetTypeID(void);
 CFTypeID CFAllocatorGetTypeID(void);
 CFTypeID CFNullGetTypeID(void);
@@ -149,6 +151,7 @@ CFRange CFDataFind(CFDataRef theData, CFDataRef dataToFind, CFRange searchRange,
 CFRange CFStringFind(CFStringRef theString, CFStringRef stringToFind, CFStringCompareFlags compareOptions);
 CFRange CFStringGetRangeOfComposedCharactersAtIndex(CFStringRef theString, CFIndex theIndex);
 CFRange CFStringGetRangeOfCharacterClusterAtIndex(CFStringRef string, CFIndex charIndex, CFStringCharacterClusterType type);
+CFRange CFURLGetByteRangeForComponent(CFURLRef url, CFURLComponentType component, CFRange *rangeIncludingSeparators);
 
 CFAllocatorRef CFAllocatorGetDefault(void);
 CFAllocatorRef CFGetAllocator(CFTypeRef cf);
@@ -164,12 +167,26 @@ CFNumberRef CFNumberCreate(CFAllocatorRef allocator, CFNumberType theType, const
 
 CFNumberType CFNumberGetType(CFNumberRef number);
 
+CFURLRef CFURLCopyAbsoluteURL(CFURLRef relativeURL);
+CFURLRef CFURLCreateAbsoluteURLWithBytes(CFAllocatorRef alloc, const UInt8 *relativeURLBytes, CFIndex length, CFStringEncoding encoding, CFURLRef baseURL, Boolean useCompatibilityMode);
+CFURLRef CFURLCreateByResolvingBookmarkData(CFAllocatorRef allocator, CFDataRef bookmark, CFURLBookmarkResolutionOptions options, CFURLRef relativeToURL, CFArrayRef resourcePropertiesToInclude, Boolean *isStale, CFErrorRef *error);
+CFURLRef CFURLCreateCopyAppendingPathComponent(CFAllocatorRef allocator, CFURLRef url, CFStringRef pathComponent, Boolean isDirectory);
+CFURLRef CFURLCreateCopyAppendingPathExtension(CFAllocatorRef allocator, CFURLRef url, CFStringRef extension);
+CFURLRef CFURLCreateCopyDeletingLastPathComponent(CFAllocatorRef allocator, CFURLRef url);
+CFURLRef CFURLCreateCopyDeletingPathExtension(CFAllocatorRef allocator, CFURLRef url);
+CFURLRef CFURLCreateFilePathURL(CFAllocatorRef allocator, CFURLRef url, CFErrorRef *error);
+CFURLRef CFURLCreateFileReferenceURL(CFAllocatorRef allocator, CFURLRef url, CFErrorRef *error);
+CFURLRef CFURLCreateFromFileSystemRepresentation(CFAllocatorRef allocator, const UInt8 *buffer, CFIndex bufLen, Boolean isDirectory);
+CFURLRef CFURLCreateFromFileSystemRepresentationRelativeToBase(CFAllocatorRef allocator, const UInt8 *buffer, CFIndex bufLen, Boolean isDirectory, CFURLRef baseURL);
+CFURLRef CFURLCreateWithString(CFAllocatorRef allocator, CFStringRef URLString, CFURLRef baseURL);
+
 CFDataRef CFDataCreate(CFAllocatorRef allocator, const UInt8 *bytes, CFIndex length);
 CFDataRef CFDataCreateCopy(CFAllocatorRef allocator, CFDataRef theData);
 CFDataRef CFDataCreateWithBytesNoCopy(CFAllocatorRef allocator, const UInt8 *bytes, CFIndex length, CFAllocatorRef bytesDeallocator);
 CFDataRef CFPropertyListCreateData(CFAllocatorRef allocator, CFPropertyListRef propertyList, CFPropertyListFormat format, CFOptionFlags options, CFErrorRef *error);
 CFDataRef CFCharacterSetCreateBitmapRepresentation(CFAllocatorRef alloc, CFCharacterSetRef theSet);
 CFDataRef CFStringCreateExternalRepresentation(CFAllocatorRef alloc, CFStringRef theString, CFStringEncoding encoding, UInt8 lossByte);
+CFDataRef CFURLCreateData(CFAllocatorRef allocator, CFURLRef url, CFStringEncoding encoding, Boolean escapeWhitespace);
 
 CFMutableDataRef CFDataCreateMutable(CFAllocatorRef allocator, CFIndex capacity);
 CFMutableDataRef CFDataCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDataRef theData);
@@ -257,6 +274,21 @@ CFStringRef CFBundleGetIdentifier(CFBundleRef bundle);
 CFStringRef CFBundleCopyLocalizedString(CFBundleRef bundle, CFStringRef key, CFStringRef value, CFStringRef tableName);
 CFStringRef CFBundleCopyLocalizedStringForLocalization(CFBundleRef bundle, CFStringRef key, CFStringRef value, CFStringRef tableName, CFStringRef localizationName);
 CFStringRef CFUUIDCreateString(CFAllocatorRef alloc, CFUUIDRef uuid);
+CFStringRef CFURLCopyFileSystemPath(CFURLRef anURL, CFURLPathStyle pathStyle);
+CFStringRef CFURLCopyFragment(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
+CFStringRef CFURLCopyHostName(CFURLRef anURL);
+CFStringRef CFURLCopyLastPathComponent(CFURLRef url);
+CFStringRef CFURLCopyNetLocation(CFURLRef anURL);
+CFStringRef CFURLCopyParameterString(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
+CFStringRef CFURLCopyPassword(CFURLRef anURL);
+CFStringRef CFURLCopyPath(CFURLRef anURL);
+CFStringRef CFURLCopyPathExtension(CFURLRef url);
+CFStringRef CFURLCopyQueryString(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
+CFStringRef CFURLCopyResourceSpecifier(CFURLRef anURL);
+CFStringRef CFURLCopyScheme(CFURLRef anURL);
+CFStringRef CFURLCopyUserName(CFURLRef anURL);
+CFStringRef CFURLCreateStringByReplacingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveEscaped);
+CFStringRef CFURLGetString(CFURLRef anURL);
 
 CFStringRef _CFGetProductName(void);
 
@@ -269,6 +301,7 @@ CFURLRef CFBundleCopyResourcesDirectoryURL(CFBundleRef bundle);
 CFURLRef CFBundleCopyResourceURL(CFBundleRef bundle, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName);
 CFURLRef CFBundleCopyResourceURLInDirectory(CFURLRef bundleURL, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName);
 CFURLRef CFBundleCopyResourceURLForLocalization(CFBundleRef bundle, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName, CFStringRef localizationName);
+CFURLRef CFURLGetBaseURL(CFURLRef anURL);
 
 Boolean CFEqual(CFTypeRef cf1, CFTypeRef cf2);
 Boolean CFBooleanGetValue(CFBooleanRef boolean);
@@ -299,6 +332,10 @@ Boolean CFSetGetValueIfPresent(CFSetRef theSet, const void *candidate, const voi
 Boolean CFReadStreamOpen(CFReadStreamRef stream);
 Boolean CFReadStreamHasBytesAvailable(CFReadStreamRef stream);
 Boolean CFWriteStreamOpen(CFWriteStreamRef stream);
+Boolean CFURLCanBeDecomposed(CFURLRef anURL);
+Boolean CFURLHasDirectoryPath(CFURLRef anURL);
+Boolean CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBase, UInt8 *buffer, CFIndex maxBufLen);
+Boolean CFURLResourceIsReachable(CFURLRef url, CFErrorRef *error);
 
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
 Boolean _CFIsDeallocating(CFTypeRef);
@@ -307,7 +344,7 @@ Boolean _CFNonObjCEqual(CFTypeRef cf1, CFTypeRef cf2);
 
 CFIndex CFArrayGetFirstIndexOfValue(CFArrayRef theArray, CFRange range, const void *value);
 CFIndex CFArrayGetLastIndexOfValue(CFArrayRef theArray, CFRange range, const void *value);
-CFIndex CFArrayGetCount(const void *dict);
+CFIndex CFArrayGetCount(CFArrayRef theArray);
 CFIndex CFArrayBSearchValues(CFArrayRef theArray, CFRange range, const void *value, CFComparatorFunction comparator, void *context);
 CFIndex CFPreferencesGetAppIntegerValue(CFStringRef key, CFStringRef applicationID, Boolean *keyExistsAndHasValidFormat);
 CFIndex CFDataGetLength(CFDataRef theData);
@@ -327,3 +364,4 @@ CFIndex CFWriteStreamWrite(CFWriteStreamRef stream, const UInt8 *buffer, CFIndex
 CFIndex CFErrorGetCode(CFErrorRef err);
 CFIndex CFAllocatorGetPreferredSizeForSize(CFAllocatorRef allocator, CFIndex size, CFOptionFlags hint);
 CFIndex CFPropertyListWrite(CFPropertyListRef propertyList, CFWriteStreamRef stream, CFPropertyListFormat format, CFOptionFlags options, CFErrorRef *error);
+CFIndex CFURLGetBytes(CFURLRef url, UInt8 *buffer, CFIndex bufferLength);
