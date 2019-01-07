@@ -11,6 +11,7 @@ id objc_retainAutoreleasedReturnValue(id value);
 id objc_unsafeClaimAutoreleasedReturnValue(id value);
 id objc_msgSendSuper(struct objc_super *super, SEL op, ...);
 id objc_msgSendSuper2(struct objc_super *super, SEL op, ...);
+id objc_allocWithZone(Class cls);
 id objc_initWeak(id *object, id value);
 id objc_loadWeakRetained(id *object);
 id objc_loadWeak(id *object);
