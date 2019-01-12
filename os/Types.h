@@ -31,7 +31,7 @@ typedef void (*os_block_t)(void);
 
 #define OS_LOCK_T_MEMBER(type) OS_LOCK_STRUCT(type) *_osl_##type
 
-typedef union {
+typedef union os_lock {
 	OS_LOCK_T_MEMBER(base);
 	OS_LOCK_T_MEMBER(unfair);
 	OS_LOCK_T_MEMBER(nospin);

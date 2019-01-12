@@ -20,4 +20,9 @@ typedef struct objc_property_attribute {
     const char *value;
 } objc_property_attribute_t;
 
+typedef struct objc_super {
+    id receiver;
+    Class super_class;
+} objc_super;
+
 #endif

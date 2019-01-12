@@ -12,6 +12,7 @@ typedef uint64_t dispatch_time_t;
 
 typedef unsigned int qos_class_t;
 typedef unsigned long dispatch_block_flags_t;
+typedef unsigned long dispatch_autorelease_frequency_t;
 
 typedef qos_class_t dispatch_qos_class_t;
 

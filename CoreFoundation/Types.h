@@ -106,7 +106,7 @@ typedef struct CFDictionaryKeyCallBacks {
 const CFDictionaryKeyCallBacks kCFTypeDictionaryKeyCallBacks;
 const CFDictionaryKeyCallBacks kCFCopyStringDictionaryKeyCallBacks;
 
-typedef struct {
+typedef struct CFDictionaryValueCallBacks {
     CFIndex version;
     CFDictionaryRetainCallBack retain;
     CFDictionaryReleaseCallBack release;
@@ -174,7 +174,7 @@ typedef struct CFStringInlineBuffer {
     CFIndex bufferedRangeEnd;
 } CFStringInlineBuffer;
 
-typedef CFIndex CFNumberType; enum {
+typedef CFIndex CFNumberType; enum CFNumberType {
     kCFNumberSInt8Type = 1,
     kCFNumberSInt16Type = 2,
     kCFNumberSInt32Type = 3,
@@ -192,7 +192,7 @@ typedef CFIndex CFNumberType; enum {
     kCFNumberNSIntegerType = 15,
     kCFNumberCGFloatType = 16,
     kCFNumberMaxType = 16
-};
+} CFNumberType;
 
 typedef struct __CFRuntimeClass {
     CFIndex version;

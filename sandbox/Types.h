@@ -4,15 +4,15 @@
 enum sandbox_filter_type {
     SANDBOX_FILTER_NONE,
     SANDBOX_FILTER_GLOBAL_NAME = 2,
-};
+} sandbox_filter_type;
 
-typedef struct {
+typedef struct sandbox_profile {
     char *builtin;
     unsigned char *data;
     size_t size;
 } *sandbox_profile_t;
 
-typedef struct {
+typedef struct sandbox_params {
     const char **params;
     size_t size;
     size_t available;

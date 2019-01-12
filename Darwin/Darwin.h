@@ -57,4 +57,5 @@ dispatch_data_t dispatch_data_copy_region(dispatch_data_t data, size_t location,
 dispatch_queue_t dispatch_pthread_root_queue_create(const char *label, unsigned long flags,	const pthread_attr_t *attr, dispatch_block_t configure);
 
 dispatch_queue_attr_t dispatch_queue_attr_make_with_qos_class(dispatch_queue_attr_t attr, dispatch_qos_class_t qos_class, int relative_priority);
+dispatch_queue_attr_t dispatch_queue_attr_make_with_autorelease_frequency(dispatch_queue_attr_t attr, dispatch_autorelease_frequency_t frequency);
 dispatch_queue_attr_t dispatch_queue_attr_make_with_overcommit(dispatch_queue_attr_t attr, bool overcommit);
