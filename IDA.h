@@ -1,6 +1,7 @@
 // #define x86
 #import "Types.h"
 #import "dyld/dyld.h"
+#import "icu/icu.h"
 #import "AudioToolbox/AudioToolbox.h"
 #import "AVFoundation/AVFoundation.h"
 #import "CommonCrypto/CommonCrypto.h"

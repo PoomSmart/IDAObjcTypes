@@ -21,6 +21,7 @@ __noreturn void __stack_chk_fail(void);
 #import "Kernel/Types.h"
 #import "dyld/Types.h"
 #import "sandbox/Types.h"
+#import "icu/Types.h"
 #import "CoreAnimation/Types.h"
 #import "CoreAudio/Types.h"
 #import "AudioToolbox/Types.h"

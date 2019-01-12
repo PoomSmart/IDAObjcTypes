@@ -30,6 +30,7 @@ More to be added as the owner reverses more binaries.
 - MobileGestalt
 - UIKit
 - dyld
+- icu
 - objc
 - os
 - pthread

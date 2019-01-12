@@ -20,4 +20,9 @@ UIEdgeInsets UIEdgeInsetsZero;
 
 typedef NSString* UIContentSizeCategory;
 
+const NSNotificationName UIApplicationDidReceiveMemoryWarningNotification;
+const NSNotificationName UIApplicationBackgroundRefreshStatusDidChangeNotification;
+const NSNotificationName UIApplicationDidChangeStatusBarFrameNotification;
+const NSNotificationName UIApplicationDidBecomeActiveNotification;
+
 #endif

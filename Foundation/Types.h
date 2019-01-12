@@ -83,4 +83,6 @@ typedef CGPoint* NSPoint;
 typedef CGSize* NSSize;
 typedef CGRect* NSRect;
 
+typedef NSString* NSNotificationName;
+
 #endif

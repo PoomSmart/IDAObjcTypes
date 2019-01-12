@@ -34,6 +34,9 @@ UniChar _imp__CFStringGetCharacterAtIndex(CFStringRef theString, CFIndex idx);
 UniChar CFStringGetCharacterFromInlineBuffer(CFStringInlineBuffer* buf, CFIndex idx);
 UniChar _imp__CFStringGetCharacterFromInlineBuffer(CFStringInlineBuffer* buf, CFIndex idx);
 
+UTF32Char CFStringGetLongCharacterFromInlineBuffer(CFStringInlineBuffer* buf, CFIndex idx);
+UTF32Char _imp__CFStringGetLongCharacterFromInlineBuffer(CFStringInlineBuffer* buf, CFIndex idx);
+
 const UInt8* CFDataGetBytePtr(CFDataRef theData);
 const UInt8* _imp__CFDataGetBytePtr(CFDataRef theData);
 const UInt8* CFReadStreamGetBuffer(CFReadStreamRef stream, CFIndex maxBytesToRead, CFIndex* numBytesRead);
