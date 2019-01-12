@@ -10,9 +10,9 @@
 #endif
 
 struct __darwin_pthread_handler_rec {
-	void (*__routine)(void *);
-	void *__arg;
-	struct __darwin_pthread_handler_rec *__next;
+	void (*__routine)(void* );
+	void* __arg;
+	struct __darwin_pthread_handler_rec* __next;
 };
 
 struct _opaque_pthread_attr_t {
@@ -22,11 +22,11 @@ struct _opaque_pthread_attr_t {
 
 struct _opaque_pthread_t {
 	long __sig;
-	struct __darwin_pthread_handler_rec *__cleanup_stack;
+	struct __darwin_pthread_handler_rec* __cleanup_stack;
 	char __opaque[__PTHREAD_SIZE__];
 };
 
-typedef struct _opaque_pthread_t *__darwin_pthread_t;
+typedef struct _opaque_pthread_t* __darwin_pthread_t;
 typedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;
 
 typedef __darwin_pthread_t pthread_t;

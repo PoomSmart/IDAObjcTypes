@@ -3,10 +3,12 @@
 
 #import "../Types.h"
 
-typedef struct __CVBuffer *CVBufferRef;
+typedef struct __CVBuffer* CVBufferRef;
 
 typedef CVBufferRef CVImageBufferRef;
 typedef CVImageBufferRef CVPixelBufferRef;
+
+typedef uint32_t CVAttachmentMode;
 
 typedef int32_t CVReturn;
 

@@ -3,34 +3,34 @@
 
 #import "../Types.h"
 
-typedef struct __CFError *CFErrorRef;
-typedef const struct __CFAllocator *CFAllocatorRef;
-typedef struct __CFArray *CFArrayRef;
-typedef struct __CFArray *CFMutableArrayRef;
-typedef const struct __CFString *CFStringRef;
-typedef struct __CFString *CFMutableStringRef;
-typedef const struct __CFDictionary *CFDictionaryRef;
-typedef struct __CFDictionary *CFMutableDictionaryRef;
-typedef struct __CFBundle *CFBundleRef;
-typedef struct __CFLocale *CFLocaleRef;
-typedef struct __CFBoolean *CFBooleanRef;
-typedef struct __CFNumber *CFNumberRef;
-typedef struct __CFData *CFDataRef;
-typedef struct __CFData *CFMutableDataRef;
-typedef struct __CFURL *CFURLRef;
-typedef struct __CFRunLoop *CFRunLoopRef;
-typedef struct __CFAttributedString *CFAttributedStringRef;
-typedef struct __CFNotificationCenter *CFNotificationCenterRef;
-typedef struct __CFCharacterSet *CFCharacterSetRef;
-typedef struct __CFCharacterSet *CFMutableCharacterSetRef;
-typedef struct __CFSet *CFSetRef;
-typedef struct __CFSet *CFMutableSetRef;
-typedef struct __CFReadStream *CFReadStreamRef;
-typedef struct __CFWriteStream *CFWriteStreamRef;
-typedef struct __CFUUID *CFUUIDRef;
+typedef struct __CFError* CFErrorRef;
+typedef const struct __CFAllocator* CFAllocatorRef;
+typedef struct __CFArray* CFArrayRef;
+typedef struct __CFArray* CFMutableArrayRef;
+typedef const struct __CFString* CFStringRef;
+typedef struct __CFString* CFMutableStringRef;
+typedef const struct __CFDictionary* CFDictionaryRef;
+typedef struct __CFDictionary* CFMutableDictionaryRef;
+typedef struct __CFBundle* CFBundleRef;
+typedef struct __CFLocale* CFLocaleRef;
+typedef struct __CFBoolean* CFBooleanRef;
+typedef struct __CFNumber* CFNumberRef;
+typedef struct __CFData* CFDataRef;
+typedef struct __CFData* CFMutableDataRef;
+typedef struct __CFURL* CFURLRef;
+typedef struct __CFRunLoop* CFRunLoopRef;
+typedef struct __CFAttributedString* CFAttributedStringRef;
+typedef struct __CFNotificationCenter* CFNotificationCenterRef;
+typedef struct __CFCharacterSet* CFCharacterSetRef;
+typedef struct __CFCharacterSet* CFMutableCharacterSetRef;
+typedef struct __CFSet* CFSetRef;
+typedef struct __CFSet* CFMutableSetRef;
+typedef struct __CFReadStream* CFReadStreamRef;
+typedef struct __CFWriteStream* CFWriteStreamRef;
+typedef struct __CFUUID* CFUUIDRef;
 
-typedef const void *CFTypeRef;
-typedef const unsigned char *ConstStr255Param;
+typedef const void* CFTypeRef;
+typedef const unsigned char* ConstStr255Param;
 
 typedef CFTypeRef CFPropertyListRef;
 
@@ -60,24 +60,25 @@ typedef CFIndex CFURLPathStyle;
 typedef CFIndex CFURLComponentType;
 
 typedef UInt32 CFStringEncoding;
+typedef SInt32 CFRunLoopRunResult;
 
 typedef CFStringRef CFNotificationName;
 typedef CFStringRef CFErrorDomain;
 typedef CFStringRef CFRunLoopMode;
 typedef CFStringRef CFStreamPropertyKey;
 
-typedef CFComparisonResult (*CFComparatorFunction)(const void *val1, const void *val2, void *context);
+typedef CFComparisonResult (*CFComparatorFunction)(const void* val1, const void* val2, void* context);
 
-typedef const void *(*CFArrayRetainCallBack)(CFAllocatorRef allocator, const void *value);
-typedef void (*CFArrayApplierFunction)(const void *value, void *context);
-typedef void (*CFArrayReleaseCallBack)(CFAllocatorRef allocator, const void *value);
-typedef void (*CFNotificationCallback)(CFNotificationCenterRef center, void *observer, CFNotificationName name, const void *object, CFDictionaryRef userInfo);
+typedef const void* (*CFArrayRetainCallBack)(CFAllocatorRef allocator, const void* value);
+typedef void (*CFArrayApplierFunction)(const void* value, void* context);
+typedef void (*CFArrayReleaseCallBack)(CFAllocatorRef allocator, const void* value);
+typedef void (*CFNotificationCallback)(CFNotificationCenterRef center, void* observer, CFNotificationName name, const void* object, CFDictionaryRef userInfo);
 
-typedef CFStringRef (*CFArrayCopyDescriptionCallBack)(const void *value);
+typedef CFStringRef (*CFArrayCopyDescriptionCallBack)(const void* value);
 
 typedef CFTimeInterval CFAbsoluteTime;
 
-typedef Boolean (*CFArrayEqualCallBack)(const void *value1, const void *value2);
+typedef Boolean (*CFArrayEqualCallBack)(const void* value1, const void* value2);
 
 typedef struct CFArrayCallBacks {
     CFIndex version;
@@ -87,12 +88,12 @@ typedef struct CFArrayCallBacks {
     CFArrayEqualCallBack equal;
 } CFArrayCallBacks;
 
-typedef const void *(*CFDictionaryRetainCallBack)(CFAllocatorRef allocator, const void *value);
-typedef void (*CFDictionaryApplierFunction)(const void *key, const void *value, void *context);
-typedef void (*CFDictionaryReleaseCallBack)(CFAllocatorRef allocator, const void *value);
-typedef CFStringRef (*CFDictionaryCopyDescriptionCallBack)(const void *value);
-typedef Boolean (*CFDictionaryEqualCallBack)(const void *value1, const void *value2);
-typedef CFHashCode (*CFDictionaryHashCallBack)(const void *value);
+typedef const void* (*CFDictionaryRetainCallBack)(CFAllocatorRef allocator, const void* value);
+typedef void (*CFDictionaryApplierFunction)(const void* key, const void* value, void* context);
+typedef void (*CFDictionaryReleaseCallBack)(CFAllocatorRef allocator, const void* value);
+typedef CFStringRef (*CFDictionaryCopyDescriptionCallBack)(const void* value);
+typedef Boolean (*CFDictionaryEqualCallBack)(const void* value1, const void* value2);
+typedef CFHashCode (*CFDictionaryHashCallBack)(const void* value);
 
 typedef struct CFDictionaryKeyCallBacks {
     CFIndex version;
@@ -116,24 +117,24 @@ typedef struct CFDictionaryValueCallBacks {
 
 const CFDictionaryValueCallBacks kCFTypeDictionaryValueCallBacks;
 
-typedef const void *(*CFSetRetainCallBack)(CFAllocatorRef allocator, const void *value);
-typedef void (*CFSetReleaseCallBack)(CFAllocatorRef allocator, const void *value);
-typedef void (*CFSetApplierFunction)(const void *value, void *context);
-typedef CFStringRef (*CFSetCopyDescriptionCallBack)(const void *value);
-typedef Boolean (*CFSetEqualCallBack)(const void *value1, const void *value2);
-typedef CFHashCode (*CFSetHashCallBack)(const void *value);
+typedef const void* (*CFSetRetainCallBack)(CFAllocatorRef allocator, const void* value);
+typedef void (*CFSetReleaseCallBack)(CFAllocatorRef allocator, const void* value);
+typedef void (*CFSetApplierFunction)(const void* value, void* context);
+typedef CFStringRef (*CFSetCopyDescriptionCallBack)(const void* value);
+typedef Boolean (*CFSetEqualCallBack)(const void* value1, const void* value2);
+typedef CFHashCode (*CFSetHashCallBack)(const void* value);
 
-typedef void* (*CFAllocatorAllocateCallBack)(CFIndex allocSize, CFOptionFlags hint, void *info);
-typedef void (*CFAllocatorDeallocateCallBack)(void *ptr, void *info);
-typedef void* (*CFAllocatorReallocateCallBack)(void *ptr, CFIndex newsize, CFOptionFlags hint, void *info);
-typedef CFIndex (*CFAllocatorPreferredSizeCallBack)(CFIndex size, CFOptionFlags hint, void *info);
-typedef const void* (*CFAllocatorRetainCallBack)(const void *info);
-typedef void (*CFAllocatorReleaseCallBack)(const void *info);
-typedef CFStringRef (*CFAllocatorCopyDescriptionCallBack)(const void *info);
+typedef void* (*CFAllocatorAllocateCallBack)(CFIndex allocSize, CFOptionFlags hint, void* info);
+typedef void (*CFAllocatorDeallocateCallBack)(void* ptr, void* info);
+typedef void* (*CFAllocatorReallocateCallBack)(void* ptr, CFIndex newsize, CFOptionFlags hint, void* info);
+typedef CFIndex (*CFAllocatorPreferredSizeCallBack)(CFIndex size, CFOptionFlags hint, void* info);
+typedef const void* (*CFAllocatorRetainCallBack)(const void* info);
+typedef void (*CFAllocatorReleaseCallBack)(const void* info);
+typedef CFStringRef (*CFAllocatorCopyDescriptionCallBack)(const void* info);
 
 typedef struct CFAllocatorContext {
     CFIndex version;
-    void *info;
+    void* info;
     CFAllocatorRetainCallBack retain;
     CFAllocatorReleaseCallBack release;        
     CFAllocatorCopyDescriptionCallBack copyDescription;
@@ -162,13 +163,13 @@ typedef struct CFCharacterSetInlineBuffer {
     uint32_t flags;
     uint32_t rangeStart;
     uint32_t rangeLimit;
-    const uint8_t *bitmap;
+    const uint8_t* bitmap;
 } CFCharacterSetInlineBuffer;
 
 typedef struct CFStringInlineBuffer {
     UniChar buffer[64];
     CFStringRef theString;
-    const UniChar *directBuffer;
+    const UniChar* directBuffer;
     CFRange rangeToBuffer;
     CFIndex bufferedRangeStart;
     CFIndex bufferedRangeEnd;
@@ -196,7 +197,7 @@ typedef CFIndex CFNumberType; enum CFNumberType {
 
 typedef struct __CFRuntimeClass {
     CFIndex version;
-    const char *className;
+    const char* className;
     void (*init)(CFTypeRef cf);
     CFTypeRef (*copy)(CFAllocatorRef allocator, CFTypeRef cf);
     void (*finalize)(CFTypeRef cf);
@@ -239,5 +240,7 @@ const CFArrayCallBacks kCFTypeArrayCallBacks;
 
 const CFBooleanRef kCFBooleanTrue;
 const CFBooleanRef kCFBooleanFalse;
+
+const CFRunLoopMode kCFRunLoopDefaultMode;
 
 #endif

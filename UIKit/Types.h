@@ -4,7 +4,7 @@
 #import "../CoreFoundation/Types.h"
 #import "../Foundation/Types.h"
 
-typedef struct __UIImage *UIImage;
+typedef struct __UIImage* UIImage;
 
 typedef struct UIEdgeInsets {
     CGFloat top, left, bottom, right;
@@ -18,6 +18,6 @@ UIOffset UIOffsetZero;
 
 UIEdgeInsets UIEdgeInsetsZero;
 
-typedef NSString *UIContentSizeCategory;
+typedef NSString* UIContentSizeCategory;
 
 #endif

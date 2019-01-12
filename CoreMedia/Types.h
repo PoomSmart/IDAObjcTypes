@@ -10,6 +10,7 @@ typedef int32_t CMTimeScale;
 typedef uint32_t CMTimeFlags;
 typedef uint32_t CMTimeRoundingMethod;
 typedef uint32_t CMAudioFormatDescriptionMask;
+typedef uint32_t CMAttachmentMode;
 
 typedef double Float64;
 
@@ -19,21 +20,23 @@ typedef long CMItemIndex;
 typedef FourCharCode CMMediaType;
 typedef FourCharCode CMVideoCodecType;
 
+typedef CFTypeRef CMAttachmentBearerRef;
+
 typedef CFStringRef CMSoundDescriptionFlavor;
 
-typedef struct OpaqueCMBlockBuffer *CMBlockBufferRef;
-typedef struct OpaqueCMClock *CMClockRef;
-typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
-typedef struct opaqueCMFormatDescription *CMFormatDescriptionRef;
-typedef struct opaqueCMNotificationCenter *CMNotificationCenterRef;
+typedef struct OpaqueCMBlockBuffer* CMBlockBufferRef;
+typedef struct OpaqueCMClock* CMClockRef;
+typedef struct opaqueCMSampleBuffer* CMSampleBufferRef;
+typedef struct opaqueCMFormatDescription* CMFormatDescriptionRef;
+typedef struct opaqueCMNotificationCenter* CMNotificationCenterRef;
 
 typedef CMFormatDescriptionRef CMVideoFormatDescriptionRef;
 typedef CMFormatDescriptionRef CMAudioFormatDescriptionRef;
 
-typedef OSStatus (*CMSampleBufferMakeDataReadyCallback)(CMSampleBufferRef sbuf, void *makeDataReadyRefcon);
+typedef OSStatus (*CMSampleBufferMakeDataReadyCallback)(CMSampleBufferRef sbuf, void* makeDataReadyRefcon);
 typedef void (*CMSampleBufferInvalidateHandler)(CMSampleBufferRef sbuf);
 typedef void (*CMSampleBufferInvalidateCallback)(CMSampleBufferRef sbuf, uint64_t invalidateRefCon);
-typedef void (*CMNotificationCallback)(CMNotificationCenterRef inCenter, const void *inListener, CFStringRef inNotificationName, const void *inNotifyingObject, CFTypeRef inNotificationPayload);
+typedef void (*CMNotificationCallback)(CMNotificationCenterRef inCenter, const void* inListener, CFStringRef inNotificationName, const void* inNotifyingObject, CFTypeRef inNotificationPayload);
 
 typedef struct CMVideoDimensions {
     int32_t width;

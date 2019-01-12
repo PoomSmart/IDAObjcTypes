@@ -14,7 +14,7 @@ typedef struct AudioValueRange {
 typedef struct AudioBuffer {
     UInt32 mNumberChannels;
     UInt32 mDataByteSize;
-    void *mData;
+    void* mData;
 } AudioBuffer;
 
 typedef struct AudioBufferList {
