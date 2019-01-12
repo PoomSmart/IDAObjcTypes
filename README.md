@@ -14,6 +14,7 @@ More to be added as the owner reverses more binaries.
 - AudioToolbox
 - AVFoundation
 - CommonCrypto
+- CoreAnimation
 - CoreAudio
 - CoreFoundation
 - CoreGraphics
