@@ -15,6 +15,9 @@ typedef UInt16 UniChar;
 typedef UInt16 UTF16Char;
 typedef UInt8 UTF8Char;
 
+extern uintptr_t __stack_chk_guard;
+__noreturn void __stack_chk_fail(void);
+
 #import "Kernel/Types.h"
 #import "dyld/Types.h"
 #import "sandbox/Types.h"

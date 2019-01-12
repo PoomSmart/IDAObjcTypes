@@ -59,13 +59,14 @@ typedef CFIndex CFStreamStatus;
 typedef CFIndex CFURLPathStyle;
 typedef CFIndex CFURLComponentType;
 
-typedef UInt32 CFStringEncoding;
 typedef SInt32 CFRunLoopRunResult;
 
 typedef CFStringRef CFNotificationName;
 typedef CFStringRef CFErrorDomain;
 typedef CFStringRef CFRunLoopMode;
 typedef CFStringRef CFStreamPropertyKey;
+typedef CFStringRef CFLocaleKey;
+typedef CFStringRef CFLocaleIdentifier;
 
 typedef CFComparisonResult (*CFComparatorFunction)(const void* val1, const void* val2, void* context);
 
@@ -194,6 +195,41 @@ typedef CFIndex CFNumberType; enum CFNumberType {
     kCFNumberCGFloatType = 16,
     kCFNumberMaxType = 16
 } CFNumberType;
+
+typedef UInt32 CFStringEncoding; enum CFStringEncoding {
+    kCFStringEncodingMacRoman = 0,
+    kCFStringEncodingWindowsLatin1 = 0x0500,
+    kCFStringEncodingISOLatin1 = 0x0201,
+    kCFStringEncodingNextStepLatin = 0x0B01,
+    kCFStringEncodingASCII = 0x0600,
+    kCFStringEncodingUnicode = 0x0100,
+    kCFStringEncodingUTF8 = 0x08000100,
+    kCFStringEncodingNonLossyASCII = 0x0BFF,
+    kCFStringEncodingUTF16 = 0x0100,
+    kCFStringEncodingUTF16BE = 0x10000100,
+    kCFStringEncodingUTF16LE = 0x14000100,
+    kCFStringEncodingUTF32 = 0x0c000100,
+    kCFStringEncodingUTF32BE = 0x18000100,
+    kCFStringEncodingUTF32LE = 0x1c000100
+} CFStringEncoding;
+
+typedef CFIndex CFCharacterSetPredefinedSet; enum CFCharacterSetPredefinedSet {
+    kCFCharacterSetControl = 1,
+    kCFCharacterSetWhitespace,
+    kCFCharacterSetWhitespaceAndNewline,
+    kCFCharacterSetDecimalDigit,
+    kCFCharacterSetLetter,
+    kCFCharacterSetLowercaseLetter,
+    kCFCharacterSetUppercaseLetter,
+    kCFCharacterSetNonBase,
+    kCFCharacterSetDecomposable,
+    kCFCharacterSetAlphaNumeric,
+    kCFCharacterSetPunctuation,
+    kCFCharacterSetCapitalizedLetter = 13,
+    kCFCharacterSetSymbol = 14,
+    kCFCharacterSetNewline = 15,
+    kCFCharacterSetIllegal = 12
+} CFCharacterSetPredefinedSet;
 
 typedef struct __CFRuntimeClass {
     CFIndex version;

@@ -211,6 +211,8 @@ CFTypeRef CFMakeCollectable(CFTypeRef cf);
 CFTypeRef _imp__CFMakeCollectable(CFTypeRef cf);
 CFTypeRef CFReadStreamCopyProperty(CFReadStreamRef stream, CFStreamPropertyKey propertyName);
 CFTypeRef _imp__CFReadStreamCopyProperty(CFReadStreamRef stream, CFStreamPropertyKey propertyName);
+CFTypeRef CFLocaleGetValue(CFLocaleRef locale, CFLocaleKey key);
+CFTypeRef _imp__CFLocaleGetValue(CFLocaleRef locale, CFLocaleKey key);
 
 CFTypeRef _CFRuntimeCreateInstance(CFAllocatorRef allocator, CFTypeID typeID, CFIndex extraBytes, unsigned char* category);
 CFTypeRef _imp___CFRuntimeCreateInstance(CFAllocatorRef allocator, CFTypeID typeID, CFIndex extraBytes, unsigned char* category);
@@ -269,6 +271,15 @@ CFComparisonResult CFStringCompareWithOptions(CFStringRef theString1, CFStringRe
 CFComparisonResult _imp__CFStringCompareWithOptions(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFStringCompareFlags compareOptions);
 CFComparisonResult CFNumberCompare(CFNumberRef number, CFNumberRef otherNumber, void* context);
 CFComparisonResult _imp__CFNumberCompare(CFNumberRef number, CFNumberRef otherNumber, void* context);
+
+CFLocaleRef CFLocaleCreate(CFAllocatorRef allocator, CFLocaleIdentifier localeIdentifier);
+CFLocaleRef _imp__CFLocaleCreate(CFAllocatorRef allocator, CFLocaleIdentifier localeIdentifier);
+CFLocaleRef CFLocaleCreateCopy(CFAllocatorRef allocator, CFLocaleRef locale);
+CFLocaleRef _imp__CFLocaleCreateCopy(CFAllocatorRef allocator, CFLocaleRef locale);
+CFLocaleRef CFLocaleCopyCurrent(void);
+CFLocaleRef _imp__CFLocaleCopyCurrent(void);
+CFLocaleRef CFLocaleGetSystem(void);
+CFLocaleRef _imp__CFLocaleGetSystem(void);
 
 CFUUIDRef CFUUIDCreate(CFAllocatorRef alloc);
 CFUUIDRef _imp__CFUUIDCreate(CFAllocatorRef alloc);
