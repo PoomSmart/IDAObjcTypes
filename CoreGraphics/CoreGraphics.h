@@ -227,6 +227,7 @@ bool CGSizeMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGSize *size);
 bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGPoint *point);
 bool CGColorEqualToColor(CGColorRef color1, CGColorRef color2);
 
+bool CGFloatIsValid(CGFloat value);
 bool CGCFDictionaryGetBoolean(CFDictionaryRef theDict, const void *key, bool *result);
 bool CGCFDictionaryGetCFTypeRef(CFDictionaryRef theDict, const void *key, CFTypeID typeID, CFTypeRef *valuePtr);
 

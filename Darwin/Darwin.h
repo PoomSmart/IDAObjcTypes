@@ -34,6 +34,8 @@ void abort_report_np(const char *, ...);
 void backtrace_symbols_fd(void * const *array, int size, int fd);
 void dispatch_once(dispatch_block_t block);
 void dispatch_apply(size_t iterations, dispatch_queue_t queue, void (*block)(size_t));
+void dispatch_assert_queue(dispatch_queue_t queue);
+void dispatch_assert_queue$V2(dispatch_queue_t queue);
 void dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_async(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_after(dispatch_time_t when, dispatch_queue_t queue, dispatch_block_t block);
