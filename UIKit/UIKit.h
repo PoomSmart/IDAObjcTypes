@@ -1,6 +1,10 @@
 #import "../Types.h"
 #import "Types.h"
 
+UIEdgeInsets UIEdgeInsetsFromString(NSString *str);
+
+UIOffset UIOffsetFromString(NSString *str);
+
 NSData* UIImagePNGRepresentation(UIImage* image);
 NSData* _imp__UIImagePNGRepresentation(UIImage* image);
 NSData* UIImageJPEGRepresentation(UIImage* image, CGFloat compressionQuality);
@@ -13,9 +17,16 @@ CGRect UIRectCenteredAboutPoint(CGRect, CGPoint, CGFloat, CGFloat);
 CGRect _imp__UIRectCenteredAboutPoint(CGRect, CGPoint, CGFloat, CGFloat);
 CGRect UIRectCenteredAboutPointScale(CGRect, CGPoint);
 CGRect _imp__UIRectCenteredAboutPointScale(CGRect, CGPoint);
+CGRect CGRectFromString(NSString *str);
+CGRect _imp__CGRectFromString(NSString *str);
+
+CGSize CGSizeFromString(NSString *str);
+CGSize _imp__CGSizeFromString(NSString *str);
 
 CGPoint UIRectGetCenter(CGRect rect);
 CGPoint _imp__UIRectGetCenter(CGRect rect);
+CGPoint CGPointFromString(NSString *str);
+CGPoint _imp__CGPointFromString(NSString *str);
 
 CGFloat UIRoundToScale(CGFloat, CGFloat);
 CGFloat _imp__UIRoundToScale(CGFloat, CGFloat);
@@ -58,6 +69,8 @@ void UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat sc
 void _imp__UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale);
 void UIGraphicsBeginImageContext(CGSize size);
 void _imp__UIGraphicsBeginImageContext(CGSize size);
+void UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale);
+void _imp__UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale);
 void UIGraphicsEndImageContext(void);
 void _imp__UIGraphicsEndImageContext(void);
 
@@ -67,5 +80,7 @@ int _imp__UIApplicationMain(int argc, char** argv, NSString* principalClassName,
 BOOL UIContentSizeCategoryIsAccessibilityCategory(UIContentSizeCategory category);
 BOOL _imp__UIContentSizeCategoryIsAccessibilityCategory(UIContentSizeCategory category);
 
+bool UIRectIsDiscrete(CGRect rect);
+bool _imp__UIRectIsDiscrete(CGRect rect);
 bool __UIApplicationLinkedOnOrAfter(NSInteger);
 bool _imp____UIApplicationLinkedOnOrAfter(NSInteger);
