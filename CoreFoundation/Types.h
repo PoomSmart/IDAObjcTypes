@@ -45,7 +45,6 @@ typedef unsigned long CFHashCode;
 typedef double CFTimeInterval;
 
 typedef CFOptionFlags CFDataSearchFlags;
-typedef CFOptionFlags CFStringCompareFlags;
 typedef CFOptionFlags CFURLBookmarkResolutionOptions;
 
 typedef CFIndex CFNotificationSuspensionBehavior;
@@ -212,6 +211,18 @@ typedef UInt32 CFStringEncoding; enum CFStringEncoding {
     kCFStringEncodingUTF32BE = 0x18000100,
     kCFStringEncodingUTF32LE = 0x1c000100
 } CFStringEncoding;
+
+typedef CFOptionFlags CFStringCompareFlags; enum CFStringCompareFlags {
+    kCFCompareCaseInsensitive = 1,	
+    kCFCompareBackwards = 4,
+    kCFCompareAnchored = 8,
+    kCFCompareNonliteral = 16,
+    kCFCompareLocalized = 32,
+    kCFCompareNumerically = 64,
+    kCFCompareDiacriticInsensitive = 128,
+    kCFCompareWidthInsensitive = 256,
+    kCFCompareForcedOrdering = 512
+} CFStringCompareFlags;
 
 typedef CFIndex CFCharacterSetPredefinedSet; enum CFCharacterSetPredefinedSet {
     kCFCharacterSetControl = 1,

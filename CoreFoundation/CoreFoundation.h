@@ -284,6 +284,9 @@ CFLocaleRef _imp__CFLocaleCopyCurrent(void);
 CFLocaleRef CFLocaleGetSystem(void);
 CFLocaleRef _imp__CFLocaleGetSystem(void);
 
+CFLocaleIdentifier CFLocaleGetIdentifier(CFLocaleRef locale);
+CFLocaleIdentifier _imp__CFLocaleGetIdentifier(CFLocaleRef locale);
+
 CFUUIDRef CFUUIDCreate(CFAllocatorRef alloc);
 CFUUIDRef _imp__CFUUIDCreate(CFAllocatorRef alloc);
 CFUUIDRef CFUUIDCreateFromString(CFAllocatorRef alloc, CFStringRef uuidStr);
