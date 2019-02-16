@@ -4,6 +4,7 @@
 double CFStringGetDoubleValue(CFStringRef str);
 double _imp__CFStringGetDoubleValue(CFStringRef str);
 
+bool _CFPropertyListCreateFiltered(CFAllocatorRef allocator, CFDataRef data, CFOptionFlags option, CFSetRef keyPaths, CFPropertyListRef *value, CFErrorRef *error);
 bool CFUniCharIsMemberOf(UTF32Char theChar, uint32_t charset);
 bool _imp__CFUniCharIsMemberOf(UTF32Char theChar, uint32_t charset);
 
