@@ -7,8 +7,8 @@ SInt32 _imp__MGGetSInt32Answer(CFStringRef key, SInt32 defaultVal);
 Float32 MGGetFloat32Answer(CFStringRef key, Float32 defaultVal);
 Float32 _imp__MGGetFloat32Answer(CFStringRef key, Float32 defaultVal);
 
-Boolean MGGetBoolAnswer(CFStringRef key);
-Boolean _imp__MGGetBoolAnswer(CFStringRef key);
+CFBooleanRef MGGetBoolAnswer(CFStringRef key);
+CFBooleanRef _imp__MGGetBoolAnswer(CFStringRef key);
 Boolean MGIsQuestionValid(CFStringRef key);
 Boolean _imp__MGIsQuestionValid(CFStringRef key);
 

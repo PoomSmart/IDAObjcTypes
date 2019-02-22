@@ -5,6 +5,8 @@ int32_t u_getIntPropertyValue(UChar32 c, UProperty which);
 int32_t u_getIntPropertyMinValue(UProperty which);
 int32_t u_getIntPropertyMaxValue(UProperty which);
 
+void uset_applyIntPropertyValue(USet *set, UProperty prop, int32_t value, UErrorCode *ec);
+
 double u_getNumericValue(UChar32 c);
 
 #define U_NO_NUMERIC_VALUE ((double)-123456789.)

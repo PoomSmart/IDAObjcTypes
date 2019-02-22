@@ -2,6 +2,8 @@
 #ifndef ICU_H_
 #define ICU_H_
 
+typedef struct USet USet;
+
 typedef int8_t UBool;
 typedef int32_t UChar32;
 
@@ -1111,5 +1113,15 @@ typedef enum UErrorCode {
     U_ERROR_LIMIT=U_PLUGIN_ERROR_LIMIT
 #endif
 } UErrorCode;
+
+struct BinaryProperty;
+
+typedef UBool BinaryPropertyContains(const BinaryProperty &prop, UChar32 c, UProperty which);
+
+typedef struct BinaryProperty {
+    int32_t column;
+    uint32_t mask;
+    BinaryPropertyContains *contains;
+} BinaryProperty;
 
 #endif
