@@ -75,6 +75,8 @@ void dispatch_activate(dispatch_object_t object);
 void _imp__dispatch_activate(dispatch_object_t object);
 void dispatch_barrier_sync(dispatch_queue_t queue, dispatch_block_t block);
 void _imp__dispatch_barrier_sync(dispatch_queue_t queue, dispatch_block_t block);
+void dispatch_barrier_async(dispatch_queue_t queue, dispatch_block_t block);
+void _imp__dispatch_barrier_async(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_block_cancel(dispatch_block_t block);
 void _imp__dispatch_block_cancel(dispatch_block_t block);
 

@@ -28,6 +28,8 @@ typedef struct __CFSet* CFMutableSetRef;
 typedef struct __CFReadStream* CFReadStreamRef;
 typedef struct __CFWriteStream* CFWriteStreamRef;
 typedef struct __CFUUID* CFUUIDRef;
+typedef const struct __CFBag* CFBagRef;
+typedef struct __CFBag* CFMutableBagRef;
 
 typedef const void* CFTypeRef;
 typedef const unsigned char* ConstStr255Param;
@@ -289,5 +291,35 @@ const CFBooleanRef kCFBooleanTrue;
 const CFBooleanRef kCFBooleanFalse;
 
 const CFRunLoopMode kCFRunLoopDefaultMode;
+
+typedef const void* (*CFBagRetainCallBack)(CFAllocatorRef allocator, const void *value);
+typedef void (*CFBagReleaseCallBack)(CFAllocatorRef allocator, const void *value);
+typedef CFStringRef (*CFBagCopyDescriptionCallBack)(const void *value);
+typedef Boolean (*CFBagEqualCallBack)(const void *value1, const void *value2);
+typedef CFHashCode (*CFBagHashCallBack)(const void *value);
+
+typedef struct CFBagCallBacks {
+    CFIndex version;
+    CFBagRetainCallBack retain;
+    CFBagReleaseCallBack release;
+    CFBagCopyDescriptionCallBack copyDescription;
+    CFBagEqualCallBack equal;
+    CFBagHashCallBack hash;
+} CFBagCallBacks;
+
+const CFBagCallBacks kCFTypeBagCallBacks;
+const CFBagCallBacks kCFCopyStringBagCallBacks;
+
+typedef void (*CFBagApplierFunction)(const void *value, void *context);
+
+static const CFBagCallBacks __kCFNullBagCallBacks = {0, NULL, NULL, NULL, NULL, NULL};
+
+#define CFBagKeyCallBacks CFBagCallBacks
+#define CFBagValueCallBacks CFBagCallBacks
+
+#define CFHashRef CFBagRef
+#define CFMutableHashRef CFMutableBagRef
+#define CFHashKeyCallBacks CFBagCallBacks
+#define CFHashValueCallBacks CFBagCallBacks
 
 #endif

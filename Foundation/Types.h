@@ -19,6 +19,7 @@ typedef struct __NSData NSData;
 typedef struct __NSArray NSArray;
 typedef struct __NSArray NSMutableArray;
 typedef struct __NSDictionary NSDictionary;
+typedef struct __NSException NSException;
 typedef struct _NSZone NSZone;
 
 typedef unsigned long long NSAlignmentOptions;
@@ -84,5 +85,7 @@ typedef CGSize* NSSize;
 typedef CGRect* NSRect;
 
 typedef NSString* NSNotificationName;
+
+typedef void NSUncaughtExceptionHandler(NSException *exception);
 
 #endif

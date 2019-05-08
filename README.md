@@ -20,6 +20,7 @@ More to be added as the owner reverses more binaries.
 - CoreGraphics
 - CoreMedia
 - CoreText
+- CoreServices
 - CoreVideo
 - CydiaSubstrate (if you ever want to RE tweaks)
 - Darwin
@@ -35,4 +36,5 @@ More to be added as the owner reverses more binaries.
 - os
 - pthread
 - sandbox
+- sqlite
 - xpc

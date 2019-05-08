@@ -51,6 +51,8 @@ id class_createInstance(Class cls, size_t extraBytes);
 id _imp__class_createInstance(Class cls, size_t extraBytes);
 id method_invoke(id receiver, Method m, ...);
 id _imp__method_invoke(id receiver, Method m, ...);
+id objc_begin_catch(void* exc_buf);
+id _imp__objc_begin_catch(void* exc_buf);
 
 #ifdef x86
 double objc_msgSend_fpret(id self, SEL op, ...);
@@ -207,6 +209,8 @@ BOOL _imp__class_addProtocol(Class cls, Protocol* protocol);
 BOOL class_respondsToSelector(Class cls, SEL sel);
 BOOL _imp__class_respondsToSelector(Class cls, SEL sel);
 
+void class_replaceProperty(Class cls, const char* name, const objc_property_attribute_t* attributes, unsigned int attributeCount);
+void _imp__class_replaceProperty(Class cls, const char* name, const objc_property_attribute_t* attributes, unsigned int attributeCount);
 void objc_registerClassPair(Class cls);
 void _imp__objc_registerClassPair(Class cls);
 void objc_disposeClassPair(Class cls);
@@ -265,6 +269,12 @@ void method_getArgumentType(Method m, unsigned int index, char* dst, size_t dst_
 void _imp__method_getArgumentType(Method m, unsigned int index, char* dst, size_t dst_len);
 void method_exchangeImplementations(Method m1, Method m2);
 void _imp__method_exchangeImplementations(Method m1, Method m2);
+void objc_exception_throw(id exception);
+void _imp__objc_exception_throw(id exception);
+void objc_exception_rethrow(void);
+void _imp__objc_exception_rethrow(void);
+void objc_end_catch(void);
+void _imp__objc_end_catch(void);
 
 void* objc_autoreleasePoolPush(void);
 void* _imp__objc_autoreleasePoolPush(void);

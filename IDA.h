@@ -11,6 +11,7 @@
 #import "CoreGraphics/CoreGraphics.h"
 #import "CoreMedia/CoreMedia.h"
 #import "CoreText/CoreText.h"
+#import "CoreServices/CoreServices.h"
 #import "CoreVideo/CoreVideo.h"
 #import "CydiaSubstrate/CydiaSubstrate.h"
 #import "Darwin/Darwin.h"
@@ -25,6 +26,7 @@
 #import "pthread/pthread.h"
 #import "sandbox/sandbox.h"
 #import "xpc/xpc.h"
+#import "sqlite/sqlite.h"
 
 /*
 *  Copyright (C) Apple Inc. All rights reserved.

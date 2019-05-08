@@ -49,6 +49,8 @@ void CFLog(int32_t level, CFStringRef format, ...);
 void _imp__CFLog(int32_t level, CFStringRef format, ...);
 void CFShow(CFTypeRef obj);
 void _imp__CFShow(CFTypeRef obj);
+void CFShowStr(CFStringRef str);
+void _imp__CFShowStr(CFStringRef str);
 void CFRelease(CFTypeRef cf);
 void _imp__CFRelease(CFTypeRef cf);
 void CFArrayAppendValue(CFMutableArrayRef mDict, const void* value);
@@ -200,6 +202,7 @@ void _imp__CFWriteStreamClose(CFWriteStreamRef stream);
 void CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 void _imp__CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 
+void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
 void _CFNonObjCRelease(CFTypeRef cf);
 void _imp___CFNonObjCRelease(CFTypeRef cf);
 void _CFRuntimeBridgeClasses(CFTypeID cfType, const char* className);
@@ -251,12 +254,20 @@ CFTypeID CFAllocatorGetTypeID(void);
 CFTypeID _imp__CFAllocatorGetTypeID(void);
 CFTypeID CFNullGetTypeID(void);
 CFTypeID _imp__CFNullGetTypeID(void);
+CFTypeID CFLocaleGetTypeID(void);
+CFTypeID _imp__CFLocaleGetTypeID(void);
+CFTypeID CFErrorGetTypeID(void);
+CFTypeID _imp__CFErrorGetTypeID(void);
+CFTypeID CFBagGetTypeID(void);
+CFTypeID _imp__CFBagGetTypeID(void);
 
 CFTypeID _CFRuntimeRegisterClass(const CFRuntimeClass* const cls);
 CFTypeID _imp___CFRuntimeRegisterClass(const CFRuntimeClass* const cls);
 
 CFHashCode CFHash(CFTypeRef cf);
 CFHashCode _imp__CFHash(CFTypeRef cf);
+CFHashCode CFHashBytes(uint8_t *bytes, CFIndex length);
+CFHashCode _imp__CFHashBytes(uint8_t *bytes, CFIndex length);
 
 CFHashCode _CFNonObjCHash(CFTypeRef cf);
 CFHashCode _imp___CFNonObjCHash(CFTypeRef cf);

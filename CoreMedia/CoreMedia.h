@@ -89,10 +89,14 @@ CMTime CMTimeMultiplyByFloat64(CMTime time, Float64 multiplier);
 CMTime _imp__CMTimeMultiplyByFloat64(CMTime time, Float64 multiplier);
 CMTime CMTimeConvertScale(CMTime time, int32_t newTimescale, CMTimeRoundingMethod method);
 CMTime _imp__CMTimeConvertScale(CMTime time, int32_t newTimescale, CMTimeRoundingMethod method);
+CMTime CMTimeRangeGetEnd(CMTimeRange range);
+CMTime _imp__CMTimeRangeGetEnd(CMTimeRange range);
+
 CMTime CMClockGetTime(CMClockRef clock);
 CMTime _imp__CMClockGetTime(CMClockRef clock);
 CMTime CMClockMakeHostTimeFromSystemUnits(uint64_t hostTime);
 CMTime _imp__CMClockMakeHostTimeFromSystemUnits(uint64_t hostTime);
+
 CMTime CMSampleBufferGetDecodeTimeStamp(CMSampleBufferRef sbuf);
 CMTime _imp__CMSampleBufferGetDecodeTimeStamp(CMSampleBufferRef sbuf);
 CMTime CMSampleBufferGetDuration(CMSampleBufferRef sbuf);

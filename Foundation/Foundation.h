@@ -72,6 +72,8 @@ void* NSMapGet(NSMapTable* table, const void* key);
 NSArray* NSAllMapTableKeys(NSMapTable* table);
 NSArray* NSAllMapTableValues(NSMapTable* table);
 
+NSUncaughtExceptionHandler* NSGetUncaughtExceptionHandler(void);
+
 void NSRequestConcreteImplementation(id self, SEL _cmd, Class absClass);
 void NSPopAutoreleasePool(void* token);
 void NSDivideRect(NSRect inRect, NSRect* slice, NSRect* rem, CGFloat amount, NSRectEdge edge);
@@ -81,3 +83,4 @@ void NSMapInsert(NSMapTable* table, const void* key, const void* value);
 void NSMapInsertKnownAbsent(NSMapTable* table, const void* key, const void* value);
 void NSMapRemove(NSMapTable* table, const void* key);
 void NSEndMapTableEnumeration(NSMapEnumerator* enumerator);
+void NSSetUncaughtExceptionHandler(NSUncaughtExceptionHandler* );
