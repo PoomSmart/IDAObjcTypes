@@ -191,6 +191,8 @@ void CFAllocatorSetDefault(CFAllocatorRef allocator);
 void _imp__CFAllocatorSetDefault(CFAllocatorRef allocator);
 void CFAllocatorDeallocate(CFAllocatorRef allocator, void* ptr);
 void _imp__CFAllocatorDeallocate(CFAllocatorRef allocator, void* ptr);
+void CFAllocatorGetContext(CFAllocatorRef allocator, CFAllocatorContext* context);
+void _imp__CFAllocatorGetContext(CFAllocatorRef allocator, CFAllocatorContext* context);
 void CFReadStreamClose(CFReadStreamRef stream);
 void _imp__CFReadStreamClose(CFReadStreamRef stream);
 void CFReadStreamScheduleWithRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);

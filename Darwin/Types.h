@@ -10,6 +10,8 @@ typedef struct dispatch_queue_attr_s* dispatch_queue_attr_t;
 
 typedef uint64_t dispatch_time_t;
 
+typedef int opaque_t;
+
 typedef unsigned int qos_class_t;
 typedef unsigned long dispatch_block_flags_t;
 typedef unsigned long dispatch_autorelease_frequency_t;

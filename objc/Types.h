@@ -1,13 +1,14 @@
 #ifndef OBJC_H_
 #define OBJC_H_
 
+typedef struct objc_class* Class;
+
 typedef struct objc_object {
     Class isa;
 }* id;
 
 typedef struct objc_object* Protocol;
 typedef struct objc_selector* SEL;
-typedef struct objc_class* Class;
 typedef struct objc_ivar* Ivar;
 typedef struct objc_category* Category;
 typedef struct objc_property* objc_property_t;
