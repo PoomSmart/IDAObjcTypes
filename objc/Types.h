@@ -8,7 +8,8 @@ typedef struct objc_object {
 }* id;
 
 typedef struct objc_object* Protocol;
-typedef struct objc_selector* SEL;
+// typedef struct objc_selector* SEL;
+typedef const char *SEL;
 typedef struct objc_ivar* Ivar;
 typedef struct objc_category* Category;
 typedef struct objc_property* objc_property_t;
@@ -17,7 +18,7 @@ typedef struct objc_method* Method;
 typedef uintptr_t objc_AssociationPolicy;
 
 //id (*IMP)(id, SEL, ...);
-typedef void*  IMP;
+typedef void* IMP;
 
 typedef struct objc_property_attribute {
     const char* name;
