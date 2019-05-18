@@ -101,6 +101,7 @@ void CGContextSynchronize(CGContextRef c);
 void CGContextEndPage(CGContextRef c);
 void CGContextBeginPage(CGContextRef c, const CGRect* mediaBox);
 void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode);
+void CGContextResetClip(CGContextRef c);
 void CGContextClear(CGContextRef c);
 void CGGradientRelease(CGGradientRef gradient);
 void CGImageRelease(CGImageRef image);
