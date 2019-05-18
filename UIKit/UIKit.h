@@ -17,6 +17,8 @@ CGRect UIRectCenteredAboutPoint(CGRect, CGPoint, CGFloat, CGFloat);
 CGRect _imp__UIRectCenteredAboutPoint(CGRect, CGPoint, CGFloat, CGFloat);
 CGRect UIRectCenteredAboutPointScale(CGRect, CGPoint);
 CGRect _imp__UIRectCenteredAboutPointScale(CGRect, CGPoint);
+CGRect UIRectInset(CGRect, CGFloat, CGFloat, CGFloat, CGFloat);
+CGRect _imp__UIRectInset(CGRect, CGFloat, CGFloat, CGFloat, CGFloat);
 CGRect CGRectFromString(NSString *str);
 CGRect _imp__CGRectFromString(NSString *str);
 
