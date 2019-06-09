@@ -21,8 +21,8 @@ size_t _imp__dispatch_data_get_size(dispatch_data_t data);
 
 size_t __strlcpy_chk(char* dest, char* src, size_t len, size_t dstlen);
 size_t _imp____strlcpy_chk(char* dest, char* src, size_t len, size_t dstlen);
-size_t __strlcat_chk(char *restrict dest, char *restrict src, size_t len, size_t dstlen);
-size_t _imp____strlcat_chk(char *restrict dest, char *restrict src, size_t len, size_t dstlen);
+size_t __strlcat_chk(char *dest, char *src, size_t len, size_t dstlen);
+size_t _imp____strlcat_chk(char *rdest, char *src, size_t len, size_t dstlen);
 
 int backtrace(void** array, int size);
 int _imp__backtrace(void** array, int size);
@@ -40,8 +40,8 @@ char *__strcat_chk(char *dest, const char *src, size_t destlen);
 char *_imp____strcat_chk(char *dest, const char *src, size_t destlen);
 char *__strcpy_chk(char* dest, const char* src, size_t destlen);
 char *_imp____strcpy_chk(char* dest, const char* src, size_t destlen);
-char *__strncat_chk(char *restrict dest, const char *restrict src, size_t len, size_t dstlen);
-char *_imp____strncat_chk(char *restrict dest, const char *restrict src, size_t len, size_t dstlen);
+char *__strncat_chk(char *dest, const char *src, size_t len, size_t dstlen);
+char *_imp____strncat_chk(char *dest, const char *src, size_t len, size_t dstlen);
 
 char** backtrace_symbols(void*  const* array, int size);
 char** _imp__backtrace_symbols(void*  const* array, int size);
@@ -89,8 +89,8 @@ void dispatch_barrier_async(dispatch_queue_t queue, dispatch_block_t block);
 void _imp__dispatch_barrier_async(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_block_cancel(dispatch_block_t block);
 void _imp__dispatch_block_cancel(dispatch_block_t block);
-void qsort_b(void *base, size_t nel, size_t width, int (^compar)(const void *, const void *));
-void _imp__qsort_b(void *base, size_t nel, size_t width, int (^compar)(const void *, const void *));
+void qsort_b(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
+void _imp__qsort_b(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
 
 dispatch_block_t dispatch_block_create(dispatch_block_flags_t flags, dispatch_block_t block);
 dispatch_block_t _imp__dispatch_block_create(dispatch_block_flags_t flags, dispatch_block_t block);
