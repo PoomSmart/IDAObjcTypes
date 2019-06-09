@@ -7,6 +7,8 @@ Would you rather re-define the same functions or types over and over as you work
 ## Usage
 From inside IDA Pro, simply go to `File > Load file > Parse C header file` then choose `IDA.h` to import everything at once.
 
+Or, run this IDA command: `idaapi.idc_parse_types("/path/to/IDAObjcTypes/IDA.h", idc.PT_FILE)`
+
 If you work with 32-bit binaries, you should uncomment `#define x86` in `IDA.h`.
 
 ## Included Frameworks/Libraries
