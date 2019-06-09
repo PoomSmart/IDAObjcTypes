@@ -1,4 +1,5 @@
 // #define x86
+// #define SWIFT
 #import "Types.h"
 #import "dyld/dyld.h"
 #import "icu/icu.h"
@@ -27,6 +28,9 @@
 #import "sandbox/sandbox.h"
 #import "xpc/xpc.h"
 #import "sqlite/sqlite.h"
+#ifdef SWIFT
+#import "Swift/Swift.h"
+#endif
 
 /*
 *  Copyright (C) Apple Inc. All rights reserved.

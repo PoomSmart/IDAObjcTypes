@@ -40,5 +40,8 @@ __noreturn void __stack_chk_fail(void);
 #import "pthread/Types.h"
 #import "UIKit/Types.h"
 #import "xpc/Types.h"
+#ifdef SWIFT
+#import "Swift/Types.h"
+#endif
 
 #endif

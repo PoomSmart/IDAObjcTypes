@@ -100,6 +100,8 @@ IMP class_getMethodImplementation(Class cls, SEL name);
 IMP _imp__class_getMethodImplementation(Class cls, SEL name);
 IMP object_getMethodImplementation(id obj, SEL name);
 IMP _imp__object_getMethodImplementation(id obj, SEL name);
+IMP imp_implementationWithBlock(id block);
+IMP _imp__imp_implementationWithBlock(id block);
 
 char* method_copyArgumentType(Method m, unsigned int index);
 char* _imp__method_copyArgumentType(Method m, unsigned int index);
