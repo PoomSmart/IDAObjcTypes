@@ -74,6 +74,7 @@ NSArray* NSAllMapTableValues(NSMapTable* table);
 
 NSUncaughtExceptionHandler* NSGetUncaughtExceptionHandler(void);
 
+void NSLogv(NSString *format, va_list args);
 void NSRequestConcreteImplementation(id self, SEL _cmd, Class absClass);
 void NSPopAutoreleasePool(void* token);
 void NSDivideRect(NSRect inRect, NSRect* slice, NSRect* rem, CGFloat amount, NSRectEdge edge);

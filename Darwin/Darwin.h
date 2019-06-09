@@ -18,6 +18,8 @@ uint32_t _imp__notify_register_dispatch(const char* name, int* out_token, dispat
 
 size_t dispatch_data_get_size(dispatch_data_t data);
 size_t _imp__dispatch_data_get_size(dispatch_data_t data);
+size_t _stdlib_malloc_size(const void *ptr);
+size_t _imp___stdlib_malloc_size(const void *ptr);
 
 size_t __strlcpy_chk(char* dest, char* src, size_t len, size_t dstlen);
 size_t _imp____strlcpy_chk(char* dest, char* src, size_t len, size_t dstlen);
@@ -26,6 +28,8 @@ size_t _imp____strlcat_chk(char *rdest, char *src, size_t len, size_t dstlen);
 
 int backtrace(void** array, int size);
 int _imp__backtrace(void** array, int size);
+int _stdlib_memcmp(const void *s1, const void *s2, size_t n);
+int _imp___stdlib_memcmp(const void *s1, const void *s2, size_t n);
 
 long dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
 long _imp__dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);

@@ -153,6 +153,7 @@ CGMutablePathRef CGPathCreateMutableCopy(CGPathRef path);
 CGMutablePathRef CGPathCreateMutableCopyByTransformingPath(CGPathRef path, const CGAffineTransform* transform);
 
 CGImageRef CGImageCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGColorSpaceRef space, CGBitmapInfo bitmapInfo, CGDataProviderRef provider, const CGFloat* decode, bool shouldInterpolate, CGColorRenderingIntent intent);
+CGImageRef CGImageCreateWithPNGDataProvider(CGDataProviderRef source, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageMaskCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGDataProviderRef provider, const CGFloat* decode, bool shouldInterpolate);
 CGImageRef CGImageRetain(CGImageRef image);
 
@@ -190,6 +191,7 @@ CGPatternRef CGPatternCreate(void* info, CGRect bounds, CGAffineTransform matrix
 CGPatternRef CGColorGetPattern(CGColorRef color);
 
 CGGradientRef CGGradientCreateWithColors(CGColorSpaceRef space, CFArrayRef colors, const CGFloat* locations);
+CGGradientRef CGGradientCreateWithColorComponents(CGColorSpaceRef space, const CGFloat *components, const CGFloat *locations, size_t count);
 
 CGImageAlphaInfo CGImageGetAlphaInfo(CGImageRef image);
 
