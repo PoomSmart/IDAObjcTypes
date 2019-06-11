@@ -15,6 +15,7 @@ typedef struct __CFBundle* CFBundleRef;
 typedef struct __CFLocale* CFLocaleRef;
 typedef struct __CFBoolean* CFBooleanRef;
 typedef struct __CFNumber* CFNumberRef;
+typedef struct __CFDate* CFDateRef;
 typedef struct __CFData* CFDataRef;
 typedef struct __CFData* CFMutableDataRef;
 typedef struct __CFURL* CFURLRef;

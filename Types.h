@@ -8,6 +8,15 @@
 // ^(.+) (.+)\((.*)\);$\n^(.+) _imp__(.+)\((.*)\);
 // $1 $2($3);
 
+typedef  signed char        int8;
+typedef  unsigned char      uint8;
+typedef  signed short       int16;
+typedef  unsigned short     uint16;
+typedef  signed long        int32;
+typedef  unsigned long      uint32;
+typedef  signed long long   int64;
+typedef  unsigned long long uint64;
+
 typedef float Float32;
 typedef double Float64;
 typedef UInt32 UTF32Char;
@@ -38,6 +47,7 @@ __noreturn void __stack_chk_fail(void);
 #import "objc/Types.h"
 #import "os/Types.h"
 #import "pthread/Types.h"
+#import "Security/Types.h"
 #import "UIKit/Types.h"
 #import "xpc/Types.h"
 #ifdef SWIFT

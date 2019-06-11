@@ -81,6 +81,8 @@ void dispatch_after(dispatch_time_t when, dispatch_queue_t queue, dispatch_block
 void _imp__dispatch_after(dispatch_time_t when, dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_source_set_event_handler(dispatch_source_t source, dispatch_block_t handler);
 void _imp__dispatch_source_set_event_handler(dispatch_source_t source, dispatch_block_t handler);
+void dispatch_source_set_cancel_handler(dispatch_source_t source, dispatch_block_t handler);
+void _imp__dispatch_source_set_cancel_handler(dispatch_source_t source, dispatch_block_t handler);
 void dispatch_group_async(dispatch_group_t group, dispatch_queue_t queue, dispatch_block_t block);
 void _imp__dispatch_group_async(dispatch_group_t group, dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_group_notify(dispatch_group_t group, dispatch_queue_t queue, dispatch_block_t block);

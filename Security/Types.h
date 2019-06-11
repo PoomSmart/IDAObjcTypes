@@ -1,0 +1,183 @@
+#ifndef SECURITY_H_
+#define SECURITY_H_
+
+#import "../Types.h"
+
+typedef struct __SecCertificate *SecCertificateRef;
+typedef struct __SecIdentity *SecIdentityRef;
+typedef struct __SecKey *SecKeyRef;
+typedef struct __SecPolicy *SecPolicyRef;
+typedef struct __SecAccessControl *SecAccessControlRef;
+typedef struct __SecKeychain *SecKeychainRef;
+typedef struct __SecKeychainItem *SecKeychainItemRef;
+typedef struct __SecKeychainSearch *SecKeychainSearchRef;
+typedef struct __SecTrustedApplication *SecTrustedApplicationRef;
+typedef struct __SecAccess *SecAccessRef;
+typedef struct __SecTrust *SecACLRef;
+typedef struct __SecPassword *SecPasswordRef;
+typedef struct __SecTrust *SecTrustRef;
+
+typedef uint32 CSSM_TP_ACTION;
+typedef uint32 CSSM_TP_HANDLE;
+typedef uint32 CSSM_EVIDENCE_FORM;
+typedef uint32 CSSM_DL_HANDLE;
+typedef uint32 CSSM_DB_HANDLE;
+
+#define CSSM_EVIDENCE_FORM_UNSPECIFIC    0x0
+#define CSSM_EVIDENCE_FORM_CERT          0x1
+#define CSSM_EVIDENCE_FORM_CRL           0x2
+#define CSSM_EVIDENCE_FORM_CERT_ID       0x3
+#define CSSM_EVIDENCE_FORM_CRL_ID        0x4
+#define CSSM_EVIDENCE_FORM_VERIFIER_TIME 0x5
+#define CSSM_EVIDENCE_FORM_CRL_THISTIME  0x6
+#define CSSM_EVIDENCE_FORM_CRL_NEXTTIME  0x7
+#define CSSM_EVIDENCE_FORM_POLICYINFO    0x8
+#define CSSM_EVIDENCE_FORM_TUPLEGROUP    0x9
+
+typedef enum cssm_return {
+    CSSM_OK = 0,
+    CSSM_FAIL = -1
+} CSSM_RETURN;
+
+typedef struct cssm_evidence {
+    CSSM_EVIDENCE_FORM EvidenceForm;
+    void *Evidence;
+} CSSM_EVIDENCE, *CSSM_EVIDENCE_PTR; 
+
+typedef struct cssm_tp_verify_context_result {
+    uint32 NumberOfEvidences;
+    CSSM_EVIDENCE_PTR Evidence;
+} CSSM_TP_VERIFY_CONTEXT_RESULT, *CSSM_TP_VERIFY_CONTEXT_RESULT_PTR;
+
+typedef uint32 CSSM_TP_APPLE_CERT_STATUS; enum CSSM_TP_APPLE_CERT_STATUS {
+    CSSM_CERT_STATUS_EXPIRED            = 0x00000001,
+    CSSM_CERT_STATUS_NOT_VALID_YET      = 0x00000002,
+    CSSM_CERT_STATUS_IS_IN_INPUT_CERTS  = 0x00000004,
+    CSSM_CERT_STATUS_IS_IN_ANCHORS      = 0x00000008,
+    CSSM_CERT_STATUS_IS_ROOT            = 0x00000010,
+    CSSM_CERT_STATUS_IS_FROM_NET        = 0x00000020,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_USER      = 0x00000040,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_ADMIN     = 0x00000080,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_SYSTEM    = 0x00000100,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_TRUST           = 0x00000200,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_DENY            = 0x00000400,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_IGNORED_ERROR   = 0x00000800
+} CSSM_TP_APPLE_CERT_STATUS;
+
+typedef enum cssm_db_index_type {
+    CSSM_DB_INDEX_UNIQUE = 0,
+    CSSM_DB_INDEX_NONUNIQUE = 1
+} CSSM_DB_INDEX_TYPE;
+
+typedef enum cssm_db_indexed_data_location {
+    CSSM_DB_INDEX_ON_UNKNOWN = 0,
+    CSSM_DB_INDEX_ON_ATTRIBUTE = 1,
+    CSSM_DB_INDEX_ON_RECORD = 2
+} CSSM_DB_INDEXED_DATA_LOCATION;
+
+typedef struct cssm_dl_db_handle {
+    CSSM_DL_HANDLE DLHandle;
+    CSSM_DB_HANDLE DBHandle;
+} CSSM_DL_DB_HANDLE, *CSSM_DL_DB_HANDLE_PTR;
+
+typedef enum cssm_db_attribute_name_format {
+    CSSM_DB_ATTRIBUTE_NAME_AS_STRING = 0, 
+    CSSM_DB_ATTRIBUTE_NAME_AS_OID = 1,
+    CSSM_DB_ATTRIBUTE_NAME_AS_NUMBER = 2
+} CSSM_DB_ATTRIBUTE_NAME_FORMAT, *CSSM_DB_ATTRIBUTE_NAME_FORMAT_PTR;
+
+typedef struct cssm_data {
+    uint32 Length;
+    uint8* Data;
+} CSSM_DATA, *CSSM_DATA_PTR;
+typedef CSSM_DATA CSSM_OID, *CSSM_OID_PTR;
+
+typedef struct cssm_db_attribute_info {
+    CSSM_DB_ATTRIBUTE_NAME_FORMAT AttributeNameFormat;
+    union {
+        char *AttributeName;
+        CSSM_OID AttributeID;
+        uint32 AttributeNumber;
+    };
+} CSSM_DB_ATTRIBUTE_INFO, *CSSM_DB_ATTRIBUTE_INFO_PTR;
+
+typedef struct cssm_db_index_info {
+    CSSM_DB_INDEX_TYPE IndexType; 
+    CSSM_DB_INDEXED_DATA_LOCATION IndexedDataLocation; 
+    CSSM_DB_ATTRIBUTE_INFO Info;
+} CSSM_DB_INDEX_INFO, *CSSM_DB_INDEX_INFO_PTR;
+
+typedef struct cssm_db_unique_record {
+    CSSM_DB_INDEX_INFO RecordLocator; 
+    CSSM_DATA RecordIdentifier;
+} CSSM_DB_UNIQUE_RECORD, *CSSM_DB_UNIQUE_RECORD_PTR;
+
+typedef struct CSSM_TP_APPLE_EVIDENCE_INFO {
+    CSSM_TP_APPLE_CERT_STATUS   StatusBits;
+    uint32                      NumStatusCodes;
+    CSSM_RETURN                 *StatusCodes;
+    uint32                      Index;   
+    CSSM_DL_DB_HANDLE           DlDbHandle;
+    CSSM_DB_UNIQUE_RECORD_PTR   UniqueRecord;
+} CSSM_TP_APPLE_EVIDENCE_INFO;
+
+typedef OSType SecKeychainAttrType;
+
+typedef struct SecKeychainAttribute {
+    SecKeychainAttrType tag;
+    UInt32 length;
+    void *data;
+} SecKeychainAttribute;
+
+typedef SecKeychainAttribute *SecKeychainAttributePtr;
+
+typedef struct SecKeychainAttributeList {
+    UInt32 count;
+    SecKeychainAttribute *attr;
+} SecKeychainAttributeList;
+
+typedef struct SecKeychainAttributeInfo {
+    UInt32 count;
+    UInt32 *tag;
+    UInt32 *format;
+} SecKeychainAttributeInfo;
+
+typedef UInt32 SecKeychainStatus;
+
+typedef uint32_t SecTrustResultType; enum SecTrustResultType {
+    kSecTrustResultInvalid = 0,
+    kSecTrustResultProceed = 1,
+    kSecTrustResultConfirm = 2,
+    kSecTrustResultDeny = 3,
+    kSecTrustResultUnspecified = 4,
+    kSecTrustResultRecoverableTrustFailure = 5,
+    kSecTrustResultFatalTrustFailure = 6,
+    kSecTrustResultOtherError = 7
+} SecTrustResultType;
+
+typedef void (*SecTrustCallback)(SecTrustRef trustRef, SecTrustResultType trustResult);
+
+typedef SecTrustResultType SecTrustUserSetting;
+
+typedef uint32_t SecTrustOptionFlags; enum SecTrustOptionFlags {
+    kSecTrustOptionAllowExpired       = 0x00000001,
+    kSecTrustOptionLeafIsCA           = 0x00000002,
+    kSecTrustOptionFetchIssuerFromNet = 0x00000004,
+    kSecTrustOptionAllowExpiredRoot   = 0x00000008,
+    kSecTrustOptionRequireRevPerCert  = 0x00000010,
+    kSecTrustOptionUseTrustSettings   = 0x00000020,
+    kSecTrustOptionImplicitAnchors    = 0x00000040
+} SecTrustOptionFlags;
+
+extern const CFStringRef kSecPropertyTypeTitle;
+extern const CFStringRef kSecPropertyTypeError;
+extern const CFStringRef kSecTrustEvaluationDate;
+extern const CFStringRef kSecTrustExtendedValidation;
+extern const CFStringRef kSecTrustOrganizationName;
+extern const CFStringRef kSecTrustResultValue;
+extern const CFStringRef kSecTrustRevocationChecked;
+extern const CFStringRef kSecTrustRevocationValidUntilDate;
+extern const CFStringRef kSecTrustCertificateTransparency;
+extern const CFStringRef kSecTrustCertificateTransparencyWhiteList;
+
+#endif

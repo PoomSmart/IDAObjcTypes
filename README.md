@@ -31,7 +31,7 @@ More to be added as the owner reverses more binaries.
 - IOSurface
 - Kernel
 - MobileGestalt
-- Swift (WIP, PRs welcomed)
+- Swift (WIP, PRs welcome)
 - UIKit
 - dyld
 - icu

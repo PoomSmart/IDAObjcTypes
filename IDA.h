@@ -26,6 +26,7 @@
 #import "os/os.h"
 #import "pthread/pthread.h"
 #import "sandbox/sandbox.h"
+#import "Security/Security.h"
 #import "xpc/xpc.h"
 #import "sqlite/sqlite.h"
 #ifdef SWIFT
