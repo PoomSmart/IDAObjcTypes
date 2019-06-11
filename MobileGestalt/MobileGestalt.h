@@ -7,13 +7,13 @@ SInt32 _imp__MGGetSInt32Answer(CFStringRef key, SInt32 defaultVal);
 Float32 MGGetFloat32Answer(CFStringRef key, Float32 defaultVal);
 Float32 _imp__MGGetFloat32Answer(CFStringRef key, Float32 defaultVal);
 
-Boolean MGGetBoolAnswer(CFStringRef key);
-Boolean _imp__MGGetBoolAnswer(CFStringRef key);
+bool MGGetBoolAnswer(CFStringRef key);
+bool _imp__MGGetBoolAnswer(CFStringRef key);
 Boolean MGIsQuestionValid(CFStringRef key);
 Boolean _imp__MGIsQuestionValid(CFStringRef key);
 
-CFTypeRef MGCopyAnswer(CFStringRef key, const void* unknown);
-CFTypeRef _imp__MGCopyAnswer(CFStringRef key, const void* unknown);
+CFTypeRef MGCopyAnswer(CFStringRef question, CFDictionaryRef options);
+CFTypeRef _imp__MGCopyAnswer(CFStringRef question, CFDictionaryRef options);
 CFPropertyListRef MGCopyMultipleAnswers(CFArrayRef questions, int __unknown0);
 CFPropertyListRef _imp__MGCopyMultipleAnswers(CFArrayRef questions, int __unknown0);
 
