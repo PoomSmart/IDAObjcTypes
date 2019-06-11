@@ -31,6 +31,7 @@ More to be added as the owner reverses more binaries.
 - IOSurface
 - Kernel
 - MobileGestalt
+- Security
 - Swift (WIP, PRs welcome)
 - UIKit
 - dyld
