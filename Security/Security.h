@@ -4,14 +4,23 @@
 bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
 
 CFTypeID SecTrustGetTypeID(void);
+CFTypeID SecCertificateGetTypeID(void);
+CFTypeID SecAccessControlGetTypeID(void);
 
 CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved);
+CFStringRef SecCertificateCopySubjectSummary(SecCertificateRef certificate);
 
 CFAbsoluteTime SecTrustGetVerifyTime(SecTrustRef trust);
 
 CFIndex SecTrustGetCertificateCount(SecTrustRef trust);
 
 CFDataRef SecTrustCopyExceptions(SecTrustRef trust);
+CFDataRef SecCertificateCopyData(SecCertificateRef certificate);
+CFDataRef SecCertificateCopyNormalizedIssuerSequence(SecCertificateRef certificate);
+CFDataRef SecCertificateCopyNormalizedSubjectSequence(SecCertificateRef certificate);
+CFDataRef SecCertificateCopySerialNumberData(SecCertificateRef certificate, CFErrorRef *error);
+CFDataRef SecCertificateCopySerialNumber(SecCertificateRef certificate);
+CFDataRef SecCertificateCopySerialNumber(SecCertificateRef certificate, CFErrorRef *error);
 
 CFArrayRef SecTrustCopyProperties(SecTrustRef trust);
 
@@ -40,7 +49,21 @@ OSStatus SecTrustGetCssmResult(SecTrustRef trust, CSSM_TP_VERIFY_CONTEXT_RESULT_
 OSStatus SecTrustGetCssmResultCode(SecTrustRef trust, OSStatus *resultCode);
 OSStatus SecTrustGetTPHandle(SecTrustRef trust, CSSM_TP_HANDLE *handle);
 OSStatus SecTrustCopyAnchorCertificates(CFArrayRef *anchors);
+OSStatus SecItemCopyMatching(CFDictionaryRef query, CFTypeRef *result);
+OSStatus SecItemAdd(CFDictionaryRef attributes, CFTypeRef *result);
+OSStatus SecItemUpdate(CFDictionaryRef query, CFDictionaryRef attributesToUpdate);
+OSStatus SecItemDelete(CFDictionaryRef query);
+OSStatus SecCertificateCopyCommonName(SecCertificateRef certificate, CFStringRef *commonName);
+OSStatus SecCertificateCopyEmailAddresses(SecCertificateRef certificate, CFArrayRef *emailAddresses);
+OSStatus SecCertificateCopyPublicKey(SecCertificateRef certificate, SecKeyRef *key);
+OSStatus SecCertificateAddToKeychain(SecCertificateRef certificate, SecKeychainRef keychain);
+OSStatus SecCertificateGetData(SecCertificateRef certificate, CSSM_DATA_PTR data);
 
 SecKeyRef SecTrustCopyPublicKey(SecTrustRef trust);
+SecKeyRef SecCertificateCopyKey(SecCertificateRef certificate);
+SecKeyRef SecCertificateCopyPublicKey(SecCertificateRef certificate);
 
 SecCertificateRef SecTrustGetCertificateAtIndex(SecTrustRef trust, CFIndex ix);
+SecCertificateRef SecCertificateCreateWithData(CFAllocatorRef allocator, CFDataRef data);
+
+SecAccessControlRef SecAccessControlCreateWithFlags(CFAllocatorRef allocator, CFTypeRef protection, SecAccessControlCreateFlags flags, CFErrorRef *error);

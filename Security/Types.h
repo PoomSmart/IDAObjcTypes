@@ -169,6 +169,20 @@ typedef uint32_t SecTrustOptionFlags; enum SecTrustOptionFlags {
     kSecTrustOptionImplicitAnchors    = 0x00000040
 } SecTrustOptionFlags;
 
+typedef CFOptionFlags SecAccessControlCreateFlags; enum SecAccessControlCreateFlags {
+    kSecAccessControlUserPresence           = 1u << 0,
+    kSecAccessControlBiometryAny            = 1u << 1,
+    kSecAccessControlTouchIDAny             = 1u << 1,
+    kSecAccessControlBiometryCurrentSet     = 1u << 3,
+    kSecAccessControlTouchIDCurrentSet      = 1u << 3,
+    kSecAccessControlDevicePasscode         = 1u << 4,
+    kSecAccessControlWatch                  = 1u << 5,
+    kSecAccessControlOr                     = 1u << 14,
+    kSecAccessControlAnd                    = 1u << 15,
+    kSecAccessControlPrivateKeyUsage        = 1u << 30,
+    kSecAccessControlApplicationPassword    = 1u << 31
+} SecAccessControlCreateFlags;
+
 extern const CFStringRef kSecPropertyTypeTitle;
 extern const CFStringRef kSecPropertyTypeError;
 extern const CFStringRef kSecTrustEvaluationDate;
@@ -179,5 +193,178 @@ extern const CFStringRef kSecTrustRevocationChecked;
 extern const CFStringRef kSecTrustRevocationValidUntilDate;
 extern const CFStringRef kSecTrustCertificateTransparency;
 extern const CFStringRef kSecTrustCertificateTransparencyWhiteList;
+
+extern const CFStringRef kSecClassInternetPassword;
+extern const CFStringRef kSecClassGenericPassword;
+extern const CFStringRef kSecClassCertificate;
+extern const CFStringRef kSecClassKey;
+extern const CFStringRef kSecClassIdentity;
+
+extern const CFStringRef kSecAttrAccessible;
+extern const CFStringRef kSecAttrAccess;
+extern const CFStringRef kSecAttrAccessControl;
+extern const CFStringRef kSecAttrAccessGroup;
+extern const CFStringRef kSecAttrSynchronizable;
+extern const CFStringRef kSecAttrSynchronizableAny;
+extern const CFStringRef kSecAttrCreationDate;
+extern const CFStringRef kSecAttrModificationDate;
+extern const CFStringRef kSecAttrDescription;
+extern const CFStringRef kSecAttrComment;
+extern const CFStringRef kSecAttrCreator;
+extern const CFStringRef kSecAttrType;
+extern const CFStringRef kSecAttrLabel;
+extern const CFStringRef kSecAttrIsInvisible;
+extern const CFStringRef kSecAttrIsNegative;
+extern const CFStringRef kSecAttrAccount;
+extern const CFStringRef kSecAttrService;
+extern const CFStringRef kSecAttrGeneric;
+extern const CFStringRef kSecAttrSecurityDomain;
+extern const CFStringRef kSecAttrServer;
+extern const CFStringRef kSecAttrProtocol;
+extern const CFStringRef kSecAttrAuthenticationType;
+extern const CFStringRef kSecAttrPort;
+extern const CFStringRef kSecAttrPath;
+extern const CFStringRef kSecAttrSubject;
+extern const CFStringRef kSecAttrIssuer;
+extern const CFStringRef kSecAttrSerialNumber;
+extern const CFStringRef kSecAttrSubjectKeyID;
+extern const CFStringRef kSecAttrPublicKeyHash;
+extern const CFStringRef kSecAttrCertificateType;
+extern const CFStringRef kSecAttrCertificateEncoding;
+extern const CFStringRef kSecAttrKeyClass;
+extern const CFStringRef kSecAttrApplicationLabel;
+extern const CFStringRef kSecAttrIsPermanent;
+extern const CFStringRef kSecAttrIsSensitive;
+extern const CFStringRef kSecAttrIsExtractable;
+extern const CFStringRef kSecAttrApplicationTag;
+extern const CFStringRef kSecAttrKeyType;
+extern const CFStringRef kSecAttrPRF;
+extern const CFStringRef kSecAttrSalt;
+extern const CFStringRef kSecAttrRounds;
+extern const CFStringRef kSecAttrKeySizeInBits;
+extern const CFStringRef kSecAttrEffectiveKeySize;
+extern const CFStringRef kSecAttrCanEncrypt;
+extern const CFStringRef kSecAttrCanDecrypt;
+extern const CFStringRef kSecAttrCanDerive;
+extern const CFStringRef kSecAttrCanSign;
+extern const CFStringRef kSecAttrCanVerify;
+extern const CFStringRef kSecAttrCanWrap;
+extern const CFStringRef kSecAttrCanUnwrap;
+extern const CFStringRef kSecAttrSyncViewHint;
+extern const CFStringRef kSecAttrTokenID;
+extern const CFStringRef kSecAttrPersistantReference;
+extern const CFStringRef kSecAttrPersistentReference;
+
+extern const CFStringRef kSecAttrAccessibleWhenUnlocked;
+extern const CFStringRef kSecAttrAccessibleAfterFirstUnlock;
+extern const CFStringRef kSecAttrAccessibleAlways;
+extern const CFStringRef kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly;
+extern const CFStringRef kSecAttrAccessibleWhenUnlockedThisDeviceOnly;
+extern const CFStringRef kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly;
+extern const CFStringRef kSecAttrAccessibleAlwaysThisDeviceOnly;
+
+extern const CFStringRef kSecAttrProtocolFTP;
+extern const CFStringRef kSecAttrProtocolFTPAccount;
+extern const CFStringRef kSecAttrProtocolHTTP;
+extern const CFStringRef kSecAttrProtocolIRC;
+extern const CFStringRef kSecAttrProtocolNNTP;
+extern const CFStringRef kSecAttrProtocolPOP3;
+extern const CFStringRef kSecAttrProtocolSMTP;
+extern const CFStringRef kSecAttrProtocolSOCKS;
+extern const CFStringRef kSecAttrProtocolIMAP;
+extern const CFStringRef kSecAttrProtocolLDAP;
+extern const CFStringRef kSecAttrProtocolAppleTalk;
+extern const CFStringRef kSecAttrProtocolAFP;
+extern const CFStringRef kSecAttrProtocolTelnet;
+extern const CFStringRef kSecAttrProtocolSSH;
+extern const CFStringRef kSecAttrProtocolFTPS;
+extern const CFStringRef kSecAttrProtocolHTTPS;
+extern const CFStringRef kSecAttrProtocolHTTPProxy;
+extern const CFStringRef kSecAttrProtocolHTTPSProxy;
+extern const CFStringRef kSecAttrProtocolFTPProxy;
+extern const CFStringRef kSecAttrProtocolSMB;
+extern const CFStringRef kSecAttrProtocolRTSP;
+extern const CFStringRef kSecAttrProtocolRTSPProxy;
+extern const CFStringRef kSecAttrProtocolDAAP;
+extern const CFStringRef kSecAttrProtocolEPPC;
+extern const CFStringRef kSecAttrProtocolIPP;
+extern const CFStringRef kSecAttrProtocolNNTPS;
+extern const CFStringRef kSecAttrProtocolLDAPS;
+extern const CFStringRef kSecAttrProtocolTelnetS;
+extern const CFStringRef kSecAttrProtocolIMAPS;
+extern const CFStringRef kSecAttrProtocolIRCS;
+extern const CFStringRef kSecAttrProtocolPOP3S;
+
+extern const CFStringRef kSecAttrAuthenticationTypeNTLM;
+extern const CFStringRef kSecAttrAuthenticationTypeMSN;
+extern const CFStringRef kSecAttrAuthenticationTypeDPA;
+extern const CFStringRef kSecAttrAuthenticationTypeRPA;
+extern const CFStringRef kSecAttrAuthenticationTypeHTTPBasic;
+extern const CFStringRef kSecAttrAuthenticationTypeHTTPDigest;
+extern const CFStringRef kSecAttrAuthenticationTypeHTMLForm;
+extern const CFStringRef kSecAttrAuthenticationTypeDefault;
+
+extern const CFStringRef kSecAttrKeyClassPublic;
+extern const CFStringRef kSecAttrKeyClassPrivate;
+extern const CFStringRef kSecAttrKeyClassSymmetric;
+
+extern const CFStringRef kSecAttrKeyTypeRSA;
+extern const CFStringRef kSecAttrKeyTypeDSA;
+extern const CFStringRef kSecAttrKeyTypeAES;
+extern const CFStringRef kSecAttrKeyTypeDES;
+extern const CFStringRef kSecAttrKeyType3DES;
+extern const CFStringRef kSecAttrKeyTypeRC4;
+extern const CFStringRef kSecAttrKeyTypeRC2;
+extern const CFStringRef kSecAttrKeyTypeCAST;
+extern const CFStringRef kSecAttrKeyTypeECDSA;
+extern const CFStringRef kSecAttrKeyTypeEC;
+extern const CFStringRef kSecAttrKeyTypeECSECPrimeRandom;
+
+extern const CFStringRef kSecAttrPRFHmacAlgSHA1;
+extern const CFStringRef kSecAttrPRFHmacAlgSHA224;
+extern const CFStringRef kSecAttrPRFHmacAlgSHA256;
+extern const CFStringRef kSecAttrPRFHmacAlgSHA384;
+extern const CFStringRef kSecAttrPRFHmacAlgSHA512;
+
+extern const CFStringRef kSecMatchPolicy;
+extern const CFStringRef kSecMatchItemList;
+extern const CFStringRef kSecMatchSearchList;
+extern const CFStringRef kSecMatchIssuers;
+extern const CFStringRef kSecMatchEmailAddressIfPresent;
+extern const CFStringRef kSecMatchSubjectContains;
+extern const CFStringRef kSecMatchSubjectStartsWith;
+extern const CFStringRef kSecMatchSubjectEndsWith;
+extern const CFStringRef kSecMatchSubjectWholeString;
+extern const CFStringRef kSecMatchCaseInsensitive;
+extern const CFStringRef kSecMatchDiacriticInsensitive;
+extern const CFStringRef kSecMatchWidthInsensitive;
+extern const CFStringRef kSecMatchTrustedOnly;
+extern const CFStringRef kSecMatchValidOnDate;
+extern const CFStringRef kSecMatchLimit;
+extern const CFStringRef kSecMatchLimitOne;
+extern const CFStringRef kSecMatchLimitAll;
+
+extern const CFStringRef kSecReturnData;
+extern const CFStringRef kSecReturnAttributes;
+extern const CFStringRef kSecReturnRef;
+extern const CFStringRef kSecReturnPersistentRef;
+
+extern const CFStringRef kSecValueData;
+extern const CFStringRef kSecValueRef;
+extern const CFStringRef kSecValuePersistentRef;
+
+extern const CFStringRef kSecUseItemList;
+extern const CFStringRef kSecUseKeychain;
+extern const CFStringRef kSecUseOperationPrompt;
+extern const CFStringRef kSecUseNoAuthenticationUI;
+extern const CFStringRef kSecUseAuthenticationUI;
+extern const CFStringRef kSecUseAuthenticationContext;
+extern const CFStringRef kSecUseDataProtectionKeychain;
+extern const CFStringRef kSecUseAuthenticationUIAllow;
+extern const CFStringRef kSecUseAuthenticationUIFail;
+extern const CFStringRef kSecUseAuthenticationUISkip;
+
+extern const CFStringRef kSecAttrTokenIDSecureEnclave;
+extern const CFStringRef kSecAttrAccessGroupToken;
 
 #endif
