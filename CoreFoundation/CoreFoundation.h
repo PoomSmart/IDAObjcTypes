@@ -203,6 +203,36 @@ void CFWriteStreamClose(CFWriteStreamRef stream);
 void _imp__CFWriteStreamClose(CFWriteStreamRef stream);
 void CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 void _imp__CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
+void CFRunLoopAddCommonMode(CFRunLoopRef rl, CFRunLoopMode mode);
+void _imp__CFRunLoopAddCommonMode(CFRunLoopRef rl, CFRunLoopMode mode);
+void CFRunLoopRun(void);
+void _imp__CFRunLoopRun(void);
+void CFRunLoopWakeUp(CFRunLoopRef rl);
+void _imp__CFRunLoopWakeUp(CFRunLoopRef rl);
+void CFRunLoopStop(CFRunLoopRef rl);
+void _imp__CFRunLoopStop(CFRunLoopRef rl);
+void CFRunLoopPerformBlock(CFRunLoopRef rl, CFTypeRef mode, void (*block)(void)); 
+void _imp__CFRunLoopPerformBlock(CFRunLoopRef rl, CFTypeRef mode, void (*block)(void)); 
+void CFRunLoopAddSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
+void _imp__CFRunLoopAddSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
+void CFRunLoopRemoveSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
+void _imp__CFRunLoopRemoveSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
+void CFRunLoopAddObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
+void CFRunLoopRemoveObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
+void CFRunLoopSourceInvalidate(CFRunLoopSourceRef source);
+void _imp__CFRunLoopSourceInvalidate(CFRunLoopSourceRef source);
+void CFRunLoopSourceGetContext(CFRunLoopSourceRef source, CFRunLoopSourceContext *context);
+void _imp__CFRunLoopSourceGetContext(CFRunLoopSourceRef source, CFRunLoopSourceContext *context);
+void CFRunLoopSourceSignal(CFRunLoopSourceRef source);
+void _imp__CFRunLoopSourceSignal(CFRunLoopSourceRef source);
+void CFRunLoopTimerSetTolerance(CFRunLoopTimerRef timer, CFTimeInterval tolerance);
+void _imp__CFRunLoopTimerSetTolerance(CFRunLoopTimerRef timer, CFTimeInterval tolerance);
+void CFRunLoopTimerSetNextFireDate(CFRunLoopTimerRef timer, CFAbsoluteTime fireDate);
+void _imp__CFRunLoopTimerSetNextFireDate(CFRunLoopTimerRef timer, CFAbsoluteTime fireDate);
+void CFRunLoopTimerInvalidate(CFRunLoopTimerRef timer);
+void _imp__CFRunLoopTimerInvalidate(CFRunLoopTimerRef timer);
+void CFRunLoopTimerGetContext(CFRunLoopTimerRef timer, CFRunLoopTimerContext *context);
+void _imp__CFRunLoopTimerGetContext(CFRunLoopTimerRef timer, CFRunLoopTimerContext *context);
 
 void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
 void _CFNonObjCRelease(CFTypeRef cf);
@@ -262,9 +292,19 @@ CFTypeID CFErrorGetTypeID(void);
 CFTypeID _imp__CFErrorGetTypeID(void);
 CFTypeID CFBagGetTypeID(void);
 CFTypeID _imp__CFBagGetTypeID(void);
+CFTypeID CFRunLoopGetTypeID(void);
+CFTypeID _imp__CFRunLoopGetTypeID(void);
+CFTypeID CFRunLoopSourceGetTypeID(void);
+CFTypeID _imp__CFRunLoopSourceGetTypeID(void);
 
 CFTypeID _CFRuntimeRegisterClass(const CFRuntimeClass* const cls);
-CFTypeID _imp___CFRuntimeRegisterClass(const CFRuntimeClass* const cls);
+
+CFTimeInterval CFRunLoopTimerGetTolerance(CFRunLoopTimerRef timer);
+CFTimeInterval _imp__CFRunLoopTimerGetTolerance(CFRunLoopTimerRef timer);
+CFTimeInterval CFRunLoopTimerGetInterval(CFRunLoopTimerRef timer);
+CFTimeInterval _imp__CFRunLoopTimerGetInterval(CFRunLoopTimerRef timer);
+
+CFAbsoluteTime CFRunLoopGetNextTimerFireDate(CFRunLoopRef rl, CFRunLoopMode mode);
 
 CFHashCode CFHash(CFTypeRef cf);
 CFHashCode _imp__CFHash(CFTypeRef cf);
@@ -272,7 +312,20 @@ CFHashCode CFHashBytes(uint8_t *bytes, CFIndex length);
 CFHashCode _imp__CFHashBytes(uint8_t *bytes, CFIndex length);
 
 CFHashCode _CFNonObjCHash(CFTypeRef cf);
-CFHashCode _imp___CFNonObjCHash(CFTypeRef cf);
+
+CFRunLoopRef CFRunLoopGetCurrent(void);
+CFRunLoopRef CFRunLoopGetMain(void);
+
+CFRunLoopSourceRef CFRunLoopSourceCreate(CFAllocatorRef allocator, CFIndex order, CFRunLoopSourceContext *context);
+CFRunLoopSourceRef _imp__CFRunLoopSourceCreate(CFAllocatorRef allocator, CFIndex order, CFRunLoopSourceContext *context);
+
+CFRunLoopTimerRef CFRunLoopTimerCreate(CFAllocatorRef allocator, CFAbsoluteTime fireDate, CFTimeInterval interval, CFOptionFlags flags, CFIndex order, CFRunLoopTimerCallBack callout, CFRunLoopTimerContext *context);
+CFRunLoopTimerRef _imp__CFRunLoopTimerCreate(CFAllocatorRef allocator, CFAbsoluteTime fireDate, CFTimeInterval interval, CFOptionFlags flags, CFIndex order, CFRunLoopTimerCallBack callout, CFRunLoopTimerContext *context);
+CFRunLoopTimerRef CFRunLoopTimerCreateWithHandler(CFAllocatorRef allocator, CFAbsoluteTime fireDate, CFTimeInterval interval, CFOptionFlags flags, CFIndex order, void (*block)(CFRunLoopTimerRef timer));
+CFRunLoopTimerRef _imp__CFRunLoopTimerCreateWithHandler(CFAllocatorRef allocator, CFAbsoluteTime fireDate, CFTimeInterval interval, CFOptionFlags flags, CFIndex order, void (*block)(CFRunLoopTimerRef timer));
+
+CFRunLoopMode CFRunLoopCopyCurrentMode(CFRunLoopRef rl);
+CFRunLoopMode _imp__CFRunLoopCopyCurrentMode(CFRunLoopRef rl);
 
 CFRunLoopRunResult CFRunLoopRunInMode(CFRunLoopMode mode, CFTimeInterval seconds, Boolean returnAfterSourceHandled);
 CFRunLoopRunResult _imp__CFRunLoopRunInMode(CFRunLoopMode mode, CFTimeInterval seconds, Boolean returnAfterSourceHandled);
@@ -487,6 +540,8 @@ CFArrayRef CFBundleCopyLocalizationsForPreferences(CFArrayRef locArray, CFArrayR
 CFArrayRef _imp__CFBundleCopyLocalizationsForPreferences(CFArrayRef locArray, CFArrayRef prefArray);
 CFArrayRef CFBundleCopyBundleLocalizations(CFBundleRef bundle);
 CFArrayRef _imp__CFBundleCopyBundleLocalizations(CFBundleRef bundle);
+CFArrayRef CFRunLoopCopyAllModes(CFRunLoopRef rl);
+CFArrayRef _imp__CFRunLoopCopyAllModes(CFRunLoopRef rl);
 
 CFMutableStringRef CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength);
 CFMutableStringRef _imp__CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength);
@@ -661,15 +716,25 @@ Boolean CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBas
 Boolean _imp__CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBase, UInt8* buffer, CFIndex maxBufLen);
 Boolean CFURLResourceIsReachable(CFURLRef url, CFErrorRef* error);
 Boolean _imp__CFURLResourceIsReachable(CFURLRef url, CFErrorRef* error);
+Boolean CFRunLoopIsWaiting(CFRunLoopRef rl);
+Boolean _imp__CFRunLoopIsWaiting(CFRunLoopRef rl);
+Boolean CFRunLoopContainsSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
+Boolean _imp__CFRunLoopContainsSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
+Boolean CFRunLoopContainsObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
+Boolean _imp__CFRunLoopContainsObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
+Boolean CFRunLoopContainsTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode);
+Boolean _imp__CFRunLoopContainsTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode);
+Boolean CFRunLoopSourceIsValid(CFRunLoopSourceRef source);
+Boolean _imp__CFRunLoopSourceIsValid(CFRunLoopSourceRef source);
+Boolean CFRunLoopTimerDoesRepeat(CFRunLoopTimerRef timer);
+Boolean _imp__CFRunLoopTimerDoesRepeat(CFRunLoopTimerRef timer);
+Boolean CFRunLoopTimerIsValid(CFRunLoopTimerRef timer);
+Boolean _imp__CFRunLoopTimerIsValid(CFRunLoopTimerRef timer);
 
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
-Boolean _imp___CFExecutableLinkedOnOrAfter(CFSystemVersion version);
 Boolean _CFIsDeallocating(CFTypeRef);
-Boolean _imp___CFIsDeallocating(CFTypeRef);
 Boolean _CFIsObjC(CFTypeID typeID, CFTypeRef obj);
-Boolean _imp___CFIsObjC(CFTypeID typeID, CFTypeRef obj);
 Boolean _CFNonObjCEqual(CFTypeRef cf1, CFTypeRef cf2);
-Boolean _imp___CFNonObjCEqual(CFTypeRef cf1, CFTypeRef cf2);
 
 CFIndex CFArrayGetFirstIndexOfValue(CFArrayRef theArray, CFRange range, const void* value);
 CFIndex _imp__CFArrayGetFirstIndexOfValue(CFArrayRef theArray, CFRange range, const void* value);
@@ -717,3 +782,7 @@ CFIndex CFPropertyListWrite(CFPropertyListRef propertyList, CFWriteStreamRef str
 CFIndex _imp__CFPropertyListWrite(CFPropertyListRef propertyList, CFWriteStreamRef stream, CFPropertyListFormat format, CFOptionFlags options, CFErrorRef* error);
 CFIndex CFURLGetBytes(CFURLRef url, UInt8* buffer, CFIndex bufferLength);
 CFIndex _imp__CFURLGetBytes(CFURLRef url, UInt8* buffer, CFIndex bufferLength);
+CFIndex CFRunLoopSourceGetOrder(CFRunLoopSourceRef source);
+CFIndex _imp__CFRunLoopSourceGetOrder(CFRunLoopSourceRef source);
+CFIndex CFRunLoopTimerGetOrder(CFRunLoopTimerRef timer);
+CFIndex _imp__CFRunLoopTimerGetOrder(CFRunLoopTimerRef timer);
