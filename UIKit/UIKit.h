@@ -75,10 +75,13 @@ void UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat sc
 void _imp__UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale);
 void UIGraphicsEndImageContext(void);
 void _imp__UIGraphicsEndImageContext(void);
+void _UIApplicationLoadWebKit(void);
 
 int UIApplicationMain(int argc, char** argv, NSString* principalClassName, NSString* delegateClassName);
 int _imp__UIApplicationMain(int argc, char** argv, NSString* principalClassName, NSString* delegateClassName);
 
+BOOL _UIApplicationIsExtension(void);
+BOOL _UIApplicationUsesLegacyUI(void);
 BOOL UIContentSizeCategoryIsAccessibilityCategory(UIContentSizeCategory category);
 BOOL _imp__UIContentSizeCategoryIsAccessibilityCategory(UIContentSizeCategory category);
 
