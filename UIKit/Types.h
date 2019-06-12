@@ -20,6 +20,20 @@ UIEdgeInsets UIEdgeInsetsZero;
 
 typedef NSString* UIContentSizeCategory;
 
+extern const float UITableCellDefaultFontSize;
+extern const float UITableViewCellDefaultFontSize;
+extern const float UIWebViewGrowsAndShrinksToFitHeight;
+extern const float UIWebViewScalesToFitScale;
+extern const float UIWebViewStandardViewportWidth;
+
+extern NSString * const UIWindowDidMoveToScreenNotification;
+extern NSString * const UIWindowDidRotateNotification;
+extern NSString * const UIWindowNewScreenUserInfoKey;
+extern NSString * const UIWindowWillRotateNotification;
+extern NSString * const UIKeyboardIsLocalUserInfoKey;
+extern NSString * const UIKeyInputPageUp;
+extern NSString * const UIKeyInputPageDown;
+
 const NSNotificationName UIApplicationDidReceiveMemoryWarningNotification;
 const NSNotificationName UIApplicationBackgroundRefreshStatusDidChangeNotification;
 const NSNotificationName UIApplicationDidChangeStatusBarFrameNotification;
