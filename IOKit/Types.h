@@ -37,7 +37,10 @@ typedef struct __IOHIDEvent* IOHIDEventRef;
 const mach_port_t kIOMasterPortDefault;
 
 typedef uint32_t IOHIDEventType; enum IOHIDEventType {
-    kIOHIDEventTypeNULL,
+    kIOHIDDigitizerEventUpdateAltitudeMask = 1<<28,
+    kIOHIDDigitizerEventUpdateAzimuthMask = 1<<29,
+    kIOHIDDigitizerEventUpdatePressureMask = 1<<30,
+    kIOHIDEventTypeNULL = 0,
     kIOHIDEventTypeVendorDefined,
     kIOHIDEventTypeButton,
     kIOHIDEventTypeKeyboard,
@@ -130,6 +133,9 @@ typedef uint32_t IOHIDDigitizerEventMask; enum IOHIDDigitizerEventMask {
     kIOHIDDigitizerEventSwipeLeft                           = 0x04000000,
     kIOHIDDigitizerEventSwipeRight                          = 0x08000000,
     kIOHIDDigitizerEventSwipeMask                           = 0xFF000000,
+    kIOHIDDigitizerEventEstimatedAltitude                   = 1<<28,
+    kIOHIDDigitizerEventEstimatedAzimuth                    = 1<<29,
+    kIOHIDDigitizerEventEstimatedPressure                   = 1<<30
 } IOHIDDigitizerEventMask;
 
 typedef uint32_t IOHIDEventOptionBits; enum IOHIDEventOptionBits {
@@ -200,6 +206,8 @@ typedef uint32_t IOHIDEventField; enum IOHIDEventField {
     kIOHIDEventFieldDigitizerCollection,
     kIOHIDEventFieldDigitizerCollectionChord,
     kIOHIDEventFieldDigitizerChildEventMask,
+    kIOHIDEventFieldDigitizerIsDisplayIntegrated,
+    kIOHIDEventFieldDigitizerQualityRadiiAccuracy,
     kIOHIDEventFieldSwipeMask = IOHIDEventFieldBase(kIOHIDEventTypeSwipe),
     kIOHIDEventFieldProgressEventType = IOHIDEventFieldBase(kIOHIDEventTypeProgress),
     kIOHIDEventFieldProgressLevel

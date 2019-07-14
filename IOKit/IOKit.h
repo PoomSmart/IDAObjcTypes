@@ -72,15 +72,15 @@ IOHIDEventRef IOHIDEventGetEvent(IOHIDEventRef event, IOHIDEventType type);
 
 void IOHIDEventSetFloatValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOHIDFloat value, IOOptionBits options);
 void IOHIDEventSetFloatValue(IOHIDEventRef event, IOHIDEventField field, IOHIDFloat value);
-void IOHIDEventSetIntegerValueWithOptions(IOHIDEventRef event, IOHIDEventField field, int value, IOOptionBits options);
-void IOHIDEventSetIntegerValue(IOHIDEventRef event, IOHIDEventField field, int value);
+void IOHIDEventSetIntegerValueWithOptions(IOHIDEventRef event, IOHIDEventField field, CFIndex value, IOOptionBits options);
+void IOHIDEventSetIntegerValue(IOHIDEventRef event, IOHIDEventField field, CFIndex value);
 void IOHIDEventSetPositionWithOptions(IOHIDEventRef event, IOHIDEventField field, IOHID3DPoint position, IOOptionBits options);
 void IOHIDEventSetPosition(IOHIDEventRef event, IOHIDEventField field, IOHID3DPoint position);
 
 IOHIDFloat IOHIDEventGetFloatValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
 IOHIDFloat IOHIDEventGetFloatValue(IOHIDEventRef event, IOHIDEventField field);
-int IOHIDEventGetIntegerValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
-int IOHIDEventGetIntegerValue(IOHIDEventRef event, IOHIDEventField field);
+CFIndex IOHIDEventGetIntegerValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
+CFIndex IOHIDEventGetIntegerValue(IOHIDEventRef event, IOHIDEventField field);
 IOHID3DPoint IOHIDEventGetPositionWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
 IOHID3DPoint IOHIDEventGetPosition(IOHIDEventRef event, IOHIDEventField field);
 
