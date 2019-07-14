@@ -20,11 +20,8 @@ typedef struct CC_MD2state_st {
 } CC_MD2_CTX;
 
 int CC_MD2_Init(CC_MD2_CTX* c);
-int _imp__CC_MD2_Init(CC_MD2_CTX* c);
 int CC_MD2_Update(CC_MD2_CTX* c, const void* data, CC_LONG len);
-int _imp__CC_MD2_Update(CC_MD2_CTX* c, const void* data, CC_LONG len);
 int CC_MD2_Final(unsigned char* md, CC_MD2_CTX* c);
-int _imp__CC_MD2_Final(unsigned char* md, CC_MD2_CTX* c);
 
 #define CC_MD4_DIGEST_LENGTH 16
 #define CC_MD4_BLOCK_BYTES 64
