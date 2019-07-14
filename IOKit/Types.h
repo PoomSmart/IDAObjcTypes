@@ -7,7 +7,10 @@ typedef OSObject* io_object_t;
 
 typedef io_object_t* io_service_t;
 
-typedef UInt32 IOOptionBits;
+typedef UInt32 IOOptionBits; enum IOOptionBits {
+    kIOHIDEventOptionNone = 0,
+} IOOptionBits;
+
 typedef SInt32 IOFixed;
 typedef UInt32 IOVersion;
 typedef UInt32 IOItemCount;
