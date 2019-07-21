@@ -26,6 +26,8 @@ bool os_signpost_enabled(os_log_t log);
 bool _imp__os_signpost_enabled(os_log_t log);
 bool os_variant_has_internal_content(const char* subsystem);
 bool _imp__os_variant_has_internal_content(const char* subsystem);
+bool os_variant_has_internal_diagnostics(const char* subsystem);
+bool _imp__os_variant_has_internal_diagnostics(const char* subsystem);
 
 void os_activity_scope_enter(os_activity_t activity, os_activity_scope_state_t state);
 void _imp__os_activity_scope_enter(os_activity_t activity, os_activity_scope_state_t state);

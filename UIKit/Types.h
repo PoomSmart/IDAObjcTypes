@@ -14,6 +14,18 @@ typedef struct UIOffset {
     CGFloat horizontal, vertical;
 } UIOffset;
 
+typedef NSInteger UIUserInterfaceSizeClass; enum UIUserInterfaceSizeClass {
+    UIUserInterfaceSizeClassUnspecified = 0,
+    UIUserInterfaceSizeClassCompact     = 1,
+    UIUserInterfaceSizeClassRegular     = 2,
+} UIUserInterfaceSizeClass;
+
+typedef NSInteger UIUserInterfaceStyle; enum UIUserInterfaceStyle {
+    UIUserInterfaceStyleUnspecified,
+    UIUserInterfaceStyleLight,
+    UIUserInterfaceStyleDark,
+} UIUserInterfaceStyle;
+
 UIOffset UIOffsetZero;
 
 UIEdgeInsets UIEdgeInsetsZero;
