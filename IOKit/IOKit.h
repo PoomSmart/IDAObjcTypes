@@ -89,3 +89,19 @@ Boolean IOHIDEventConformsTo(IOHIDEventRef event, IOHIDEventType type);
 
 void IOHIDEventRemoveEvent(IOHIDEventRef event, IOHIDEventRef childEvent);
 void IOHIDEventAppendEvent(IOHIDEventRef event, IOHIDEventRef childEvent);
+
+CFTypeID IOHIDManagerGetTypeID(void);
+
+CFSetRef IOHIDManagerCopyDevices(IOHIDManagerRef manager);
+CFTypeRef IOHIDManagerGetProperty(IOHIDManagerRef manager, CFStringRef key);
+IOHIDManagerRef IOHIDManagerCreate(CFAllocatorRef allocator, IOOptionBits options);
+IOReturn IOHIDManagerOpen(IOHIDManagerRef manager, IOOptionBits options);
+IOReturn IOHIDManagerClose(IOHIDManagerRef manager, IOOptionBits options);
+
+void IOHIDManagerSetDeviceMatching(IOHIDManagerRef manager, CFDictionaryRef matching);
+void IOHIDManagerScheduleWithRunLoop(IOHIDManagerRef manager, CFRunLoopRef runLoop, CFStringRef runLoopMode);
+void IOHIDManagerUnscheduleFromRunLoop(IOHIDManagerRef manager, CFRunLoopRef runLoop, CFStringRef runLoopMode);
+void IOHIDManagerRegisterDeviceMatchingCallback(IOHIDManagerRef manager, IOHIDDeviceCallback callback, void *context);
+void IOHIDManagerRegisterDeviceRemovalCallback(IOHIDManagerRef manager, IOHIDDeviceCallback callback, void *context);
+void IOHIDManagerRegisterInputReportCallback(IOHIDManagerRef manager, IOHIDReportCallback callback, void *context);
+void IOHIDManagerRegisterInputValueCallback(IOHIDManagerRef manager, IOHIDValueCallback callback, void *context);

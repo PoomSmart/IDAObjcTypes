@@ -7,6 +7,8 @@ typedef OSObject* io_object_t;
 
 typedef io_object_t* io_service_t;
 
+typedef kern_return_t IOReturn;
+
 typedef UInt32 IOOptionBits; enum IOOptionBits {
     kIOHIDEventOptionNone = 0,
 } IOOptionBits;
@@ -33,6 +35,9 @@ typedef vm_address_t IOVirtualAddress;
 typedef IOVirtualAddress IOLogicalAddress;
 
 typedef struct __IOHIDEvent* IOHIDEventRef;
+typedef struct __IOHIDManager* IOHIDManagerRef;
+typedef struct __IOHIDValue* IOHIDValueRef;
+typedef struct __IOHIDDevice* IOHIDDeviceRef;
 
 const mach_port_t kIOMasterPortDefault;
 
@@ -144,6 +149,13 @@ typedef uint32_t IOHIDEventOptionBits; enum IOHIDEventOptionBits {
     kIOHIDEventOptionPixelUnits                             = 0x00000004
 } IOHIDEventOptionBits;
 
+typedef uint32_t IOHIDReportType; enum IOHIDReportType {
+    kIOHIDReportTypeInput = 0,
+    kIOHIDReportTypeOutput,
+    kIOHIDReportTypeFeature,
+    kIOHIDReportTypeCount
+} IOHIDReportType;
+
 #ifdef __LP64__
 typedef double IOHIDFloat;
 #else
@@ -212,5 +224,9 @@ typedef uint32_t IOHIDEventField; enum IOHIDEventField {
     kIOHIDEventFieldProgressEventType = IOHIDEventFieldBase(kIOHIDEventTypeProgress),
     kIOHIDEventFieldProgressLevel
 } IOHIDEventField;
+
+typedef void (*IOHIDValueCallback)(void *context, IOReturn result, void *sender, IOHIDValueRef value);
+typedef void (*IOHIDReportCallback)(void *context, IOReturn result, void *sender, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
+typedef void (*IOHIDDeviceCallback)(void *context, IOReturn result, void *sender, IOHIDDeviceRef device);
 
 #endif
