@@ -26,6 +26,43 @@ typedef NSInteger UIUserInterfaceStyle; enum UIUserInterfaceStyle {
     UIUserInterfaceStyleDark,
 } UIUserInterfaceStyle;
 
+typedef NSInteger UIDisplayGamut; enum UIDisplayGamut {
+    UIDisplayGamutUnspecified = -1,
+    UIDisplayGamutSRGB,
+    UIDisplayGamutP3
+} UIDisplayGamut;
+
+typedef NSInteger UIDeviceOrientation; enum UIDeviceOrientation {
+    UIDeviceOrientationUnknown,
+    UIDeviceOrientationPortrait,
+    UIDeviceOrientationPortraitUpsideDown,
+    UIDeviceOrientationLandscapeLeft,
+    UIDeviceOrientationLandscapeRight,
+    UIDeviceOrientationFaceUp,
+    UIDeviceOrientationFaceDown
+} UIDeviceOrientation;
+
+typedef NSInteger UIDeviceBatteryState; enum UIDeviceBatteryState {
+    UIDeviceBatteryStateUnknown,
+    UIDeviceBatteryStateUnplugged,
+    UIDeviceBatteryStateCharging,
+    UIDeviceBatteryStateFull,
+} UIDeviceBatteryState;
+
+typedef NSInteger UIUserInterfaceIdiom; enum UIUserInterfaceIdiom {
+    UIUserInterfaceIdiomUnspecified = -1,
+    UIUserInterfaceIdiomPhone,
+    UIUserInterfaceIdiomPad,
+    UIUserInterfaceIdiomTV,
+    UIUserInterfaceIdiomCarPlay,
+} UIUserInterfaceIdiom;
+
+typedef NSInteger UIUserInterfaceLevel; enum UIUserInterfaceLevel {
+    UIUserInterfaceLevelUnspecified = -1,
+    UIUserInterfaceLevelBase,
+    UIUserInterfaceLevelElevated
+} UIUserInterfaceLevel;
+
 UIOffset UIOffsetZero;
 
 UIEdgeInsets UIEdgeInsetsZero;
