@@ -245,6 +245,9 @@ typedef uint32_t IOHIDEventField; enum IOHIDEventField {
     kIOHIDEventFieldDigitizerDidUpdateMask,
     kIOHIDEventFieldDigitizerEstimatedMask,
     kIOHIDEventFieldDigitizerAuxiliaryPressure = kIOHIDEventFieldDigitizerBarrelPressure,
+    kIOHIDEventFieldGenericGestureType = IOHIDEventFieldBase(kIOHIDEventTypeGenericGesture),
+    kIOHIDEventFieldGenericGestureTypeTapCount,
+    kIOHIDEventFieldGenericGestureTypeSwipeProgress,
     kIOHIDEventFieldSwipeMask = IOHIDEventFieldBase(kIOHIDEventTypeSwipe),
     kIOHIDEventFieldSwipeMotion,
     kIOHIDEventFieldSwipeProgress,
@@ -356,6 +359,11 @@ typedef uint32_t IOHIDDigitizerEventUpdateMask; enum IOHIDDigitizerEventUpdateMa
     kIOHIDDigitizerEventUpdateIsDisplayIntegratedMask       = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerIsDisplayIntegrated),
     kIOHIDDigitizerEventUpdateQualityRadiiAccuracyMask      = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerQualityRadiiAccuracy),
 } IOHIDDigitizerEventUpdateMask;
+
+enum {
+    kIOHIDGenericGestureTypeTap        = 0,
+    kIOHIDGenericGestureTypeSwipe
+};
 
 typedef void (*IOHIDValueCallback)(void *context, IOReturn result, void *sender, IOHIDValueRef value);
 typedef void (*IOHIDReportCallback)(void *context, IOReturn result, void *sender, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
