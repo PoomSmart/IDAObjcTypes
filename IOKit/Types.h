@@ -2,6 +2,7 @@
 #define IOKIT_H_
 
 #define IOHIDEventFieldBase(type) (type << 16)
+#define IOHIDEventFieldOffsetOf(field) (field & 0xffff)
 
 typedef OSObject* io_object_t;
 
@@ -128,24 +129,31 @@ typedef uint32_t IOHIDDigitizerTransducerType; enum IOHIDDigitizerTransducerType
 } IOHIDDigitizerTransducerType;
 
 typedef uint32_t IOHIDDigitizerEventMask; enum IOHIDDigitizerEventMask {
-    kIOHIDDigitizerEventRange                               = 0x00000001,
-    kIOHIDDigitizerEventTouch                               = 0x00000002,
-    kIOHIDDigitizerEventPosition                            = 0x00000004,
-    kIOHIDDigitizerEventStop                                = 0x00000008,
-    kIOHIDDigitizerEventPeak                                = 0x00000010,
-    kIOHIDDigitizerEventIdentity                            = 0x00000020,
-    kIOHIDDigitizerEventAttribute                           = 0x00000040,
-    kIOHIDDigitizerEventCancel                              = 0x00000080,
-    kIOHIDDigitizerEventStart                               = 0x00000100,
-    kIOHIDDigitizerEventResting                             = 0x00000200,
-    kIOHIDDigitizerEventSwipeUp                             = 0x01000000,
-    kIOHIDDigitizerEventSwipeDown                           = 0x02000000,
-    kIOHIDDigitizerEventSwipeLeft                           = 0x04000000,
-    kIOHIDDigitizerEventSwipeRight                          = 0x08000000,
-    kIOHIDDigitizerEventSwipeMask                           = 0xFF000000,
+    kIOHIDDigitizerEventRange                               = 1<<0,
+    kIOHIDDigitizerEventTouch                               = 1<<1,
+    kIOHIDDigitizerEventPosition                            = 1<<2,
+    kIOHIDDigitizerEventStop                                = 1<<3,
+    kIOHIDDigitizerEventPeak                                = 1<<4,
+    kIOHIDDigitizerEventIdentity                            = 1<<5,
+    kIOHIDDigitizerEventAttribute                           = 1<<6,
+    kIOHIDDigitizerEventCancel                              = 1<<7,
+    kIOHIDDigitizerEventStart                               = 1<<8,
+    kIOHIDDigitizerEventResting                             = 1<<9,
+    kIOHIDDigitizerEventFromEdgeFlat                        = 1<<10,
+    kIOHIDDigitizerEventFromEdgeTip                         = 1<<11,
+    kIOHIDDigitizerEventFromCorner                          = 1<<12,
+    kIOHIDDigitizerEventSwipePending                        = 1<<13,
+    kIOHIDDigitizerEventFromEdgeForcePending                = 1<<14,
+    kIOHIDDigitizerEventFromEdgeForceActive                 = 1<<15,
+    kIOHIDDigitizerEventForcePopped                         = 1<<16,
+    kIOHIDDigitizerEventSwipeUp                             = 1<<24,
+    kIOHIDDigitizerEventSwipeDown                           = 1<<25,
+    kIOHIDDigitizerEventSwipeLeft                           = 1<<26,
+    kIOHIDDigitizerEventSwipeRight                          = 1<<27,
     kIOHIDDigitizerEventEstimatedAltitude                   = 1<<28,
     kIOHIDDigitizerEventEstimatedAzimuth                    = 1<<29,
     kIOHIDDigitizerEventEstimatedPressure                   = 1<<30,
+    kIOHIDDigitizerEventSwipeMask                           = 0xF<<24,
 } IOHIDDigitizerEventMask;
 
 typedef uint32_t IOHIDEventOptionBits; enum IOHIDEventOptionBits {
@@ -236,6 +244,7 @@ typedef uint32_t IOHIDEventField; enum IOHIDEventField {
     kIOHIDEventFieldDigitizerWillUpdateMask,
     kIOHIDEventFieldDigitizerDidUpdateMask,
     kIOHIDEventFieldDigitizerEstimatedMask,
+    kIOHIDEventFieldDigitizerAuxiliaryPressure = kIOHIDEventFieldDigitizerBarrelPressure,
     kIOHIDEventFieldSwipeMask = IOHIDEventFieldBase(kIOHIDEventTypeSwipe),
     kIOHIDEventFieldSwipeMotion,
     kIOHIDEventFieldSwipeProgress,
@@ -306,7 +315,47 @@ typedef uint32_t IOHIDEventField; enum IOHIDEventField {
     kIOHIDEventFieldIsPixelUnits,
     kIOHIDEventFieldIsCenterOrigin,
     kIOHIDEventFieldIsBuiltIn,
+    kIOHIDEventFieldMultiAxisPointerX                   = IOHIDEventFieldBase(kIOHIDEventTypeMultiAxisPointer),
+    kIOHIDEventFieldMultiAxisPointerY,
+    kIOHIDEventFieldMultiAxisPointerZ,
+    kIOHIDEventFieldMultiAxisPointerRx,
+    kIOHIDEventFieldMultiAxisPointerRy,
+    kIOHIDEventFieldMultiAxisPointerRz,
+    kIOHIDEventFieldMultiAxisPointerButtonMask,
+    kIOHIDEventFieldMultiAxisPointerButtonNumber        = kIOHIDEventFieldButtonNumber,
+    kIOHIDEventFieldMultiAxisPointerButtonClickCount    = kIOHIDEventFieldButtonClickCount,
+    kIOHIDEventFieldMultiAxisPointerButtonPressure      = kIOHIDEventFieldButtonPressure,
 } IOHIDEventField;
+
+typedef uint32_t IOHIDDigitizerEventUpdateMask; enum IOHIDDigitizerEventUpdateMask {
+    kIOHIDDigitizerEventUpdateXMask                         = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerX),
+    kIOHIDDigitizerEventUpdateYMask                         = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerY),
+    kIOHIDDigitizerEventUpdateZMask                         = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerZ),
+    kIOHIDDigitizerEventUpdateButtonMaskMask                = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerButtonMask),
+    kIOHIDDigitizerEventUpdateTypeMask                      = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerType),
+    kIOHIDDigitizerEventUpdateIndexMask                     = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerIndex),
+    kIOHIDDigitizerEventUpdateIdentityMask                  = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerIdentity),
+    kIOHIDDigitizerEventUpdateEventMaskMask                 = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerEventMask),
+    kIOHIDDigitizerEventUpdateRangeMask                     = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerRange),
+    kIOHIDDigitizerEventUpdateTouchMask                     = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerTouch),
+    kIOHIDDigitizerEventUpdatePressureMask                  = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerPressure),
+    kIOHIDDigitizerEventUpdateAuxiliaryPressureMask         = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerAuxiliaryPressure),
+    kIOHIDDigitizerEventUpdateTwistMask                     = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerTwist),
+    kIOHIDDigitizerEventUpdateTiltXMask                     = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerTiltX),
+    kIOHIDDigitizerEventUpdateTiltYMask                     = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerTiltY),
+    kIOHIDDigitizerEventUpdateAltitudeMask                  = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerAltitude),
+    kIOHIDDigitizerEventUpdateAzimuthMask                   = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerAzimuth),
+    kIOHIDDigitizerEventUpdateQualityMask                   = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerQuality),
+    kIOHIDDigitizerEventUpdateDensityMask                   = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerDensity),
+    kIOHIDDigitizerEventUpdateIrregularityMask              = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerIrregularity),
+    kIOHIDDigitizerEventUpdateMajorRadiusMask               = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerMajorRadius),
+    kIOHIDDigitizerEventUpdateMinorRadiusMask               = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerMinorRadius),
+    kIOHIDDigitizerEventUpdateCollectionMask                = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerCollection),
+    kIOHIDDigitizerEventUpdateCollectionChordMask           = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerCollectionChord),
+    kIOHIDDigitizerEventUpdateChildEventMaskMask            = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerChildEventMask),
+    kIOHIDDigitizerEventUpdateIsDisplayIntegratedMask       = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerIsDisplayIntegrated),
+    kIOHIDDigitizerEventUpdateQualityRadiiAccuracyMask      = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerQualityRadiiAccuracy),
+} IOHIDDigitizerEventUpdateMask;
 
 typedef void (*IOHIDValueCallback)(void *context, IOReturn result, void *sender, IOHIDValueRef value);
 typedef void (*IOHIDReportCallback)(void *context, IOReturn result, void *sender, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
