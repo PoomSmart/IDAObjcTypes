@@ -212,6 +212,8 @@ BOOL _imp__class_addProtocol(Class cls, Protocol* protocol);
 BOOL class_respondsToSelector(Class cls, SEL sel);
 BOOL _imp__class_respondsToSelector(Class cls, SEL sel);
 
+BOOL objc_opt_isKindOfClass(id obj, Class cls);
+
 void objc_alloc(id);
 void class_replaceProperty(Class cls, const char* name, const objc_property_attribute_t* attributes, unsigned int attributeCount);
 void _imp__class_replaceProperty(Class cls, const char* name, const objc_property_attribute_t* attributes, unsigned int attributeCount);

@@ -68,6 +68,7 @@ void* NSPushAutoreleasePool(NSUInteger capacity);
 void* NSZoneMalloc(NSZone* zone, NSUInteger size);
 void* NSMapInsertIfAbsent(NSMapTable* table, const void* key, const void* value);
 void* NSMapGet(NSMapTable* table, const void* key);
+void* NSNextHashEnumeratorItem(NSHashEnumerator *enumerator);
 
 NSArray* NSAllMapTableKeys(NSMapTable* table);
 NSArray* NSAllMapTableValues(NSMapTable* table);
