@@ -82,6 +82,7 @@ Class class_getSuperclass(Class cls);
 Class _imp__class_getSuperclass(Class cls);
 Class class_setSuperclass(Class cls, Class newSuper);
 Class _imp__class_setSuperclass(Class cls, Class newSuper);
+Class objc_opt_class(id obj);
 
 Protocol* objc_getProtocol(const char* name);
 Protocol* _imp__objc_getProtocol(const char* name);
