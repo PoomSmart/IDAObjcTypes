@@ -26,6 +26,12 @@ typedef uint32_t os_unfair_lock_options_t;
 typedef uint64_t os_activity_id_t;
 typedef uint64_t os_signpost_id_t;
 
+typedef uint8_t os_signpost_type_t; enum os_signpost_type_t {
+    OS_SIGNPOST_EVENT           = 0x00,
+    OS_SIGNPOST_INTERVAL_BEGIN  = 0x01,
+    OS_SIGNPOST_INTERVAL_END    = 0x02,
+ } os_signpost_type_t;
+
 typedef void (*os_function_t)(void* );
 typedef void (*os_block_t)(void);
 

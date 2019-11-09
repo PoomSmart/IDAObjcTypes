@@ -68,6 +68,12 @@ typedef struct NSMapEnumerator {
     int bucket;
 } NSMapEnumerator;
 
+typedef struct NSHashEnumerator {
+    unsigned _pi;
+    unsigned _si;
+    void* _bs;
+} NSHashEnumerator;
+
 typedef struct NSFastEnumerationState {
     unsigned long state;
     id* itemsPtr;

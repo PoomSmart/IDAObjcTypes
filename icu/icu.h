@@ -35,45 +35,51 @@ UBool u_isISOControl(UChar32 c);
 UBool u_isprint(UChar32 c);
 UBool u_isbase(UChar32 c);
 UBool u_isMirrored(UChar32 c);
-
-UCharDirection u_charDirection(UChar32 c);
-
-UChar32 u_charMirror(UChar32 c);
-UChar32 u_getBidiPairedBracket(UChar32 c);
-int8_t u_charType(UChar32 c);
-
-#define U_GET_GC_MASK(c) U_MASK(u_charType(c))
-typedef UBool UCharEnumTypeRange(const void *context, UChar32 start, UChar32 limit, UCharCategory type);
-void u_enumCharTypes(UCharEnumTypeRange *enumRange, const void *context);
-#if !UCONFIG_NO_NORMALIZATION
-uint8_t u_getCombiningClass(UChar32 c);
-#endif
-int32_t u_charDigitValue(UChar32 c);
-UBlockCode ublock_getCode(UChar32 c);
-int32_t u_charName(UChar32 code, UCharNameChoice nameChoice, char *buffer, int32_t bufferLength, UErrorCode *pErrorCode);
-#ifndef U_HIDE_DEPRECATED_API
-int32_t u_getISOComment(UChar32 c, char *dest, int32_t destCapacity, UErrorCode *pErrorCode);
-#endif
-UChar32 u_charFromName(UCharNameChoice nameChoice, const char *name, UErrorCode *pErrorCode);
-typedef UBool UEnumCharNamesFn(void *context, UChar32 code, UCharNameChoice nameChoice, const char *name, int32_t length);
-void u_enumCharNames(UChar32 start, UChar32 limit, UEnumCharNamesFn *fn, void *context, UCharNameChoice nameChoice, UErrorCode *pErrorCode);
-const char* u_getPropertyName(UProperty property, UPropertyNameChoice nameChoice);
-UProperty u_getPropertyEnum(const char* alias);
-const char* u_getPropertyValueName(UProperty property, int32_t value, UPropertyNameChoice nameChoice);
-int32_t u_getPropertyValueEnum(UProperty property, const char* alias);
 UBool u_isIDStart(UChar32 c);
 UBool u_isIDPart(UChar32 c);
 UBool u_isIDIgnorable(UChar32 c);
 UBool u_isJavaIDStart(UChar32 c);
 UBool u_isJavaIDPart(UChar32 c);
+
+UBool uset_contains(const USet* set, UChar32 c);
+UBool uset_containsRange(const USet* set, UChar32 start, UChar32 end);
+UBool uset_containsString(const USet* set, const UChar* str, int32_t strLen);
+
+UCharDirection u_charDirection(UChar32 c);
+
+UChar32 u_charMirror(UChar32 c);
+UChar32 u_getBidiPairedBracket(UChar32 c);
+
+int8_t u_charType(UChar32 c);
+
+uint8_t u_getCombiningClass(UChar32 c);
+
+#define U_GET_GC_MASK(c) U_MASK(u_charType(c))
+typedef UBool UCharEnumTypeRange(const void *context, UChar32 start, UChar32 limit, UCharCategory type);
+void u_enumCharTypes(UCharEnumTypeRange *enumRange, const void *context);
+
+UBlockCode ublock_getCode(UChar32 c);
+int32_t u_charDigitValue(UChar32 c);
+int32_t u_charName(UChar32 code, UCharNameChoice nameChoice, char *buffer, int32_t bufferLength, UErrorCode *pErrorCode);
+
+int32_t u_getISOComment(UChar32 c, char *dest, int32_t destCapacity, UErrorCode *pErrorCode);
+
+int32_t u_getPropertyValueEnum(UProperty property, const char* alias);
+int32_t u_digit(UChar32 ch, int8_t radix);
+int32_t u_getFC_NFKC_Closure(UChar32 c, UChar *dest, int32_t destCapacity, UErrorCode *pErrorCode);
+
+typedef UBool UEnumCharNamesFn(void *context, UChar32 code, UCharNameChoice nameChoice, const char *name, int32_t length);
+void u_enumCharNames(UChar32 start, UChar32 limit, UEnumCharNamesFn *fn, void *context, UCharNameChoice nameChoice, UErrorCode *pErrorCode);
+const char* u_getPropertyName(UProperty property, UPropertyNameChoice nameChoice);
+const char* u_getPropertyValueName(UProperty property, int32_t value, UPropertyNameChoice nameChoice);
+UProperty u_getPropertyEnum(const char* alias);
+
+UChar32 u_charFromName(UCharNameChoice nameChoice, const char *name, UErrorCode *pErrorCode);
 UChar32 u_tolower(UChar32 c);
 UChar32 u_toupper(UChar32 c);
 UChar32 u_totitle(UChar32 c);
 UChar32 u_foldCase(UChar32 c, uint32_t options);
-int32_t u_digit(UChar32 ch, int8_t radix);
 UChar32 u_forDigit(int32_t digit, int8_t radix);
+
 void u_charAge(UChar32 c, UVersionInfo versionArray);
 void u_getUnicodeVersion(UVersionInfo versionArray);
-#if !UCONFIG_NO_NORMALIZATION
-int32_t u_getFC_NFKC_Closure(UChar32 c, UChar *dest, int32_t destCapacity, UErrorCode *pErrorCode);
-#endif

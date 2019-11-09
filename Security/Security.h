@@ -6,9 +6,13 @@ bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
 CFTypeID SecTrustGetTypeID(void);
 CFTypeID SecCertificateGetTypeID(void);
 CFTypeID SecAccessControlGetTypeID(void);
+CFTypeID SecTaskGetTypeID(void);
+
+CFTypeRef SecTaskCopyValueForEntitlement(SecTaskRef task, CFStringRef entitlement, CFErrorRef *error);
 
 CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved);
 CFStringRef SecCertificateCopySubjectSummary(SecCertificateRef certificate);
+CFStringRef SecTaskCopySigningIdentifier(SecTaskRef task, CFErrorRef *error);
 
 CFAbsoluteTime SecTrustGetVerifyTime(SecTrustRef trust);
 
@@ -58,6 +62,8 @@ OSStatus SecCertificateCopyEmailAddresses(SecCertificateRef certificate, CFArray
 OSStatus SecCertificateCopyPublicKey(SecCertificateRef certificate, SecKeyRef *key);
 OSStatus SecCertificateAddToKeychain(SecCertificateRef certificate, SecKeychainRef keychain);
 OSStatus SecCertificateGetData(SecCertificateRef certificate, CSSM_DATA_PTR data);
+
+SecTaskRef SecTaskCreateFromSelf(CFAllocatorRef allocator);
 
 SecKeyRef SecTrustCopyPublicKey(SecTrustRef trust);
 SecKeyRef SecCertificateCopyKey(SecCertificateRef certificate);

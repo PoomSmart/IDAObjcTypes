@@ -135,6 +135,7 @@ const void* xpc_array_get_data(xpc_object_t xarray, size_t index, size_t* length
 void* xpc_connection_get_context(xpc_connection_t connection);
 
 char* xpc_copy_description(xpc_object_t object);
+const char* xpc_connection_copy_bundle_id(xpc_object_t object);
 const char* xpc_connection_get_name(xpc_connection_t connection);
 const char* xpc_dictionary_get_string(xpc_object_t xdict, const char* key);
 const char* xpc_array_get_string(xpc_object_t xarray, size_t index);

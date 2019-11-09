@@ -16,6 +16,7 @@ typedef struct __SecAccess *SecAccessRef;
 typedef struct __SecTrust *SecACLRef;
 typedef struct __SecPassword *SecPasswordRef;
 typedef struct __SecTrust *SecTrustRef;
+typedef struct __SecTask *SecTaskRef;
 
 typedef uint32 CSSM_TP_ACTION;
 typedef uint32 CSSM_TP_HANDLE;
