@@ -1,6 +1,7 @@
 #import "../Types.h"
 #import "Types.h"
 
+id objc_alloc(id);
 id objc_constructInstance(Class cls, void* bytes);
 id _imp__objc_constructInstance(Class cls, void* bytes);
 id objc_autorelease(id value);
@@ -214,7 +215,6 @@ BOOL _imp__class_respondsToSelector(Class cls, SEL sel);
 
 BOOL objc_opt_isKindOfClass(id obj, Class cls);
 
-void objc_alloc(id);
 void class_replaceProperty(Class cls, const char* name, const objc_property_attribute_t* attributes, unsigned int attributeCount);
 void _imp__class_replaceProperty(Class cls, const char* name, const objc_property_attribute_t* attributes, unsigned int attributeCount);
 void objc_registerClassPair(Class cls);
