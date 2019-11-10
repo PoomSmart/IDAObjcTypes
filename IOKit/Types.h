@@ -1,6 +1,8 @@
 #ifndef IOKIT_H_
 #define IOKIT_H_
 
+#import "../CoreFoundation/Types.h"
+
 #define IOHIDEventFieldBase(type) (type << 16)
 #define IOHIDEventFieldOffsetOf(field) (field & 0xffff)
 
