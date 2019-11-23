@@ -9,6 +9,8 @@
 #define __PTHREAD_ATTR_SIZE__ 56
 #endif
 
+typedef unsigned int qos_class_t;
+
 struct __darwin_pthread_handler_rec {
 	void (*__routine)(void* );
 	void* __arg;
@@ -25,6 +27,13 @@ struct _opaque_pthread_t {
 	struct __darwin_pthread_handler_rec* __cleanup_stack;
 	char __opaque[__PTHREAD_SIZE__];
 };
+
+typedef struct pthread_mutexattr_t {
+    int pshared;    
+    int kind;       
+    int protocol;   
+    int robustness; 
+} pthread_mutexattr_t;
 
 typedef struct _opaque_pthread_t* __darwin_pthread_t;
 typedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;
