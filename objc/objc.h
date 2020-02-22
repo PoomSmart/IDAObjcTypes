@@ -55,6 +55,9 @@ id _imp__method_invoke(id receiver, Method m, ...);
 id objc_begin_catch(void* exc_buf);
 id _imp__objc_begin_catch(void* exc_buf);
 
+id objc_opt_self(id self);
+id objc_opt_new(Class cls);
+
 #ifdef x86
 double objc_msgSend_fpret(id self, SEL op, ...);
 double _imp__objc_msgSend_fpret(id self, SEL op, ...);
@@ -214,6 +217,7 @@ BOOL class_respondsToSelector(Class cls, SEL sel);
 BOOL _imp__class_respondsToSelector(Class cls, SEL sel);
 
 BOOL objc_opt_isKindOfClass(id obj, Class cls);
+BOOL objc_opt_respondsToSelector(id obj, SEL sel);
 
 void class_replaceProperty(Class cls, const char* name, const objc_property_attribute_t* attributes, unsigned int attributeCount);
 void _imp__class_replaceProperty(Class cls, const char* name, const objc_property_attribute_t* attributes, unsigned int attributeCount);
