@@ -91,6 +91,7 @@ void CFStringTrimWhitespace(CFMutableStringRef theString);
 void CFStringGetCharacters(CFStringRef theString, CFRange range, UniChar* buffer);
 void CFStringInitInlineBuffer(CFStringRef str, CFStringInlineBuffer* buf, CFRange range);
 void CFStringGetParagraphBounds(CFStringRef string, CFRange range, CFIndex* parBeginIndex, CFIndex* parEndIndex, CFIndex* contentsEndIndex);
+void CFStringTokenizerSetString(CFStringTokenizerRef tokenizer, CFStringRef string, CFRange range);
 void CFSetAddValue(CFMutableSetRef theSet, const void* value);
 void CFSetSetValue(CFMutableSetRef theSet, const void* value);
 void CFSetReplaceValue(CFMutableSetRef theSet, const void* value);

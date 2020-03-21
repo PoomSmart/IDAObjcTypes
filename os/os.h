@@ -34,6 +34,8 @@ void _os_log_internal(void* dso, os_log_t log, os_log_type_t type, const char* m
 
 void _os_signpost_emit_with_name_impl(void *dso, os_log_t log, os_signpost_type_t type, os_signpost_id_t spid, const char *name, const char *format, uint8_t *buf, uint32_t size);
 
+bool _os_feature_enabled_impl(const char *domain, const char *feature);
+
 void os_lock_lock(os_lock_t lock);
 void os_lock_unlock(os_lock_t lock);
 

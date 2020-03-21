@@ -2,6 +2,7 @@
 #import "Types.h"
 
 id objc_alloc(id);
+id objc_alloc_init(Class);
 id objc_constructInstance(Class cls, void* bytes);
 id _imp__objc_constructInstance(Class cls, void* bytes);
 id objc_autorelease(id value);

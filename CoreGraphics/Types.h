@@ -205,6 +205,7 @@ typedef struct CGPathElement {
     CGPoint* points;
 } CGPathElement;
 
+typedef void (*CGPathApplyBlock)(const CGPathElement *element);
 typedef void (*CGPathApplierFunction)(void* info, const CGPathElement* element);
 typedef void (*CGPatternDrawPatternCallback)(void* info, CGContextRef context);
 typedef void (*CGPatternReleaseInfoCallback)(void* info);

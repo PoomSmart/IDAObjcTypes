@@ -91,12 +91,14 @@ void CGContextEOClip(CGContextRef c);
 void CGContextClipToMask(CGContextRef c, CGRect rect, CGImageRef mask);
 void CGContextClipToRect(CGContextRef c, CGRect rect);
 void CGContextClipToRects(CGContextRef c, const CGRect rects[], size_t count);
+void CGContextSetAlpha(CGContextRef c, CGFloat alpha);
 void CGContextSetFillColor(CGContextRef context, const CGFloat components[]);
 void CGContextSetFillColorWithColor(CGContextRef c, CGColorRef color);
 void CGContextSetStrokeColor(CGContextRef context, const CGFloat components[]);
 void CGContextSetStrokeColorWithColor(CGContextRef c, CGColorRef color);
 void CGContextSetInterpolationQuality(CGContextRef c, CGInterpolationQuality quality);
 void CGContextSetShadowWithColor(CGContextRef c, CGSize offset, CGFloat blur, CGColorRef color);
+void CGContextResetState(CGContextRef c);
 void CGContextRelease(CGContextRef c);
 void CGContextFlush(CGContextRef c);
 void CGContextSynchronize(CGContextRef c);
@@ -119,6 +121,7 @@ void CGPathAddRect(CGMutablePathRef path, const CGAffineTransform* m, CGRect rec
 void CGPathAddRects(CGMutablePathRef path, const CGAffineTransform* m, const CGRect* rects, size_t count);
 void CGPathAddRoundedRect(CGMutablePathRef path, const CGAffineTransform* transform, CGRect rect, CGFloat cornerWidth, CGFloat cornerHeight);
 void CGPathApply(CGPathRef path, void* info, CGPathApplierFunction function);
+void CGPathApplyWithBlock(CGPathRef path, CGPathApplyBlock block);
 void CGPathMoveToPoint(CGMutablePathRef path, const CGAffineTransform* m, CGFloat x, CGFloat y);
 void CGPathCloseSubpath(CGMutablePathRef path);
 void CGPathAddEllipseInRect(CGMutablePathRef path, const CGAffineTransform* m, CGRect rect);
@@ -189,6 +192,7 @@ CGColorRef CGColorCreateCopyByMatchingToColorSpace(CGColorSpaceRef, CGColorRende
 CGColorSpaceRef CGImageGetColorSpace(CGImageRef image);
 CGColorSpaceRef CGColorGetColorSpace(CGColorRef color);
 CGColorSpaceRef CGColorSpaceCreateDeviceRGB(void);
+CGColorSpaceRef CGColorSpaceCreateDeviceGray(void);
 
 CGColorRenderingIntent CGImageGetRenderingIntent(CGImageRef image);
 
