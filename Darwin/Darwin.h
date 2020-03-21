@@ -28,6 +28,7 @@ bool dispatch_data_apply(dispatch_data_t data, dispatch_data_applier_t applier);
 bool notify_is_valid_token(int val);
 
 double __exp10(double);
+float __exp10f(float);
 
 char *__strcat_chk(char *dest, const char *src, size_t destlen);
 char *__strcpy_chk(char* dest, const char* src, size_t destlen);
@@ -37,8 +38,8 @@ char** backtrace_symbols(void*  const* array, int size);
 
 void* bsearch_b(const void* , const void* , size_t, size_t, int (*)(const void* , const void* ));
 void* __memcpy_chk(void* dest, const void* src, size_t len, size_t dstlen);
-void* __memmove_chk (void* dest, const void* src, size_t len, size_t dstlen);
-void* __memset_chk (void *dstpp, int c, size_t len, size_t dstlen);
+void* __memmove_chk(void* dest, const void* src, size_t len, size_t dstlen);
+void* __memset_chk(void *dstpp, int c, size_t len, size_t dstlen);
 void* __strncpy_chk(char* dest, char* src, size_t len, size_t dstlen);
 
 void abort_report_np(const char* , ...);
@@ -77,6 +78,7 @@ dispatch_mach_msg_t dispatch_mach_msg_create(mach_msg_header_t *msg, size_t size
 mach_msg_header_t* dispatch_mach_msg_get_msg(dispatch_mach_msg_t message, size_t *size_ptr);
 
 dispatch_block_t dispatch_block_create(dispatch_block_flags_t flags, dispatch_block_t block);
+dispatch_block_t dispatch_block_create_with_qos_class(dispatch_block_flags_t flags, dispatch_qos_class_t qos_class, int relative_priority, dispatch_block_t block);
 
 dispatch_data_t dispatch_data_create(const void* buffer, size_t size, dispatch_queue_t queue, dispatch_block_t destructor);
 dispatch_data_t dispatch_data_create_map(dispatch_data_t data, const void** buffer_ptr, size_t* size_ptr);

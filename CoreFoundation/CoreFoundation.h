@@ -205,6 +205,7 @@ CFRange CFStringFind(CFStringRef theString, CFStringRef stringToFind, CFStringCo
 CFRange CFStringGetRangeOfComposedCharactersAtIndex(CFStringRef theString, CFIndex theIndex);
 CFRange CFStringGetRangeOfCharacterClusterAtIndex(CFStringRef string, CFIndex charIndex, CFStringCharacterClusterType type);
 CFRange CFURLGetByteRangeForComponent(CFURLRef url, CFURLComponentType component, CFRange* rangeIncludingSeparators);
+CFRange CFStringTokenizerGetCurrentTokenRange(CFStringTokenizerRef tokenizer);
 
 CFAllocatorRef CFAllocatorGetDefault(void);
 CFAllocatorRef CFGetAllocator(CFTypeRef cf);
@@ -232,6 +233,7 @@ CFURLRef CFURLCreateFileReferenceURL(CFAllocatorRef allocator, CFURLRef url, CFE
 CFURLRef CFURLCreateFromFileSystemRepresentation(CFAllocatorRef allocator, const UInt8* buffer, CFIndex bufLen, Boolean isDirectory);
 CFURLRef CFURLCreateFromFileSystemRepresentationRelativeToBase(CFAllocatorRef allocator, const UInt8* buffer, CFIndex bufLen, Boolean isDirectory, CFURLRef baseURL);
 CFURLRef CFURLCreateWithString(CFAllocatorRef allocator, CFStringRef URLString, CFURLRef baseURL);
+CFURLRef CFURLCreateWithFileSystemPath(CFAllocatorRef allocator, CFStringRef filePath, CFURLPathStyle pathStyle, Boolean isDirectory);
 
 CFDataRef CFDataCreate(CFAllocatorRef allocator, const UInt8* bytes, CFIndex length);
 CFDataRef CFDataCreateCopy(CFAllocatorRef allocator, CFDataRef theData);
@@ -280,6 +282,7 @@ CFWriteStreamRef CFWriteStreamCreateWithAllocatedBuffers(CFAllocatorRef alloc, C
 CFDictionaryRef CFDictionaryCreate(CFAllocatorRef allocator, const void** keys, const void** values, CFIndex numValues, const CFDictionaryKeyCallBacks* keyCallBacks, const CFDictionaryValueCallBacks* valueCallBacks);
 CFDictionaryRef CFDictionaryCreateCopy(CFAllocatorRef allocator, CFDictionaryRef theDict);
 CFDictionaryRef CFPreferencesCopyMultiple(CFArrayRef keysToFetch, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
+CFDictionaryRef CFLocaleCreateComponentsFromLocaleIdentifier(CFAllocatorRef allocator, CFLocaleIdentifier localeID);
 
 CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFDictionaryKeyCallBacks* keyCallBacks, const CFDictionaryValueCallBacks* valueCallBacks);
 CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);
@@ -301,6 +304,8 @@ CFArrayRef CFBundleCopyLocalizationsForPreferences(CFArrayRef locArray, CFArrayR
 CFArrayRef CFBundleCopyBundleLocalizations(CFBundleRef bundle);
 CFArrayRef CFRunLoopCopyAllModes(CFRunLoopRef rl);
 
+CFStringTokenizerRef CFStringTokenizerCreate(CFAllocatorRef alloc, CFStringRef string, CFRange range, CFOptionFlags options, CFLocaleRef locale);
+
 CFMutableStringRef CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength);
 CFMutableStringRef CFStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFStringRef theString);
 CFMutableStringRef CFStringCreateMutableWithExternalCharactersNoCopy(CFAllocatorRef alloc, UniChar* chars, CFIndex numChars, CFIndex capacity, CFAllocatorRef externalCharactersAllocator);
@@ -308,6 +313,7 @@ CFMutableStringRef CFStringCreateMutableWithExternalCharactersNoCopy(CFAllocator
 CFStringRef CFStringCreateWithCString(CFAllocatorRef alloc, const char* cStr, CFStringEncoding encoding);
 CFStringRef CFCopyDescription(CFTypeRef cf);
 CFStringRef CFCopyTypeIDDescription(CFTypeID type_id);
+CFStringRef CFErrorCopyDescription(CFErrorRef err);
 CFStringRef CFErrorCopyFailureReason(CFErrorRef err);
 CFStringRef CFStringCreateWithPascalString(CFAllocatorRef alloc, ConstStr255Param pStr, CFStringEncoding encoding);
 CFStringRef CFStringCreateWithBytes(CFAllocatorRef alloc, const UInt8* bytes, CFIndex numBytes, CFStringEncoding encoding, Boolean isExternalRepresentation);
@@ -428,3 +434,5 @@ CFIndex CFPropertyListWrite(CFPropertyListRef propertyList, CFWriteStreamRef str
 CFIndex CFURLGetBytes(CFURLRef url, UInt8* buffer, CFIndex bufferLength);
 CFIndex CFRunLoopSourceGetOrder(CFRunLoopSourceRef source);
 CFIndex CFRunLoopTimerGetOrder(CFRunLoopTimerRef timer);
+
+CFStringTokenizerTokenType CFStringTokenizerAdvanceToNextToken(CFStringTokenizerRef tokenizer);

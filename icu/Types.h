@@ -1124,4 +1124,6 @@ typedef struct BinaryProperty {
     BinaryPropertyContains *contains;
 } BinaryProperty;
 
+typedef struct UBreakIterator UBreakIterator;
+
 #endif

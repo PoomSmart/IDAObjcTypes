@@ -32,6 +32,7 @@
 #ifdef SWIFT
 #import "Swift/Swift.h"
 #endif
+#import "System/System.h"
 
 /*
 *  Copyright (C) Apple Inc. All rights reserved.

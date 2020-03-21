@@ -34,6 +34,7 @@ typedef struct __CFWriteStream* CFWriteStreamRef;
 typedef struct __CFUUID* CFUUIDRef;
 typedef const struct __CFBag* CFBagRef;
 typedef struct __CFBag* CFMutableBagRef;
+typedef struct __CFStringTokenizer* CFStringTokenizerRef;
 
 typedef const void* CFTypeRef;
 typedef const unsigned char* ConstStr255Param;
@@ -244,6 +245,16 @@ typedef CFOptionFlags CFStringCompareFlags; enum CFStringCompareFlags {
     kCFCompareWidthInsensitive = 256,
     kCFCompareForcedOrdering = 512
 } CFStringCompareFlags;
+
+typedef CFOptionFlags CFStringTokenizerTokenType; enum CFStringTokenizerTokenType {
+    kCFStringTokenizerTokenNone = 0,
+    kCFStringTokenizerTokenNormal = 1UL << 0,
+    kCFStringTokenizerTokenHasSubTokensMask = 1UL << 1,
+    kCFStringTokenizerTokenHasDerivedSubTokensMask = 1UL << 2,
+    kCFStringTokenizerTokenHasHasNumbersMask = 1UL << 3,
+    kCFStringTokenizerTokenHasNonLettersMask = 1UL << 4,
+    kCFStringTokenizerTokenIsCJWordMask = 1UL << 5
+} CFStringTokenizerTokenType;
 
 typedef CFIndex CFCharacterSetPredefinedSet; enum CFCharacterSetPredefinedSet {
     kCFCharacterSetControl = 1,

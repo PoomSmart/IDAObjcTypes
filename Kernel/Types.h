@@ -8,6 +8,8 @@
 typedef __darwin_natural_t natural_t;
 typedef natural_t mach_port_seqno_t;
 
+typedef u_int64_t user_addr_t;
+
 typedef unsigned int FourCharCode;
 
 typedef	unsigned int mach_msg_trailer_type_t;

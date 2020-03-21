@@ -53,5 +53,6 @@ __noreturn void __stack_chk_fail(void);
 #ifdef SWIFT
 #import "Swift/Types.h"
 #endif
+#import "System/Types.h"
 
 #endif

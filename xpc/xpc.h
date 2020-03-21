@@ -40,6 +40,9 @@ xpc_object_t xpc_uuid_create(const unsigned char* uuid);
 xpc_object_t xpc_shmem_create(void* region, size_t length);
 xpc_object_t xpc_copy_bootstrap(void);
 xpc_object_t xpc_retain(xpc_object_t);
+xpc_object_t xpc_activity_copy_criteria(xpc_activity_t activity);
+
+xpc_activity_state_t xpc_activity_get_state(xpc_activity_t activity);
 
 pid_t xpc_connection_get_pid(xpc_connection_t connection);
 
@@ -53,6 +56,8 @@ bool xpc_dictionary_get_bool(xpc_object_t xdict, const char* key);
 bool xpc_array_apply(xpc_object_t xarray, xpc_array_applier_t applier);
 bool xpc_array_get_bool(xpc_object_t xarray, size_t index);
 bool xpc_bool_get_value(xpc_object_t xbool);
+bool xpc_activity_set_state(xpc_activity_t activity, xpc_activity_state_t state);
+bool xpc_activity_should_defer(xpc_activity_t activity);
 
 double xpc_dictionary_get_double(xpc_object_t xdict, const char* key);
 double xpc_array_get_double(xpc_object_t xarray, size_t index);
@@ -127,6 +132,10 @@ void xpc_transaction_begin(void);
 void xpc_transaction_end(void);
 void xpc_transaction_exit_clean(void);
 void xpc_track_activity(void);
+
+void xpc_activity_register(const char *identifier, xpc_object_t criteria, xpc_activity_handler_t handler);
+void xpc_activity_unregister(const char *identifier);
+void xpc_activity_set_criteria(xpc_activity_t activity, xpc_object_t criteria);
 
 const uint8_t* xpc_uuid_get_bytes(xpc_object_t xuuid);
 const void* xpc_data_get_bytes_ptr(xpc_object_t xdata);
