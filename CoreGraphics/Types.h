@@ -44,6 +44,8 @@ typedef struct CGPath* CGMutablePathRef;
 typedef struct CGPattern* CGPatternRef;
 typedef struct CGFont* CGFontRef;
 typedef const struct CGColorTransform* CGColorTransformRef;
+typedef struct CGImageDestination* CGImageDestinationRef;
+typedef struct CGImageSource* CGImageSourceRef;
 
 typedef uint32_t CGRectEdge;
 

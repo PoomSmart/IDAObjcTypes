@@ -14,6 +14,8 @@ CFTypeRef CGCFDictionaryGetValueWithType(CFDictionaryRef theDict, const void* ke
 CFDictionaryRef CGRectCreateDictionaryRepresentation(CGRect rect);
 CFDictionaryRef CGSizeCreateDictionaryRepresentation(CGSize size);
 CFDictionaryRef CGPointCreateDictionaryRepresentation(CGPoint point);
+CFDictionaryRef CGImageSourceCopyProperties(CGImageSourceRef isrc, CFDictionaryRef options);
+CFDictionaryRef CGImageSourceCopyPropertiesAtIndex(CGImageSourceRef isrc, size_t index, CFDictionaryRef options);
 
 CFMutableDictionaryRef CGCFDictionaryCreate(void);
 CFMutableDictionaryRef CGCFDictionaryCreateCopy(CFDictionaryRef theDict);
@@ -106,9 +108,17 @@ void CGContextSynchronize(CGContextRef c);
 void CGContextEndPage(CGContextRef c);
 void CGContextBeginPage(CGContextRef c, const CGRect* mediaBox);
 void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode);
+void CGContextSetCTM(CGContextRef, CGAffineTransform);
+void CGContextSetRGBFillColor(CGContextRef c, CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+void CGContextSetLineDash(CGContextRef c, CGFloat phase, const CGFloat *lengths, size_t count);
 void CGContextResetClip(CGContextRef c);
 void CGContextClear(CGContextRef c);
 void CGGradientRelease(CGGradientRef gradient);
+void CGImageSourceUpdateData(CGImageSourceRef isrc, CFDataRef data, bool final);
+void CGImageSourceUpdateDataProvider(CGImageSourceRef isrc, CGDataProviderRef provider, bool final);
+void CGImageDestinationAddImage(CGImageDestinationRef idst, CGImageRef image, CFDictionaryRef properties);
+void CGImageDestinationAddImageFromSource(CGImageDestinationRef idst, CGImageSourceRef isrc, size_t index, CFDictionaryRef properties);
+void CGImageDestinationSetProperties(CGImageDestinationRef idst, CFDictionaryRef properties);
 void CGImageRelease(CGImageRef image);
 void CGPathAddPath(CGMutablePathRef path1, const CGAffineTransform* m, CGPathRef path2);
 void CGPathAddArc(CGMutablePathRef path, const CGAffineTransform* m, CGFloat x, CGFloat y, CGFloat radius, CGFloat startAngle, CGFloat endAngle, bool clockwise);
@@ -162,10 +172,21 @@ CGMutablePathRef CGPathCreateMutableCopyByTransformingPath(CGPathRef path, const
 
 CGImageRef CGImageCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGColorSpaceRef space, CGBitmapInfo bitmapInfo, CGDataProviderRef provider, const CGFloat* decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageCreateWithPNGDataProvider(CGDataProviderRef source, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
+CGImageRef CGImageCreateWithImageInRect(CGImageRef image, CGRect rect);
 CGImageRef CGImageMaskCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGDataProviderRef provider, const CGFloat* decode, bool shouldInterpolate);
+CGImageRef CGImageRetain(CGImageRef image);
+CGImageRef CGImageSourceCreateImageAtIndex(CGImageSourceRef isrc, size_t index, CFDictionaryRef options);
+CGImageRef CGImageSourceCreateThumbnailAtIndex(CGImageSourceRef isrc, size_t index, CFDictionaryRef options);
 CGImageRef CGPatternGetImage(CGPatternRef pattern);
 CGImageRef CGBitmapContextCreateImage(CGContextRef context);
-CGImageRef CGImageRetain(CGImageRef image);
+
+CGImageSourceRef CGImageSourceCreateWithData(CFDataRef data, CFDictionaryRef options);
+CGImageSourceRef CGImageSourceCreateWithDataProvider(CGDataProviderRef provider, CFDictionaryRef options);
+CGImageSourceRef CGImageSourceCreateWithURL(CFURLRef url, CFDictionaryRef options);
+CGImageSourceRef CGImageSourceCreateIncremental(CFDictionaryRef options);
+
+CGImageDestinationRef CGImageDestinationCreateWithData(CFMutableDataRef data, CFStringRef type, size_t count, CFDictionaryRef options);
+CGImageDestinationRef CGImageDestinationCreateWithURL(CFURLRef url, CFStringRef type, size_t count, CFDictionaryRef options);
 
 CGFontRef CGFontRetain(CGFontRef font);
 CGFontRef CGFontCreateWithFontName(CFStringRef name);
@@ -195,9 +216,12 @@ CGColorRef CGColorTransformConvertColor(CGColorTransformRef, CGColorRef, CGColor
 CGColorRef CGContextGetFillColorAsColor(CGContextRef);
 
 CGColorSpaceRef CGImageGetColorSpace(CGImageRef image);
+CGColorSpaceRef CGColorSpaceCreateWithName(CFStringRef name);
 CGColorSpaceRef CGColorGetColorSpace(CGColorRef color);
 CGColorSpaceRef CGColorSpaceCreateDeviceRGB(void);
 CGColorSpaceRef CGColorSpaceCreateDeviceGray(void);
+
+CGColorSpaceModel CGColorSpaceGetModel(CGColorSpaceRef space);
 
 CGColorTransformRef CGColorTransformCreate(CGColorSpaceRef, CFDictionaryRef attributes);
 
@@ -225,6 +249,7 @@ size_t CGImageGetHeight(CGImageRef image);
 size_t CGImageGetBitsPerComponent(CGImageRef image);
 size_t CGImageGetBitsPerPixel(CGImageRef image);
 size_t CGImageGetBytesPerRow(CGImageRef image);
+size_t CGImageSourceGetCount(CGImageSourceRef isrc);
 size_t CGColorGetNumberOfComponents(CGColorRef color);
 
 bool CGRectEqualToRect(CGRect rect1, CGRect rect2);
@@ -241,6 +266,7 @@ bool CGContextIsPathEmpty(CGContextRef context);
 bool CGContextDrawsWithCorrectShadowOffsets(CGContextRef);
 bool CGContextGetAllowsFontSubpixelPositioning(CGContextRef);
 bool CGImageGetShouldInterpolate(CGImageRef image);
+bool CGImageDestinationFinalize(CGImageDestinationRef idst);
 bool CGImageIsMask(CGImageRef image);
 bool CGPathEqualToPath(CGPathRef path1, CGPathRef path2);
 bool CGPathIsEmpty(CGPathRef path);
