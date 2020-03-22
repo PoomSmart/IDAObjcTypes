@@ -51,6 +51,9 @@ typedef struct __IOHIDValue* IOHIDValueRef;
 typedef struct __IOHIDDevice* IOHIDDeviceRef;
 typedef struct __IOSurface* IOSurfaceRef;
 typedef struct IONotificationPort *IONotificationPortRef;
+typedef struct __IOHIDEventSystemClient* IOHIDEventSystemClientRef;
+typedef struct __IOHIDEventQueue* IOHIDEventQueueRef;
+typedef struct __IOHIDServiceClient *IOHIDServiceClientRef;
 
 const mach_port_t kIOMasterPortDefault;
 
@@ -381,5 +384,6 @@ typedef void (*IOHIDValueCallback)(void *context, IOReturn result, void *sender,
 typedef void (*IOHIDReportCallback)(void *context, IOReturn result, void *sender, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
 typedef void (*IOHIDDeviceCallback)(void *context, IOReturn result, void *sender, IOHIDDeviceRef device);
 typedef void (*IOServiceMatchingCallback)(void *refcon, io_iterator_t iterator);
+typedef void (*IOHIDEventSystemClientEventCallback)(void* target, void* refcon, IOHIDEventQueueRef queue, IOHIDEventRef event);
 
 #endif
