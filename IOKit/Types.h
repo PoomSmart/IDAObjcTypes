@@ -9,6 +9,7 @@
 typedef OSObject* io_object_t;
 
 typedef io_object_t* io_service_t;
+typedef io_object_t* io_connect_t;
 
 typedef kern_return_t IOReturn;
 
@@ -29,6 +30,8 @@ typedef UInt64 IOPhysicalAddress64;
 typedef UInt32 IOPhysicalLength32;
 typedef UInt64 IOPhysicalLength64;
 
+typedef uint32_t IOSurfaceID;
+
 #ifdef __LP64__
 typedef mach_vm_address_t IOVirtualAddress;
 #else
@@ -41,6 +44,7 @@ typedef struct __IOHIDEvent* IOHIDEventRef;
 typedef struct __IOHIDManager* IOHIDManagerRef;
 typedef struct __IOHIDValue* IOHIDValueRef;
 typedef struct __IOHIDDevice* IOHIDDeviceRef;
+typedef struct __IOSurface* IOSurfaceRef;
 
 const mach_port_t kIOMasterPortDefault;
 

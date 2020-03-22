@@ -109,6 +109,7 @@ void CFWriteStreamClose(CFWriteStreamRef stream);
 void CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 void CFRunLoopAddCommonMode(CFRunLoopRef rl, CFRunLoopMode mode);
 void CFRunLoopRun(void);
+void CFRunLoopAddTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode);
 void CFRunLoopWakeUp(CFRunLoopRef rl);
 void CFRunLoopStop(CFRunLoopRef rl);
 void CFRunLoopPerformBlock(CFRunLoopRef rl, CFTypeRef mode, void (*block)(void)); 
