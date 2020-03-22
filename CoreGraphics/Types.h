@@ -43,6 +43,7 @@ typedef const struct CGPath* CGPathRef;
 typedef struct CGPath* CGMutablePathRef;
 typedef struct CGPattern* CGPatternRef;
 typedef struct CGFont* CGFontRef;
+typedef const struct CGColorTransform* CGColorTransformRef;
 
 typedef uint32_t CGRectEdge;
 
@@ -199,6 +200,25 @@ typedef uint32_t CGBitmapInfo; enum CGBitmapInfo {
     kCGBitmapByteOrder16Big    = kCGImageByteOrder16Big,
     kCGBitmapByteOrder32Big    = kCGImageByteOrder32Big
 } CGBitmapInfo;
+
+typedef uint32_t CGFontAntialiasingStyle; enum CGFontAntialiasingStyle {
+    kCGFontAntialiasingStyleUnfiltered = 0 << 7,
+    kCGFontAntialiasingStyleFilterLight = 1 << 7,
+    kCGFontAntialiasingStyleUnfilteredCustomDilation = (8 << 7),
+} CGFontAntialiasingStyle;
+
+typedef enum CGContextType {
+    kCGContextTypeUnknown,
+    kCGContextTypePDF,
+    kCGContextTypePostScript,
+    kCGContextTypeWindow,
+    kCGContextTypeBitmap,
+    kCGContextTypeGL,
+    kCGContextTypeDisplayList,
+    kCGContextTypeKSeparation,
+    kCGContextTypeIOSurface,
+    kCGContextTypeCount
+} CGContextType;
 
 typedef struct CGPathElement {
     CGPathElementType type;

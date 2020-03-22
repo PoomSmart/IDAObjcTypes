@@ -60,6 +60,9 @@ Protocol* NSProtocolFromString(NSString* namestr);
 
 NSMapEnumerator NSEnumerateMapTable(NSMapTable* table);
 
+NSMapTable *NSCreateMapTable(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity);
+
+unsigned NSHashCString(unsigned char *str, int n);
 unsigned __NSHashCString(void* table, const void* anObject);
 
 const char* NSGetSizeAndAlignment(const char* typePtr, NSUInteger* sizep, NSUInteger* alignp);

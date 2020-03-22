@@ -25,6 +25,7 @@ int _stdlib_memcmp(const void *s1, const void *s2, size_t n);
 long dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
 
 bool dispatch_data_apply(dispatch_data_t data, dispatch_data_applier_t applier);
+bool dispatch_mach_mig_demux(void *context, const struct mig_subsystem *const subsystems[], size_t count, dispatch_mach_msg_t dmsg);
 bool notify_is_valid_token(int val);
 
 double __exp10(double);
@@ -36,6 +37,7 @@ char *__strncat_chk(char *dest, const char *src, size_t len, size_t dstlen);
 
 char** backtrace_symbols(void*  const* array, int size);
 
+void* dispatch_mach_mig_demux_get_context(void);
 void* bsearch_b(const void* , const void* , size_t, size_t, int (*)(const void* , const void* ));
 void* __memcpy_chk(void* dest, const void* src, size_t len, size_t dstlen);
 void* __memmove_chk(void* dest, const void* src, size_t len, size_t dstlen);
