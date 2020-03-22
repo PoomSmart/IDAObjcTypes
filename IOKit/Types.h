@@ -320,7 +320,7 @@ typedef uint32_t IOHIDEventField; enum IOHIDEventField {
     kIOHIDEventFieldIsPixelUnits,
     kIOHIDEventFieldIsCenterOrigin,
     kIOHIDEventFieldIsBuiltIn,
-    kIOHIDEventFieldMultiAxisPointerX                   = IOHIDEventFieldBase(kIOHIDEventTypeMultiAxisPointer),
+    kIOHIDEventFieldMultiAxisPointerX = IOHIDEventFieldBase(kIOHIDEventTypeMultiAxisPointer),
     kIOHIDEventFieldMultiAxisPointerY,
     kIOHIDEventFieldMultiAxisPointerZ,
     kIOHIDEventFieldMultiAxisPointerRx,
@@ -363,7 +363,7 @@ typedef uint32_t IOHIDDigitizerEventUpdateMask; enum IOHIDDigitizerEventUpdateMa
 } IOHIDDigitizerEventUpdateMask;
 
 enum {
-    kIOHIDGenericGestureTypeTap        = 0,
+    kIOHIDGenericGestureTypeTap = 0,
     kIOHIDGenericGestureTypeSwipe
 };
 

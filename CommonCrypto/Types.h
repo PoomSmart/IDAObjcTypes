@@ -94,7 +94,7 @@ typedef int32_t CCStatus; enum CCStatus {
 } CCStatus;
 typedef int32_t CCCryptorStatus;
 
-typedef uint32_t CCOperation; enum {
+typedef uint32_t CCOperation; enum CCOperation {
     kCCEncrypt = 0,
     kCCDecrypt,
 } CCOperation;
