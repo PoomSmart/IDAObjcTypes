@@ -10,8 +10,9 @@ typedef natural_t mach_port_seqno_t;
 
 typedef u_int64_t user_addr_t;
 
-typedef unsigned int FourCharCode;
+typedef int boolean_t;
 
+typedef unsigned int FourCharCode;
 typedef	unsigned int mach_msg_trailer_type_t;
 typedef	unsigned int mach_msg_trailer_size_t;
 

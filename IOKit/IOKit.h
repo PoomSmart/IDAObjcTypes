@@ -1,22 +1,38 @@
 #import "../Types.h"
 #import "Types.h"
 
+kern_return_t IOObjectGetClass(io_object_t object, io_name_t className);
 kern_return_t IOObjectRelease(io_object_t object);
 kern_return_t IOObjectRetain(io_object_t object);
 kern_return_t IOServiceOpen(io_service_t service, task_port_t owningTask, uint32_t type, io_connect_t *connect);
 kern_return_t IOServiceClose(io_connect_t connect);
+kern_return_t IOServiceGetMatchingServices(mach_port_t masterPort, CFDictionaryRef matching, io_iterator_t *existing);
+kern_return_t IOServiceMatchPropertyTable(io_service_t service, CFDictionaryRef matching, boolean_t *matches);
+kern_return_t IOServiceAddMatchingNotification(IONotificationPortRef notifyPort, const io_name_t notificationType, CFDictionaryRef matching, IOServiceMatchingCallback callback, void *refCon, io_iterator_t *notification);
+kern_return_t IORegistryEntryGetPath(io_registry_entry_t entry, const io_name_t plane, io_string_t path);
+kern_return_t IORegistryEntryGetName(io_registry_entry_t entry, io_name_t name);
+kern_return_t IORegistryEntryGetNameInPlane(io_registry_entry_t entry, const io_name_t plane, io_name_t name);
+kern_return_t IORegistryEntryGetLocationInPlane(io_registry_entry_t entry, const io_name_t plane, io_name_t location);
+kern_return_t IORegistryEntryGetParentEntry(io_registry_entry_t entry, const io_name_t plane, io_registry_entry_t *parent);
+kern_return_t IORegistryEntryGetChildEntry(io_registry_entry_t entry, const io_name_t plane, io_registry_entry_t *child);
+kern_return_t IORegistryEntryGetChildIterator(io_registry_entry_t entry, const io_name_t plane, io_iterator_t *iterator);
+kern_return_t IORegistryEntryCreateCFProperties(io_registry_entry_t entry, CFMutableDictionaryRef *, CFAllocatorRef, NSInteger);
 
 mach_port_t IOSurfaceCreateMachPort(IOSurfaceRef buffer);
 
 io_service_t IOServiceGetMatchingService(mach_port_t masterPort, CFDictionaryRef matching);
+
+io_registry_entry_t IORegistryEntryFromPath(mach_port_t masterPort, const io_string_t path);
 
 CFTypeID IOHIDEventGetTypeID(void);
 CFTypeID IOHIDManagerGetTypeID(void);
 
 IOSurfaceID IOSurfaceGetID(IOSurfaceRef buffer);
 
+CFMutableDictionaryRef IOBSDNameMatching(mach_port_t masterPort, uint32_t options, const char *bsdName);
 CFMutableDictionaryRef IOServiceMatching(const char* name);
 CFMutableDictionaryRef IOServiceNameMatching(const char *name);
+CFMutableDictionaryRef IORegistryEntryIDMatching(uint64_t entryID);
 
 CFMutableDataRef IOHIDEventCreateData(CFAllocatorRef allocator, IOHIDEventRef event);
 
@@ -85,10 +101,12 @@ void IOHIDEventAppendEvent(IOHIDEventRef event, IOHIDEventRef childEvent);
 
 IOHIDFloat IOHIDEventGetFloatValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
 IOHIDFloat IOHIDEventGetFloatValue(IOHIDEventRef event, IOHIDEventField field);
-CFIndex IOHIDEventGetIntegerValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
-CFIndex IOHIDEventGetIntegerValue(IOHIDEventRef event, IOHIDEventField field);
+
 IOHID3DPoint IOHIDEventGetPositionWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
 IOHID3DPoint IOHIDEventGetPosition(IOHIDEventRef event, IOHIDEventField field);
+
+CFIndex IOHIDEventGetIntegerValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
+CFIndex IOHIDEventGetIntegerValue(IOHIDEventRef event, IOHIDEventField field);
 
 void *IOHIDEventGetDataValue(IOHIDEventRef event, IOHIDEventType type);
 void *IOSurfaceGetBaseAddress(IOSurfaceRef buffer);
@@ -99,7 +117,11 @@ Boolean IOHIDEventConformsTo(IOHIDEventRef event, IOHIDEventType type);
 Boolean IOSurfaceIsInUse(IOSurfaceRef buffer);
 
 CFSetRef IOHIDManagerCopyDevices(IOHIDManagerRef manager);
+
 CFTypeRef IOHIDManagerGetProperty(IOHIDManagerRef manager, CFStringRef key);
+CFTypeRef IORegistryEntryCreateCFProperty(io_registry_entry_t entry, CFStringRef key, CFAllocatorRef allocator, IOOptionBits options);
+CFTypeRef IORegistryEntrySearchCFProperty(io_registry_entry_t entry, const io_name_t plane, CFStringRef key, CFAllocatorRef allocator, IOOptionBits options);
+
 IOHIDManagerRef IOHIDManagerCreate(CFAllocatorRef allocator, IOOptionBits options);
 
 IOReturn IOHIDManagerOpen(IOHIDManagerRef manager, IOOptionBits options);

@@ -35,6 +35,8 @@ CGAffineTransform UIIntegralTransform(CGAffineTransform t);
 
 CGContextRef UIGraphicsGetCurrentContext(void);
 
+NSComparisonResult UIContentSizeCategoryCompareToCategory(UIContentSizeCategory lhs, UIContentSizeCategory rhs);
+
 void UIRectFill(CGRect rect);
 void UIRectFillUsingBlendMode(CGRect rect, CGBlendMode blendMode);
 void UIRectClip(CGRect rect);

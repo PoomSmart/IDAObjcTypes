@@ -236,6 +236,7 @@ CFURLRef CFURLCreateFromFileSystemRepresentation(CFAllocatorRef allocator, const
 CFURLRef CFURLCreateFromFileSystemRepresentationRelativeToBase(CFAllocatorRef allocator, const UInt8* buffer, CFIndex bufLen, Boolean isDirectory, CFURLRef baseURL);
 CFURLRef CFURLCreateWithString(CFAllocatorRef allocator, CFStringRef URLString, CFURLRef baseURL);
 CFURLRef CFURLCreateWithFileSystemPath(CFAllocatorRef allocator, CFStringRef filePath, CFURLPathStyle pathStyle, Boolean isDirectory);
+CFURLRef CFCopyHomeDirectoryURLForUser(CFStringRef uName);
 
 CFDataRef CFDataCreate(CFAllocatorRef allocator, const UInt8* bytes, CFIndex length);
 CFDataRef CFDataCreateCopy(CFAllocatorRef allocator, CFDataRef theData);

@@ -10,6 +10,11 @@ typedef OSObject* io_object_t;
 
 typedef io_object_t* io_service_t;
 typedef io_object_t* io_connect_t;
+typedef io_object_t* io_registry_entry_t;
+typedef io_object_t* io_iterator_t;
+
+typedef	char io_name_t[128];
+typedef char io_string_t[512];
 
 typedef kern_return_t IOReturn;
 
@@ -45,6 +50,7 @@ typedef struct __IOHIDManager* IOHIDManagerRef;
 typedef struct __IOHIDValue* IOHIDValueRef;
 typedef struct __IOHIDDevice* IOHIDDeviceRef;
 typedef struct __IOSurface* IOSurfaceRef;
+typedef struct IONotificationPort *IONotificationPortRef;
 
 const mach_port_t kIOMasterPortDefault;
 
@@ -374,5 +380,6 @@ enum {
 typedef void (*IOHIDValueCallback)(void *context, IOReturn result, void *sender, IOHIDValueRef value);
 typedef void (*IOHIDReportCallback)(void *context, IOReturn result, void *sender, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
 typedef void (*IOHIDDeviceCallback)(void *context, IOReturn result, void *sender, IOHIDDeviceRef device);
+typedef void (*IOServiceMatchingCallback)(void *refcon, io_iterator_t iterator);
 
 #endif

@@ -28,6 +28,12 @@ typedef NSUInteger NSRectEdge;
 typedef NSUInteger NSSearchPathDirectory;
 typedef NSUInteger NSSearchPathDomainMask;
 
+typedef NSInteger NSComparisonResult; enum NSComparisonResult {
+    NSOrderedAscending = -1L,
+    NSOrderedSame,
+    NSOrderedDescending
+} NSComparisonResult;
+
 struct _NSMapTable;
 
 struct _NSMapNode {
