@@ -180,6 +180,7 @@ CFRunLoopRef CFRunLoopGetMain(void);
 CFRunLoopSourceRef CFRunLoopSourceCreate(CFAllocatorRef allocator, CFIndex order, CFRunLoopSourceContext *context);
 CFRunLoopSourceRef CFUserNotificationCreateRunLoopSource(CFAllocatorRef allocator, CFUserNotificationRef userNotification, CFUserNotificationCallBack callout, CFIndex order);
 
+CFRunLoopObserverRef CFRunLoopObserverCreate(CFAllocatorRef allocator, CFOptionFlags activities, Boolean repeats, CFIndex order, CFRunLoopObserverCallBack callout, CFRunLoopObserverContext *context);
 CFRunLoopObserverRef CFRunLoopObserverCreateWithHandler(CFAllocatorRef allocator, CFOptionFlags activities, Boolean repeats, CFIndex order, void (*block)(CFRunLoopObserverRef observer, CFRunLoopActivity activity));
 
 CFRunLoopTimerRef CFRunLoopTimerCreate(CFAllocatorRef allocator, CFAbsoluteTime fireDate, CFTimeInterval interval, CFOptionFlags flags, CFIndex order, CFRunLoopTimerCallBack callout, CFRunLoopTimerContext *context);
@@ -365,6 +366,9 @@ CFStringRef CFURLGetString(CFURLRef anURL);
 
 CFStringRef _CFGetProductName(void);
 
+CFStringTokenizerTokenType CFStringTokenizerAdvanceToNextToken(CFStringTokenizerRef tokenizer);
+CFStringTokenizerTokenType CFStringTokenizerGoToTokenAtIndex(CFStringTokenizerRef tokenizer, CFIndex index);
+
 CFBundleRef CFBundleCreate(CFAllocatorRef allocator, CFURLRef bundleURL);
 CFBundleRef CFBundleGetBundleWithIdentifier(CFStringRef bundleID);
 CFBundleRef CFBundleGetMainBundle(void);
@@ -447,5 +451,3 @@ CFIndex CFPropertyListWrite(CFPropertyListRef propertyList, CFWriteStreamRef str
 CFIndex CFURLGetBytes(CFURLRef url, UInt8* buffer, CFIndex bufferLength);
 CFIndex CFRunLoopSourceGetOrder(CFRunLoopSourceRef source);
 CFIndex CFRunLoopTimerGetOrder(CFRunLoopTimerRef timer);
-
-CFStringTokenizerTokenType CFStringTokenizerAdvanceToNextToken(CFStringTokenizerRef tokenizer);
