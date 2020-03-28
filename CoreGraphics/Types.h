@@ -222,6 +222,15 @@ typedef enum CGContextType {
     kCGContextTypeCount
 } CGContextType;
 
+typedef uint32_t CGFontRenderingStyle; enum CGFontRenderingStyle {
+    kCGFontRenderingStyleAntialiasing = 1 << 0,
+    kCGFontRenderingStyleSmoothing = 1 << 1,
+    kCGFontRenderingStyleSubpixelPositioning = 1 << 2,
+    kCGFontRenderingStyleSubpixelQuantization = 1 << 3,
+    kCGFontRenderingStylePlatformNative = 1 << 9,
+    kCGFontRenderingStyleMask = 0x20F,
+} CGFontRenderingStyle;
+
 typedef struct CGPathElement {
     CGPathElementType type;
     CGPoint* points;
