@@ -1,6 +1,10 @@
 #import "../Types.h"
 #import "Types.h"
 
+bool CATransform3DIsAffine(CATransform3D t);
+bool CATransform3DIsIdentity(CATransform3D t);
+bool CATransform3DEqualToTransform(CATransform3D a, CATransform3D b);
+
 CFTimeInterval CACurrentMediaTime(void);
 
 CGPoint CA_CGPointApplyTransform(CGPoint p, CATransform3D t);
@@ -19,5 +23,6 @@ CATransform3D CATransform3DTranslate(CATransform3D t, CGFloat tx, CGFloat ty, CG
 CATransform3D CATransform3DTranslateRight(CATransform3D t, CGFloat tx, CGFloat ty, CGFloat tz);
 CATransform3D CATransform3DScale(CATransform3D t, CGFloat sx, CGFloat sy, CGFloat sz);
 CATransform3D CATransform3DRotate(CATransform3D t, CGFloat angle, CGFloat x, CGFloat y, CGFloat z);
+CATransform3D CATransform3DInvert(CATransform3D t);
 
 CGAffineTransform CATransform3DGetAffineTransform(CATransform3D t);

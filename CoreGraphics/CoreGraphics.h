@@ -78,10 +78,12 @@ void CGContextSetLineJoin(CGContextRef c, CGLineJoin join);
 void CGContextSetLineDash(CGContextRef c, CGFloat phase, const CGFloat *lengths, size_t count);
 void CGContextSetLineWidth(CGContextRef c, CGFloat width);
 void CGContextSetAlpha(CGContextRef c, CGFloat alpha);
+void CGContextSetGrayFillColor(CGContextRef c, CGFloat gray, CGFloat alpha);
 void CGContextSetRGBFillColor(CGContextRef c, CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 void CGContextSetCMYKFillColor(CGContextRef c, CGFloat cyan, CGFloat magenta, CGFloat yellow, CGFloat black, CGFloat alpha);
 void CGContextSetFillColor(CGContextRef context, const CGFloat components[]);
 void CGContextSetFillColorWithColor(CGContextRef c, CGColorRef color);
+void CGContextSetRGBStrokeColor(CGContextRef c, CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 void CGContextSetStrokeColor(CGContextRef context, const CGFloat components[]);
 void CGContextSetStrokeColorWithColor(CGContextRef c, CGColorRef color);
 void CGContextSetInterpolationQuality(CGContextRef c, CGInterpolationQuality quality);
@@ -179,6 +181,8 @@ void CGCFDictionarySetFloat(CFMutableDictionaryRef theDict, const void* key, dou
 void CGCFDictionarySetNumber(CFMutableDictionaryRef theDict, const void* key, CFNumberType type, const void* valuePtr);
 void CGCFDictionarySetCFTypeRef(CFMutableDictionaryRef theDict, const void* key, const void* value);
 
+void *CGBitmapContextGetData(CGContextRef context);
+
 CGPathRef CGPathRetain(CGPathRef path);
 CGPathRef CGPathCreateWithEllipseInRect(CGRect rect, const CGAffineTransform* transform);
 CGPathRef CGPathCreateWithRect(CGRect rect, const CGAffineTransform* transform);
@@ -241,11 +245,13 @@ CGColorRef CGColorTransformConvertColor(CGColorTransformRef, CGColorRef, CGColor
 CGColorRef CGContextGetFillColorAsColor(CGContextRef);
 
 CGColorSpaceRef CGImageGetColorSpace(CGImageRef image);
+CGColorSpaceRef CGColorGetColorSpace(CGColorRef color);
 CGColorSpaceRef CGColorSpaceRetain(CGColorSpaceRef space);
 CGColorSpaceRef CGColorSpaceCreateWithName(CFStringRef name);
-CGColorSpaceRef CGColorGetColorSpace(CGColorRef color);
 CGColorSpaceRef CGColorSpaceCreateDeviceRGB(void);
 CGColorSpaceRef CGColorSpaceCreateDeviceGray(void);
+CGColorSpaceRef CGColorSpaceCreateWithPropertyList(CFPropertyListRef plist);
+CGColorSpaceRef CGBitmapContextGetColorSpace(CGContextRef context);
 
 CGColorSpaceModel CGColorSpaceGetModel(CGColorSpaceRef space);
 
@@ -262,8 +268,10 @@ CGGradientRef CGGradientCreateWithColors(CGColorSpaceRef space, CFArrayRef color
 CGGradientRef CGGradientCreateWithColorComponents(CGColorSpaceRef space, const CGFloat *components, const CGFloat *locations, size_t count);
 
 CGImageAlphaInfo CGImageGetAlphaInfo(CGImageRef image);
+CGImageAlphaInfo CGBitmapContextGetAlphaInfo(CGContextRef context);
 
 CGBitmapInfo CGImageGetBitmapInfo(CGImageRef image);
+CGBitmapInfo CGBitmapContextGetBitmapInfo(CGContextRef context);
 
 CGDataProviderRef CGImageGetDataProvider(CGImageRef image);
 
@@ -279,7 +287,14 @@ size_t CGImageGetBitsPerComponent(CGImageRef image);
 size_t CGImageGetBitsPerPixel(CGImageRef image);
 size_t CGImageGetBytesPerRow(CGImageRef image);
 size_t CGImageSourceGetCount(CGImageSourceRef isrc);
+size_t CGBitmapContextGetBitsPerComponent(CGContextRef context);
+size_t CGBitmapContextGetBitsPerPixel(CGContextRef context);
+size_t CGBitmapContextGetBytesPerRow(CGContextRef context);
+size_t CGBitmapContextGetWidth(CGContextRef context);
+size_t CGBitmapContextGetHeight(CGContextRef context);
+size_t CGBitmapGetAlignedBytesPerRow(size_t);
 size_t CGColorGetNumberOfComponents(CGColorRef color);
+size_t CGColorSpaceGetNumberOfComponents(CGColorSpaceRef space);
 
 int CGFontGetAscent(CGFontRef font);
 int CGFontGetDescent(CGFontRef font);
@@ -315,6 +330,7 @@ bool CGPathIsRect(CGPathRef path, CGRect* rect);
 bool CGPathContainsPoint(CGPathRef path, const CGAffineTransform* m, CGPoint point, bool eoFill);
 bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGPoint* point);
 bool CGColorEqualToColor(CGColorRef color1, CGColorRef color2);
+bool CGColorSpaceSupportsOutput(CGColorSpaceRef space);
 
 bool CGFloatIsValid(CGFloat value);
 bool CGCFDictionaryGetBoolean(CFDictionaryRef theDict, const void* key, bool* result);

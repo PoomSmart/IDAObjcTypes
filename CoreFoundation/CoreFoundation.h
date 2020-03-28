@@ -9,6 +9,7 @@ bool CFUniCharIsMemberOf(UTF32Char theChar, uint32_t charset);
 SInt32 CFStringGetIntValue(CFStringRef str);
 SInt32 CFURLGetPortNumber(CFURLRef anURL);
 SInt32 CFRunLoopRunSpecific(CFRunLoopRef rl, CFStringRef modeName, CFTimeInterval seconds, Boolean returnAfterSourceHandled);
+SInt32 CFUserNotificationCancel(CFUserNotificationRef userNotification);
 
 const char* CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
 const void* CFArrayGetValueAtIndex(CFArrayRef theArray, CFIndex idx);
@@ -126,6 +127,7 @@ void CFRunLoopTimerSetTolerance(CFRunLoopTimerRef timer, CFTimeInterval toleranc
 void CFRunLoopTimerSetNextFireDate(CFRunLoopTimerRef timer, CFAbsoluteTime fireDate);
 void CFRunLoopTimerInvalidate(CFRunLoopTimerRef timer);
 void CFRunLoopTimerGetContext(CFRunLoopTimerRef timer, CFRunLoopTimerContext *context);
+void CFRunLoopObserverGetContext(CFRunLoopObserverRef observer, CFRunLoopObserverContext *context);
 void CFRunLoopObserverInvalidate(CFRunLoopObserverRef observer);
 
 void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
@@ -296,6 +298,7 @@ CFDictionaryRef CFDictionaryCreate(CFAllocatorRef allocator, const void** keys, 
 CFDictionaryRef CFDictionaryCreateCopy(CFAllocatorRef allocator, CFDictionaryRef theDict);
 CFDictionaryRef CFPreferencesCopyMultiple(CFArrayRef keysToFetch, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 CFDictionaryRef CFLocaleCreateComponentsFromLocaleIdentifier(CFAllocatorRef allocator, CFLocaleIdentifier localeID);
+CFDictionaryRef CFUserNotificationGetResponseDictionary(CFUserNotificationRef userNotification);
 
 CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFDictionaryKeyCallBacks* keyCallBacks, const CFDictionaryValueCallBacks* valueCallBacks);
 CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);
