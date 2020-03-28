@@ -1,4 +1,5 @@
 #import "../Types.h"
+#import "../CoreFoundation/Types.h"
 #import "../CoreGraphics/Types.h"
 #import "Types.h"
 
@@ -25,8 +26,10 @@ CGFloat CTFontGetCapHeight(CTFontRef font);
 CGFloat CTFontGetXHeight(CTFontRef font);
 
 CGRect CTFontGetBoundingRectsForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph* glyphs, CGRect* boundingRects, CFIndex count);
+CGRect CTFontGetOpticalBoundsForGlyphs(CTFontRef font, const CGGlyph *glyphs, CGRect *boundingRects, CFIndex count, CFOptionFlags options);
 CGRect CTFontGetBoundingBox(CTFontRef font);
 CGRect CTLineGetBoundsWithOptions(CTLineRef line, CTLineBoundsOptions options);
+CGRect CTLineGetImageBounds(CTLineRef line, CGContextRef context);
 CGRect CTRunGetImageBounds(CTRunRef run, CGContextRef context, CFRange range);
 
 CGSize CTFramesetterSuggestFrameSizeWithConstraints(CTFramesetterRef framesetter, CFRange stringRange, CFDictionaryRef frameAttributes, CGSize constraints, CFRange* fitRange);
@@ -60,6 +63,8 @@ CTRunStatus CTRunGetStatus(CTRunRef run);
 
 double CTFontGetAdvancesForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph* glyphs, CGSize* advances, CFIndex count);
 double CTLineGetPenOffsetForFlush(CTLineRef line, CGFloat flushFactor, double flushWidth);
+double CTLineGetTypographicBounds(CTLineRef line, CGFloat *ascent, CGFloat *descent, CGFloat *leading);
+double CTLineGetTrailingWhitespaceWidth(CTLineRef line);
 double CTRunGetTypographicBounds(CTRunRef run, CFRange range, CGFloat *ascent, CGFloat *descent, CGFloat *leading);
 
 unsigned int CTFontGetUnitsPerEm(CTFontRef font);
@@ -91,6 +96,8 @@ CTFontRef CTFontCreateForString(CTFontRef currentFont, CFStringRef string, CFRan
 CTFontDescriptorRef CTFontDescriptorCreateForUIType(CTFontUIFontType, CGFloat size, CFStringRef language);
 CTFontDescriptorRef CTFontDescriptorCreateWithTextStyle(CFStringRef style, CFStringRef size, CFStringRef language);
 CTFontDescriptorRef CTFontDescriptorCreateCopyWithSymbolicTraits(CTFontDescriptorRef original, CTFontSymbolicTraits symTraitValue, CTFontSymbolicTraits symTraitMask);
+
+CTFontSymbolicTraits CTFontGetSymbolicTraits(CTFontRef font);
 
 CTFrameRef CTFramesetterCreateFrame(CTFramesetterRef framesetter, CFRange stringRange, CGPathRef path, CFDictionaryRef frameAttributes);
 

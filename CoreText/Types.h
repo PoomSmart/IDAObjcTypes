@@ -11,8 +11,34 @@ typedef struct __CTTypesetter* CTTypesetterRef;
 typedef struct __CTFrame* CTFrameRef;
 typedef struct __CTFramesetter* CTFramesetterRef;
 
-typedef uint32_t CTFontSymbolicTraits;
 typedef uint32_t CTFontOrientation;
+
+enum {
+    kCTFontClassMaskShift = 28
+};
+
+typedef uint32_t CTFontSymbolicTraits; enum CTFontSymbolicTraits {
+    kCTFontTraitItalic              = (1 << 0),
+    kCTFontTraitBold                = (1 << 1),
+    kCTFontTraitExpanded            = (1 << 5),
+    kCTFontTraitCondensed           = (1 << 6),
+    kCTFontTraitMonoSpace           = (1 << 10),
+    kCTFontTraitVertical            = (1 << 11),
+    kCTFontTraitUIOptimized         = (1 << 12),
+    kCTFontTraitColorGlyphs         = (1 << 13),
+    kCTFontTraitComposite           = (1 << 14),
+    kCTFontTraitClassMask           = (15U << kCTFontClassMaskShift),
+    kCTFontItalicTrait = kCTFontTraitItalic,
+    kCTFontBoldTrait = kCTFontTraitBold,
+    kCTFontExpandedTrait = kCTFontTraitExpanded,
+    kCTFontCondensedTrait = kCTFontTraitCondensed,
+    kCTFontMonoSpaceTrait = kCTFontTraitMonoSpace,
+    kCTFontVerticalTrait = kCTFontTraitVertical,
+    kCTFontUIOptimizedTrait = kCTFontTraitUIOptimized,
+    kCTFontColorGlyphsTrait = kCTFontTraitColorGlyphs,
+    kCTFontCompositeTrait = kCTFontTraitComposite,
+    kCTFontClassMaskTrait = kCTFontTraitClassMask
+} CTFontSymbolicTraits;
 
 typedef uint32_t CTFontUIFontType; enum CTFontUIFontType {
     kCTFontUIFontNone = (uint32_t)-1,

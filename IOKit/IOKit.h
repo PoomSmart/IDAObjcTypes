@@ -125,6 +125,7 @@ IOSurfaceRef IOSurfaceLookupFromMachPort(mach_port_t);
 
 void IOSurfaceSetValue(IOSurfaceRef buffer, CFStringRef key, CFTypeRef value);
 void IOSurfaceIncrementUseCount(IOSurfaceRef buffer);
+void IOSurfaceDecrementUseCount(IOSurfaceRef buffer);
 void IOHIDDeviceRegisterInputReportCallback(IOHIDDeviceRef device, uint8_t *report, CFIndex reportLength, IOHIDReportCallback callback, void *context);
 void IOHIDDeviceRegisterInputValueCallback(IOHIDDeviceRef device, IOHIDValueCallback callback, void *context);
 void IOHIDDeviceRegisterRemovalCallback(IOHIDDeviceRef device, IOHIDCallback callback, void *context);
