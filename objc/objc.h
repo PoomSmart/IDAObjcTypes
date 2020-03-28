@@ -109,6 +109,7 @@ IMP _imp__object_getMethodImplementation(id obj, SEL name);
 IMP imp_implementationWithBlock(id block);
 IMP _imp__imp_implementationWithBlock(id block);
 
+char *property_copyAttributeValue(objc_property_t property, const char *attributeName);
 char* method_copyArgumentType(Method m, unsigned int index);
 char* _imp__method_copyArgumentType(Method m, unsigned int index);
 char* method_copyReturnType(Method m);

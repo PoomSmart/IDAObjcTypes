@@ -4,6 +4,8 @@
 
 CGPathRef CTFontCreatePathForGlyph(CTFontRef font, CGGlyph glyph, const CGAffineTransform* matrix);
 
+CGFontRef CTFontCopyGraphicsFont(CTFontRef font, CTFontDescriptorRef *attributes);
+
 CGGlyph CTFontGetGlyphWithName(CTFontRef font, CFStringRef glyphName);
 
 const CGGlyph* CTRunGetGlyphsPtr(CTRunRef run);
@@ -28,6 +30,7 @@ CTFontRef CTFontCreateWithName(CFStringRef name, CGFloat size, const CGAffineTra
 CTFontRef CTFontCreateWithNameAndOptions(CFStringRef name, CGFloat size, const CGAffineTransform* matrix, CTFontOptions options);
 CTFontRef CTFontCreateWithFontDescriptor(CTFontDescriptorRef descriptor, CGFloat size, const CGAffineTransform* matrix);
 CTFontRef CTFontCreateWithFontDescriptorAndOptions(CTFontDescriptorRef descriptor, CGFloat size, const CGAffineTransform* matrix, CTFontOptions options);
+CTFontRef CTFontCreateWithGraphicsFont(CGFontRef graphicsFont, CGFloat size, const CGAffineTransform *matrix, CTFontDescriptorRef attributes);
 CTFontRef CTFontCreateUIFontForLanguage(CTFontUIFontType uiType, CGFloat size, CFStringRef language);
 CTFontRef CTFontCreateCopyWithAttributes(CTFontRef font, CGFloat size, const CGAffineTransform* matrix, CTFontDescriptorRef attributes);
 CTFontRef CTFontCreateCopyWithSymbolicTraits(CTFontRef font, CGFloat size, const CGAffineTransform* matrix, CTFontSymbolicTraits symTraitValue, CTFontSymbolicTraits symTraitMask);
@@ -42,10 +45,20 @@ CGRect CTFontGetBoundingRectsForGlyphs(CTFontRef font, CTFontOrientation orienta
 
 CGSize CTFramesetterSuggestFrameSizeWithConstraints(CTFramesetterRef framesetter, CFRange stringRange, CFDictionaryRef frameAttributes, CGSize constraints, CFRange* fitRange);
 
+CFStringRef CTFontCopyFullName(CTFontRef font);
+CFStringRef CTFontCopyPostScriptName(CTFontRef font);
+CFStringRef CTFontCopyFamilyName(CTFontRef font);
+CFStringRef CTFontCopyDisplayName(CTFontRef font);
+CFStringRef CTFontCopyName(CTFontRef font, CFStringRef nameKey);
+CFStringRef CTFontCopyLocalizedName(CTFontRef font, CFStringRef nameKey, CFStringRef *actualLanguage);
+
 CFDictionaryRef CTRunGetAttributes(CTRunRef run);
 
 CFArrayRef CTLineGetGlyphRuns(CTLineRef line);
 CFArrayRef CTFrameGetLines(CTFrameRef frame);
+CFArrayRef CTFontCopySupportedLanguages(CTFontRef font);
+
+CFCharacterSetRef CTFontCopyCharacterSet(CTFontRef font);
 
 CTFrameRef CTFramesetterCreateFrame(CTFramesetterRef framesetter, CFRange stringRange, CGPathRef path, CFDictionaryRef frameAttributes);
 
@@ -54,5 +67,7 @@ CTFramesetterRef CTFramesetterCreateWithAttributedString(CFAttributedStringRef s
 CTTypesetterRef CTFramesetterGetTypesetter(CTFramesetterRef framesetter);
 
 CFIndex CTRunGetGlyphCount(CTRunRef run);
+
+CFStringEncoding CTFontGetStringEncoding(CTFontRef font);
 
 double CTFontGetAdvancesForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph* glyphs, CGSize* advances, CFIndex count);

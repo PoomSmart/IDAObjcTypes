@@ -64,6 +64,7 @@ OSStatus SecCertificateAddToKeychain(SecCertificateRef certificate, SecKeychainR
 OSStatus SecCertificateGetData(SecCertificateRef certificate, CSSM_DATA_PTR data);
 
 SecTaskRef SecTaskCreateFromSelf(CFAllocatorRef allocator);
+SecTaskRef SecTaskCreateWithAuditToken(CFAllocatorRef allocator, audit_token_t token);
 
 SecKeyRef SecTrustCopyPublicKey(SecTrustRef trust);
 SecKeyRef SecCertificateCopyKey(SecCertificateRef certificate);

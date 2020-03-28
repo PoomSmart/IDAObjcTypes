@@ -14,6 +14,13 @@ typedef struct UIOffset {
     CGFloat horizontal, vertical;
 } UIOffset;
 
+typedef struct NSDirectionalEdgeInsets {
+	CGFloat top;
+	CGFloat leading;
+	CGFloat bottom;
+	CGFloat trailing;
+} NSDirectionalEdgeInsets;
+
 typedef NSInteger UIUserInterfaceSizeClass; enum UIUserInterfaceSizeClass {
     UIUserInterfaceSizeClassUnspecified = 0,
     UIUserInterfaceSizeClassCompact     = 1,

@@ -8,6 +8,7 @@ bool CFUniCharIsMemberOf(UTF32Char theChar, uint32_t charset);
 
 SInt32 CFStringGetIntValue(CFStringRef str);
 SInt32 CFURLGetPortNumber(CFURLRef anURL);
+SInt32 CFRunLoopRunSpecific(CFRunLoopRef rl, CFStringRef modeName, CFTimeInterval seconds, Boolean returnAfterSourceHandled);
 
 const char* CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
 const void* CFArrayGetValueAtIndex(CFArrayRef theArray, CFIndex idx);
@@ -49,6 +50,7 @@ void CFPreferencesRemoveSuitePreferencesFromApp(CFStringRef applicationID, CFStr
 void CFNotificationCenterAddObserver(CFNotificationCenterRef center, const void* observer, CFNotificationCallback callBack, CFStringRef name, const void* object, CFNotificationSuspensionBehavior suspensionBehavior);
 void CFNotificationCenterPostNotification(CFNotificationCenterRef center, CFNotificationName name, const void* object, CFDictionaryRef userInfo, Boolean deliverImmediately);
 void CFNotificationCenterRemoveObserver(CFNotificationCenterRef center, const void* observer, CFNotificationName name, const void* object);
+void CFNotificationCenterRemoveEveryObserver(CFNotificationCenterRef center, const void *observer);
 void CFCharacterSetAddCharactersInRange(CFMutableCharacterSetRef theSet, CFRange theRange);
 void CFCharacterSetAddCharactersInString(CFMutableCharacterSetRef theSet, CFStringRef theString);
 void CFCharacterSetIntersect(CFMutableCharacterSetRef theSet, CFCharacterSetRef theOtherSet);
@@ -124,6 +126,7 @@ void CFRunLoopTimerSetTolerance(CFRunLoopTimerRef timer, CFTimeInterval toleranc
 void CFRunLoopTimerSetNextFireDate(CFRunLoopTimerRef timer, CFAbsoluteTime fireDate);
 void CFRunLoopTimerInvalidate(CFRunLoopTimerRef timer);
 void CFRunLoopTimerGetContext(CFRunLoopTimerRef timer, CFRunLoopTimerContext *context);
+void CFRunLoopObserverInvalidate(CFRunLoopObserverRef observer);
 
 void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
 void _CFNonObjCRelease(CFTypeRef cf);
@@ -175,6 +178,9 @@ CFRunLoopRef CFRunLoopGetCurrent(void);
 CFRunLoopRef CFRunLoopGetMain(void);
 
 CFRunLoopSourceRef CFRunLoopSourceCreate(CFAllocatorRef allocator, CFIndex order, CFRunLoopSourceContext *context);
+CFRunLoopSourceRef CFUserNotificationCreateRunLoopSource(CFAllocatorRef allocator, CFUserNotificationRef userNotification, CFUserNotificationCallBack callout, CFIndex order);
+
+CFRunLoopObserverRef CFRunLoopObserverCreateWithHandler(CFAllocatorRef allocator, CFOptionFlags activities, Boolean repeats, CFIndex order, void (*block)(CFRunLoopObserverRef observer, CFRunLoopActivity activity));
 
 CFRunLoopTimerRef CFRunLoopTimerCreate(CFAllocatorRef allocator, CFAbsoluteTime fireDate, CFTimeInterval interval, CFOptionFlags flags, CFIndex order, CFRunLoopTimerCallBack callout, CFRunLoopTimerContext *context);
 CFRunLoopTimerRef CFRunLoopTimerCreateWithHandler(CFAllocatorRef allocator, CFAbsoluteTime fireDate, CFTimeInterval interval, CFOptionFlags flags, CFIndex order, void (*block)(CFRunLoopTimerRef timer));
@@ -237,6 +243,7 @@ CFURLRef CFURLCreateFromFileSystemRepresentationRelativeToBase(CFAllocatorRef al
 CFURLRef CFURLCreateWithString(CFAllocatorRef allocator, CFStringRef URLString, CFURLRef baseURL);
 CFURLRef CFURLCreateWithFileSystemPath(CFAllocatorRef allocator, CFStringRef filePath, CFURLPathStyle pathStyle, Boolean isDirectory);
 CFURLRef CFCopyHomeDirectoryURLForUser(CFStringRef uName);
+CFURLRef CFBundleCopyExecutableURL(CFBundleRef bundle);
 
 CFDataRef CFDataCreate(CFAllocatorRef allocator, const UInt8* bytes, CFIndex length);
 CFDataRef CFDataCreateCopy(CFAllocatorRef allocator, CFDataRef theData);
@@ -268,6 +275,8 @@ CFAbsoluteTime CFAbsoluteTimeGetCurrent(void);
 
 CFNotificationCenterRef CFNotificationCenterGetDarwinNotifyCenter(void);
 CFNotificationCenterRef CFNotificationCenterGetLocalCenter(void);
+
+CFUserNotificationRef CFUserNotificationCreate(CFAllocatorRef allocator, CFTimeInterval timeout, CFOptionFlags flags, SInt32 *error, CFDictionaryRef dictionary);
 
 CFPropertyListRef CFPreferencesCopyValue(CFStringRef key, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 CFPropertyListRef CFPreferencesCopyAppValue(CFStringRef key, CFStringRef applicationID);
@@ -306,6 +315,7 @@ CFArrayRef CFBundleCopyResourceURLsOfTypeForLocalization(CFBundleRef bundle, CFS
 CFArrayRef CFBundleCopyLocalizationsForPreferences(CFArrayRef locArray, CFArrayRef prefArray);
 CFArrayRef CFBundleCopyBundleLocalizations(CFBundleRef bundle);
 CFArrayRef CFRunLoopCopyAllModes(CFRunLoopRef rl);
+CFArrayRef CFLocaleCopyPreferredLanguages(void);
 
 CFStringTokenizerRef CFStringTokenizerCreate(CFAllocatorRef alloc, CFStringRef string, CFRange range, CFOptionFlags options, CFLocaleRef locale);
 

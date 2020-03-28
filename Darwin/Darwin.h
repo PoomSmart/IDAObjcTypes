@@ -62,6 +62,7 @@ void dispatch_activate(dispatch_object_t object);
 void dispatch_barrier_sync(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_barrier_async(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_block_cancel(dispatch_block_t block);
+void dispatch_set_qos_class_fallback(dispatch_object_t object, dispatch_qos_class_t qos_class);
 void dispatch_set_qos_class_floor(dispatch_object_t object, dispatch_qos_class_t qos_class, int relative_priority);
 void dispatch_mach_connect(dispatch_mach_t channel, mach_port_t receive, mach_port_t send, dispatch_mach_msg_t checkin);
 void dispatch_mach_reconnect(dispatch_mach_t channel, mach_port_t send, dispatch_mach_msg_t checkin);
@@ -70,6 +71,7 @@ void dispatch_mach_send_barrier(dispatch_mach_t channel, dispatch_block_t barrie
 void dispatch_mach_send_barrier_f(dispatch_mach_t channel, void *context, dispatch_function_t barrier);
 void dispatch_mach_receive_barrier(dispatch_mach_t channel, dispatch_block_t barrier);
 void dispatch_mach_receive_barrier_f(dispatch_mach_t channel, void *context, dispatch_function_t barrier);
+void dispatch_workloop_set_autorelease_frequency(dispatch_workloop_t workloop, dispatch_autorelease_frequency_t frequency);
 
 void qsort_b(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
 
@@ -95,3 +97,4 @@ dispatch_queue_attr_t dispatch_queue_attr_make_with_autorelease_frequency(dispat
 dispatch_queue_attr_t dispatch_queue_attr_make_with_overcommit(dispatch_queue_attr_t attr, bool overcommit);
 
 dispatch_workloop_t dispatch_workloop_create(const char *label);
+dispatch_workloop_t dispatch_workloop_create_inactive(const char *label);

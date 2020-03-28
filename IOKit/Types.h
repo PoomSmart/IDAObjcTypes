@@ -54,6 +54,8 @@ typedef struct IONotificationPort *IONotificationPortRef;
 typedef struct __IOHIDEventSystemClient* IOHIDEventSystemClientRef;
 typedef struct __IOHIDEventQueue* IOHIDEventQueueRef;
 typedef struct __IOHIDServiceClient *IOHIDServiceClientRef;
+typedef struct __IOHIDElement *IOHIDElementRef;
+typedef struct __IOHIDUserDevice *IOHIDUserDeviceRef;
 
 const mach_port_t kIOMasterPortDefault;
 
@@ -380,10 +382,14 @@ enum {
     kIOHIDGenericGestureTypeSwipe
 };
 
+typedef void (*IOHIDCallback)(void *context, IOReturn result, void *sender);
 typedef void (*IOHIDValueCallback)(void *context, IOReturn result, void *sender, IOHIDValueRef value);
 typedef void (*IOHIDReportCallback)(void *context, IOReturn result, void *sender, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
 typedef void (*IOHIDDeviceCallback)(void *context, IOReturn result, void *sender, IOHIDDeviceRef device);
 typedef void (*IOServiceMatchingCallback)(void *refcon, io_iterator_t iterator);
 typedef void (*IOHIDEventSystemClientEventCallback)(void* target, void* refcon, IOHIDEventQueueRef queue, IOHIDEventRef event);
+typedef bool (*IOHIDEventSystemEventFilterCallback)(void *target, void *refcon, void *sender, IOHIDEventRef event);
+typedef IOReturn (*IOHIDUserDeviceReportCallback)(void *refcon, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
+typedef IOReturn (*IOHIDUserDeviceHandleReportAsyncCallback)(void *refcon, IOReturn result);
 
 #endif

@@ -31,6 +31,7 @@ NSString* NSStringFromUIEdgeInsets(UIEdgeInsets insets);
 NSString* NSStringFromUIOffset(UIOffset offset);
 NSString* NSHomeDirectory(void);
 NSString* NSTemporaryDirectory(void);
+NSString *NSOpenStepRootDirectory(void);
 
 NSDictionary* _NSDictionaryOfVariableBindings(NSString* commaSeparatedKeysString, id firstValue, ...);
 
@@ -42,6 +43,9 @@ NSRect NSIntegralRect(NSRect aRect);
 NSRect NSIntegralRectWithOptions(NSRect aRect, NSAlignmentOptions opts);
 NSRect NSIntersectionRect(NSRect aRect, NSRect bRect);
 NSRect NSMakeRect(CGFloat x, CGFloat y, CGFloat w, CGFloat h);
+NSRect NSRectFromString(NSString *aString);
+
+NSPoint NSPointFromString(NSString *aString);
 
 NSRange NSUnionRange(NSRange range1, NSRange range2);
 NSRange NSIntersectionRange(NSRange range1, NSRange range2);

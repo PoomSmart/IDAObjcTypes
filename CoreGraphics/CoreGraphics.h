@@ -11,6 +11,7 @@ CFTypeRef CGCFRetain(CFTypeRef cf);
 CFTypeRef CGTypeCreateInstance(CFTypeID typeID, CFIndex extraBytes);
 CFTypeRef CGCFDictionaryGetValueWithType(CFDictionaryRef theDict, const void* key, CFTypeID typeID);
 
+CFDictionaryRef CGFontCopyVariations(CGFontRef font);
 CFDictionaryRef CGRectCreateDictionaryRepresentation(CGRect rect);
 CFDictionaryRef CGSizeCreateDictionaryRepresentation(CGSize size);
 CFDictionaryRef CGPointCreateDictionaryRepresentation(CGPoint point);
@@ -23,6 +24,13 @@ CFMutableDictionaryRef CGCFDictionaryCreateCopy(CFDictionaryRef theDict);
 CFArrayRef CGCFDictionaryCopyKeys(CFDictionaryRef theDict, const CFArrayCallBacks* callBacks);
 CFArrayRef CGCFDictionaryCopyValues(CFDictionaryRef theDict, const CFArrayCallBacks* callBacks);
 
+CFArrayRef CGFontCopyVariationAxes(CGFontRef font);
+
+CFStringRef CGFontCopyFullName(CGFontRef font);
+CFStringRef CGFontCopyPostScriptName(CGFontRef font);
+CFStringRef CGFontCopyGlyphNameForGlyph(CGFontRef font, CGGlyph glyph);
+
+CGRect CGFontGetFontBBox(CGFontRef font);
 CGRect CGRectInset(CGRect rect, CGFloat dx, CGFloat dy);
 CGRect CGRectUnion(CGRect rect1, CGRect rect2);
 CGRect CGRectApplyAffineTransform(CGRect rect, CGAffineTransform t);
@@ -41,6 +49,8 @@ CGPoint CGPathGetCurrentPoint(CGPathRef path);
 
 CGSize CGSizeApplyAffineTransform(CGSize size, CGAffineTransform t);
 
+CGFloat CGFontGetItalicAngle(CGFontRef font);
+CGFloat CGFontGetStemV(CGFontRef font);
 CGFloat CGRectGetWidth(CGRect rect);
 CGFloat CGRectGetHeight(CGRect rect);
 CGFloat CGRectGetMaxX(CGRect rect);
@@ -63,6 +73,8 @@ void CGContextRotateCTM(CGContextRef c, CGFloat angle);
 void CGContextConcatCTM(CGContextRef c, CGAffineTransform transform);
 void CGContextSetBlendMode(CGContextRef c, CGBlendMode mode);
 void CGContextSetLineWidth(CGContextRef c, CGFloat width);
+void CGContextSetLineCap(CGContextRef c, CGLineCap cap);
+void CGContextSetLineJoin(CGContextRef c, CGLineJoin join);
 void CGContextBeginPath(CGContextRef c);
 void CGContextMoveToPoint(CGContextRef c, CGFloat x, CGFloat y);
 void CGContextAddLineToPoint(CGContextRef c, CGFloat x, CGFloat y);
@@ -101,6 +113,7 @@ void CGContextSetStrokeColor(CGContextRef context, const CGFloat components[]);
 void CGContextSetStrokeColorWithColor(CGContextRef c, CGColorRef color);
 void CGContextSetInterpolationQuality(CGContextRef c, CGInterpolationQuality quality);
 void CGContextSetShadowWithColor(CGContextRef c, CGSize offset, CGFloat blur, CGColorRef color);
+void CGContextSetTextDrawingMode(CGContextRef c, CGTextDrawingMode mode);
 void CGContextResetState(CGContextRef c);
 void CGContextRelease(CGContextRef c);
 void CGContextFlush(CGContextRef c);
@@ -244,6 +257,7 @@ CGDataProviderRef CGImageGetDataProvider(CGImageRef image);
 const CGFloat* CGImageGetDecode(CGImageRef image);
 const CGFloat* CGColorGetComponents(CGColorRef color);
 
+size_t CGFontGetNumberOfGlyphs(CGFontRef font);
 size_t CGImageGetWidth(CGImageRef image);
 size_t CGImageGetHeight(CGImageRef image);
 size_t CGImageGetBitsPerComponent(CGImageRef image);
@@ -252,6 +266,15 @@ size_t CGImageGetBytesPerRow(CGImageRef image);
 size_t CGImageSourceGetCount(CGImageSourceRef isrc);
 size_t CGColorGetNumberOfComponents(CGColorRef color);
 
+int CGFontGetAscent(CGFontRef font);
+int CGFontGetDescent(CGFontRef font);
+int CGFontGetLeading(CGFontRef font);
+int CGFontGetCapHeight(CGFontRef font);
+int CGFontGetXHeight(CGFontRef font);
+int CGFontGetUnitsPerEm(CGFontRef font);
+
+bool CGFontGetGlyphBBoxes(CGFontRef font, const CGGlyph *glyphs, size_t count, CGRect *bboxes);
+bool CGFontGetGlyphAdvances(CGFontRef font, const CGGlyph *glyphs, size_t count, int *advances);
 bool CGRectEqualToRect(CGRect rect1, CGRect rect2);
 bool CGRectIsNull(CGRect rect);
 bool CGRectIsEmpty(CGRect rect);
@@ -296,3 +319,5 @@ CGAffineTransform CGContextGetBaseCTM(CGContextRef);
 CGFontAntialiasingStyle CGContextGetFontAntialiasingStyle(CGContextRef);
 
 CGContextType CGContextGetType(CGContextRef);
+
+CGGlyph CGFontGetGlyphWithGlyphName(CGFontRef font, CFStringRef name);

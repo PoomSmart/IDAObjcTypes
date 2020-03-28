@@ -2,8 +2,13 @@
 #import "Types.h"
 
 UIEdgeInsets UIEdgeInsetsFromString(NSString *str);
+UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets a, UIEdgeInsets b);
+UIEdgeInsets UIEdgeInsetsMax(UIEdgeInsets a, UIEdgeInsets b);
+UIEdgeInsets UIEdgeInsetsSubtract(UIEdgeInsets a, UIEdgeInsets b);
 
 UIOffset UIOffsetFromString(NSString *str);
+
+NSString * NSStringFromDirectionalEdgeInsets(NSDirectionalEdgeInsets insets);
 
 NSData* UIImagePNGRepresentation(UIImage* image);
 NSData* UIImageJPEGRepresentation(UIImage* image, CGFloat compressionQuality);
@@ -18,6 +23,7 @@ CGRect CGRectFromString(NSString *str);
 CGSize CGSizeFromString(NSString *str);
 
 CGPoint UIRectGetCenter(CGRect rect);
+CGPoint UIMidPointBetweenPoints(CGPoint a, CGPoint b);
 CGPoint CGPointFromString(NSString *str);
 
 CGFloat UIRoundToScale(CGFloat, CGFloat);
@@ -30,6 +36,7 @@ CGFloat UIFloorToScreenScale(CGFloat);
 CGFloat UIRoundToScreenScale(CGFloat);
 CGFloat UICeilToScreenScale(CGFloat);
 CGFloat UIAnimationDragCoefficient(void);
+CGFloat UIDistanceBetweenPoints(CGPoint a, CGPoint b);
 
 CGAffineTransform UIIntegralTransform(CGAffineTransform t);
 
