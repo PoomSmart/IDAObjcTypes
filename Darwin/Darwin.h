@@ -90,6 +90,7 @@ dispatch_data_t dispatch_data_create_concat(dispatch_data_t data1, dispatch_data
 dispatch_data_t dispatch_data_create_subrange(dispatch_data_t data, size_t offset, size_t length);
 dispatch_data_t dispatch_data_copy_region(dispatch_data_t data, size_t location, size_t* offset_ptr);
 
+dispatch_queue_t dispatch_queue_create_with_target$V2(const char *label, dispatch_queue_attr_t attr, dispatch_queue_t target);
 dispatch_queue_t dispatch_pthread_root_queue_create(const char* label, unsigned long flags,	const pthread_attr_t* attr, dispatch_block_t configure);
 
 dispatch_queue_attr_t dispatch_queue_attr_make_with_qos_class(dispatch_queue_attr_t attr, dispatch_qos_class_t qos_class, int relative_priority);

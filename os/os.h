@@ -42,6 +42,7 @@ void os_lock_unlock(os_lock_t lock);
 void os_unfair_lock_lock(os_unfair_lock_t lock);
 void os_unfair_lock_lock_with_options(os_unfair_lock_t lock, os_unfair_lock_options_t options);
 void os_unfair_lock_assert_owner(os_unfair_lock_t lock);
+void os_unfair_lock_assert_not_owner(os_unfair_lock_t lock);
 
 void os_unfair_lock_unlock(os_unfair_lock_t lock);
 void os_release(void* object);
