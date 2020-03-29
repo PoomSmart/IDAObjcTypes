@@ -139,6 +139,8 @@ void IOHIDUserDeviceRegisterSetReportCallback(IOHIDUserDeviceRef device, IOHIDUs
 IOHIDFloat IOHIDEventGetFloatValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
 IOHIDFloat IOHIDEventGetFloatValue(IOHIDEventRef event, IOHIDEventField field);
 
+double IOHIDEventGetDoubleValue(IOHIDEventRef event, IOHIDEventField field);
+
 IOHID3DPoint IOHIDEventGetPositionWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
 IOHID3DPoint IOHIDEventGetPosition(IOHIDEventRef event, IOHIDEventField field);
 

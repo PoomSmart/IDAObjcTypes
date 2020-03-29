@@ -3,10 +3,10 @@
 
 #import "../Types.h"
 
-#ifdef x86
-typedef float CGFloat;
-#else
+#ifdef __LP64__
 typedef double CGFloat;
+#else
+typedef float CGFloat;
 #endif
 
 typedef struct CGPoint {
@@ -52,6 +52,11 @@ typedef uint32_t CGRectEdge;
 typedef unsigned short CGFontIndex;
 
 typedef CGFontIndex CGGlyph;
+
+typedef enum CGCompositeOperation {
+    kCGCompositeCopy = 1,
+    kCGCompositeSover = 2,
+} CGCompositeOperation;
 
 typedef int32_t CGBlendMode; enum CGBlendMode {
     kCGBlendModeNormal,

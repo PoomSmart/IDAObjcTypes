@@ -1,4 +1,3 @@
-// #define x86
 // #define SWIFT
 #import "Types.h"
 #import "dyld/dyld.h"

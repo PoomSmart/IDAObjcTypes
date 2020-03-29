@@ -9,8 +9,6 @@ From inside IDA Pro, simply go to `File > Load file > Parse C header file` then 
 
 Or, run this IDA command: `idaapi.idc_parse_types("/path/to/IDAObjcTypes/IDA.h", idc.PT_FILE)`
 
-If you work with 32-bit binaries, you should uncomment `#define x86` in `IDA.h`.
-
 ## Included Frameworks/Libraries
 More to be added as the owner reverses more binaries.
 - AudioToolbox

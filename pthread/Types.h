@@ -1,12 +1,12 @@
 #ifndef DARWIN_H_
 #define DARWIN_H_
 
-#ifdef x86
-#define __PTHREAD_SIZE__ 4088
-#define __PTHREAD_ATTR_SIZE__ 36
-#else
+#ifdef __LP64__
 #define __PTHREAD_SIZE__ 8176
 #define __PTHREAD_ATTR_SIZE__ 56
+#else
+#define __PTHREAD_SIZE__ 4088
+#define __PTHREAD_ATTR_SIZE__ 36
 #endif
 
 typedef unsigned int qos_class_t;

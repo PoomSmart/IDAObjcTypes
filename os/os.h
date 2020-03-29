@@ -12,8 +12,8 @@ os_transaction_t os_transaction_create(const char *description);
 os_signpost_id_t os_signpost_id_make_with_pointer(os_log_t log, const void *ptr);
 
 bool os_log_type_enabled(os_log_t oslog, os_log_type_t type);
-bool os_unfair_lock_trylock(os_unfair_lock_t lock);
 bool os_log_shim_enabled(void *);
+bool os_unfair_lock_trylock(os_unfair_lock_t lock);
 bool os_signpost_enabled(os_log_t log);
 bool os_variant_has_internal_content(const char *subsystem);
 bool os_variant_has_internal_diagnostics(const char *subsystem);
@@ -31,9 +31,7 @@ void _os_log_debug_impl(void *dso, os_log_t log, os_log_type_t type, const char 
 void _os_log_error_impl(void *dso, os_log_t log, os_log_type_t type, const char *format, uint8_t *buf, unsigned int size);
 void _os_log_fault_impl(void *dso, os_log_t log, os_log_type_t type, const char *format, uint8_t *buf, unsigned int size);
 void _os_log_internal(void *dso, os_log_t log, os_log_type_t type, const char *message, ...);
-
 void _os_signpost_emit_with_name_impl(void *dso, os_log_t log, os_signpost_type_t type, os_signpost_id_t spid, const char *name, const char *format, uint8_t *buf, uint32_t size);
-
 bool _os_feature_enabled_impl(const char *domain, const char *feature);
 
 void os_lock_lock(os_lock_t lock);
@@ -43,7 +41,6 @@ void os_unfair_lock_lock(os_unfair_lock_t lock);
 void os_unfair_lock_lock_with_options(os_unfair_lock_t lock, os_unfair_lock_options_t options);
 void os_unfair_lock_assert_owner(os_unfair_lock_t lock);
 void os_unfair_lock_assert_not_owner(os_unfair_lock_t lock);
-
 void os_unfair_lock_unlock(os_unfair_lock_t lock);
 void os_release(void *object);
 

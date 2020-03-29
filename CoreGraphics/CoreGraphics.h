@@ -30,6 +30,8 @@ CFStringRef CGFontCopyFullName(CGFontRef font);
 CFStringRef CGFontCopyFamilyName(CGFontRef font);
 CFStringRef CGFontCopyPostScriptName(CGFontRef font);
 CFStringRef CGFontCopyGlyphNameForGlyph(CGFontRef font, CGGlyph glyph);
+CFStringRef CGImageSourceGetType(CGImageSourceRef isrc); // ImageIO ?
+CFStringRef CGImageSourceGetTypeWithData(CFDataRef, CFStringRef, bool *); // ImageIO ?
 
 CGRect CGContextGetPathBoundingBox(CGContextRef c);
 CGRect CGContextGetClipBoundingBox(CGContextRef c);
@@ -92,9 +94,12 @@ void CGContextSetStrokeColorSpace(CGContextRef c, CGColorSpaceRef space);
 void CGContextSetInterpolationQuality(CGContextRef c, CGInterpolationQuality quality);
 void CGContextSetShadowWithColor(CGContextRef c, CGSize offset, CGFloat blur, CGColorRef color);
 void CGContextSetTextDrawingMode(CGContextRef c, CGTextDrawingMode mode);
+void CGContextSetTextPosition(CGContextRef c, CGFloat x, CGFloat y);
+void CGContextSetTextMatrix(CGContextRef c, CGAffineTransform t);
 void CGContextSetFontAntialiasingStyle(CGContextRef c, CGFontAntialiasingStyle style);
 void CGContextSetShouldSmoothFonts(CGContextRef c, bool shouldSmoothFonts);
 void CGContextSetAllowsAntialiasing(CGContextRef c, bool allowsAntialiasing);
+void CGContextSetCompositeOperation(CGContextRef c, CGCompositeOperation operation);
 void CGContextSetCTM(CGContextRef, CGAffineTransform);
 void CGContextSetBaseCTM(CGContextRef, CGAffineTransform);
 void CGContextSetBlendMode(CGContextRef c, CGBlendMode mode);
@@ -341,6 +346,7 @@ bool CGPathContainsPoint(CGPathRef path, const CGAffineTransform *m, CGPoint poi
 bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGPoint *point);
 bool CGColorEqualToColor(CGColorRef color1, CGColorRef color2);
 bool CGColorSpaceSupportsOutput(CGColorSpaceRef space);
+bool CGColorSpaceUsesExtendedRange(CGColorSpaceRef space);
 bool CGColorSpaceEqualToColorSpace(CGColorSpaceRef space1, CGColorSpaceRef space2);
 bool CGFloatIsValid(CGFloat value);
 
@@ -365,3 +371,5 @@ CGFontAntialiasingStyle CGContextGetFontAntialiasingStyle(CGContextRef);
 CGContextType CGContextGetType(CGContextRef c);
 
 CGGlyph CGFontGetGlyphWithGlyphName(CGFontRef font, CFStringRef name);
+
+CGCompositeOperation CGContextGetCompositeOperation(CGContextRef c);

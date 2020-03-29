@@ -111,15 +111,15 @@ void CFReadStreamUnscheduleFromRunLoop(CFReadStreamRef stream, CFRunLoopRef runL
 void CFWriteStreamClose(CFWriteStreamRef stream);
 void CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 void CFRunLoopAddCommonMode(CFRunLoopRef rl, CFRunLoopMode mode);
-void CFRunLoopRun(void);
 void CFRunLoopAddTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode);
+void CFRunLoopAddSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
+void CFRunLoopAddObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
+void CFRunLoopRemoveSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
+void CFRunLoopRemoveObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
+void CFRunLoopRun(void);
 void CFRunLoopWakeUp(CFRunLoopRef rl);
 void CFRunLoopStop(CFRunLoopRef rl);
 void CFRunLoopPerformBlock(CFRunLoopRef rl, CFTypeRef mode, void (*block)(void)); 
-void CFRunLoopAddSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
-void CFRunLoopRemoveSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
-void CFRunLoopAddObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
-void CFRunLoopRemoveObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
 void CFRunLoopSourceInvalidate(CFRunLoopSourceRef source);
 void CFRunLoopSourceGetContext(CFRunLoopSourceRef source, CFRunLoopSourceContext *context);
 void CFRunLoopSourceSignal(CFRunLoopSourceRef source);
@@ -251,6 +251,7 @@ CFLocaleRef CFLocaleCopyCurrent(void);
 CFLocaleRef CFLocaleGetSystem(void);
 
 CFLocaleIdentifier CFLocaleGetIdentifier(CFLocaleRef locale);
+CFLocaleIdentifier CFLocaleCreateCanonicalLanguageIdentifierFromString(CFAllocatorRef allocator, CFStringRef localeIdentifier);
 
 CFUUIDRef CFUUIDCreate(CFAllocatorRef alloc);
 CFUUIDRef CFUUIDCreateFromString(CFAllocatorRef alloc, CFStringRef uuidStr);
@@ -413,6 +414,7 @@ CFStringRef CFURLCopyScheme(CFURLRef anURL);
 CFStringRef CFURLCopyUserName(CFURLRef anURL);
 CFStringRef CFURLCreateStringByReplacingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveEscaped);
 CFStringRef CFURLGetString(CFURLRef anURL);
+CFStringRef CFLocaleCopyDisplayNameForPropertyValue(CFLocaleRef displayLocale, CFLocaleKey key, CFStringRef value);
 
 CFStringRef _CFGetProductName(void);
 

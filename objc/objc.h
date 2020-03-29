@@ -33,10 +33,10 @@ id objc_begin_catch(void *exc_buf);
 id objc_opt_self(id self);
 id objc_opt_new(Class cls);
 
-#ifdef x86
-double objc_msgSend_fpret(id self, SEL op, ...);
-#else
+#ifdef __LP64__
 long double objc_msgSend_fpret(id self, SEL op, ...);
+#else
+double objc_msgSend_fpret(id self, SEL op, ...);
 #endif
 
 Class objc_lookUpClass(const char *name);

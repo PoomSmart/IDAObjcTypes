@@ -4,12 +4,12 @@
 #import "../CoreGraphics/Types.h"
 #import "../objc/Types.h"
 
-#ifdef x86
-typedef unsigned int NSUInteger;
-typedef int NSInteger;
-#else
+#ifdef __LP64__
 typedef unsigned long long NSUInteger;
 typedef long long NSInteger;
+#else
+typedef unsigned int NSUInteger;
+typedef int NSInteger;
 #endif
 
 typedef struct __NSObject NSObject;

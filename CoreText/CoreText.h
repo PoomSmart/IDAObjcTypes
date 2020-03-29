@@ -70,6 +70,7 @@ double CTRunGetTypographicBounds(CTRunRef run, CFRange range, CGFloat *ascent, C
 unsigned int CTFontGetUnitsPerEm(CTFontRef font);
 
 bool CTFontGetGlyphsForCharacters(CTFontRef font, const UniChar *characters, CGGlyph *glyphs, CFIndex count);
+bool CTFontIsAppleColorEmoji(CTFontRef font);
 
 void CTFontGetVerticalTranslationsForGlyphs(CTFontRef font, const CGGlyph *glyphs, CGSize *translations, CFIndex count);
 void CTFontDrawGlyphs(CTFontRef font, const CGGlyph *glyphs, const CGPoint *positions, size_t count, CGContextRef context);

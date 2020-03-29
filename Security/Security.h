@@ -1,4 +1,5 @@
 #import "../Types.h"
+#import "../CoreFoundation/Types.h"
 #import "Types.h"
 
 bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);

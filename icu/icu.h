@@ -1,14 +1,6 @@
 #import "../Types.h"
 #import "Types.h"
 
-int32_t u_getIntPropertyValue(UChar32 c, UProperty which);
-int32_t u_getIntPropertyMinValue(UProperty which);
-int32_t u_getIntPropertyMaxValue(UProperty which);
-
-void uset_applyIntPropertyValue(USet *set, UProperty prop, int32_t value, UErrorCode *ec);
-
-double u_getNumericValue(UChar32 c);
-
 #define U_NO_NUMERIC_VALUE ((double)-123456789.)
 
 UBool u_hasBinaryProperty(UChar32 c, UProperty which);
@@ -63,30 +55,37 @@ uint8_t u_getCombiningClass(UChar32 c);
 
 #define U_GET_GC_MASK(c) U_MASK(u_charType(c))
 typedef UBool UCharEnumTypeRange(const void *context, UChar32 start, UChar32 limit, UCharCategory type);
-void u_enumCharTypes(UCharEnumTypeRange *enumRange, const void *context);
+typedef UBool UEnumCharNamesFn(void *context, UChar32 code, UCharNameChoice nameChoice, const char *name, int32_t length);
 
 UBlockCode ublock_getCode(UChar32 c);
 
+double u_getNumericValue(UChar32 c);
+
+int32_t u_getIntPropertyValue(UChar32 c, UProperty which);
+int32_t u_getIntPropertyMinValue(UProperty which);
+int32_t u_getIntPropertyMaxValue(UProperty which);
+int32_t u_getISOComment(UChar32 c, char *dest, int32_t destCapacity, UErrorCode *pErrorCode);
+int32_t u_getFC_NFKC_Closure(UChar32 c, UChar *dest, int32_t destCapacity, UErrorCode *pErrorCode);
+int32_t u_getPropertyValueEnum(UProperty property, const char *alias);
 int32_t u_charDigitValue(UChar32 c);
 int32_t u_charName(UChar32 code, UCharNameChoice nameChoice, char *buffer, int32_t bufferLength, UErrorCode *pErrorCode);
-int32_t u_getISOComment(UChar32 c, char *dest, int32_t destCapacity, UErrorCode *pErrorCode);
 int32_t u_strToUpper(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, const char *locale, UErrorCode *pErrorCode);
 int32_t u_strToLower(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, const char *locale, UErrorCode *pErrorCode);
 int32_t u_strToTitle(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, UBreakIterator *titleIter, const char *locale, UErrorCode *pErrorCode);
-int32_t u_getPropertyValueEnum(UProperty property, const char *alias);
 int32_t u_digit(UChar32 ch, int8_t radix);
-int32_t u_getFC_NFKC_Closure(UChar32 c, UChar *dest, int32_t destCapacity, UErrorCode *pErrorCode);
 
-typedef UBool UEnumCharNamesFn(void *context, UChar32 code, UCharNameChoice nameChoice, const char *name, int32_t length);
 const char *u_getPropertyName(UProperty property, UPropertyNameChoice nameChoice);
 const char *u_getPropertyValueName(UProperty property, int32_t value, UPropertyNameChoice nameChoice);
 UProperty u_getPropertyEnum(const char *alias);
 
 char *u_strToUTF8(char *dest, int32_t destCapacity, int32_t *pDestLength, const UChar *src, int32_t srcLength, UErrorCode *pErrorCode);
 
+void u_enumCharTypes(UCharEnumTypeRange *enumRange, const void *context);
 void u_enumCharNames(UChar32 start, UChar32 limit, UEnumCharNamesFn *fn, void *context, UCharNameChoice nameChoice, UErrorCode *pErrorCode);
 void u_charAge(UChar32 c, UVersionInfo versionArray);
+void u_getVersion(UVersionInfo versionArray);
 void u_getUnicodeVersion(UVersionInfo versionArray);
+void u_versionToString(UVersionInfo versionArray, char *versionString);
 
 void uset_set(USet *set, UChar32 start, UChar32 end);
 void uset_add(USet *set, UChar32 c);
@@ -96,6 +95,7 @@ void uset_addString(USet *set, const UChar *str, int32_t strLen);
 void uset_remove(USet *set, UChar32 c);
 void uset_close(USet *set);
 void uset_freeze(USet *set);
+void uset_applyIntPropertyValue(USet *set, UProperty prop, int32_t value, UErrorCode *ec);
 
 USet *uset_openEmpty(void);
 USet *uset_open(UChar32 start, UChar32 end);

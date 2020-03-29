@@ -1,4 +1,5 @@
 #import "../Types.h"
+#import "../CoreGraphics/Types.h"
 #import "Types.h"
 
 SEL NSSelectorFromString(NSString *aSelectorName);
