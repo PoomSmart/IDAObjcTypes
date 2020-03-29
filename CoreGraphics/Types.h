@@ -3,7 +3,7 @@
 
 #import "../Types.h"
 
-#ifdef __LP64__
+#ifdef __EA64__
 typedef double CGFloat;
 #else
 typedef float CGFloat;

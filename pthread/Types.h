@@ -1,7 +1,7 @@
 #ifndef DARWIN_H_
 #define DARWIN_H_
 
-#ifdef __LP64__
+#ifdef __EA64__
 #define __PTHREAD_SIZE__ 8176
 #define __PTHREAD_ATTR_SIZE__ 56
 #else

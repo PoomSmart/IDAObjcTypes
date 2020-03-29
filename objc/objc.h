@@ -33,7 +33,7 @@ id objc_begin_catch(void *exc_buf);
 id objc_opt_self(id self);
 id objc_opt_new(Class cls);
 
-#ifdef __LP64__
+#ifdef __EA64__
 long double objc_msgSend_fpret(id self, SEL op, ...);
 #else
 double objc_msgSend_fpret(id self, SEL op, ...);

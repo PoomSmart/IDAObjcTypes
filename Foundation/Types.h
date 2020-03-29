@@ -4,7 +4,7 @@
 #import "../CoreGraphics/Types.h"
 #import "../objc/Types.h"
 
-#ifdef __LP64__
+#ifdef __EA64__
 typedef unsigned long long NSUInteger;
 typedef long long NSInteger;
 #else
