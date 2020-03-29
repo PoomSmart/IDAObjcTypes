@@ -11,6 +11,8 @@ SInt32 CFURLGetPortNumber(CFURLRef anURL);
 SInt32 CFRunLoopRunSpecific(CFRunLoopRef rl, CFStringRef modeName, CFTimeInterval seconds, Boolean returnAfterSourceHandled);
 SInt32 CFUserNotificationCancel(CFUserNotificationRef userNotification);
 
+UInt32 CFBundleGetVersionNumber(CFBundleRef bundle);
+
 const char *CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
 const void *CFArrayGetValueAtIndex(CFArrayRef theArray, CFIndex idx);
 const void *CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
@@ -72,6 +74,7 @@ void CFDictionarySetValue(CFMutableDictionaryRef theDict, const void *key, const
 void CFDictionaryAddValue(CFMutableDictionaryRef theDict, const void *key, const void *value);
 void CFDictionaryRemoveAllValues(CFMutableDictionaryRef theDict);
 void CFDictionaryReplaceValue(CFMutableDictionaryRef theDict, const void *key, const void *value);
+void CFAttributedStringSetAttribute(CFMutableAttributedStringRef aStr, CFRange range, CFStringRef attrName, CFTypeRef value);
 void CFStringGetLineBounds(CFStringRef theString, CFRange range, CFIndex *lineBeginIndex, CFIndex *lineEndIndex, CFIndex *contentsEndIndex);
 void CFStringDelete(CFMutableStringRef theString, CFRange range);
 void CFStringFold(CFMutableStringRef theString, CFStringCompareFlags theFlags, CFLocaleRef theLocale);
@@ -105,6 +108,7 @@ void CFSetApplyFunction(CFSetRef theSet, CFSetApplierFunction applier, void *con
 void CFAllocatorSetDefault(CFAllocatorRef allocator);
 void CFAllocatorDeallocate(CFAllocatorRef allocator, void *ptr);
 void CFAllocatorGetContext(CFAllocatorRef allocator, CFAllocatorContext *context);
+void CFReadStreamSetDispatchQueue(CFReadStreamRef stream, dispatch_queue_t q);
 void CFReadStreamClose(CFReadStreamRef stream);
 void CFReadStreamScheduleWithRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
 void CFReadStreamUnscheduleFromRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
@@ -112,11 +116,13 @@ void CFWriteStreamScheduleWithRunLoop(CFWriteStreamRef stream, CFRunLoopRef runL
 void CFWriteStreamUnscheduleFromRunLoop(CFWriteStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
 void CFWriteStreamSetDispatchQueue(CFWriteStreamRef stream, dispatch_queue_t q);
 void CFWriteStreamClose(CFWriteStreamRef stream);
+void CFBundleGetPackageInfo(CFBundleRef bundle, UInt32 *packageType, UInt32 *packageCreator);
 void CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 void CFRunLoopAddCommonMode(CFRunLoopRef rl, CFRunLoopMode mode);
 void CFRunLoopAddTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode);
 void CFRunLoopAddSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
 void CFRunLoopAddObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
+void CFRunLoopRemoveTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLoopMode mode);
 void CFRunLoopRemoveSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
 void CFRunLoopRemoveObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
 void CFRunLoopRun(void);
@@ -165,6 +171,8 @@ Boolean CFSetContainsValue(CFSetRef theSet, const void *value);
 Boolean CFSetGetValueIfPresent(CFSetRef theSet, const void *candidate, const void **value);
 Boolean CFReadStreamOpen(CFReadStreamRef stream);
 Boolean CFReadStreamHasBytesAvailable(CFReadStreamRef stream);
+Boolean CFReadStreamSetClient(CFReadStreamRef stream, CFOptionFlags streamEvents, CFReadStreamClientCallBack clientCB, CFStreamClientContext *clientContext);
+Boolean CFReadStreamSetProperty(CFReadStreamRef stream, CFStreamPropertyKey propertyName, CFTypeRef propertyValue);
 Boolean CFWriteStreamOpen(CFWriteStreamRef stream);
 Boolean CFWriteStreamCanAcceptBytes(CFWriteStreamRef stream);
 Boolean CFWriteStreamSetClient(CFWriteStreamRef stream, CFOptionFlags streamEvents, CFWriteStreamClientCallBack clientCB, CFStreamClientContext *clientContext);
@@ -173,6 +181,7 @@ Boolean CFURLCanBeDecomposed(CFURLRef anURL);
 Boolean CFURLHasDirectoryPath(CFURLRef anURL);
 Boolean CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBase, UInt8 *buffer, CFIndex maxBufLen);
 Boolean CFURLResourceIsReachable(CFURLRef url, CFErrorRef *error);
+Boolean CFRunLoopObserverIsValid(CFRunLoopObserverRef observer);
 Boolean CFRunLoopIsWaiting(CFRunLoopRef rl);
 Boolean CFRunLoopContainsSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
 Boolean CFRunLoopContainsObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFRunLoopMode mode);
@@ -285,6 +294,8 @@ CFErrorRef CFReadStreamCopyError(CFReadStreamRef stream);
 CFStreamStatus CFReadStreamGetStatus(CFReadStreamRef stream);
 CFStreamStatus CFWriteStreamGetStatus(CFWriteStreamRef stream);
 
+CFErrorDomain CFErrorGetDomain(CFErrorRef err);
+
 CFNumberRef CFNumberCreate(CFAllocatorRef allocator, CFNumberType theType, const void *valuePtr);
 
 CFNumberType CFNumberGetType(CFNumberRef number);
@@ -351,11 +362,13 @@ CFWriteStreamRef CFWriteStreamCreateWithFile(CFAllocatorRef alloc, CFURLRef file
 CFWriteStreamRef CFWriteStreamCreateWithBuffer(CFAllocatorRef alloc, UInt8 *buffer, CFIndex bufferCapacity);
 CFWriteStreamRef CFWriteStreamCreateWithAllocatedBuffers(CFAllocatorRef alloc, CFAllocatorRef bufferAllocator);
 
+CFDictionaryRef CFBundleGetInfoDictionary(CFBundleRef bundle);
 CFDictionaryRef CFDictionaryCreate(CFAllocatorRef allocator, const void **keys, const void **values, CFIndex numValues, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);
 CFDictionaryRef CFDictionaryCreateCopy(CFAllocatorRef allocator, CFDictionaryRef theDict);
 CFDictionaryRef CFPreferencesCopyMultiple(CFArrayRef keysToFetch, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 CFDictionaryRef CFLocaleCreateComponentsFromLocaleIdentifier(CFAllocatorRef allocator, CFLocaleIdentifier localeID);
 CFDictionaryRef CFUserNotificationGetResponseDictionary(CFUserNotificationRef userNotification);
+CFDictionaryRef CFErrorCopyUserInfo(CFErrorRef err);
 
 CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);
 CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);

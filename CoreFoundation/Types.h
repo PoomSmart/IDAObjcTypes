@@ -24,6 +24,7 @@ typedef struct __CFRunLoopSource *CFRunLoopSourceRef;
 typedef struct __CFRunLoopObserver *CFRunLoopObserverRef;
 typedef struct __CFRunLoopTimer *CFRunLoopTimerRef;
 typedef struct __CFAttributedString *CFAttributedStringRef;
+typedef struct __CFMutableAttributedString *CFMutableAttributedStringRef;
 typedef struct __CFNotificationCenter *CFNotificationCenterRef;
 typedef struct __CFUserNotification *CFUserNotificationRef;
 typedef struct __CFCharacterSet *CFCharacterSetRef;
@@ -408,6 +409,7 @@ typedef struct CFRunLoopTimerContext {
 
 typedef void (*CFRunLoopTimerCallBack)(CFRunLoopTimerRef timer, void *info);
 typedef void (*CFUserNotificationCallBack)(CFUserNotificationRef userNotification, CFOptionFlags responseFlags);
+typedef void (*CFReadStreamClientCallBack)(CFReadStreamRef stream, CFStreamEventType type, void *clientCallBackInfo);
 typedef void (*CFWriteStreamClientCallBack)(CFWriteStreamRef stream, CFStreamEventType type, void *clientCallBackInfo);
 
 #define CFBagKeyCallBacks CFBagCallBacks
