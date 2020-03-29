@@ -1,4 +1,5 @@
 #import "../Types.h"
+#import "../CoreGraphics/Types.h"
 #import "Types.h"
 
 UIEdgeInsets UIEdgeInsetsFromString(NSString *str);
@@ -60,9 +61,11 @@ void _UIApplicationLoadWebKit(void);
 
 int UIApplicationMain(int argc, char **argv, NSString *principalClassName, NSString *delegateClassName);
 
-BOOL _UIApplicationIsExtension(void);
-BOOL _UIApplicationUsesLegacyUI(void);
 BOOL UIContentSizeCategoryIsAccessibilityCategory(UIContentSizeCategory category);
 
+BOOL _UIApplicationIsExtension(void);
+BOOL _UIApplicationUsesLegacyUI(void);
+
 bool UIRectIsDiscrete(CGRect rect);
+
 bool __UIApplicationLinkedOnOrAfter(NSInteger);

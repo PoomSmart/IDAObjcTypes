@@ -11,7 +11,16 @@ typedef struct __CTTypesetter *CTTypesetterRef;
 typedef struct __CTFrame *CTFrameRef;
 typedef struct __CTFramesetter *CTFramesetterRef;
 
+enum {
+    kCTFontOptionsPreferSystemFont = 1 << 2
+};
+
 typedef uint32_t CTFontOrientation;
+
+typedef uint32_t CTFontDescriptorOptions; enum CTFontDescriptorOptions {
+    kCTFontDescriptorOptionSystemUIFont = 1 << 1,
+    kCTFontDescriptorOptionPreferAppleSystemFont = kCTFontOptionsPreferSystemFont
+} CTFontDescriptorOptions;
 
 enum {
     kCTFontClassMaskShift = 28

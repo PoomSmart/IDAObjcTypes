@@ -83,17 +83,24 @@ void CGContextSetRGBFillColor(CGContextRef c, CGFloat red, CGFloat green, CGFloa
 void CGContextSetCMYKFillColor(CGContextRef c, CGFloat cyan, CGFloat magenta, CGFloat yellow, CGFloat black, CGFloat alpha);
 void CGContextSetFillColor(CGContextRef context, const CGFloat components[]);
 void CGContextSetFillColorWithColor(CGContextRef c, CGColorRef color);
+void CGContextSetFillColorSpace(CGContextRef c, CGColorSpaceRef space);
+void CGContextSetFillPattern(CGContextRef c, CGPatternRef pattern, const CGFloat *components);
 void CGContextSetRGBStrokeColor(CGContextRef c, CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 void CGContextSetStrokeColor(CGContextRef context, const CGFloat components[]);
 void CGContextSetStrokeColorWithColor(CGContextRef c, CGColorRef color);
+void CGContextSetStrokeColorSpace(CGContextRef c, CGColorSpaceRef space);
 void CGContextSetInterpolationQuality(CGContextRef c, CGInterpolationQuality quality);
 void CGContextSetShadowWithColor(CGContextRef c, CGSize offset, CGFloat blur, CGColorRef color);
 void CGContextSetTextDrawingMode(CGContextRef c, CGTextDrawingMode mode);
 void CGContextSetFontAntialiasingStyle(CGContextRef c, CGFontAntialiasingStyle style);
+void CGContextSetShouldSmoothFonts(CGContextRef c, bool shouldSmoothFonts);
 void CGContextSetAllowsAntialiasing(CGContextRef c, bool allowsAntialiasing);
 void CGContextSetCTM(CGContextRef, CGAffineTransform);
 void CGContextSetBaseCTM(CGContextRef, CGAffineTransform);
 void CGContextSetBlendMode(CGContextRef c, CGBlendMode mode);
+void CGContextSetFlatness(CGContextRef c, CGFloat flatness);
+void CGContextSetMiterLimit(CGContextRef c, CGFloat limit);
+void CGContextSetPatternPhase(CGContextRef c, CGSize phase);
 void CGContextBeginPath(CGContextRef c);
 void CGContextAddPath(CGContextRef c, CGPathRef path);
 void CGContextFillPath(CGContextRef c);
@@ -251,6 +258,7 @@ CGColorSpaceRef CGColorSpaceRetain(CGColorSpaceRef space);
 CGColorSpaceRef CGColorSpaceCreateWithName(CFStringRef name);
 CGColorSpaceRef CGColorSpaceCreateDeviceRGB(void);
 CGColorSpaceRef CGColorSpaceCreateDeviceGray(void);
+CGColorSpaceRef CGColorSpaceCreatePattern(CGColorSpaceRef baseSpace);
 CGColorSpaceRef CGColorSpaceCreateWithPropertyList(CFPropertyListRef plist);
 CGColorSpaceRef CGBitmapContextGetColorSpace(CGContextRef context);
 
@@ -333,8 +341,9 @@ bool CGPathContainsPoint(CGPathRef path, const CGAffineTransform *m, CGPoint poi
 bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGPoint *point);
 bool CGColorEqualToColor(CGColorRef color1, CGColorRef color2);
 bool CGColorSpaceSupportsOutput(CGColorSpaceRef space);
-
+bool CGColorSpaceEqualToColorSpace(CGColorSpaceRef space1, CGColorSpaceRef space2);
 bool CGFloatIsValid(CGFloat value);
+
 bool CGCFDictionaryGetBoolean(CFDictionaryRef theDict, const void *key, bool *result);
 bool CGCFDictionaryGetCFTypeRef(CFDictionaryRef theDict, const void *key, CFTypeID typeID, CFTypeRef *valuePtr);
 

@@ -93,9 +93,13 @@ CTFontRef CTFontCreateCopyWithSymbolicTraits(CTFontRef font, CGFloat size, const
 CTFontRef CTFontCreateCopyWithFamily(CTFontRef font, CGFloat size, const CGAffineTransform *matrix, CFStringRef family);
 CTFontRef CTFontCreateForString(CTFontRef currentFont, CFStringRef string, CFRange range);
 
+CTFontDescriptorRef CTFontDescriptorCreateWithAttributes(CFDictionaryRef attributes);
+CTFontDescriptorRef CTFontDescriptorCreateWithAttributesAndOptions(CFDictionaryRef attributes, CTFontDescriptorOptions);
+CTFontDescriptorRef CTFontDescriptorCreateWithNameAndSize(CFStringRef name, CGFloat size);
 CTFontDescriptorRef CTFontDescriptorCreateForUIType(CTFontUIFontType, CGFloat size, CFStringRef language);
 CTFontDescriptorRef CTFontDescriptorCreateWithTextStyle(CFStringRef style, CFStringRef size, CFStringRef language);
 CTFontDescriptorRef CTFontDescriptorCreateCopyWithSymbolicTraits(CTFontDescriptorRef original, CTFontSymbolicTraits symTraitValue, CTFontSymbolicTraits symTraitMask);
+CTFontDescriptorRef CTFontDescriptorCreateLastResort(void);
 
 CTFontSymbolicTraits CTFontGetSymbolicTraits(CTFontRef font);
 

@@ -100,7 +100,6 @@ void xpc_connection_set_target_queue(xpc_connection_t connection, dispatch_queue
 void xpc_connection_set_bootstrap(xpc_connection_t, xpc_object_t bootstrap);
 void xpc_connection_set_instance(xpc_connection_t, uuid_t);
 void xpc_connection_set_oneshot_instance(xpc_connection_t, uuid_t instance);
-void xpc_dictionary_set_mach_send(xpc_object_t, const char *, mach_port_t);
 void xpc_connection_get_audit_token(xpc_connection_t, audit_token_t*);
 void xpc_connection_kill(xpc_connection_t, int);
 void xpc_connection_set_finalizer_f(xpc_connection_t connection, xpc_finalizer_t finalizer);
@@ -116,6 +115,7 @@ void xpc_array_set_data(xpc_object_t xarray, size_t index, const void *bytes, si
 void xpc_array_set_date(xpc_object_t xarray, size_t index, int64_t value);
 void xpc_array_set_value(xpc_object_t xarray, size_t index, xpc_object_t value);
 
+void xpc_dictionary_set_mach_send(xpc_object_t, const char *, mach_port_t);
 void xpc_dictionary_set_uuid(xpc_object_t xdict, const char *key, const uuid_t uuid);
 void xpc_dictionary_set_connection(xpc_object_t xdict, const char *key,	xpc_connection_t connection);
 void xpc_dictionary_set_bool(xpc_object_t xdict, const char *key, bool value);
