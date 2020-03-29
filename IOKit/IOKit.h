@@ -1,5 +1,4 @@
 #import "../Types.h"
-#import "../CoreGraphics/Types.h"
 #import "Types.h"
 
 kern_return_t IOConnectCallScalarMethod(mach_port_t connection, uint32_t selector, const uint64_t *input, uint32_t inputCnt, uint64_t *output, uint32_t *outputCnt);
@@ -21,25 +20,18 @@ kern_return_t IORegistryEntryGetChildEntry(io_registry_entry_t entry, const io_n
 kern_return_t IORegistryEntryGetChildIterator(io_registry_entry_t entry, const io_name_t plane, io_iterator_t *iterator);
 kern_return_t IORegistryEntryCreateCFProperties(io_registry_entry_t entry, CFMutableDictionaryRef *, CFAllocatorRef, NSInteger);
 
-mach_port_t IOSurfaceCreateMachPort(IOSurfaceRef buffer);
-
 io_service_t IOServiceGetMatchingService(mach_port_t masterPort, CFDictionaryRef matching);
 
 io_registry_entry_t IORegistryEntryFromPath(mach_port_t masterPort, const io_string_t path);
-
-CGContextRef CGIOSurfaceContextCreate(IOSurfaceRef, size_t, size_t, size_t, size_t, CGColorSpaceRef, CGBitmapInfo);
-
-CGImageRef CGIOSurfaceContextCreateImage(CGContextRef);
 
 CFTypeID IOHIDEventGetTypeID(void);
 CFTypeID IOHIDEventQueueGetTypeID(void);
 CFTypeID IOHIDDeviceGetTypeID(void);
 CFTypeID IOHIDManagerGetTypeID(void);
 CFTypeID IOHIDUserDeviceGetTypeID(void);
-CFTypeID IOSurfaceGetTypeID(void);
 
 CFMutableDictionaryRef IOBSDNameMatching(mach_port_t masterPort, uint32_t options, const char *bsdName);
-CFMutableDictionaryRef IOServiceMatching(const char* name);
+CFMutableDictionaryRef IOServiceMatching(const char *name);
 CFMutableDictionaryRef IOServiceNameMatching(const char *name);
 CFMutableDictionaryRef IORegistryEntryIDMatching(uint64_t entryID);
 
@@ -48,8 +40,6 @@ CFMutableDataRef IOHIDEventCreateData(CFAllocatorRef allocator, IOHIDEventRef ev
 CFArrayRef IOHIDDeviceCopyMatchingElements(IOHIDDeviceRef device, CFDictionaryRef matching, IOOptionBits options);
 CFArrayRef IOHIDEventGetChildren(IOHIDEventRef event);
 CFArrayRef IOHIDEventSystemClientCopyServices(IOHIDEventSystemClientRef client);
-
-IOSurfaceID IOSurfaceGetID(IOSurfaceRef buffer);
 
 IOHIDUserDeviceRef IOHIDUserDeviceCreate(CFAllocatorRef allocator, CFDictionaryRef properties);
 
@@ -64,7 +54,7 @@ IOHIDEventRef IOHIDEventCreateCopy(CFAllocatorRef allocator, IOHIDEventRef event
 IOHIDEventRef IOHIDEventCreate(CFAllocatorRef allocator, IOHIDEventType type, AbsoluteTime timeStamp, IOOptionBits options);
 IOHIDEventRef IOHIDEventCreateWithData(CFAllocatorRef allocator, CFDataRef data);
 IOHIDEventRef IOHIDEventCreateProgressEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint32_t eventType, IOHIDFloat level, IOOptionBits options);
-IOHIDEventRef IOHIDEventCreateVendorDefinedEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint16_t usagePage, uint16_t usage, uint32_t version, const uint8_t* data, uint32_t length, IOOptionBits options);
+IOHIDEventRef IOHIDEventCreateVendorDefinedEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint16_t usagePage, uint16_t usage, uint32_t version, const uint8_t *data, uint32_t length, IOOptionBits options);
 IOHIDEventRef IOHIDEventCreateSwipeEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, IOHIDSwipeMask swipeMask, IOOptionBits options);
 IOHIDEventRef IOHIDEventCreateDigitizerEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, IOHIDDigitizerTransducerType type, uint32_t index, uint32_t identity, uint32_t eventMask, uint32_t buttonMask, IOHIDFloat x, IOHIDFloat y, IOHIDFloat z, IOHIDFloat tipPressure, IOHIDFloat barrelPressure, Boolean range, Boolean touch, IOOptionBits options);
 IOHIDEventRef IOHIDEventCreateDigitizerFingerEventWithQuality(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint32_t index, uint32_t identity, uint32_t eventMask, IOHIDFloat x, IOHIDFloat y, IOHIDFloat z, IOHIDFloat tipPressure, IOHIDFloat twist, IOHIDFloat minorRadius, IOHIDFloat majorRadius, IOHIDFloat quality, IOHIDFloat density, IOHIDFloat irregularity, Boolean range, Boolean touch, IOOptionBits options);
@@ -97,15 +87,6 @@ IOHIDElementRef IOHIDValueGetElement(IOHIDValueRef value);
 
 AbsoluteTime IOHIDEventGetTimeStamp(IOHIDEventRef event);
 
-size_t IOSurfaceAlignProperty(CFStringRef property, size_t value);
-size_t IOSurfaceGetAllocSize(IOSurfaceRef buffer);
-size_t IOSurfaceGetBytesPerRow(IOSurfaceRef buffer);
-size_t IOSurfaceGetHeight(IOSurfaceRef buffer);
-size_t IOSurfaceGetPropertyMaximum(CFStringRef property);
-size_t IOSurfaceGetWidth(IOSurfaceRef buffer);
-size_t IOSurfaceGetWidthOfPlane(IOSurfaceRef buffer, size_t planeIndex);
-size_t IOSurfaceGetHeightOfPlane(IOSurfaceRef buffer, size_t planeIndex);
-
 boolean_t IOHIDServiceClientConformsTo(IOHIDServiceClientRef service, uint32_t usagePage, uint32_t usage);
 
 int IOHIDEventSystemClientSetMatching(IOHIDEventSystemClientRef client, CFDictionaryRef match);
@@ -118,19 +99,11 @@ uint32_t IOHIDElementGetUsagePage(IOHIDElementRef element);
 
 uint64_t IOHIDEventGetSenderID(IOHIDEventRef event);
 
-OSType IOSurfaceGetPixelFormat(IOSurfaceRef buffer);
-
-IOSurfaceRef IOSurfaceCreate(CFDictionaryRef properties);
-IOSurfaceRef IOSurfaceLookupFromMachPort(mach_port_t);
-
-void IOSurfaceSetValue(IOSurfaceRef buffer, CFStringRef key, CFTypeRef value);
-void IOSurfaceIncrementUseCount(IOSurfaceRef buffer);
-void IOSurfaceDecrementUseCount(IOSurfaceRef buffer);
 void IOHIDDeviceRegisterInputReportCallback(IOHIDDeviceRef device, uint8_t *report, CFIndex reportLength, IOHIDReportCallback callback, void *context);
 void IOHIDDeviceRegisterInputValueCallback(IOHIDDeviceRef device, IOHIDValueCallback callback, void *context);
 void IOHIDDeviceRegisterRemovalCallback(IOHIDDeviceRef device, IOHIDCallback callback, void *context);
 void IOHIDDeviceUnscheduleFromRunLoop(IOHIDDeviceRef device, CFRunLoopRef runLoop, CFStringRef runLoopMode);
-void IOHIDEventGetVendorDefinedData(IOHIDEventRef event, uint32_t* length, uint8_t** data);
+void IOHIDEventGetVendorDefinedData(IOHIDEventRef event, uint32_t *length, uint8_t **data);
 void IOHIDEventSetFloatValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOHIDFloat value, IOOptionBits options);
 void IOHIDEventSetFloatValue(IOHIDEventRef event, IOHIDEventField field, IOHIDFloat value);
 void IOHIDEventSetIntegerValueWithOptions(IOHIDEventRef event, IOHIDEventField field, CFIndex value, IOOptionBits options);
@@ -145,7 +118,7 @@ void IOHIDEventAppendEvent(IOHIDEventRef event, IOHIDEventRef childEvent);
 void IOHIDEventQueueEnqueue(IOHIDEventQueueRef queue, IOHIDEventRef event);
 void IOHIDEventSystemClientDispatchEvent(IOHIDEventSystemClientRef client, IOHIDEventRef event);
 void IOHIDEventSystemClientSetMatchingMultiple(IOHIDEventSystemClientRef, CFArrayRef);
-void IOHIDEventSystemClientRegisterEventCallback(IOHIDEventSystemClientRef client, IOHIDEventSystemClientEventCallback callback, void* target, void* refcon);
+void IOHIDEventSystemClientRegisterEventCallback(IOHIDEventSystemClientRef client, IOHIDEventSystemClientEventCallback callback, void *target, void *refcon);
 void IOHIDEventSystemClientUnregisterEventCallback(IOHIDEventSystemClientRef client);
 void IOHIDEventSystemClientUnregisterEventFilterCallback(IOHIDEventSystemClientRef client, IOHIDEventSystemEventFilterCallback callback, void *target, void *refcon);
 void IOHIDEventSystemClientUnscheduleWithRunLoop(IOHIDEventSystemClientRef client, CFRunLoopRef runloop, CFStringRef mode);
@@ -176,17 +149,14 @@ CFIndex IOHIDElementGetLogicalMin(IOHIDElementRef element);
 CFIndex IOHIDValueGetIntegerValue(IOHIDValueRef value);
 
 void *IOHIDEventGetDataValue(IOHIDEventRef event, IOHIDEventType type);
-void *IOSurfaceGetBaseAddress(IOSurfaceRef buffer);
 
 Boolean IOHIDDeviceConformsTo(IOHIDDeviceRef device, uint32_t usagePage, uint32_t usage);
 Boolean IOHIDEventIsAbsolute(IOHIDEventRef event);
 Boolean IOHIDEventConformsToWithOptions(IOHIDEventRef event, IOHIDEventType type, IOOptionBits options);
 Boolean IOHIDEventConformsTo(IOHIDEventRef event, IOHIDEventType type);
-Boolean IOSurfaceIsInUse(IOSurfaceRef buffer);
 
 CFSetRef IOHIDManagerCopyDevices(IOHIDManagerRef manager);
 
-CFTypeRef IOSurfaceCopyValue(IOSurfaceRef buffer, CFStringRef key);
 CFTypeRef IOHIDDeviceGetProperty(IOHIDDeviceRef device, CFStringRef key);
 CFTypeRef IOHIDManagerGetProperty(IOHIDManagerRef manager, CFStringRef key);
 CFTypeRef IOHIDServiceClientCopyProperty(IOHIDServiceClientRef service, CFStringRef key);
@@ -199,8 +169,5 @@ IOReturn IOHIDDeviceOpen(IOHIDDeviceRef device, IOOptionBits options);
 IOReturn IOHIDDeviceClose(IOHIDDeviceRef device, IOOptionBits options);
 IOReturn IOHIDManagerOpen(IOHIDManagerRef manager, IOOptionBits options);
 IOReturn IOHIDManagerClose(IOHIDManagerRef manager, IOOptionBits options);
-IOReturn IOSurfaceLock(IOSurfaceRef buffer, uint32_t options, uint32_t *seed);
-IOReturn IOSurfaceUnlock(IOSurfaceRef buffer, uint32_t options, uint32_t *seed);
-IOReturn IOSurfaceSetPurgeable(IOSurfaceRef buffer, uint32_t newState, uint32_t *oldState);
 IOReturn IOHIDUserDeviceHandleReport(IOHIDUserDeviceRef device, uint8_t *report, CFIndex reportLength);
 IOReturn IOHIDUserDeviceHandleReportAsync(IOHIDUserDeviceRef device, uint8_t *report, CFIndex reportLength, IOHIDUserDeviceHandleReportAsyncCallback callback, void *refcon);

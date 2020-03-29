@@ -11,15 +11,15 @@ struct __double2 __sincospi_stret(double);
 
 mach_port_t dispatch_mach_get_checkin_port(dispatch_mach_t channel);
 
-uint32_t notify_register_dispatch(const char* name, int* out_token, dispatch_queue_t queue, notify_handler_t handler);
+uint32_t notify_register_dispatch(const char *name, int *out_token, dispatch_queue_t queue, notify_handler_t handler);
 
 size_t dispatch_data_get_size(dispatch_data_t data);
 size_t _stdlib_malloc_size(const void *ptr);
 
-size_t __strlcpy_chk(char* dest, char* src, size_t len, size_t dstlen);
+size_t __strlcpy_chk(char *dest, char *src, size_t len, size_t dstlen);
 size_t __strlcat_chk(char *dest, char *src, size_t len, size_t dstlen);
 
-int backtrace(void** array, int size);
+int backtrace(void **array, int size);
 int _stdlib_memcmp(const void *s1, const void *s2, size_t n);
 
 long dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
@@ -32,20 +32,20 @@ double __exp10(double);
 float __exp10f(float);
 
 char *__strcat_chk(char *dest, const char *src, size_t destlen);
-char *__strcpy_chk(char* dest, const char* src, size_t destlen);
+char *__strcpy_chk(char *dest, const char *src, size_t destlen);
 char *__strncat_chk(char *dest, const char *src, size_t len, size_t dstlen);
 
-char** backtrace_symbols(void*  const* array, int size);
+char **backtrace_symbols(void * const *array, int size);
 
-void* dispatch_mach_mig_demux_get_context(void);
-void* bsearch_b(const void* , const void* , size_t, size_t, int (*)(const void* , const void* ));
-void* __memcpy_chk(void* dest, const void* src, size_t len, size_t dstlen);
-void* __memmove_chk(void* dest, const void* src, size_t len, size_t dstlen);
-void* __memset_chk(void *dstpp, int c, size_t len, size_t dstlen);
-void* __strncpy_chk(char* dest, char* src, size_t len, size_t dstlen);
+void *dispatch_mach_mig_demux_get_context(void);
+void *bsearch_b(const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
+void *__memcpy_chk(void *dest, const void *src, size_t len, size_t dstlen);
+void *__memmove_chk(void *dest, const void *src, size_t len, size_t dstlen);
+void *__memset_chk(void *dstpp, int c, size_t len, size_t dstlen);
+void *__strncpy_chk(char *dest, char *src, size_t len, size_t dstlen);
 
-void abort_report_np(const char* , ...);
-void backtrace_symbols_fd(void*  const* array, int size, int fd);
+void abort_report_np(const char *, ...);
+void backtrace_symbols_fd(void * const *array, int size, int fd);
 void dispatch_once(dispatch_block_t block);
 void dispatch_apply(size_t iterations, dispatch_queue_t queue, void (*block)(size_t));
 void dispatch_assert_queue(dispatch_queue_t queue);
@@ -79,19 +79,19 @@ dispatch_mach_t dispatch_mach_create_f(const char *label, dispatch_queue_t queue
 
 dispatch_mach_msg_t dispatch_mach_msg_create(mach_msg_header_t *msg, size_t size, dispatch_mach_msg_destructor_t destructor, mach_msg_header_t **msg_ptr);
 
-mach_msg_header_t* dispatch_mach_msg_get_msg(dispatch_mach_msg_t message, size_t *size_ptr);
+mach_msg_header_t *dispatch_mach_msg_get_msg(dispatch_mach_msg_t message, size_t *size_ptr);
 
 dispatch_block_t dispatch_block_create(dispatch_block_flags_t flags, dispatch_block_t block);
 dispatch_block_t dispatch_block_create_with_qos_class(dispatch_block_flags_t flags, dispatch_qos_class_t qos_class, int relative_priority, dispatch_block_t block);
 
-dispatch_data_t dispatch_data_create(const void* buffer, size_t size, dispatch_queue_t queue, dispatch_block_t destructor);
-dispatch_data_t dispatch_data_create_map(dispatch_data_t data, const void** buffer_ptr, size_t* size_ptr);
+dispatch_data_t dispatch_data_create(const void *buffer, size_t size, dispatch_queue_t queue, dispatch_block_t destructor);
+dispatch_data_t dispatch_data_create_map(dispatch_data_t data, const void **buffer_ptr, size_t *size_ptr);
 dispatch_data_t dispatch_data_create_concat(dispatch_data_t data1, dispatch_data_t data2);
 dispatch_data_t dispatch_data_create_subrange(dispatch_data_t data, size_t offset, size_t length);
-dispatch_data_t dispatch_data_copy_region(dispatch_data_t data, size_t location, size_t* offset_ptr);
+dispatch_data_t dispatch_data_copy_region(dispatch_data_t data, size_t location, size_t *offset_ptr);
 
 dispatch_queue_t dispatch_queue_create_with_target$V2(const char *label, dispatch_queue_attr_t attr, dispatch_queue_t target);
-dispatch_queue_t dispatch_pthread_root_queue_create(const char* label, unsigned long flags,	const pthread_attr_t* attr, dispatch_block_t configure);
+dispatch_queue_t dispatch_pthread_root_queue_create(const char *label, unsigned long flags,	const pthread_attr_t *attr, dispatch_block_t configure);
 
 dispatch_queue_attr_t dispatch_queue_attr_make_with_qos_class(dispatch_queue_attr_t attr, dispatch_qos_class_t qos_class, int relative_priority);
 dispatch_queue_attr_t dispatch_queue_attr_make_with_autorelease_frequency(dispatch_queue_attr_t attr, dispatch_autorelease_frequency_t frequency);

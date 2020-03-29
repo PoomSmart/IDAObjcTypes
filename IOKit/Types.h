@@ -6,12 +6,12 @@
 #define IOHIDEventFieldBase(type) (type << 16)
 #define IOHIDEventFieldOffsetOf(field) (field & 0xffff)
 
-typedef OSObject* io_object_t;
+typedef OSObject *io_object_t;
 
-typedef io_object_t* io_service_t;
-typedef io_object_t* io_connect_t;
-typedef io_object_t* io_registry_entry_t;
-typedef io_object_t* io_iterator_t;
+typedef io_object_t *io_service_t;
+typedef io_object_t *io_connect_t;
+typedef io_object_t *io_registry_entry_t;
+typedef io_object_t *io_iterator_t;
 
 typedef	char io_name_t[128];
 typedef char io_string_t[512];
@@ -35,8 +35,6 @@ typedef UInt64 IOPhysicalAddress64;
 typedef UInt32 IOPhysicalLength32;
 typedef UInt64 IOPhysicalLength64;
 
-typedef uint32_t IOSurfaceID;
-
 #ifdef __LP64__
 typedef mach_vm_address_t IOVirtualAddress;
 #else
@@ -45,14 +43,13 @@ typedef vm_address_t IOVirtualAddress;
 
 typedef IOVirtualAddress IOLogicalAddress;
 
-typedef struct __IOHIDEvent* IOHIDEventRef;
-typedef struct __IOHIDManager* IOHIDManagerRef;
-typedef struct __IOHIDValue* IOHIDValueRef;
-typedef struct __IOHIDDevice* IOHIDDeviceRef;
-typedef struct __IOSurface* IOSurfaceRef;
+typedef struct __IOHIDEvent *IOHIDEventRef;
+typedef struct __IOHIDManager *IOHIDManagerRef;
+typedef struct __IOHIDValue *IOHIDValueRef;
+typedef struct __IOHIDDevice *IOHIDDeviceRef;
 typedef struct IONotificationPort *IONotificationPortRef;
-typedef struct __IOHIDEventSystemClient* IOHIDEventSystemClientRef;
-typedef struct __IOHIDEventQueue* IOHIDEventQueueRef;
+typedef struct __IOHIDEventSystemClient *IOHIDEventSystemClientRef;
+typedef struct __IOHIDEventQueue *IOHIDEventQueueRef;
 typedef struct __IOHIDServiceClient *IOHIDServiceClientRef;
 typedef struct __IOHIDElement *IOHIDElementRef;
 typedef struct __IOHIDUserDevice *IOHIDUserDeviceRef;
@@ -387,7 +384,7 @@ typedef void (*IOHIDValueCallback)(void *context, IOReturn result, void *sender,
 typedef void (*IOHIDReportCallback)(void *context, IOReturn result, void *sender, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
 typedef void (*IOHIDDeviceCallback)(void *context, IOReturn result, void *sender, IOHIDDeviceRef device);
 typedef void (*IOServiceMatchingCallback)(void *refcon, io_iterator_t iterator);
-typedef void (*IOHIDEventSystemClientEventCallback)(void* target, void* refcon, IOHIDEventQueueRef queue, IOHIDEventRef event);
+typedef void (*IOHIDEventSystemClientEventCallback)(void *target, void *refcon, IOHIDEventQueueRef queue, IOHIDEventRef event);
 typedef bool (*IOHIDEventSystemEventFilterCallback)(void *target, void *refcon, void *sender, IOHIDEventRef event);
 typedef IOReturn (*IOHIDUserDeviceReportCallback)(void *refcon, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
 typedef IOReturn (*IOHIDUserDeviceHandleReportAsyncCallback)(void *refcon, IOReturn result);

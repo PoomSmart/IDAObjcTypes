@@ -15,9 +15,9 @@ bool swift_isUniquelyReferencedNonObjC(const void *);
 
 BoxPair swift_makeBoxUnique(OpaqueValue *buffer, Metadata *type, size_t alignMask);
 
-const ProtocolWitnessTable *swift_getWitnessTable(const ProtocolConformanceDescriptor *conf, const Metadata *type, const void * const *instantiationArgs);
+const ProtocolWitnessTable *swift_getWitnessTable(const ProtocolConformanceDescriptor *conf, const Metadata *type, const void  *const *instantiationArgs);
 const WitnessTable *swift_getAssociatedConformanceWitness(WitnessTable *wtable, const Metadata *conformingType, const Metadata *assocType, const ProtocolRequirement *reqBase, const ProtocolRequirement *assocConformance);
-const WitnessTable *swift_getOpaqueTypeConformance(const void * const *arguments, const OpaqueTypeDescriptor *descriptor, uintptr_t index);
+const WitnessTable *swift_getOpaqueTypeConformance(const void  *const *arguments, const OpaqueTypeDescriptor *descriptor, uintptr_t index);
 
 error *swift_errorRetain(error *ptr);
 
@@ -28,14 +28,14 @@ HeapObject *swift_initStaticObject(HeapMetadata const *metadata, HeapObject *obj
 
 id swift_dynamicCastMetatypeToObjectConditional(type *type);
 id swift_dynamicCastMetatypeToObjectUnconditional(type *type);
-id swift_dynamicCastObjCProtocolConditional(id object, size_t numProtocols, Protocol * const *protocols);
-id swift_dynamicCastObjCProtocolUnconditional(id object, size_t numProtocols, Protocol * const *protocols);
+id swift_dynamicCastObjCProtocolConditional(id object, size_t numProtocols, Protocol  *const *protocols);
+id swift_dynamicCastObjCProtocolUnconditional(id object, size_t numProtocols, Protocol  *const *protocols);
 
 int swift_getEnumCaseMultiPayload(opaque_t *obj, Metadata *enumTy);
 int swift_getEnumTagSinglePayloadGeneric(opaque_t *obj, unsigned num_empty_cases, Metadata *payloadType, int (*getExtraInhabitantIndex)(opaque_t *obj, unsigned numPayloadXI, Metadata *payload));
 
-Metadata *swift_allocateGenericClassMetadata(ClassDescriptor *type, const void * const *arguments, const void *template);
-Metadata *swift_allocateGenericValueMetadata(ValueTypeDescriptor *type, const void * const *arguments, const void *template, size_t extraSize);
+Metadata *swift_allocateGenericClassMetadata(ClassDescriptor *type, const void  *const *arguments, const void *template);
+Metadata *swift_allocateGenericValueMetadata(ValueTypeDescriptor *type, const void  *const *arguments, const void *template, size_t extraSize);
 Metadata *swift_getDynamicType(opaque_t *obj, Metadata *self);
 Metadata *swift_getExistentialMetatypeMetadata(Metadata *instanceTy);
 Metadata *swift_getExistentialTypeMetadata(ProtocolClassConstraint classConstraint, const Metadata *superclassConstraint, size_t numProtocols, const ProtocolDescriptorRef *protocols);
@@ -52,15 +52,15 @@ Metadata *swift_getObjCClassMetadata(objc_class *theClass);
 Metadata *swift_getObjectType(id object);
 Metadata *swift_relocateClassMetadata(TypeContextDescriptor *descriptor, const void *pattern);
 
-MetadataDependency swift_initClassMetadata2(Metadata *self, ClassLayoutFlags flags, size_t numFields, TypeLayout * const *fieldTypes, size_t *fieldOffsets);
-MetadataDependency swift_updateClassMetadata2(Metadata *self, ClassLayoutFlags flags, size_t numFields, TypeLayout * const *fieldTypes, size_t *fieldOffsets);
+MetadataDependency swift_initClassMetadata2(Metadata *self, ClassLayoutFlags flags, size_t numFields, TypeLayout  *const *fieldTypes, size_t *fieldOffsets);
+MetadataDependency swift_updateClassMetadata2(Metadata *self, ClassLayoutFlags flags, size_t numFields, TypeLayout  *const *fieldTypes, size_t *fieldOffsets);
 
 MetadataResponse swift_checkMetadataState(MetadataRequest request, const Metadata *type);
 MetadataResponse swift_getAssociatedTypeWitness(MetadataRequest request, WitnessTable *wtable, const Metadata *conformingType, ProtocolRequirement *reqBase, ProtocolRequirement *assocType);
-MetadataResponse swift_getGenericMetadata(MetadataRequest request, const void * const *arguments, TypeContextDescriptor *type);
-MetadataResponse swift_getOpaqueTypeMetadata(MetadataRequest request, const void * const *arguments, const OpaqueTypeDescriptor *descriptor, uintptr_t index);
+MetadataResponse swift_getGenericMetadata(MetadataRequest request, const void  *const *arguments, TypeContextDescriptor *type);
+MetadataResponse swift_getOpaqueTypeMetadata(MetadataRequest request, const void  *const *arguments, const OpaqueTypeDescriptor *descriptor, uintptr_t index);
 MetadataResponse swift_getSingletonMetadata(MetadataRequest request, TypeContextDescriptor *type);
-MetadataResponse swift_getTupleTypeMetadata(MetadataRequest request, TupleTypeFlags flags, Metadata * const *elts, const char *labels, value_witness_table_t *proposed);
+MetadataResponse swift_getTupleTypeMetadata(MetadataRequest request, TupleTypeFlags flags, Metadata  *const *elts, const char *labels, value_witness_table_t *proposed);
 MetadataResponse swift_getTupleTypeMetadata2(MetadataRequest request, Metadata *elt0, Metadata *elt1, const char *labels, value_witness_table_t *proposed);
 MetadataResponse swift_getTupleTypeMetadata3(MetadataRequest request, Metadata *elt0, Metadata *elt1, Metadata *elt2, const char *labels, value_witness_table_t *proposed);
 
@@ -75,8 +75,8 @@ size_t swift_getTupleTypeLayout2(TypeLayout *layout, const TypeLayout *elt0, con
 
 type *swift_dynamicCastMetatype(type*, type*);
 type *swift_dynamicCastMetatypeUnconditional(type*, type*);
-type* swift_dynamicCastTypeToObjCProtocolConditional(type* object, size_t numProtocols, Protocol * const *protocols);
-type* swift_dynamicCastTypeToObjCProtocolUnconditional(type* object, size_t numProtocols, Protocol * const *protocols);
+type *swift_dynamicCastTypeToObjCProtocolConditional(type *object, size_t numProtocols, Protocol  *const *protocols);
+type *swift_dynamicCastTypeToObjCProtocolUnconditional(type *object, size_t numProtocols, Protocol  *const *protocols);
 
 void __tsan_external_write(void *addr, void *caller_pc, void *tag);
 void _Block_release(void *block);
@@ -125,12 +125,12 @@ void swift_deletedMethodError();
 void swift_endAccess(ValueBuffer *scratch);
 void swift_errorInMain(error *ptr);
 void swift_errorRelease(void *ptr);
-void swift_getTupleTypeLayout(TypeLayout *result, uint32_t offsets, TupleTypeFlags flags, const TypeLayout * const *elts);
-void swift_initClassMetadata(Metadata *self, ClassLayoutFlags flags, size_t numFields, TypeLayout * const *fieldTypes, size_t *fieldOffsets);
-void swift_initEnumMetadataMultiPayload(Metadata *enumType, size_t numPayloads, TypeLayout * const *payloadTypes);
+void swift_getTupleTypeLayout(TypeLayout *result, uint32_t offsets, TupleTypeFlags flags, const TypeLayout  *const *elts);
+void swift_initClassMetadata(Metadata *self, ClassLayoutFlags flags, size_t numFields, TypeLayout  *const *fieldTypes, size_t *fieldOffsets);
+void swift_initEnumMetadataMultiPayload(Metadata *enumType, size_t numPayloads, TypeLayout  *const *payloadTypes);
 void swift_initEnumMetadataSingleCase(Metadata *enumType, EnumLayoutFlags flags, TypeLayout *payload);
 void swift_initEnumMetadataSinglePayload(Metadata *enumType, EnumLayoutFlags flags, TypeLayout *payload, unsigned num_empty_cases);
-void swift_initStructMetadata(Metadata *structType, StructLayoutFlags flags, size_t numFields, TypeLayout * const *fieldTypes, uint32_t *fieldOffsets);
+void swift_initStructMetadata(Metadata *structType, StructLayoutFlags flags, size_t numFields, TypeLayout  *const *fieldTypes, uint32_t *fieldOffsets);
 void swift_nonatomic_bridgeObjectRelease_n(void *ptr, int32_t n);
 void swift_nonatomic_bridgeObjectRetain_n(void *ptr, int32_t n);
 void swift_nonatomic_bridgeRelease(void *ptr);
@@ -150,8 +150,8 @@ void swift_storeEnumTagSinglePayloadGeneric(opaque_t *obj, unsigned case_index, 
 void swift_unexpectedError(error *ptr);
 void swift_unknownObjectRelease_n(void *ptr, int32_t n);
 void swift_unknownObjectRelease(void *ptr);
-void swift_updateClassMetadata(Metadata *self, ClassLayoutFlags flags, size_t numFields, TypeLayout * const *fieldTypes, size_t *fieldOffsets);
+void swift_updateClassMetadata(Metadata *self, ClassLayoutFlags flags, size_t numFields, TypeLayout  *const *fieldTypes, size_t *fieldOffsets);
 void swift_verifyEndOfLifetime(HeapObject *object);
 void swift_willThrow(error *ptr);
 
-witness_table* swift_conformsToProtocol(type*, protocol*);
+witness_table *swift_conformsToProtocol(type*, protocol*);

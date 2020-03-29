@@ -33,19 +33,19 @@ typedef struct CGAffineTransform {
    CGFloat ty;
 } CGAffineTransform;
 
-typedef struct CGContext* CGContextRef;
-typedef struct CGImage* CGImageRef;
-typedef struct CGColorSpace* CGColorSpaceRef;
-typedef struct CGColor* CGColorRef;
-typedef struct CGGradient* CGGradientRef;
-typedef struct CGDataProvider* CGDataProviderRef;
-typedef const struct CGPath* CGPathRef;
-typedef struct CGPath* CGMutablePathRef;
-typedef struct CGPattern* CGPatternRef;
-typedef struct CGFont* CGFontRef;
-typedef const struct CGColorTransform* CGColorTransformRef;
-typedef struct CGImageDestination* CGImageDestinationRef;
-typedef struct CGImageSource* CGImageSourceRef;
+typedef struct CGContext *CGContextRef;
+typedef struct CGImage *CGImageRef;
+typedef struct CGColorSpace *CGColorSpaceRef;
+typedef struct CGColor *CGColorRef;
+typedef struct CGGradient *CGGradientRef;
+typedef struct CGDataProvider *CGDataProviderRef;
+typedef const struct CGPath *CGPathRef;
+typedef struct CGPath *CGMutablePathRef;
+typedef struct CGPattern *CGPatternRef;
+typedef struct CGFont *CGFontRef;
+typedef const struct CGColorTransform *CGColorTransformRef;
+typedef struct CGImageDestination *CGImageDestinationRef;
+typedef struct CGImageSource *CGImageSourceRef;
 
 typedef uint32_t CGRectEdge;
 
@@ -233,13 +233,13 @@ typedef uint32_t CGFontRenderingStyle; enum CGFontRenderingStyle {
 
 typedef struct CGPathElement {
     CGPathElementType type;
-    CGPoint* points;
+    CGPoint *points;
 } CGPathElement;
 
 typedef void (*CGPathApplyBlock)(const CGPathElement *element);
-typedef void (*CGPathApplierFunction)(void* info, const CGPathElement* element);
-typedef void (*CGPatternDrawPatternCallback)(void* info, CGContextRef context);
-typedef void (*CGPatternReleaseInfoCallback)(void* info);
+typedef void (*CGPathApplierFunction)(void *info, const CGPathElement *element);
+typedef void (*CGPatternDrawPatternCallback)(void *info, CGContextRef context);
+typedef void (*CGPatternReleaseInfoCallback)(void *info);
 
 typedef struct CGPatternCallbacks {
     unsigned int version;

@@ -7,6 +7,9 @@
 
 typedef __darwin_natural_t natural_t;
 typedef natural_t mach_port_seqno_t;
+typedef natural_t mach_port_msgcount_t;
+
+typedef char *mach_msg_trailer_info_t;
 
 typedef u_int64_t user_addr_t;
 
@@ -16,7 +19,18 @@ typedef unsigned int FourCharCode;
 typedef	unsigned int mach_msg_trailer_type_t;
 typedef	unsigned int mach_msg_trailer_size_t;
 
+typedef struct mach_port_limits {
+	mach_port_msgcount_t	mpl_qlimit;
+} mach_port_limits_t;
+
+typedef struct mach_port_options {
+	uint32_t		flags;
+	mach_port_limits_t	mpl;
+	uint64_t		reserved[2];
+} mach_port_options_t;
+
 typedef mach_vm_address_t mach_port_context_t;
+typedef mach_port_options_t *mach_port_options_ptr_t;
 
 typedef SInt16 OSErr;
 typedef SInt32 OSStatus;

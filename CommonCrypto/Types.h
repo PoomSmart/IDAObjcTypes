@@ -19,9 +19,9 @@ typedef struct CC_MD2state_st {
     CC_LONG state[CC_MD2_BLOCK_LONG];
 } CC_MD2_CTX;
 
-int CC_MD2_Init(CC_MD2_CTX* c);
-int CC_MD2_Update(CC_MD2_CTX* c, const void* data, CC_LONG len);
-int CC_MD2_Final(unsigned char* md, CC_MD2_CTX* c);
+int CC_MD2_Init(CC_MD2_CTX *c);
+int CC_MD2_Update(CC_MD2_CTX *c, const void *data, CC_LONG len);
+int CC_MD2_Final(unsigned char *md, CC_MD2_CTX *c);
 
 #define CC_MD4_DIGEST_LENGTH 16
 #define CC_MD4_BLOCK_BYTES 64
@@ -55,6 +55,12 @@ typedef struct CC_SHA1state_st {
     CC_LONG data[CC_SHA1_BLOCK_LONG];
     int num;
 } CC_SHA1_CTX;
+
+typedef struct CC_SHA224state_st {
+    CC_LONG count[2];
+    CC_LONG hash[8];
+    CC_LONG wbuf[16];
+} CC_SHA224_CTX;
 
 #define CC_SHA256_DIGEST_LENGTH 32
 #define CC_SHA256_BLOCK_BYTES 64

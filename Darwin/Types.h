@@ -3,11 +3,11 @@
 
 #import "../Foundation/Types.h"
 
-typedef NSObject* dispatch_group_t;
-typedef NSObject* dispatch_data_t;
-typedef NSObject* dispatch_workloop_t;
-typedef struct dispatch_queue_s* dispatch_queue_t;
-typedef struct dispatch_queue_attr_s* dispatch_queue_attr_t;
+typedef NSObject *dispatch_group_t;
+typedef NSObject *dispatch_data_t;
+typedef NSObject *dispatch_workloop_t;
+typedef struct dispatch_queue_s *dispatch_queue_t;
+typedef struct dispatch_queue_attr_s *dispatch_queue_attr_t;
 
 typedef struct dispatch_mach_s *dispatch_mach_t;
 typedef struct dispatch_mach_msg_s *dispatch_mach_msg_t;
@@ -49,7 +49,7 @@ typedef void (*dispatch_block_t)(void);
 typedef void (*dispatch_mach_handler_t)(dispatch_mach_reason_t reason, dispatch_mach_msg_t message, mach_error_t error);
 typedef void (*dispatch_mach_handler_function_t)(void *context, dispatch_mach_reason_t reason, dispatch_mach_msg_t message, mach_error_t error);
 
-typedef bool (*dispatch_data_applier_t)(dispatch_data_t region, size_t offset, const void* buffer, size_t size);
+typedef bool (*dispatch_data_applier_t)(dispatch_data_t region, size_t offset, const void *buffer, size_t size);
 
 // problematic
 struct dispatch_queue_s _dispatch_main_q;

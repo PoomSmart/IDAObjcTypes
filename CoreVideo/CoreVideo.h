@@ -3,8 +3,8 @@
 #import "../IOSurface/Types.h"
 #import "Types.h"
 
-void* CVPixelBufferGetBaseAddress(CVPixelBufferRef pixelBuffer);
-void* CVPixelBufferGetBaseAddressOfPlane(CVPixelBufferRef pixelBuffer, size_t planeIndex);
+void *CVPixelBufferGetBaseAddress(CVPixelBufferRef pixelBuffer);
+void *CVPixelBufferGetBaseAddressOfPlane(CVPixelBufferRef pixelBuffer, size_t planeIndex);
 
 size_t CVPixelBufferGetWidth(CVPixelBufferRef pixelBuffer);
 size_t CVPixelBufferGetWidthOfPlane(CVPixelBufferRef pixelBuffer, size_t planeIndex);
@@ -19,7 +19,7 @@ Boolean CVPixelBufferIsPlanar(CVPixelBufferRef pixelBuffer);
 
 OSType CVPixelBufferGetPixelFormatType(CVPixelBufferRef pixelBuffer);
 
-void CVPixelBufferGetExtendedPixels(CVPixelBufferRef pixelBuffer, size_t* extraColumnsOnLeft, size_t* extraColumnsOnRight, size_t* extraRowsOnTop, size_t* extraRowsOnBottom);
+void CVPixelBufferGetExtendedPixels(CVPixelBufferRef pixelBuffer, size_t *extraColumnsOnLeft, size_t *extraColumnsOnRight, size_t *extraRowsOnTop, size_t *extraRowsOnBottom);
 void CVPixelBufferRelease(CVPixelBufferRef texture);
 
 CVPixelBufferRef CVPixelBufferRetain(CVPixelBufferRef texture);
@@ -28,7 +28,7 @@ IOSurfaceRef CVPixelBufferGetIOSurface(CVPixelBufferRef pixelBuffer);
 
 CFTypeID CVPixelBufferGetTypeID(void);
 
-CFTypeRef CVBufferGetAttachment(CVBufferRef buffer, CFStringRef key, CVAttachmentMode* attachmentMode);
+CFTypeRef CVBufferGetAttachment(CVBufferRef buffer, CFStringRef key, CVAttachmentMode *attachmentMode);
 
-CVReturn CVPixelBufferCreateResolvedAttributesDictionary(CFAllocatorRef allocator, CFArrayRef attributes, CFDictionaryRef* resolvedDictionaryOut);
+CVReturn CVPixelBufferCreateResolvedAttributesDictionary(CFAllocatorRef allocator, CFArrayRef attributes, CFDictionaryRef *resolvedDictionaryOut);
 CVReturn CVPixelBufferCreate(CFAllocatorRef allocator, size_t width, size_t height, OSType pixelFormatType, CFDictionaryRef pixelBufferAttributes, CVPixelBufferRef *pixelBufferOut);

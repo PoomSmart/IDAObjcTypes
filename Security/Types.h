@@ -89,7 +89,7 @@ typedef enum cssm_db_attribute_name_format {
 
 typedef struct cssm_data {
     uint32 Length;
-    uint8* Data;
+    uint8 *Data;
 } CSSM_DATA, *CSSM_DATA_PTR;
 typedef CSSM_DATA CSSM_OID, *CSSM_OID_PTR;
 
