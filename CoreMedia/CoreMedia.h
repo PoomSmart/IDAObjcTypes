@@ -14,6 +14,7 @@ CFStringRef CMTimeCopyDescription(CFAllocatorRef allocator, CMTime time);
 
 CFDictionaryRef CMTimeCopyAsDictionary(CMTime time, CFAllocatorRef allocator);
 CFDictionaryRef CMFormatDescriptionGetExtensions(CMFormatDescriptionRef desc);
+CFDictionaryRef CMCopyDictionaryOfAttachments(CFAllocatorRef allocator, CMAttachmentBearerRef target, CMAttachmentMode attachmentMode);
 
 CFArrayRef CMVideoFormatDescriptionGetExtensionKeysCommonWithImageBuffers(void);
 CFArrayRef CMSampleBufferGetSampleAttachmentsArray(CMSampleBufferRef sbuf, Boolean createIfNecessary);
@@ -35,6 +36,9 @@ Boolean CMDoesBigEndianSoundDescriptionRequireLegacyCBRSampleTableLayout(CMBlock
 Boolean CMSampleBufferDataIsReady(CMSampleBufferRef sbuf);
 Boolean CMSampleBufferIsValid(CMSampleBufferRef sbuf);
 Boolean CMSampleBufferHasDataFailed(CMSampleBufferRef sbuf, OSStatus *statusOut);
+Boolean CMTimeRangeContainsTime(CMTimeRange range, CMTime time);
+Boolean CMTimeRangeContainsTimeRange(CMTimeRange range, CMTimeRange otherRange);
+Boolean CMTimeRangeEqual(CMTimeRange range1, CMTimeRange range2);
 
 FourCharCode CMFormatDescriptionGetMediaSubType(CMFormatDescriptionRef desc);
 
@@ -49,6 +53,7 @@ size_t CMSampleBufferGetTotalSampleSize(CMSampleBufferRef sbuf);
 
 void CMTimeShow(CMTime time);
 void CMNotificationCenterPostNotification(CFNotificationCenterRef center, CFNotificationName name, const void *object, CFDictionaryRef userInfo);
+void CMSetAttachment(CMAttachmentBearerRef target, CFStringRef key, CFTypeRef value, CMAttachmentMode attachmentMode);
 
 const AudioStreamBasicDescription *CMAudioFormatDescriptionGetStreamBasicDescription(CMAudioFormatDescriptionRef desc);
 const AudioChannelLayout *CMAudioFormatDescriptionGetChannelLayout(CMAudioFormatDescriptionRef desc, size_t *sizeOut);
@@ -71,6 +76,7 @@ CMTime CMTimeMultiplyByRatio(CMTime time, int32_t multiplier, int32_t divisor);
 CMTime CMTimeMultiplyByFloat64(CMTime time, Float64 multiplier);
 CMTime CMTimeConvertScale(CMTime time, int32_t newTimescale, CMTimeRoundingMethod method);
 CMTime CMTimeRangeGetEnd(CMTimeRange range);
+CMTime CMTimeClampToRange(CMTime time, CMTimeRange range);
 
 CMTime CMClockGetTime(CMClockRef clock);
 CMTime CMClockMakeHostTimeFromSystemUnits(uint64_t hostTime);
@@ -83,6 +89,10 @@ CMTime CMSampleBufferGetOutputPresentationTimeStamp(CMSampleBufferRef sbuf);
 CMTime CMSampleBufferGetOutputDecodeTimeStamp(CMSampleBufferRef sbuf);
 
 CMTimeRange CMTimeRangeMake(CMTime start, CMTime duration);
+CMTimeRange CMTimeRangeMakeFromDictionary(CFDictionaryRef dictionaryRepresentation);
+CMTimeRange CMTimeRangeFromTimeToTime(CMTime start, CMTime end);
+CMTimeRange CMTimeRangeGetIntersection(CMTimeRange range, CMTimeRange otherRange);
+CMTimeRange CMTimeRangeGetUnion(CMTimeRange range, CMTimeRange otherRange);
 
 CMNotificationCenterRef CMNotificationCenterGetDefaultLocalCenter(void);
 

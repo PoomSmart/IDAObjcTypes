@@ -50,6 +50,7 @@ void UIRectFill(CGRect rect);
 void UIRectFillUsingBlendMode(CGRect rect, CGBlendMode blendMode);
 void UIRectClip(CGRect rect);
 void UIImageWriteToSavedPhotosAlbum(UIImage *image, id completionTarget, SEL completionSelector, void *contextInfo);
+void UISaveVideoAtPathToSavedPhotosAlbum(NSString *videoPath, id completionTarget, SEL completionSelector, void *contextInfo);
 void UIGraphicsPushContext(CGContextRef context);
 void UIGraphicsPopContext(void);
 void UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale);

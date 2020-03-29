@@ -275,6 +275,15 @@ typedef CFIndex CFCharacterSetPredefinedSet; enum CFCharacterSetPredefinedSet {
     kCFCharacterSetIllegal = 12
 } CFCharacterSetPredefinedSet;
 
+typedef enum CFStreamEventType {
+   kCFStreamEventNone             =0,
+   kCFStreamEventOpenCompleted    =(1<<0),
+   kCFStreamEventHasBytesAvailable=(1<<1),
+   kCFStreamEventCanAcceptBytes   =(1<<2),
+   kCFStreamEventErrorOccurred    =(1<<3),
+   kCFStreamEventEndEncountered   =(1<<4)
+} CFStreamEventType;
+
 typedef struct __CFRuntimeClass {
     CFIndex version;
     const char *className;
@@ -346,6 +355,14 @@ typedef void (*CFBagApplierFunction)(const void *value, void *context);
 
 static const CFBagCallBacks __kCFNullBagCallBacks = {0, NULL, NULL, NULL, NULL, NULL};
 
+struct CFStreamClientContext {
+    CFIndex version;
+    void *info;
+    void *(*retain)(void *info);
+    void (*release)(void *info);
+    CFStringRef (*copyDescription)(void *info);
+} CFStreamClientContext;
+
 typedef struct CFRunLoopSourceContext {
     CFIndex	version;
     void *	info;
@@ -391,6 +408,7 @@ typedef struct CFRunLoopTimerContext {
 
 typedef void (*CFRunLoopTimerCallBack)(CFRunLoopTimerRef timer, void *info);
 typedef void (*CFUserNotificationCallBack)(CFUserNotificationRef userNotification, CFOptionFlags responseFlags);
+typedef void (*CFWriteStreamClientCallBack)(CFWriteStreamRef stream, CFStreamEventType type, void *clientCallBackInfo);
 
 #define CFBagKeyCallBacks CFBagCallBacks
 #define CFBagValueCallBacks CFBagCallBacks

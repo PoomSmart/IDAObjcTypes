@@ -5,6 +5,7 @@
 
 typedef struct __CTFont *CTFontRef;
 typedef struct __CTFontDescriptor *CTFontDescriptorRef;
+typedef struct __CTFontCollection *CTFontCollectionRef;
 typedef struct __CTRun *CTRunRef;
 typedef struct __CTLine *CTLineRef;
 typedef struct __CTTypesetter *CTTypesetterRef;

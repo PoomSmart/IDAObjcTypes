@@ -48,6 +48,7 @@ CGRect CGRectIntersection(CGRect r1, CGRect r2);
 
 CGPoint CGPointApplyAffineTransform(CGPoint point, CGAffineTransform t);
 CGPoint CGContextGetPathCurrentPoint(CGContextRef context);
+CGPoint CGContextGetTextPosition(CGContextRef c);
 CGPoint CGPathGetCurrentPoint(CGPathRef path);
 
 CGSize CGSizeApplyAffineTransform(CGSize size, CGAffineTransform t);
@@ -81,6 +82,7 @@ void CGContextSetLineDash(CGContextRef c, CGFloat phase, const CGFloat *lengths,
 void CGContextSetLineWidth(CGContextRef c, CGFloat width);
 void CGContextSetAlpha(CGContextRef c, CGFloat alpha);
 void CGContextSetGrayFillColor(CGContextRef c, CGFloat gray, CGFloat alpha);
+void CGContextSetGrayStrokeColor(CGContextRef c, CGFloat gray, CGFloat alpha);
 void CGContextSetRGBFillColor(CGContextRef c, CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 void CGContextSetCMYKFillColor(CGContextRef c, CGFloat cyan, CGFloat magenta, CGFloat yellow, CGFloat black, CGFloat alpha);
 void CGContextSetFillColor(CGContextRef context, const CGFloat components[]);
@@ -96,8 +98,11 @@ void CGContextSetShadowWithColor(CGContextRef c, CGSize offset, CGFloat blur, CG
 void CGContextSetTextDrawingMode(CGContextRef c, CGTextDrawingMode mode);
 void CGContextSetTextPosition(CGContextRef c, CGFloat x, CGFloat y);
 void CGContextSetTextMatrix(CGContextRef c, CGAffineTransform t);
+void CGContextSetFont(CGContextRef c, CGFontRef font);
+void CGContextSetFontSize(CGContextRef c, CGFloat size);
 void CGContextSetFontAntialiasingStyle(CGContextRef c, CGFontAntialiasingStyle style);
 void CGContextSetShouldSmoothFonts(CGContextRef c, bool shouldSmoothFonts);
+void CGContextSetShouldAntialias(CGContextRef c, bool shouldAntialias);
 void CGContextSetAllowsAntialiasing(CGContextRef c, bool allowsAntialiasing);
 void CGContextSetCompositeOperation(CGContextRef c, CGCompositeOperation operation);
 void CGContextSetCTM(CGContextRef, CGAffineTransform);
@@ -124,6 +129,9 @@ void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y, CGFloat radius, CGFlo
 void CGContextAddArcToPoint(CGContextRef c, CGFloat x1, CGFloat y1, CGFloat x2, CGFloat y2, CGFloat radius);
 void CGContextReplacePathWithStrokedPath(CGContextRef c);
 void CGContextDrawImage(CGContextRef c, CGRect rect, CGImageRef image);
+void CGContextDrawRadialGradient(CGContextRef c, CGGradientRef gradient, CGPoint startCenter, CGFloat startRadius, CGPoint endCenter, CGFloat endRadius, CGGradientDrawingOptions options);
+void CGContextDrawLinearGradient(CGContextRef c, CGGradientRef gradient, CGPoint startPoint, CGPoint endPoint, CGGradientDrawingOptions options);
+void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode);
 void CGContextFillRect(CGContextRef c, CGRect rect);
 void CGContextFillRects(CGContextRef c, const CGRect rects[], size_t count);
 void CGContextFillEllipseInRect(CGContextRef context, CGRect rect);
@@ -143,20 +151,16 @@ void CGContextFlush(CGContextRef c);
 void CGContextSynchronize(CGContextRef c);
 void CGContextEndPage(CGContextRef c);
 void CGContextBeginPage(CGContextRef c, const CGRect *mediaBox);
-void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode);
-void CGContextDrawLinearGradient(CGContextRef c, CGGradientRef gradient, CGPoint startPoint, CGPoint endPoint, CGGradientDrawingOptions options);
 void CGContextBeginTransparencyLayer(CGContextRef c, CFDictionaryRef auxiliaryInfo);
 void CGContextBeginTransparencyLayerWithRect(CGContextRef c, CGRect rect, CFDictionaryRef auxInfo);
 void CGContextEndTransparencyLayer(CGContextRef c);
+void CGContextShowGlyphsAtPositions(CGContextRef c, const CGGlyph *glyphs, const CGPoint *Lpositions, size_t count);
 void CGContextResetClip(CGContextRef c);
 void CGContextClear(CGContextRef c);
-void CGContextBeginTransparencyLayer(CGContextRef c, CFDictionaryRef auxiliaryInfo);
-void CGContextBeginTransparencyLayerWithRect(CGContextRef c, CGRect rect, CFDictionaryRef auxInfo);
-void CGContextEndTransparencyLayer(CGContextRef c);
-void CGContextDrawLinearGradient(CGContextRef c, CGGradientRef gradient, CGPoint startPoint, CGPoint endPoint, CGGradientDrawingOptions options);
 void CGGradientRelease(CGGradientRef gradient);
 void CGImageSourceUpdateData(CGImageSourceRef isrc, CFDataRef data, bool final);
 void CGImageSourceUpdateDataProvider(CGImageSourceRef isrc, CGDataProviderRef provider, bool final);
+void CGImageSourceRemoveCacheAtIndex(CGImageSourceRef isrc, size_t index);
 void CGImageDestinationAddImage(CGImageDestinationRef idst, CGImageRef image, CFDictionaryRef properties);
 void CGImageDestinationAddImageFromSource(CGImageDestinationRef idst, CGImageSourceRef isrc, size_t index, CFDictionaryRef properties);
 void CGImageDestinationSetProperties(CGImageDestinationRef idst, CFDictionaryRef properties);
@@ -213,6 +217,7 @@ CGImageRef CGImageCreate(size_t width, size_t height, size_t bitsPerComponent, s
 CGImageRef CGImageCreateWithPNGDataProvider(CGDataProviderRef source, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageCreateWithJPEGDataProvider(CGDataProviderRef source, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageCreateWithImageInRect(CGImageRef image, CGRect rect);
+CGImageRef CGImageCreateCopy(CGImageRef image);
 CGImageRef CGImageMaskCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGDataProviderRef provider, const CGFloat *decode, bool shouldInterpolate);
 CGImageRef CGImageRetain(CGImageRef image);
 CGImageRef CGImageSourceCreateImageAtIndex(CGImageSourceRef isrc, size_t index, CFDictionaryRef options);
@@ -365,6 +370,7 @@ CGAffineTransform CGAffineTransformInvert(CGAffineTransform t);
 CGAffineTransform CGAffineTransformConcat(CGAffineTransform t1, CGAffineTransform t2);
 CGAffineTransform CGContextGetCTM(CGContextRef c);
 CGAffineTransform CGContextGetBaseCTM(CGContextRef c);
+CGAffineTransform CGContextGetTextMatrix(CGContextRef c);
 
 CGFontAntialiasingStyle CGContextGetFontAntialiasingStyle(CGContextRef);
 

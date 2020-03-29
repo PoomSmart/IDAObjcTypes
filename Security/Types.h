@@ -17,6 +17,7 @@ typedef struct __SecTrust *SecACLRef;
 typedef struct __SecPassword *SecPasswordRef;
 typedef struct __SecTrust *SecTrustRef;
 typedef struct __SecTask *SecTaskRef;
+typedef const struct __SecRandom *SecRandomRef;
 
 typedef uint32 CSSM_TP_ACTION;
 typedef uint32 CSSM_TP_HANDLE;
@@ -159,6 +160,15 @@ typedef uint32_t SecTrustResultType; enum SecTrustResultType {
 typedef void (*SecTrustCallback)(SecTrustRef trustRef, SecTrustResultType trustResult);
 
 typedef SecTrustResultType SecTrustUserSetting;
+
+typedef uint32_t SecPadding; enum SecPadding {
+    kSecPaddingNone      = 0,
+    kSecPaddingPKCS1     = 1,
+    kSecPaddingOAEP      = 2,
+    kSecPaddingPKCS1MD2  = 0x8000,
+    kSecPaddingPKCS1MD5  = 0x8001,
+    kSecPaddingPKCS1SHA1 = 0x8002
+} SecPadding;
 
 typedef uint32_t SecTrustOptionFlags; enum SecTrustOptionFlags {
     kSecTrustOptionAllowExpired       = 0x00000001,
@@ -367,5 +377,7 @@ extern const CFStringRef kSecUseAuthenticationUISkip;
 
 extern const CFStringRef kSecAttrTokenIDSecureEnclave;
 extern const CFStringRef kSecAttrAccessGroupToken;
+
+const SecRandomRef kSecRandomDefault;
 
 #endif

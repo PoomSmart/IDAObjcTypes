@@ -2,12 +2,11 @@
 #import "../CoreFoundation/Types.h"
 #import "Types.h"
 
-bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
-
 CFTypeID SecTrustGetTypeID(void);
 CFTypeID SecCertificateGetTypeID(void);
 CFTypeID SecAccessControlGetTypeID(void);
 CFTypeID SecTaskGetTypeID(void);
+CFTypeID SecPolicyGetTypeID(void);
 
 CFTypeRef SecTaskCopyValueForEntitlement(SecTaskRef task, CFStringRef entitlement, CFErrorRef *error);
 
@@ -30,6 +29,10 @@ CFDataRef SecCertificateCopySerialNumber(SecCertificateRef certificate, CFErrorR
 CFArrayRef SecTrustCopyProperties(SecTrustRef trust);
 
 CFDictionaryRef SecTrustCopyResult(SecTrustRef trust);
+
+bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
+
+int SecRandomCopyBytes(SecRandomRef rnd, size_t count, void *bytes);
 
 OSStatus SecTrustEvaluate(SecTrustRef trust, SecTrustResultType *result);
 OSStatus SecTrustEvaluateAsync(SecTrustRef trust, dispatch_queue_t queue, SecTrustCallback result);
@@ -63,6 +66,9 @@ OSStatus SecCertificateCopyEmailAddresses(SecCertificateRef certificate, CFArray
 OSStatus SecCertificateCopyPublicKey(SecCertificateRef certificate, SecKeyRef *key);
 OSStatus SecCertificateAddToKeychain(SecCertificateRef certificate, SecKeychainRef keychain);
 OSStatus SecCertificateGetData(SecCertificateRef certificate, CSSM_DATA_PTR data);
+OSStatus SecKeyRawVerify(SecKeyRef key, SecPadding padding, const uint8_t *signedData, size_t signedDataLen, const uint8_t *sig, size_t sigLen);
+OSStatus SecPKCS12Import(CFDataRef pkcs12_data, CFDictionaryRef options, CFArrayRef *items);
+OSStatus SecIdentityCopyCertificate(SecIdentityRef identityRef, SecCertificateRef *certificateRef);
 
 SecTaskRef SecTaskCreateFromSelf(CFAllocatorRef allocator);
 SecTaskRef SecTaskCreateWithAuditToken(CFAllocatorRef allocator, audit_token_t token);
@@ -70,6 +76,11 @@ SecTaskRef SecTaskCreateWithAuditToken(CFAllocatorRef allocator, audit_token_t t
 SecKeyRef SecTrustCopyPublicKey(SecTrustRef trust);
 SecKeyRef SecCertificateCopyKey(SecCertificateRef certificate);
 SecKeyRef SecCertificateCopyPublicKey(SecCertificateRef certificate);
+SecKeyRef SecKeyCreateWithData(CFDataRef keyData, CFDictionaryRef attributes, CFErrorRef *error);
+
+SecPolicyRef SecPolicyCreateBasicX509(void);
+SecPolicyRef SecPolicyCreateSSL(Boolean server, CFStringRef hostname);
+SecPolicyRef SecPolicyCreateRevocation(CFOptionFlags revocationFlags);
 
 SecCertificateRef SecTrustGetCertificateAtIndex(SecTrustRef trust, CFIndex ix);
 SecCertificateRef SecCertificateCreateWithData(CFAllocatorRef allocator, CFDataRef data);

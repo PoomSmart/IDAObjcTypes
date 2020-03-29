@@ -108,6 +108,9 @@ void CFAllocatorGetContext(CFAllocatorRef allocator, CFAllocatorContext *context
 void CFReadStreamClose(CFReadStreamRef stream);
 void CFReadStreamScheduleWithRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
 void CFReadStreamUnscheduleFromRunLoop(CFReadStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
+void CFWriteStreamScheduleWithRunLoop(CFWriteStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
+void CFWriteStreamUnscheduleFromRunLoop(CFWriteStreamRef stream, CFRunLoopRef runLoop, CFRunLoopMode runLoopMode);
+void CFWriteStreamSetDispatchQueue(CFWriteStreamRef stream, dispatch_queue_t q);
 void CFWriteStreamClose(CFWriteStreamRef stream);
 void CFBundleCloseBundleResourceMap(CFBundleRef bundle, CFBundleRefNum refNum);
 void CFRunLoopAddCommonMode(CFRunLoopRef rl, CFRunLoopMode mode);
@@ -163,6 +166,9 @@ Boolean CFSetGetValueIfPresent(CFSetRef theSet, const void *candidate, const voi
 Boolean CFReadStreamOpen(CFReadStreamRef stream);
 Boolean CFReadStreamHasBytesAvailable(CFReadStreamRef stream);
 Boolean CFWriteStreamOpen(CFWriteStreamRef stream);
+Boolean CFWriteStreamCanAcceptBytes(CFWriteStreamRef stream);
+Boolean CFWriteStreamSetClient(CFWriteStreamRef stream, CFOptionFlags streamEvents, CFWriteStreamClientCallBack clientCB, CFStreamClientContext *clientContext);
+Boolean CFWriteStreamSetProperty(CFWriteStreamRef stream, CFStreamPropertyKey propertyName, CFTypeRef propertyValue);
 Boolean CFURLCanBeDecomposed(CFURLRef anURL);
 Boolean CFURLHasDirectoryPath(CFURLRef anURL);
 Boolean CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBase, UInt8 *buffer, CFIndex maxBufLen);
@@ -184,6 +190,7 @@ CFTypeRef CFRetain(CFTypeRef cf);
 CFTypeRef CFAutorelease(CFTypeRef arg);
 CFTypeRef CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
 CFTypeRef CFMakeCollectable(CFTypeRef cf);
+CFTypeRef CFWriteStreamCopyProperty(CFWriteStreamRef stream, CFStreamPropertyKey propertyName);
 CFTypeRef CFReadStreamCopyProperty(CFReadStreamRef stream, CFStreamPropertyKey propertyName);
 CFTypeRef CFLocaleGetValue(CFLocaleRef locale, CFLocaleKey key);
 
@@ -209,6 +216,7 @@ CFTypeID CFErrorGetTypeID(void);
 CFTypeID CFBagGetTypeID(void);
 CFTypeID CFRunLoopGetTypeID(void);
 CFTypeID CFRunLoopSourceGetTypeID(void);
+CFTypeID CFUUIDGetTypeID(void);
 
 CFTypeID _CFRuntimeRegisterClass(const CFRuntimeClass *const cls);
 
@@ -271,9 +279,11 @@ CFAllocatorRef CFAllocatorCreate(CFAllocatorRef allocator, CFAllocatorContext *c
 
 CFErrorRef CFErrorCreate(CFAllocatorRef allocator, CFErrorDomain domain, CFIndex code, CFDictionaryRef userInfo);
 CFErrorRef CFErrorCreateWithUserInfoKeysAndValues(CFAllocatorRef allocator, CFErrorDomain domain, CFIndex code, const void *const *userInfoKeys, const void *const *userInfoValues, CFIndex numUserInfoValues);
+CFErrorRef CFWriteStreamCopyError(CFWriteStreamRef stream);
 CFErrorRef CFReadStreamCopyError(CFReadStreamRef stream);
 
 CFStreamStatus CFReadStreamGetStatus(CFReadStreamRef stream);
+CFStreamStatus CFWriteStreamGetStatus(CFWriteStreamRef stream);
 
 CFNumberRef CFNumberCreate(CFAllocatorRef allocator, CFNumberType theType, const void *valuePtr);
 
@@ -413,6 +423,7 @@ CFStringRef CFURLCopyResourceSpecifier(CFURLRef anURL);
 CFStringRef CFURLCopyScheme(CFURLRef anURL);
 CFStringRef CFURLCopyUserName(CFURLRef anURL);
 CFStringRef CFURLCreateStringByReplacingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveEscaped);
+CFStringRef CFURLCreateStringByAddingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveUnescaped, CFStringRef legalURLCharactersToBeEscaped, CFStringEncoding encoding);
 CFStringRef CFURLGetString(CFURLRef anURL);
 CFStringRef CFLocaleCopyDisplayNameForPropertyValue(CFLocaleRef displayLocale, CFLocaleKey key, CFStringRef value);
 

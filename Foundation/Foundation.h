@@ -2,8 +2,6 @@
 #import "../CoreGraphics/Types.h"
 #import "Types.h"
 
-SEL NSSelectorFromString(NSString *aSelectorName);
-
 CGFloat NSWidth(NSRect aRect);
 CGFloat NSHeight(NSRect aRect);
 CGFloat NSMaxX(NSRect aRect);
@@ -61,11 +59,15 @@ BOOL NSEqualSizes(NSSize aSize, NSSize bSize);
 
 Class NSClassFromString(CFStringRef string);
 
+SEL NSSelectorFromString(NSString *aSelectorName);
+
 Protocol *NSProtocolFromString(NSString *namestr);
 
 NSMapEnumerator NSEnumerateMapTable(NSMapTable *table);
 
 NSMapTable *NSCreateMapTable(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity);
+
+NSZone *NSZoneFromPointer(void *ptr);
 
 unsigned NSHashCString(unsigned char *str, int n);
 unsigned __NSHashCString(void *table, const void *anObject);
@@ -77,6 +79,8 @@ void *NSZoneMalloc(NSZone *zone, NSUInteger size);
 void *NSMapInsertIfAbsent(NSMapTable *table, const void *key, const void *value);
 void *NSMapGet(NSMapTable *table, const void *key);
 void *NSNextHashEnumeratorItem(NSHashEnumerator *enumerator);
+
+id NSAllocateObject(Class aClass, NSUInteger extraBytes, NSZone *zone);
 
 NSArray *NSAllMapTableKeys(NSMapTable *table);
 NSArray *NSAllMapTableValues(NSMapTable *table);
