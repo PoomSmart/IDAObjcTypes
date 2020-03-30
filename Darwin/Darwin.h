@@ -9,8 +9,6 @@ struct __double2 __sincos_stret(double);
 struct __float2 __sincospif_stret(float);
 struct __double2 __sincospi_stret(double);
 
-mach_port_t dispatch_mach_get_checkin_port(dispatch_mach_t channel);
-
 uint32_t notify_register_dispatch(const char *name, int *out_token, dispatch_queue_t queue, notify_handler_t handler);
 
 size_t dispatch_data_get_size(dispatch_data_t data);
@@ -72,14 +70,20 @@ void dispatch_mach_send_barrier_f(dispatch_mach_t channel, void *context, dispat
 void dispatch_mach_receive_barrier(dispatch_mach_t channel, dispatch_block_t barrier);
 void dispatch_mach_receive_barrier_f(dispatch_mach_t channel, void *context, dispatch_function_t barrier);
 void dispatch_workloop_set_autorelease_frequency(dispatch_workloop_t workloop, dispatch_autorelease_frequency_t frequency);
+void dispatch_workloop_set_scheduler_priority(dispatch_workloop_t workloop, int priority, dispatch_workloop_param_flags_t flags);
 
 void qsort_b(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
 
+mach_port_t dispatch_mach_get_checkin_port(dispatch_mach_t channel);
+
+mach_msg_header_t *dispatch_mach_msg_get_msg(dispatch_mach_msg_t message, size_t *size_ptr);
+
+mach_msg_return_t dispatch_mig_server(dispatch_source_t ds, size_t maxmsgsz, dispatch_mig_callback_t callback);
+
+dispatch_mach_t dispatch_mach_create(const char *label, dispatch_queue_t queue, dispatch_mach_handler_t handler);
 dispatch_mach_t dispatch_mach_create_f(const char *label, dispatch_queue_t queue, void *context, dispatch_mach_handler_function_t handler);
 
 dispatch_mach_msg_t dispatch_mach_msg_create(mach_msg_header_t *msg, size_t size, dispatch_mach_msg_destructor_t destructor, mach_msg_header_t **msg_ptr);
-
-mach_msg_header_t *dispatch_mach_msg_get_msg(dispatch_mach_msg_t message, size_t *size_ptr);
 
 dispatch_block_t dispatch_block_create(dispatch_block_flags_t flags, dispatch_block_t block);
 dispatch_block_t dispatch_block_create_with_qos_class(dispatch_block_flags_t flags, dispatch_qos_class_t qos_class, int relative_priority, dispatch_block_t block);
@@ -99,3 +103,5 @@ dispatch_queue_attr_t dispatch_queue_attr_make_with_overcommit(dispatch_queue_at
 
 dispatch_workloop_t dispatch_workloop_create(const char *label);
 dispatch_workloop_t dispatch_workloop_create_inactive(const char *label);
+
+dispatch_queue_global_t _dispatch_pthread_root_queue_create_with_observer_hooks_4IOHID(const char *label, unsigned long flags, const pthread_attr_t *attr, dispatch_pthread_root_queue_observer_hooks_t observer_hooks, dispatch_block_t configure);

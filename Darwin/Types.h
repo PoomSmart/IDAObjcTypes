@@ -3,22 +3,34 @@
 
 #import "../Foundation/Types.h"
 
+typedef uint32_t dispatch_lock;
+typedef uint32_t dispatch_priority_t;
+typedef uint64_t dispatch_time_t;
+typedef unsigned int qos_class_t;
+typedef unsigned long dispatch_block_flags_t;
+typedef unsigned long dispatch_workloop_param_flags_t;
+typedef unsigned long dispatch_autorelease_frequency_t;
+typedef int opaque_t;
+typedef long dispatch_queue_priority_t;
+
 typedef NSObject *dispatch_group_t;
 typedef NSObject *dispatch_data_t;
 typedef NSObject *dispatch_workloop_t;
+typedef NSObject *dispatch_queue_global_t;
+
 typedef struct dispatch_queue_s *dispatch_queue_t;
 typedef struct dispatch_queue_attr_s *dispatch_queue_attr_t;
-
 typedef struct dispatch_mach_s *dispatch_mach_t;
 typedef struct dispatch_mach_msg_s *dispatch_mach_msg_t;
 
-typedef uint64_t dispatch_time_t;
+typedef struct dispatch_unfair_lock_s {
+	dispatch_lock dul_lock;
+} dispatch_unfair_lock_s, *dispatch_unfair_lock_t;
 
-typedef int opaque_t;
-
-typedef unsigned int qos_class_t;
-typedef unsigned long dispatch_block_flags_t;
-typedef unsigned long dispatch_autorelease_frequency_t;
+typedef struct dispatch_pthread_root_queue_observer_hooks_s {
+	void (*queue_will_execute)(dispatch_queue_t queue);
+	void (*queue_did_execute)(dispatch_queue_t queue);
+} *dispatch_pthread_root_queue_observer_hooks_t;
 
 typedef qos_class_t dispatch_qos_class_t;
 
@@ -50,6 +62,8 @@ typedef void (*dispatch_mach_handler_t)(dispatch_mach_reason_t reason, dispatch_
 typedef void (*dispatch_mach_handler_function_t)(void *context, dispatch_mach_reason_t reason, dispatch_mach_msg_t message, mach_error_t error);
 
 typedef bool (*dispatch_data_applier_t)(dispatch_data_t region, size_t offset, const void *buffer, size_t size);
+
+typedef boolean_t (*dispatch_mig_callback_t)(mach_msg_header_t *message, mach_msg_header_t *reply);
 
 // problematic
 struct dispatch_queue_s _dispatch_main_q;

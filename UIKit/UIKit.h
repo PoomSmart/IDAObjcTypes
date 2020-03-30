@@ -28,14 +28,15 @@ CGPoint UIMidPointBetweenPoints(CGPoint a, CGPoint b);
 CGPoint CGPointFromString(NSString *str);
 
 CGFloat UIRoundToScale(CGFloat, CGFloat);
-CGFloat UIFloorToScale(CGFloat, CGFloat);
-CGFloat UICeilToScale(CGFloat, CGFloat);
-CGFloat UIFloorToViewScale(CGFloat);
 CGFloat UIRoundToViewScale(CGFloat);
-CGFloat UICeilToViewScale(CGFloat);
-CGFloat UIFloorToScreenScale(CGFloat);
 CGFloat UIRoundToScreenScale(CGFloat);
+CGFloat UIFloorToScale(CGFloat, CGFloat);
+CGFloat UIFloorToViewScale(CGFloat);
+CGFloat UIFloorToScreenScale(CGFloat);
+CGFloat UICeilToScale(CGFloat, CGFloat);
+CGFloat UICeilToViewScale(CGFloat);
 CGFloat UICeilToScreenScale(CGFloat);
+// CGFloat UIRectCenteredXInRect(CGRect);
 CGFloat UIAnimationDragCoefficient(void);
 CGFloat UIDistanceBetweenPoints(CGPoint a, CGPoint b);
 

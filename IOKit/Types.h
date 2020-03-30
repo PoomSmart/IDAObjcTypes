@@ -1,7 +1,9 @@
 #ifndef IOKIT_H_
 #define IOKIT_H_
 
+#import "../Types.h"
 #import "../CoreFoundation/Types.h"
+#import "NXTypes.h"
 
 #define IOHIDEventFieldBase(type) (type << 16)
 #define IOHIDEventFieldOffsetOf(field) (field & 0xffff)
@@ -15,6 +17,7 @@ typedef io_object_t *io_iterator_t;
 
 typedef	char io_name_t[128];
 typedef char io_string_t[512];
+typedef char io_struct_inband_t[4096];
 
 typedef kern_return_t IOReturn;
 
@@ -43,7 +46,6 @@ typedef vm_address_t IOVirtualAddress;
 
 typedef IOVirtualAddress IOLogicalAddress;
 
-typedef struct __IOHIDEvent *IOHIDEventRef;
 typedef struct __IOHIDManager *IOHIDManagerRef;
 typedef struct __IOHIDValue *IOHIDValueRef;
 typedef struct __IOHIDDevice *IOHIDDeviceRef;
@@ -55,6 +57,24 @@ typedef struct __IOHIDElement *IOHIDElementRef;
 typedef struct __IOHIDUserDevice *IOHIDUserDeviceRef;
 
 const mach_port_t kIOMasterPortDefault;
+
+typedef struct IOGPoint {
+    SInt16 x;
+    SInt16 y;
+} IOGPoint;
+
+typedef struct __IOHIDEvent {
+    CFRuntimeBase base;
+    AbsoluteTime _timeStamp;
+    int x10;
+    int x14;
+    IOOptionBits _options;
+    unsigned _typeMask;
+    CFMutableArrayRef _children;
+    struct __IOHIDEvent *_parent;
+    size_t recordSize;
+    void *record;		
+} *IOHIDEventRef;
 
 typedef uint32_t IOHIDEventType; enum IOHIDEventType {
     kIOHIDDigitizerEventUpdateAltitudeMask = 1<<28,

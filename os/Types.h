@@ -2,10 +2,18 @@
 #define OS_H_
 
 typedef struct os_log_s *os_log_t;
-typedef struct os_unfair_lock_s *os_unfair_lock_t;
 typedef struct os_activity_s *os_activity_t;
 typedef struct os_transaction_s *os_transaction_t;
 typedef struct os_activity_scope_state_s *os_activity_scope_state_t;
+
+typedef struct os_unfair_lock_s {
+	uint32_t _os_unfair_lock_opaque;
+} os_unfair_lock, *os_unfair_lock_t;
+
+typedef struct os_unfair_recursive_lock_s {
+	os_unfair_lock ourl_lock;
+	uint32_t ourl_count;
+} os_unfair_recursive_lock, *os_unfair_recursive_lock_t;
 
 typedef uint8_t os_log_type_t; enum os_log_type_t {
     OS_LOG_TYPE_DEFAULT = 0x00,
@@ -57,5 +65,16 @@ typedef union os_lock {
 	OS_LOCK_T_MEMBER(eliding);
 	OS_LOCK_T_MEMBER(transactional);
 } os_lock_t;
+
+typedef struct os_log_pack_s {
+    uint64_t        olp_continuous_time;
+    struct timespec olp_wall_time;
+    const void     *olp_mh;
+    const void     *olp_pc;
+    const char     *olp_format;
+    uint8_t         olp_data[0];
+} os_log_pack_s, *os_log_pack_t;
+
+typedef struct _os_nospin_lock_s *_os_nospin_lock_t;
 
 #endif

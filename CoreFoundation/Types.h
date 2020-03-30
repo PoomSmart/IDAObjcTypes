@@ -356,6 +356,14 @@ typedef void (*CFBagApplierFunction)(const void *value, void *context);
 
 static const CFBagCallBacks __kCFNullBagCallBacks = {0, NULL, NULL, NULL, NULL, NULL};
 
+typedef struct __CFRuntimeBase {
+    uintptr_t _cfisa;
+    uint8_t _cfinfo[4];
+#ifdef __EA64__
+    uint32_t _rc;
+#endif
+} CFRuntimeBase;
+
 struct CFStreamClientContext {
     CFIndex version;
     void *info;
