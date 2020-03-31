@@ -9,17 +9,21 @@ bool CFUniCharIsMemberOf(UTF32Char theChar, uint32_t charset);
 SInt32 CFStringGetIntValue(CFStringRef str);
 SInt32 CFURLGetPortNumber(CFURLRef anURL);
 SInt32 CFRunLoopRunSpecific(CFRunLoopRef rl, CFStringRef modeName, CFTimeInterval seconds, Boolean returnAfterSourceHandled);
+SInt32 CFUserNotificationReceiveResponse(CFUserNotificationRef userNotification, CFTimeInterval timeout, CFOptionFlags *responseFlags);
 SInt32 CFUserNotificationCancel(CFUserNotificationRef userNotification);
 
 UInt32 CFBundleGetVersionNumber(CFBundleRef bundle);
 
 const char *CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
+const void *CFUniCharGetUnicodePropertyDataForPlane(uint32_t propertyType, uint32_t plane);
 const void *CFArrayGetValueAtIndex(CFArrayRef theArray, CFIndex idx);
 const void *CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
 const void *CFSetGetValue(CFSetRef theSet, const void *value);
 void *CFAllocatorAllocate(CFAllocatorRef allocator, CFIndex size, CFOptionFlags hint);
 void *CFAllocatorReallocate(CFAllocatorRef allocator, void *ptr, CFIndex newsize, CFOptionFlags hint);
 void *CFBundleGetFunctionPointerForName(CFBundleRef bundle, CFStringRef functionName);
+
+const uint8_t *CFUniCharGetBitmapPtrForPlane(uint32_t charset, uint32_t plane);
 
 const UniChar *CFStringGetCharactersPtr(CFStringRef theString);
 UniChar CFStringGetCharacterAtIndex(CFStringRef theString, CFIndex idx);
@@ -67,9 +71,9 @@ void CFCharacterSetInitInlineBuffer(CFCharacterSetRef cset, CFCharacterSetInline
 void CFDataAppendBytes(CFMutableDataRef theData, const UInt8 *bytes, CFIndex length);
 void CFDataDeleteBytes(CFMutableDataRef theData, CFRange range);
 void CFDataReplaceBytes(CFMutableDataRef theData, CFRange range, const UInt8 *newBytes, CFIndex newLength);
-void CFDataIncreaseLength(CFMutableDataRef theData, CFIndex extraLength);
-void CFDataSetLength(CFMutableDataRef theData, CFIndex length);
 void CFDataGetBytes(CFDataRef theData, CFRange range, UInt8 *buffer);
+void CFDataSetLength(CFMutableDataRef theData, CFIndex length);
+void CFDataIncreaseLength(CFMutableDataRef theData, CFIndex extraLength);
 void CFDictionaryGetKeysAndValues(CFDictionaryRef theDict, const void **keys, const void **values);
 void CFDictionaryApplyFunction(CFDictionaryRef theDict, CFDictionaryApplierFunction applier, void *context);
 void CFDictionaryRemoveValue(CFMutableDictionaryRef theDict, const void *key);
@@ -464,6 +468,7 @@ CFStringRef CFURLCreateStringByReplacingPercentEscapes(CFAllocatorRef allocator,
 CFStringRef CFURLCreateStringByAddingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveUnescaped, CFStringRef legalURLCharactersToBeEscaped, CFStringEncoding encoding);
 CFStringRef CFURLGetString(CFURLRef anURL);
 CFStringRef CFLocaleCopyDisplayNameForPropertyValue(CFLocaleRef displayLocale, CFLocaleKey key, CFStringRef value);
+CFStringRef CFUserNotificationGetResponseValue(CFUserNotificationRef userNotification, CFStringRef key, CFIndex idx);
 
 CFStringRef _CFGetProductName(void);
 

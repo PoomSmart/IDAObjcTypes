@@ -2,6 +2,7 @@
 #import "Types.h"
 
 char *sandbox_extension_issue_file(const char *extension_class, const char *path, uint32_t flags);
+char *sandbox_extension_issue_file_to_process(const char *extension_class, const char *path, uint32_t flags, audit_token_t);
 char *sandbox_extension_issue_mach(const char *ext, const char *name, int reserved, uint32_t flags);
 char *sandbox_extension_issue_generic(const char *extension_class, uint32_t flags);
 

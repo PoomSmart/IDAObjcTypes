@@ -9,6 +9,7 @@ os_activity_t _os_activity_create(void *dso, const char *description, os_activit
 
 os_transaction_t os_transaction_create(const char *description);
 
+os_signpost_id_t os_signpost_id_generate(os_log_t log);
 os_signpost_id_t os_signpost_id_make_with_pointer(os_log_t log, const void *ptr);
 
 bool os_log_type_enabled(os_log_t oslog, os_log_type_t type);
@@ -20,6 +21,7 @@ bool os_signpost_enabled(os_log_t log);
 bool os_variant_allows_internal_security_policies(const char *subsystem);
 bool os_variant_has_internal_content(const char *subsystem);
 bool os_variant_has_internal_diagnostics(const char *subsystem);
+bool os_variant_has_internal_ui(const char *ubsystem);
 
 void os_activity_scope_enter(os_activity_t activity, os_activity_scope_state_t state);
 void os_activity_scope_leave(os_activity_scope_state_t state);
