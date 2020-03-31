@@ -87,7 +87,7 @@ int xpc_fd_dup(xpc_object_t xfd);
 mach_port_t xpc_dictionary_copy_mach_send(xpc_object_t, const char *);
 
 void xpc_release(xpc_object_t object);
-
+void xpc_connection_activate(xpc_connection_t connection);
 void xpc_connection_resume(xpc_connection_t connection);
 void xpc_connection_suspend(xpc_connection_t connection);
 void xpc_connection_cancel(xpc_connection_t connection);

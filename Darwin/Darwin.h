@@ -89,6 +89,7 @@ dispatch_block_t dispatch_block_create(dispatch_block_flags_t flags, dispatch_bl
 dispatch_block_t dispatch_block_create_with_qos_class(dispatch_block_flags_t flags, dispatch_qos_class_t qos_class, int relative_priority, dispatch_block_t block);
 
 dispatch_data_t dispatch_data_create(const void *buffer, size_t size, dispatch_queue_t queue, dispatch_block_t destructor);
+dispatch_data_t dispatch_data_create_alloc(size_t size, void** buffer_ptr);
 dispatch_data_t dispatch_data_create_map(dispatch_data_t data, const void **buffer_ptr, size_t *size_ptr);
 dispatch_data_t dispatch_data_create_concat(dispatch_data_t data1, dispatch_data_t data2);
 dispatch_data_t dispatch_data_create_subrange(dispatch_data_t data, size_t offset, size_t length);

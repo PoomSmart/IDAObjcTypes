@@ -1,4 +1,5 @@
 #import "../CoreFoundation/Types.h"
+#import "../IOSurface/Types.h"
 #import "Types.h"
 
 CFTypeID CGPathGetTypeID(void);
@@ -217,6 +218,7 @@ CGImageRef CGImageCreate(size_t width, size_t height, size_t bitsPerComponent, s
 CGImageRef CGImageCreateWithPNGDataProvider(CGDataProviderRef source, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageCreateWithJPEGDataProvider(CGDataProviderRef source, const CGFloat *decode, bool shouldInterpolate, CGColorRenderingIntent intent);
 CGImageRef CGImageCreateWithImageInRect(CGImageRef image, CGRect rect);
+CGImageRef CGImageCreateFromIOSurface(IOSurfaceRef surface, CFDictionaryRef options);
 CGImageRef CGImageCreateCopy(CGImageRef image);
 CGImageRef CGImageMaskCreate(size_t width, size_t height, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow, CGDataProviderRef provider, const CGFloat *decode, bool shouldInterpolate);
 CGImageRef CGImageRetain(CGImageRef image);

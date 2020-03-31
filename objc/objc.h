@@ -51,6 +51,8 @@ Class class_getSuperclass(Class cls);
 Class class_setSuperclass(Class cls, Class newSuper);
 Class objc_opt_class(id obj);
 
+Class _objc_getClassForTag(objc_tag_index_t tag);
+
 Protocol *objc_getProtocol(const char *name);
 Protocol *objc_allocateProtocol(const char *name);
 Protocol **class_copyProtocolList(Class cls, unsigned int *outCount);
@@ -149,6 +151,10 @@ void objc_registerProtocol(Protocol *proto);
 void objc_release(id value);
 void objc_terminate(void);
 void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic, BOOL hasStrong);
+void objc_exception_throw(id exception);
+void objc_exception_rethrow(void);
+void objc_end_catch(void);
+void objc_setHook_getClass(objc_hook_getClass newValue, objc_hook_getClass *outOldValue);
 void object_setIvar(id obj, Ivar ivar, id value);
 void protocol_addMethodDescription(Protocol *proto, SEL name, const char *types, BOOL isRequiredMethod, BOOL isInstanceMethod);
 void protocol_addProtocol(Protocol *proto, Protocol *addition);
@@ -157,10 +163,8 @@ void method_invoke_stret(id receiver, Method m, ...);
 void method_getReturnType(Method m, char *dst, size_t dst_len);
 void method_getArgumentType(Method m, unsigned int index, char *dst, size_t dst_len);
 void method_exchangeImplementations(Method m1, Method m2);
-void objc_exception_throw(id exception);
-void objc_exception_rethrow(void);
-void objc_end_catch(void);
-void objc_setHook_getClass(objc_hook_getClass newValue, objc_hook_getClass *outOldValue);
+
+void _objc_registerTaggedPointerClass(objc_tag_index_t tag, Class cls);
 
 void *objc_autoreleasePoolPush(void);
 void *objc_destructInstance(id obj);

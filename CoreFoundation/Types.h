@@ -38,6 +38,7 @@ typedef const struct __CFBag *CFBagRef;
 typedef struct __CFBag *CFMutableBagRef;
 typedef struct __CFStringTokenizer *CFStringTokenizerRef;
 typedef struct __CFMachPort *CFMachPortRef;
+typedef struct __CFHTTPMessage *CFHTTPMessageRef;
 
 typedef const void *CFTypeRef;
 typedef const unsigned char *ConstStr255Param;
@@ -59,7 +60,6 @@ typedef CFOptionFlags CFURLBookmarkResolutionOptions;
 
 typedef CFIndex CFNotificationSuspensionBehavior;
 typedef CFIndex CFCharacterSetPredefinedSet;
-typedef CFIndex CFComparisonResult;
 typedef CFIndex CFStringNormalizationForm;
 typedef CFIndex CFStringCharacterClusterType;
 typedef CFIndex CFSystemVersion;
@@ -67,18 +67,46 @@ typedef CFIndex CFStreamStatus;
 typedef CFIndex CFURLPathStyle;
 typedef CFIndex CFURLComponentType;
 
-typedef CFIndex CFPropertyListFormat; enum CFPropertyListFormat {
-   kCFPropertyListOpenStepFormat = 1,
-   kCFPropertyListXMLFormat_v1_0 = 100,
-   kCFPropertyListBinaryFormat_v1_0 = 200
-} CFPropertyListFormat;
-
 typedef SInt32 CFRunLoopRunResult; enum CFRunLoopRunResult {
     kCFRunLoopRunFinished = 1,
     kCFRunLoopRunStopped = 2,
     kCFRunLoopRunTimedOut = 3,
     kCFRunLoopRunHandledSource = 4
 } CFRunLoopRunResult;
+
+typedef CFIndex CFComparisonResult; enum CFComparisonResult {
+   kCFCompareLessThan = -1,
+   kCFCompareEqualTo = 0,
+   kCFCompareGreaterThan = 1
+} CFComparisonResult;
+
+typedef CFIndex CFSearchPathDirectory; enum CFSearchPathDirectory {
+    kCFApplicationDirectory = 1,
+    kCFDemoApplicationDirectory,
+    kCFDeveloperApplicationDirectory,
+    kCFAdminApplicationDirectory,
+    kCFLibraryDirectory,
+    kCFDeveloperDirectory,
+    kCFUserDirectory,
+    kCFDocumentationDirectory,
+    kCFDocumentDirectory,
+    kCFAllApplicationsDirectory = 100,
+    kCFAllLibrariesDirectory = 101
+} CFSearchPathDirectory;
+
+typedef CFIndex CFPropertyListFormat; enum CFPropertyListFormat {
+   kCFPropertyListOpenStepFormat = 1,
+   kCFPropertyListXMLFormat_v1_0 = 100,
+   kCFPropertyListBinaryFormat_v1_0 = 200
+} CFPropertyListFormat;
+
+typedef CFOptionFlags CFSearchPathDomainMask; enum CFSearchPathDomainMask {
+    kCFUserDomainMask = 1,
+    kCFLocalDomainMask = 2,
+    kCFNetworkDomainMask = 4,
+    kCFSystemDomainMask = 8,
+    kCFAllDomainsMask = 0x0ffff
+} CFSearchPathDomainMask;
 
 typedef CFOptionFlags CFRunLoopActivity; enum CFRunLoopActivity {
     kCFRunLoopEntry = (1UL << 0),

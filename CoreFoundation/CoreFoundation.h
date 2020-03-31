@@ -46,6 +46,7 @@ void CFArrayGetValues(CFArrayRef theArray, CFRange range, const void **values);
 void CFArraySetValueAtIndex(CFMutableArrayRef theArray, CFIndex idx, const void *value);
 void CFArraySortValues(CFMutableArrayRef theArray, CFRange range, CFComparatorFunction comparator, void *context);
 void CFArrayRemoveAllValues(CFMutableArrayRef theArray);
+void CFArrayExchangeValuesAtIndices(CFMutableArrayRef theArray, CFIndex idx1, CFIndex idx2);
 void CFArrayApplyFunction(CFArrayRef theArray, CFRange range, CFArrayApplierFunction applier, void *context);
 void CFPreferencesSetValue(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
 void CFPreferencesSetAppValue(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID);
@@ -187,6 +188,7 @@ Boolean CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBas
 Boolean CFURLCreateDataAndPropertiesFromResource(CFAllocatorRef alloc, CFURLRef url, CFDataRef *resourceData, CFDictionaryRef *properties, CFArrayRef desiredProperties, SInt32 *errorCode);
 Boolean CFURLWriteDataAndPropertiesToResource(CFURLRef url, CFDataRef dataToWrite, CFDictionaryRef propertiesToWrite, SInt32 *errorCode);
 Boolean CFURLResourceIsReachable(CFURLRef url, CFErrorRef *error);
+Boolean CFURLCopyResourcePropertyForKey(CFURLRef url, CFStringRef key, void *propertyValueTypeRefPtr, CFErrorRef *error);
 Boolean CFRunLoopObserverIsValid(CFRunLoopObserverRef observer);
 Boolean CFRunLoopIsWaiting(CFRunLoopRef rl);
 Boolean CFRunLoopContainsSource(CFRunLoopRef rl, CFRunLoopSourceRef source, CFRunLoopMode mode);
@@ -209,6 +211,7 @@ CFTypeRef CFWriteStreamCopyProperty(CFWriteStreamRef stream, CFStreamPropertyKey
 CFTypeRef CFReadStreamCopyProperty(CFReadStreamRef stream, CFStreamPropertyKey propertyName);
 CFTypeRef CFLocaleGetValue(CFLocaleRef locale, CFLocaleKey key);
 CFTypeRef CFURLCreatePropertyFromResource(CFAllocatorRef alloc, CFURLRef url, CFStringRef property, SInt32 *errorCode);
+CFTypeRef CFBundleGetValueForInfoDictionaryKey(CFBundleRef bundle, CFStringRef key);
 
 CFTypeRef _CFRuntimeCreateInstance(CFAllocatorRef allocator, CFTypeID typeID, CFIndex extraBytes, unsigned char *category);
 CFTypeRef _CFTryRetain(CFTypeRef);
@@ -278,6 +281,7 @@ CFLocaleRef CFLocaleGetSystem(void);
 
 CFLocaleIdentifier CFLocaleGetIdentifier(CFLocaleRef locale);
 CFLocaleIdentifier CFLocaleCreateCanonicalLanguageIdentifierFromString(CFAllocatorRef allocator, CFStringRef localeIdentifier);
+CFLocaleIdentifier CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode(CFAllocatorRef allocator, uint32_t lcid);
 
 CFUUIDRef CFUUIDCreate(CFAllocatorRef alloc);
 CFUUIDRef CFUUIDCreateFromString(CFAllocatorRef alloc, CFStringRef uuidStr);
@@ -325,6 +329,7 @@ CFURLRef CFURLCreateFromFileSystemRepresentation(CFAllocatorRef allocator, const
 CFURLRef CFURLCreateFromFileSystemRepresentationRelativeToBase(CFAllocatorRef allocator, const UInt8 *buffer, CFIndex bufLen, Boolean isDirectory, CFURLRef baseURL);
 CFURLRef CFURLCreateWithString(CFAllocatorRef allocator, CFStringRef URLString, CFURLRef baseURL);
 CFURLRef CFURLCreateWithFileSystemPath(CFAllocatorRef allocator, CFStringRef filePath, CFURLPathStyle pathStyle, Boolean isDirectory);
+CFURLRef CFURLCreateWithBytes(CFAllocatorRef allocator, const UInt8 *URLBytes, CFIndex length, CFStringEncoding encoding, CFURLRef baseURL);
 CFURLRef CFCopyHomeDirectoryURLForUser(CFStringRef uName);
 CFURLRef CFBundleCopyExecutableURL(CFBundleRef bundle);
 
@@ -358,6 +363,7 @@ CFSetRef CFSetCreateCopy(CFAllocatorRef allocator, CFSetRef theSet);
 CFAbsoluteTime CFAbsoluteTimeGetCurrent(void);
 
 CFNotificationCenterRef CFNotificationCenterGetDarwinNotifyCenter(void);
+CFNotificationCenterRef CFNotificationCenterGetDistributedCenter(void);
 CFNotificationCenterRef CFNotificationCenterGetLocalCenter(void);
 
 CFUserNotificationRef CFUserNotificationCreate(CFAllocatorRef allocator, CFTimeInterval timeout, CFOptionFlags flags, SInt32 *error, CFDictionaryRef dictionary);
@@ -371,9 +377,12 @@ CFPropertyListRef CFPropertyListCreateFromStream(CFAllocatorRef allocator, CFRea
 CFPropertyListRef CFPropertyListCreateFromXMLData(CFAllocatorRef allocator, CFDataRef xmlData, CFOptionFlags mutabilityOption, CFStringRef *errorString);
 
 CFReadStreamRef CFReadStreamCreateWithFile(CFAllocatorRef alloc, CFURLRef fileURL);
+CFReadStreamRef CFReadStreamCreateWithFTPURL(CFAllocatorRef alloc, CFURLRef ftpURL);
 CFReadStreamRef CFReadStreamCreateWithBytesNoCopy(CFAllocatorRef alloc, const UInt8 *bytes, CFIndex length, CFAllocatorRef bytesDeallocator);
+CFReadStreamRef CFReadStreamCreateForHTTPRequest(CFAllocatorRef alloc, CFHTTPMessageRef request);
 
 CFWriteStreamRef CFWriteStreamCreateWithFile(CFAllocatorRef alloc, CFURLRef fileURL);
+CFWriteStreamRef CFWriteStreamCreateWithFTPURL(CFAllocatorRef alloc, CFURLRef ftpURL);
 CFWriteStreamRef CFWriteStreamCreateWithBuffer(CFAllocatorRef alloc, UInt8 *buffer, CFIndex bufferCapacity);
 CFWriteStreamRef CFWriteStreamCreateWithAllocatedBuffers(CFAllocatorRef alloc, CFAllocatorRef bufferAllocator);
 
@@ -405,6 +414,7 @@ CFArrayRef CFBundleCopyLocalizationsForPreferences(CFArrayRef locArray, CFArrayR
 CFArrayRef CFBundleCopyBundleLocalizations(CFBundleRef bundle);
 CFArrayRef CFRunLoopCopyAllModes(CFRunLoopRef rl);
 CFArrayRef CFLocaleCopyPreferredLanguages(void);
+CFArrayRef CFCopySearchPathForDirectoriesInDomains(CFSearchPathDirectory directory, CFSearchPathDomainMask domainMask, Boolean expandTilde);
 
 CFStringTokenizerRef CFStringTokenizerCreate(CFAllocatorRef alloc, CFStringRef string, CFRange range, CFOptionFlags options, CFLocaleRef locale);
 
@@ -412,6 +422,7 @@ CFMutableStringRef CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength
 CFMutableStringRef CFStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFStringRef theString);
 CFMutableStringRef CFStringCreateMutableWithExternalCharactersNoCopy(CFAllocatorRef alloc, UniChar *chars, CFIndex numChars, CFIndex capacity, CFAllocatorRef externalCharactersAllocator);
 
+CFStringRef CFCopySystemVersionString(void);
 CFStringRef CFCopyDescription(CFTypeRef cf);
 CFStringRef CFCopyTypeIDDescription(CFTypeID type_id);
 CFStringRef CFErrorCopyDescription(CFErrorRef err);
