@@ -37,6 +37,7 @@ typedef struct __CFUUID *CFUUIDRef;
 typedef const struct __CFBag *CFBagRef;
 typedef struct __CFBag *CFMutableBagRef;
 typedef struct __CFStringTokenizer *CFStringTokenizerRef;
+typedef struct __CFMachPort *CFMachPortRef;
 
 typedef const void *CFTypeRef;
 typedef const unsigned char *ConstStr255Param;
@@ -61,11 +62,16 @@ typedef CFIndex CFCharacterSetPredefinedSet;
 typedef CFIndex CFComparisonResult;
 typedef CFIndex CFStringNormalizationForm;
 typedef CFIndex CFStringCharacterClusterType;
-typedef CFIndex CFPropertyListFormat;
 typedef CFIndex CFSystemVersion;
 typedef CFIndex CFStreamStatus;
 typedef CFIndex CFURLPathStyle;
 typedef CFIndex CFURLComponentType;
+
+typedef CFIndex CFPropertyListFormat; enum CFPropertyListFormat {
+   kCFPropertyListOpenStepFormat = 1,
+   kCFPropertyListXMLFormat_v1_0 = 100,
+   kCFPropertyListBinaryFormat_v1_0 = 200
+} CFPropertyListFormat;
 
 typedef SInt32 CFRunLoopRunResult; enum CFRunLoopRunResult {
     kCFRunLoopRunFinished = 1,
@@ -415,10 +421,20 @@ typedef struct CFRunLoopTimerContext {
     CFStringRef	(*copyDescription)(const void *info);
 } CFRunLoopTimerContext;
 
+typedef struct {
+    CFIndex	version;
+    void *	info;
+    const void *(*retain)(const void *info);
+    void	(*release)(const void *info);
+    CFStringRef	(*copyDescription)(const void *info);
+} CFMachPortContext;
+
 typedef void (*CFRunLoopTimerCallBack)(CFRunLoopTimerRef timer, void *info);
 typedef void (*CFUserNotificationCallBack)(CFUserNotificationRef userNotification, CFOptionFlags responseFlags);
 typedef void (*CFReadStreamClientCallBack)(CFReadStreamRef stream, CFStreamEventType type, void *clientCallBackInfo);
 typedef void (*CFWriteStreamClientCallBack)(CFWriteStreamRef stream, CFStreamEventType type, void *clientCallBackInfo);
+typedef void (*CFMachPortCallBack)(CFMachPortRef port, void *msg, CFIndex size, void *info);
+typedef void (*CFMachPortInvalidationCallBack)(CFMachPortRef port, void *info);
 
 #define CFBagKeyCallBacks CFBagCallBacks
 #define CFBagValueCallBacks CFBagCallBacks

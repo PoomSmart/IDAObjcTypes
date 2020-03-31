@@ -31,6 +31,8 @@ const UInt8 *CFDataGetBytePtr(CFDataRef theData);
 const UInt8 *CFReadStreamGetBuffer(CFReadStreamRef stream, CFIndex maxBytesToRead, CFIndex *numBytesRead);
 UInt8 *CFDataGetMutableBytePtr(CFMutableDataRef theData);
 
+mach_port_t CFMachPortGetPort(CFMachPortRef port);
+
 void CFLog(int32_t level, CFStringRef format, ...);
 void CFShow(CFTypeRef obj);
 void CFShowStr(CFStringRef str);
@@ -138,6 +140,8 @@ void CFRunLoopTimerInvalidate(CFRunLoopTimerRef timer);
 void CFRunLoopTimerGetContext(CFRunLoopTimerRef timer, CFRunLoopTimerContext *context);
 void CFRunLoopObserverGetContext(CFRunLoopObserverRef observer, CFRunLoopObserverContext *context);
 void CFRunLoopObserverInvalidate(CFRunLoopObserverRef observer);
+void CFMachPortSetInvalidationCallBack(CFMachPortRef port, CFMachPortInvalidationCallBack callout);
+void CFMachPortInvalidate(CFMachPortRef port);
 
 void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
 void _CFNonObjCRelease(CFTypeRef cf);
@@ -180,6 +184,8 @@ Boolean CFWriteStreamSetProperty(CFWriteStreamRef stream, CFStreamPropertyKey pr
 Boolean CFURLCanBeDecomposed(CFURLRef anURL);
 Boolean CFURLHasDirectoryPath(CFURLRef anURL);
 Boolean CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBase, UInt8 *buffer, CFIndex maxBufLen);
+Boolean CFURLCreateDataAndPropertiesFromResource(CFAllocatorRef alloc, CFURLRef url, CFDataRef *resourceData, CFDictionaryRef *properties, CFArrayRef desiredProperties, SInt32 *errorCode);
+Boolean CFURLWriteDataAndPropertiesToResource(CFURLRef url, CFDataRef dataToWrite, CFDictionaryRef propertiesToWrite, SInt32 *errorCode);
 Boolean CFURLResourceIsReachable(CFURLRef url, CFErrorRef *error);
 Boolean CFRunLoopObserverIsValid(CFRunLoopObserverRef observer);
 Boolean CFRunLoopIsWaiting(CFRunLoopRef rl);
@@ -202,6 +208,7 @@ CFTypeRef CFMakeCollectable(CFTypeRef cf);
 CFTypeRef CFWriteStreamCopyProperty(CFWriteStreamRef stream, CFStreamPropertyKey propertyName);
 CFTypeRef CFReadStreamCopyProperty(CFReadStreamRef stream, CFStreamPropertyKey propertyName);
 CFTypeRef CFLocaleGetValue(CFLocaleRef locale, CFLocaleKey key);
+CFTypeRef CFURLCreatePropertyFromResource(CFAllocatorRef alloc, CFURLRef url, CFStringRef property, SInt32 *errorCode);
 
 CFTypeRef _CFRuntimeCreateInstance(CFAllocatorRef allocator, CFTypeID typeID, CFIndex extraBytes, unsigned char *category);
 CFTypeRef _CFTryRetain(CFTypeRef);
@@ -245,6 +252,7 @@ CFRunLoopRef CFRunLoopGetMain(void);
 
 CFRunLoopSourceRef CFRunLoopSourceCreate(CFAllocatorRef allocator, CFIndex order, CFRunLoopSourceContext *context);
 CFRunLoopSourceRef CFUserNotificationCreateRunLoopSource(CFAllocatorRef allocator, CFUserNotificationRef userNotification, CFUserNotificationCallBack callout, CFIndex order);
+CFRunLoopSourceRef CFMachPortCreateRunLoopSource(CFAllocatorRef allocator, CFMachPortRef port, CFIndex order);
 
 CFRunLoopObserverRef CFRunLoopObserverCreate(CFAllocatorRef allocator, CFOptionFlags activities, Boolean repeats, CFIndex order, CFRunLoopObserverCallBack callout, CFRunLoopObserverContext *context);
 CFRunLoopObserverRef CFRunLoopObserverCreateWithHandler(CFAllocatorRef allocator, CFOptionFlags activities, Boolean repeats, CFIndex order, void (*block)(CFRunLoopObserverRef observer, CFRunLoopActivity activity));
@@ -465,6 +473,9 @@ CFURLRef CFBundleCopyResourceURL(CFBundleRef bundle, CFStringRef resourceName, C
 CFURLRef CFBundleCopyResourceURLInDirectory(CFURLRef bundleURL, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName);
 CFURLRef CFBundleCopyResourceURLForLocalization(CFBundleRef bundle, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName, CFStringRef localizationName);
 CFURLRef CFURLGetBaseURL(CFURLRef anURL);
+
+CFMachPortRef CFMachPortCreate(CFAllocatorRef allocator, CFMachPortCallBack callout, CFMachPortContext *context, Boolean *shouldFreeInfo);
+CFMachPortRef CFMachPortCreateWithPort(CFAllocatorRef allocator, mach_port_t portNum, CFMachPortCallBack callout, CFMachPortContext *context, Boolean *shouldFreeInfo);
 
 CFIndex CFGetRetainCount(CFTypeRef cf);
 CFIndex CFAttributedStringGetLength(CFAttributedStringRef aStr);
