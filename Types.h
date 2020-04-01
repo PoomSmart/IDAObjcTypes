@@ -24,7 +24,9 @@ typedef UInt16 UniChar;
 typedef UInt16 UTF16Char;
 typedef UInt8 UTF8Char;
 
+typedef int errno_t;
 typedef int32_t integer_t;
+typedef size_t rsize_t;
 
 extern uintptr_t __stack_chk_guard;
 __noreturn void __stack_chk_fail(void);

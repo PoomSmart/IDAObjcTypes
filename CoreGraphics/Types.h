@@ -46,6 +46,9 @@ typedef struct CGFont *CGFontRef;
 typedef const struct CGColorTransform *CGColorTransformRef;
 typedef struct CGImageDestination *CGImageDestinationRef;
 typedef struct CGImageSource *CGImageSourceRef;
+typedef struct CGImageMetadata *CGImageMetadataRef;
+typedef struct CGImageMetadata *CGMutableImageMetadataRef;
+typedef struct CGImageMetadataTag *CGImageMetadataTagRef;
 
 typedef uint32_t CGRectEdge;
 
@@ -57,6 +60,17 @@ typedef enum CGCompositeOperation {
     kCGCompositeCopy = 1,
     kCGCompositeSover = 2,
 } CGCompositeOperation;
+
+typedef int32_t CGImageMetadataType; enum CGImageMetadataType {
+    kCGImageMetadataTypeInvalid = -1,
+    kCGImageMetadataTypeDefault = 0,
+    kCGImageMetadataTypeString = 1,
+    kCGImageMetadataTypeArrayUnordered = 2,
+    kCGImageMetadataTypeArrayOrdered = 3,
+    kCGImageMetadataTypeAlternateArray = 4,
+    kCGImageMetadataTypeAlternateText = 5,
+    kCGImageMetadataTypeStructure = 6
+} CGImageMetadataType;
 
 typedef int32_t CGBlendMode; enum CGBlendMode {
     kCGBlendModeNormal,

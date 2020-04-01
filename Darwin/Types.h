@@ -11,6 +11,7 @@ typedef unsigned long dispatch_block_flags_t;
 typedef unsigned long dispatch_workloop_param_flags_t;
 typedef unsigned long dispatch_autorelease_frequency_t;
 typedef int opaque_t;
+typedef int dispatch_fd_t;
 typedef long dispatch_queue_priority_t;
 
 typedef NSObject *dispatch_group_t;

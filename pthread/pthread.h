@@ -17,3 +17,4 @@ void *pthread_get_stackaddr_np(pthread_t t);
 mach_port_t pthread_mach_thread_np(pthread_t thread);
 
 pthread_t pthread_main_thread_np(void);
+pthread_t pthread_from_mach_thread_np(mach_port_t kernel_thread);

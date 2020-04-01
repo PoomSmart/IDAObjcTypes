@@ -7,3 +7,5 @@ int sqlite3_bind_blob64(sqlite3_stmt *, int, const void *, sqlite3_uint64, void(
 int sqlite3_close_v2(sqlite3 *);
 
 const char *sqlite3_errstr(int);
+
+char *sqlite3_expanded_sql(sqlite3_stmt *pStmt);

@@ -71,8 +71,12 @@ void dispatch_mach_receive_barrier(dispatch_mach_t channel, dispatch_block_t bar
 void dispatch_mach_receive_barrier_f(dispatch_mach_t channel, void *context, dispatch_function_t barrier);
 void dispatch_workloop_set_autorelease_frequency(dispatch_workloop_t workloop, dispatch_autorelease_frequency_t frequency);
 void dispatch_workloop_set_scheduler_priority(dispatch_workloop_t workloop, int priority, dispatch_workloop_param_flags_t flags);
+void dispatch_read(dispatch_fd_t fd, size_t length, dispatch_queue_t queue, void (*handler)(dispatch_data_t data, int error));
+void dispatch_write(dispatch_fd_t fd, dispatch_data_t data, dispatch_queue_t queue, void (*handler)(dispatch_data_t data, int error));
 
 void qsort_b(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
+
+errno_t memset_s(void *dest, rsize_t destsz, int ch, rsize_t count);
 
 mach_port_t dispatch_mach_get_checkin_port(dispatch_mach_t channel);
 
@@ -101,6 +105,7 @@ dispatch_queue_t dispatch_pthread_root_queue_create(const char *label, unsigned 
 dispatch_queue_attr_t dispatch_queue_attr_make_with_qos_class(dispatch_queue_attr_t attr, dispatch_qos_class_t qos_class, int relative_priority);
 dispatch_queue_attr_t dispatch_queue_attr_make_with_autorelease_frequency(dispatch_queue_attr_t attr, dispatch_autorelease_frequency_t frequency);
 dispatch_queue_attr_t dispatch_queue_attr_make_with_overcommit(dispatch_queue_attr_t attr, bool overcommit);
+dispatch_queue_attr_t dispatch_queue_attr_make_initially_inactive(dispatch_queue_attr_t attr);
 
 dispatch_workloop_t dispatch_workloop_create(const char *label);
 dispatch_workloop_t dispatch_workloop_create_inactive(const char *label);
