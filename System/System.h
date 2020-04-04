@@ -1,4 +1,4 @@
-#import "./Types.h"
+#import "../Types.h"
 #import "Types.h"
 
 void asl_release(asl_object_t obj);

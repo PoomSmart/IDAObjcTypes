@@ -1,10 +1,14 @@
-#ifndef DARWIN_H_
-#define DARWIN_H_
+#ifndef MY_DARWIN_H_
+#define MY_DARWIN_H_
 
+#import "../Kernel/Types.h"
 #import "../Foundation/Types.h"
+#import "../Types.h"
 
+typedef uint32_t mach_error_t;
 typedef uint32_t dispatch_lock;
 typedef uint32_t dispatch_priority_t;
+typedef uint32_t dispatch_mach_msg_t;
 typedef uint64_t dispatch_time_t;
 typedef unsigned int qos_class_t;
 typedef unsigned long dispatch_block_flags_t;
@@ -14,6 +18,9 @@ typedef int opaque_t;
 typedef int dispatch_fd_t;
 typedef long dispatch_queue_priority_t;
 
+typedef NSObject *dispatch_object_t;
+typedef NSObject *dispatch_source_t;
+typedef NSObject *dispatch_queue_t;
 typedef NSObject *dispatch_group_t;
 typedef NSObject *dispatch_data_t;
 typedef NSObject *dispatch_workloop_t;
@@ -59,6 +66,7 @@ typedef mach_msg_context_trailer_t dispatch_mach_trailer_t;
 
 typedef void (*notify_handler_t)(int token);
 typedef void (*dispatch_block_t)(void);
+typedef void (*dispatch_function_t)(void *);
 typedef void (*dispatch_mach_handler_t)(dispatch_mach_reason_t reason, dispatch_mach_msg_t message, mach_error_t error);
 typedef void (*dispatch_mach_handler_function_t)(void *context, dispatch_mach_reason_t reason, dispatch_mach_msg_t message, mach_error_t error);
 

@@ -1,6 +1,7 @@
 #ifndef COREFOUNDATION_H_
 #define COREFOUNDATION_H_
 
+#import "../Darwin/Types.h"
 #import "../Types.h"
 
 typedef struct __CFError *CFErrorRef;
@@ -408,34 +409,34 @@ struct CFStreamClientContext {
 
 typedef struct CFRunLoopSourceContext {
     CFIndex	version;
-    void *	info;
+    void *info;
     const void *(*retain)(const void *info);
-    void	(*release)(const void *info);
+    void (*release)(const void *info);
     CFStringRef	(*copyDescription)(const void *info);
     Boolean	(*equal)(const void *info1, const void *info2);
-    CFHashCode	(*hash)(const void *info);
-    void	(*schedule)(void *info, CFRunLoopRef rl, CFRunLoopMode mode);
-    void	(*cancel)(void *info, CFRunLoopRef rl, CFRunLoopMode mode);
-    void	(*perform)(void *info);
+    CFHashCode (*hash)(const void *info);
+    void (*schedule)(void *info, CFRunLoopRef rl, CFRunLoopMode mode);
+    void (*cancel)(void *info, CFRunLoopRef rl, CFRunLoopMode mode);
+    void (*perform)(void *info);
 } CFRunLoopSourceContext;
 
 typedef struct CFRunLoopSourceContext1 {
     CFIndex	version;
-    void *	info;
+    void *info;
     const void *(*retain)(const void *info);
-    void	(*release)(const void *info);
+    void (*release)(const void *info);
     CFStringRef	(*copyDescription)(const void *info);
     Boolean	(*equal)(const void *info1, const void *info2);
-    CFHashCode	(*hash)(const void *info);
+    CFHashCode (*hash)(const void *info);
     mach_port_t	(*getPort)(void *info);
-    void *	(*perform)(void *msg, CFIndex size, CFAllocatorRef allocator, void *info);
+    void *(*perform)(void *msg, CFIndex size, CFAllocatorRef allocator, void *info);
 } CFRunLoopSourceContext1;
 
 typedef struct CFRunLoopObserverContext {
     CFIndex	version;
-    void *	info;
+    void *info;
     const void *(*retain)(const void *info);
-    void	(*release)(const void *info);
+    void (*release)(const void *info);
     CFStringRef	(*copyDescription)(const void *info);
 } CFRunLoopObserverContext;
 
@@ -443,17 +444,17 @@ typedef void (*CFRunLoopObserverCallBack)(CFRunLoopObserverRef observer, CFRunLo
 
 typedef struct CFRunLoopTimerContext {
     CFIndex	version;
-    void *	info;
+    void *info;
     const void *(*retain)(const void *info);
-    void	(*release)(const void *info);
+    void (*release)(const void *info);
     CFStringRef	(*copyDescription)(const void *info);
 } CFRunLoopTimerContext;
 
 typedef struct {
     CFIndex	version;
-    void *	info;
+    void *info;
     const void *(*retain)(const void *info);
-    void	(*release)(const void *info);
+    void (*release)(const void *info);
     CFStringRef	(*copyDescription)(const void *info);
 } CFMachPortContext;
 

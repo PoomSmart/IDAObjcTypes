@@ -5,6 +5,7 @@
 typedef struct USet USet;
 
 typedef int8_t UBool;
+typedef uint16_t UChar;
 typedef int32_t UChar32;
 
 #define U_MAX_VERSION_LENGTH 4
