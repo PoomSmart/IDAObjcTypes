@@ -399,6 +399,14 @@ enum {
     kIOHIDGenericGestureTypeSwipe
 };
 
+typedef struct IOHIDEventData {
+    uint32_t size;
+    IOHIDEventType type;
+    uint32_t options;
+    uint8_t depth;
+    uint8_t reserved[3];
+} IOHIDEventData;
+
 typedef void (*IOHIDCallback)(void *context, IOReturn result, void *sender);
 typedef void (*IOHIDValueCallback)(void *context, IOReturn result, void *sender, IOHIDValueRef value);
 typedef void (*IOHIDReportCallback)(void *context, IOReturn result, void *sender, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
