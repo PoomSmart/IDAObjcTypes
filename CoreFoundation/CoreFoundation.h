@@ -63,6 +63,7 @@ void CFNotificationCenterRemoveObserver(CFNotificationCenterRef center, const vo
 void CFNotificationCenterRemoveEveryObserver(CFNotificationCenterRef center, const void *observer);
 void CFCharacterSetAddCharactersInRange(CFMutableCharacterSetRef theSet, CFRange theRange);
 void CFCharacterSetAddCharactersInString(CFMutableCharacterSetRef theSet, CFStringRef theString);
+void CFCharacterSetRemoveCharactersInRange(CFMutableCharacterSetRef theSet, CFRange theRange);
 void CFCharacterSetIntersect(CFMutableCharacterSetRef theSet, CFCharacterSetRef theOtherSet);
 void CFCharacterSetInvert(CFMutableCharacterSetRef theSet);
 void CFCharacterSetUnion(CFMutableCharacterSetRef theSet, CFCharacterSetRef theOtherSet);

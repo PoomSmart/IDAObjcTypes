@@ -1,6 +1,7 @@
 #ifndef FOUNDATION_H_
 #define FOUNDATION_H_
 
+#import "../CoreFoundation/Types.h"
 #import "../CoreGraphics/Types.h"
 #import "../objc/Types.h"
 
@@ -14,7 +15,7 @@ typedef int NSInteger;
 
 typedef struct __NSObject NSObject;
 typedef struct __NSValue NSValue;
-typedef struct __NSString NSString;
+typedef const struct __CFString NSString;
 typedef struct __NSData NSData;
 typedef struct __NSArray NSArray;
 typedef struct __NSArray NSMutableArray;
