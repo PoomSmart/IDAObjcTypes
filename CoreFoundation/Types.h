@@ -76,7 +76,7 @@ typedef SInt32 CFRunLoopRunResult; enum CFRunLoopRunResult {
 } CFRunLoopRunResult;
 
 typedef CFIndex CFComparisonResult; enum CFComparisonResult {
-   kCFCompareLessThan = -1,
+   kCFCompareLessThan = -1L,
    kCFCompareEqualTo = 0,
    kCFCompareGreaterThan = 1
 } CFComparisonResult;
