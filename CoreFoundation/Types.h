@@ -234,7 +234,7 @@ typedef struct CFStringInlineBuffer {
     CFIndex bufferedRangeEnd;
 } CFStringInlineBuffer;
 
-typedef CFIndex CFNumberType; enum CFNumberType {
+CF_ENUM(CFIndex, CFNumberType) {
     kCFNumberSInt8Type = 1,
     kCFNumberSInt16Type = 2,
     kCFNumberSInt32Type = 3,
@@ -252,9 +252,9 @@ typedef CFIndex CFNumberType; enum CFNumberType {
     kCFNumberNSIntegerType = 15,
     kCFNumberCGFloatType = 16,
     kCFNumberMaxType = 16
-} CFNumberType;
+};
 
-typedef UInt32 CFStringEncoding; enum CFStringEncoding {
+CF_ENUM(UInt32, CFStringEncoding) {
     kCFStringEncodingMacRoman = 0,
     kCFStringEncodingWindowsLatin1 = 0x0500,
     kCFStringEncodingISOLatin1 = 0x0201,
@@ -269,9 +269,9 @@ typedef UInt32 CFStringEncoding; enum CFStringEncoding {
     kCFStringEncodingUTF32 = 0x0c000100,
     kCFStringEncodingUTF32BE = 0x18000100,
     kCFStringEncodingUTF32LE = 0x1c000100
-} CFStringEncoding;
+};
 
-typedef CFOptionFlags CFStringCompareFlags; enum CFStringCompareFlags {
+CF_ENUM(CFOptionFlags, CFStringCompareFlags) {
     kCFCompareCaseInsensitive = 1,	
     kCFCompareBackwards = 4,
     kCFCompareAnchored = 8,
@@ -281,9 +281,9 @@ typedef CFOptionFlags CFStringCompareFlags; enum CFStringCompareFlags {
     kCFCompareDiacriticInsensitive = 128,
     kCFCompareWidthInsensitive = 256,
     kCFCompareForcedOrdering = 512
-} CFStringCompareFlags;
+};
 
-typedef CFOptionFlags CFStringTokenizerTokenType; enum CFStringTokenizerTokenType {
+CF_ENUM(CFOptionFlags, CFStringTokenizerTokenType) {
     kCFStringTokenizerTokenNone = 0,
     kCFStringTokenizerTokenNormal = 1UL << 0,
     kCFStringTokenizerTokenHasSubTokensMask = 1UL << 1,
@@ -291,9 +291,9 @@ typedef CFOptionFlags CFStringTokenizerTokenType; enum CFStringTokenizerTokenTyp
     kCFStringTokenizerTokenHasHasNumbersMask = 1UL << 3,
     kCFStringTokenizerTokenHasNonLettersMask = 1UL << 4,
     kCFStringTokenizerTokenIsCJWordMask = 1UL << 5
-} CFStringTokenizerTokenType;
+};
 
-typedef CFIndex CFCharacterSetPredefinedSet; enum CFCharacterSetPredefinedSet {
+CF_ENUM(CFIndex, CFCharacterSetPredefinedSet) {
     kCFCharacterSetControl = 1,
     kCFCharacterSetWhitespace,
     kCFCharacterSetWhitespaceAndNewline,
@@ -309,7 +309,7 @@ typedef CFIndex CFCharacterSetPredefinedSet; enum CFCharacterSetPredefinedSet {
     kCFCharacterSetSymbol = 14,
     kCFCharacterSetNewline = 15,
     kCFCharacterSetIllegal = 12
-} CFCharacterSetPredefinedSet;
+};
 
 typedef enum CFStreamEventType {
    kCFStreamEventNone             =0,
