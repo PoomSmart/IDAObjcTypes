@@ -14,13 +14,13 @@ typedef uint64_t CVOptionFlags;
 
 typedef int32_t CVReturn;
 
-typedef CVOptionFlags CVPixelBufferLockFlags; enum CVPixelBufferLockFlags {
+typedef CF_ENUM(CVOptionFlags, CVPixelBufferLockFlags) {
     kCVPixelBufferLock_ReadOnly = 0x00000001,
-} CVPixelBufferLockFlags;
+};
 
-typedef CVOptionFlags CVPixelBufferPoolFlushFlags; enum CVPixelBufferPoolFlushFlags {
+typedef CF_ENUM(CVOptionFlags, CVPixelBufferPoolFlushFlags) {
     kCVPixelBufferPoolFlushExcessBuffers = 1,
-} CVPixelBufferPoolFlushFlags;
+};
 
 typedef void (*CVPixelBufferReleaseBytesCallback)(void *releaseRefCon, const void *baseAddress);
 

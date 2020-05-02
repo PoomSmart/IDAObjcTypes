@@ -49,13 +49,16 @@ NSPoint NSPointFromString(NSString *aString);
 NSRange NSUnionRange(NSRange range1, NSRange range2);
 NSRange NSIntersectionRange(NSRange range1, NSRange range2);
 
+BOOL NSPointInRect(NSPoint aPoint, NSRect aRect);
 BOOL NSContainsRect(NSRect aRect, NSRect bRect);
 BOOL NSEqualRects(NSRect aRect, NSRect bRect);
+BOOL NSEqualSizes(NSSize aSize, NSSize bSize);
+BOOL NSEqualPoints(NSPoint aPoint, NSPoint bPoint);
 BOOL NSIsEmptyRect(NSRect aRect);
 BOOL NSIntersectsRect(NSRect aRect, NSRect bRect);
+BOOL NSIntersectsRange(NSRange aRange, NSRange bRange);
 BOOL NSMapMember(NSMapTable *table, const void *key, void **originalKey, void **value);
 BOOL NSNextMapEnumeratorPair(NSMapEnumerator *enumerator, void **key, void **value);
-BOOL NSEqualSizes(NSSize aSize, NSSize bSize);
 
 Class NSClassFromString(CFStringRef string);
 
@@ -66,6 +69,7 @@ Protocol *NSProtocolFromString(NSString *namestr);
 NSMapEnumerator NSEnumerateMapTable(NSMapTable *table);
 
 NSMapTable *NSCreateMapTable(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity);
+NSMapTable *NSCreateMapTableWithZone(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity, NSZone *zone);
 
 NSZone *NSZoneFromPointer(void *ptr);
 
@@ -76,6 +80,9 @@ const char *NSGetSizeAndAlignment(const char *typePtr, NSUInteger *sizep, NSUInt
 
 void *NSPushAutoreleasePool(NSUInteger capacity);
 void *NSZoneMalloc(NSZone *zone, NSUInteger size);
+void *NSZoneRealloc(NSZone *zone, void *ptr, NSUInteger size);
+void *NSZoneCalloc(NSZone *zone, NSUInteger numElems, NSUInteger byteSize);
+void *NSReallocateCollectable(void *ptr, NSUInteger size, NSUInteger options);
 void *NSMapInsertIfAbsent(NSMapTable *table, const void *key, const void *value);
 void *NSMapGet(NSMapTable *table, const void *key);
 void *NSNextHashEnumeratorItem(NSHashEnumerator *enumerator);
@@ -96,5 +103,7 @@ void NSZoneFree(NSZone *zone, void *ptr);
 void NSMapInsert(NSMapTable *table, const void *key, const void *value);
 void NSMapInsertKnownAbsent(NSMapTable *table, const void *key, const void *value);
 void NSMapRemove(NSMapTable *table, const void *key);
+void NSFreeMapTable(NSMapTable *table);
 void NSEndMapTableEnumeration(NSMapEnumerator *enumerator);
+void NSDeallocateObject(id object);
 void NSSetUncaughtExceptionHandler(NSUncaughtExceptionHandler *);

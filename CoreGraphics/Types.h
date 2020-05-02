@@ -61,7 +61,7 @@ typedef enum CGCompositeOperation {
     kCGCompositeSover = 2,
 } CGCompositeOperation;
 
-typedef int32_t CGImageMetadataType; enum CGImageMetadataType {
+typedef CF_ENUM(int32_t, CGImageMetadataType) {
     kCGImageMetadataTypeInvalid = -1,
     kCGImageMetadataTypeDefault = 0,
     kCGImageMetadataTypeString = 1,
@@ -70,9 +70,9 @@ typedef int32_t CGImageMetadataType; enum CGImageMetadataType {
     kCGImageMetadataTypeAlternateArray = 4,
     kCGImageMetadataTypeAlternateText = 5,
     kCGImageMetadataTypeStructure = 6
-} CGImageMetadataType;
+};
 
-typedef int32_t CGBlendMode; enum CGBlendMode {
+typedef CF_ENUM(int32_t, CGBlendMode) {
     kCGBlendModeNormal,
     kCGBlendModeMultiply,
     kCGBlendModeScreen,
@@ -101,25 +101,25 @@ typedef int32_t CGBlendMode; enum CGBlendMode {
     kCGBlendModeXOR,
     kCGBlendModePlusDarker,
     kCGBlendModePlusLighter
-} CGBlendMode;
+};
 
-typedef int32_t CGInterpolationQuality; enum CGInterpolationQuality {
+typedef CF_ENUM(int32_t, CGInterpolationQuality) {
   kCGInterpolationDefault = 0,
   kCGInterpolationNone = 1,
   kCGInterpolationLow = 2,
   kCGInterpolationMedium = 4,
   kCGInterpolationHigh = 3
-} CGInterpolationQuality;
+};
 
-typedef int32_t CGPathDrawingMode; enum CGPathDrawingMode {
+typedef CF_ENUM(int32_t, CGPathDrawingMode) {
   kCGPathFill,
   kCGPathEOFill,
   kCGPathStroke,
   kCGPathFillStroke,
   kCGPathEOFillStroke
-} CGPathDrawingMode;
+};
 
-typedef int32_t CGTextDrawingMode; enum CGTextDrawingMode {
+typedef CF_ENUM(int32_t, CGTextDrawingMode) {
   kCGTextFill,
   kCGTextStroke,
   kCGTextFillStroke,
@@ -128,15 +128,15 @@ typedef int32_t CGTextDrawingMode; enum CGTextDrawingMode {
   kCGTextStrokeClip,
   kCGTextFillStrokeClip,
   kCGTextClip
-} CGTextDrawingMode;
+};
 
-typedef int32_t CGPatternTiling; enum CGPatternTiling {
+typedef CF_ENUM(int32_t, CGPatternTiling) {
     kCGPatternTilingNoDistortion,
     kCGPatternTilingConstantSpacingMinimalDistortion,
     kCGPatternTilingConstantSpacing
-} CGPatternTiling;
+};
 
-typedef uint32_t CGImageAlphaInfo; enum CGImageAlphaInfo {
+typedef CF_ENUM(uint32_t, CGImageAlphaInfo) {
     kCGImageAlphaNone,
     kCGImageAlphaPremultipliedLast,
     kCGImageAlphaPremultipliedFirst,
@@ -145,22 +145,22 @@ typedef uint32_t CGImageAlphaInfo; enum CGImageAlphaInfo {
     kCGImageAlphaNoneSkipLast,
     kCGImageAlphaNoneSkipFirst,
     kCGImageAlphaOnly
-} CGImageAlphaInfo;
+};
 
-typedef uint32_t CGGradientDrawingOptions; enum CGGradientDrawingOptions {
+typedef CF_ENUM(uint32_t, CGGradientDrawingOptions) {
   kCGGradientDrawsBeforeStartLocation = (1 << 0),
   kCGGradientDrawsAfterEndLocation = (1 << 1)
-} CGGradientDrawingOptions;
+};
 
-typedef int32_t CGColorRenderingIntent; enum CGColorRenderingIntent {
+typedef CF_ENUM(int32_t, CGColorRenderingIntent) {
     kCGRenderingIntentDefault,
     kCGRenderingIntentAbsoluteColorimetric,
     kCGRenderingIntentRelativeColorimetric,
     kCGRenderingIntentPerceptual,
     kCGRenderingIntentSaturation
-} CGColorRenderingIntent;
+};
 
-typedef int32_t CGColorSpaceModel; enum CGColorSpaceModel {
+typedef CF_ENUM(int32_t, CGColorSpaceModel) {
     kCGColorSpaceModelUnknown = -1,
     kCGColorSpaceModelMonochrome,
     kCGColorSpaceModelRGB,
@@ -170,47 +170,47 @@ typedef int32_t CGColorSpaceModel; enum CGColorSpaceModel {
     kCGColorSpaceModelIndexed,
     kCGColorSpaceModelPattern,
     kCGColorSpaceModelXYZ
-} CGColorSpaceModel;
+};
 
-typedef int32_t CGLineCap; enum CGLineCap {
+typedef CF_ENUM(int32_t, CGLineCap) {
     kCGLineCapButt,
     kCGLineCapRound,
     kCGLineCapSquare
-} CGLineCap;
+};
 
-typedef int32_t CGLineJoin; enum CGLineJoin {
+typedef CF_ENUM(int32_t, CGLineJoin) {
     kCGLineJoinMiter,
     kCGLineJoinRound,
     kCGLineJoinBevel
-} CGLineJoin;
+};
 
-typedef int32_t CGPathElementType; enum CGPathElementType {
+typedef CF_ENUM(int32_t, CGPathElementType) {
   kCGPathElementMoveToPoint,
   kCGPathElementAddLineToPoint,
   kCGPathElementAddQuadCurveToPoint,
   kCGPathElementAddCurveToPoint,
   kCGPathElementCloseSubpath
-} CGPathElementType;
+};
 
-typedef uint32_t CGImageByteOrderInfo; enum CGImageByteOrderInfo {
+typedef CF_ENUM(uint32_t, CGImageByteOrderInfo) {
     kCGImageByteOrderMask     = 0x7000,
     kCGImageByteOrderDefault  = (0 << 12),
     kCGImageByteOrder16Little = (1 << 12),
     kCGImageByteOrder32Little = (2 << 12),
     kCGImageByteOrder16Big    = (3 << 12),
     kCGImageByteOrder32Big    = (4 << 12)
-} CGImageByteOrderInfo;
+};
 
-typedef uint32_t CGImagePixelFormatInfo; enum CGImagePixelFormatInfo {
+typedef CF_ENUM(uint32_t, CGImagePixelFormatInfo) {
     kCGImagePixelFormatMask      = 0xF0000,
     kCGImagePixelFormatPacked    = (0 << 16),
     kCGImagePixelFormatRGB555    = (1 << 16),
     kCGImagePixelFormatRGB565    = (2 << 16),
     kCGImagePixelFormatRGB101010 = (3 << 16),
     kCGImagePixelFormatRGBCIF10  = (4 << 16),
-} CGImagePixelFormatInfo;
+};
 
-typedef uint32_t CGBitmapInfo; enum CGBitmapInfo {
+typedef CF_ENUM(uint32_t, CGBitmapInfo) {
     kCGBitmapAlphaInfoMask = 0x1F,
     kCGBitmapFloatInfoMask = 0xF00,
     kCGBitmapFloatComponents = (1 << 8),
@@ -220,13 +220,13 @@ typedef uint32_t CGBitmapInfo; enum CGBitmapInfo {
     kCGBitmapByteOrder32Little = kCGImageByteOrder32Little,
     kCGBitmapByteOrder16Big    = kCGImageByteOrder16Big,
     kCGBitmapByteOrder32Big    = kCGImageByteOrder32Big
-} CGBitmapInfo;
+};
 
-typedef uint32_t CGFontAntialiasingStyle; enum CGFontAntialiasingStyle {
+typedef CF_ENUM(uint32_t, CGFontAntialiasingStyle) {
     kCGFontAntialiasingStyleUnfiltered = 0 << 7,
     kCGFontAntialiasingStyleFilterLight = 1 << 7,
     kCGFontAntialiasingStyleUnfilteredCustomDilation = (8 << 7),
-} CGFontAntialiasingStyle;
+};
 
 typedef enum CGContextType {
     kCGContextTypeUnknown,
@@ -241,14 +241,14 @@ typedef enum CGContextType {
     kCGContextTypeCount
 } CGContextType;
 
-typedef uint32_t CGFontRenderingStyle; enum CGFontRenderingStyle {
+typedef CF_ENUM(uint32_t, CGFontRenderingStyle) {
     kCGFontRenderingStyleAntialiasing = 1 << 0,
     kCGFontRenderingStyleSmoothing = 1 << 1,
     kCGFontRenderingStyleSubpixelPositioning = 1 << 2,
     kCGFontRenderingStyleSubpixelQuantization = 1 << 3,
     kCGFontRenderingStylePlatformNative = 1 << 9,
     kCGFontRenderingStyleMask = 0x20F,
-} CGFontRenderingStyle;
+};
 
 typedef struct CGPathElement {
     CGPathElementType type;

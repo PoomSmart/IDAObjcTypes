@@ -21,9 +21,9 @@ typedef char io_struct_inband_t[4096];
 
 typedef kern_return_t IOReturn;
 
-typedef UInt32 IOOptionBits; enum IOOptionBits {
+typedef CF_ENUM(UInt32, IOOptionBits) {
     kIOHIDEventOptionNone = 0,
-} IOOptionBits;
+};
 
 typedef SInt32 IOFixed;
 typedef UInt32 IOVersion;
@@ -76,7 +76,7 @@ typedef struct __IOHIDEvent {
     void *record;		
 } *IOHIDEventRef;
 
-typedef uint32_t IOHIDEventType; enum IOHIDEventType {
+typedef CF_ENUM(uint32_t, IOHIDEventType) {
     kIOHIDDigitizerEventUpdateAltitudeMask = 1<<28,
     kIOHIDDigitizerEventUpdateAzimuthMask = 1<<29,
     kIOHIDDigitizerEventUpdatePressureMask = 1<<30,
@@ -124,14 +124,14 @@ typedef uint32_t IOHIDEventType; enum IOHIDEventType {
 
     kIOHIDEventTypeSwipe = kIOHIDEventTypeNavigationSwipe,
     kIOHIDEventTypeMouse = kIOHIDEventTypePointer
-} IOHIDEventType;
+};
 
-typedef uint32_t IOHIDAccelerometerType; enum IOHIDAccelerometerType {
+typedef CF_ENUM(uint32_t, IOHIDAccelerometerType) {
     kIOHIDAccelerometerTypeNormal = 0,
     kIOHIDAccelerometerTypeShake = 1
-} IOHIDAccelerometerType;
+};
 
-typedef uint32_t IOHIDSwipeMask; enum IOHIDSwipeMask {
+typedef CF_ENUM(uint32_t, IOHIDSwipeMask) {
     kIOHIDSwipeNone = 0,
     kIOHIDSwipeUp = 1<<0,
     kIOHIDSwipeDown = 1<<1,
@@ -141,9 +141,9 @@ typedef uint32_t IOHIDSwipeMask; enum IOHIDSwipeMask {
     kIOHIDScaleContract = 1<<5,
     kIOHIDRotateCW = 1<<6,
     kIOHIDRotateCCW = 1<<7,
-} IOHIDSwipeMask;
+};
 
-typedef uint32_t IOHIDProximityDetectionMask; enum IOHIDProximityDetectionMask {
+typedef CF_ENUM(uint32_t, IOHIDProximityDetectionMask) {
     kIOHIDProximityDetectionLargeBodyContact = 0x0001,
     kIOHIDProximityDetectionLargeBodyFarField = 0x0002,
     kIOHIDProximityDetectionIrregularObjects = 0x0004,
@@ -153,16 +153,16 @@ typedef uint32_t IOHIDProximityDetectionMask; enum IOHIDProximityDetectionMask {
     kIOHIDProximityDetectionReceiver = 0x0040,
     kIOHIDProximityDetectionSmallObjectsHovering = 0x0080,
     kIOHIDProximityDetectionReceiverCrude = 0x0100
-} IOHIDProximityDetectionMask;
+};
 
-typedef uint32_t IOHIDDigitizerTransducerType; enum IOHIDDigitizerTransducerType {   
+typedef CF_ENUM(uint32_t, IOHIDDigitizerTransducerType) {   
     kIOHIDDigitizerTransducerTypeStylus = 0x20,
     kIOHIDDigitizerTransducerTypePuck,
     kIOHIDDigitizerTransducerTypeFinger,
     kIOHIDDigitizerTransducerTypeHand
-} IOHIDDigitizerTransducerType;
+};
 
-typedef uint32_t IOHIDDigitizerEventMask; enum IOHIDDigitizerEventMask {
+typedef CF_ENUM(uint32_t, IOHIDDigitizerEventMask) {
     kIOHIDDigitizerEventRange = 1<<0,
     kIOHIDDigitizerEventTouch = 1<<1,
     kIOHIDDigitizerEventPosition = 1<<2,
@@ -188,20 +188,20 @@ typedef uint32_t IOHIDDigitizerEventMask; enum IOHIDDigitizerEventMask {
     kIOHIDDigitizerEventEstimatedAzimuth = 1<<29,
     kIOHIDDigitizerEventEstimatedPressure = 1<<30,
     kIOHIDDigitizerEventSwipeMask = 0xF<<24,
-} IOHIDDigitizerEventMask;
+};
 
-typedef uint32_t IOHIDEventOptionBits; enum IOHIDEventOptionBits {
+typedef CF_ENUM(uint32_t, IOHIDEventOptionBits) {
     kIOHIDEventOptionIsAbsolute = 0x00000001,
     kIOHIDEventOptionIsCollection = 0x00000002,
     kIOHIDEventOptionPixelUnits = 0x00000004
-} IOHIDEventOptionBits;
+};
 
-typedef uint32_t IOHIDReportType; enum IOHIDReportType {
+typedef CF_ENUM(uint32_t, IOHIDReportType) {
     kIOHIDReportTypeInput = 0,
     kIOHIDReportTypeOutput,
     kIOHIDReportTypeFeature,
     kIOHIDReportTypeCount
-} IOHIDReportType;
+};
 
 #ifdef __EA64__
 typedef double IOHIDFloat;
@@ -215,7 +215,7 @@ typedef struct _IOHID3DPoint {
     IOHIDFloat  z;
 } IOHID3DPoint;
 
-typedef uint32_t IOHIDEventField; enum IOHIDEventField {
+typedef CF_ENUM(uint32_t, IOHIDEventField) {
     kIOHIDEventFieldAccelerometerX = IOHIDEventFieldBase(kIOHIDEventTypeAccelerometer),
     kIOHIDEventFieldAccelerometerY,
     kIOHIDEventFieldAccelerometerZ,
@@ -362,9 +362,9 @@ typedef uint32_t IOHIDEventField; enum IOHIDEventField {
     kIOHIDEventFieldMultiAxisPointerButtonNumber = kIOHIDEventFieldButtonNumber,
     kIOHIDEventFieldMultiAxisPointerButtonClickCount = kIOHIDEventFieldButtonClickCount,
     kIOHIDEventFieldMultiAxisPointerButtonPressure = kIOHIDEventFieldButtonPressure,
-} IOHIDEventField;
+};
 
-typedef uint32_t IOHIDDigitizerEventUpdateMask; enum IOHIDDigitizerEventUpdateMask {
+typedef CF_ENUM(uint32_t, IOHIDDigitizerEventUpdateMask) {
     kIOHIDDigitizerEventUpdateXMask = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerX),
     kIOHIDDigitizerEventUpdateYMask = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerY),
     kIOHIDDigitizerEventUpdateZMask = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerZ),
@@ -392,7 +392,7 @@ typedef uint32_t IOHIDDigitizerEventUpdateMask; enum IOHIDDigitizerEventUpdateMa
     kIOHIDDigitizerEventUpdateChildEventMaskMask = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerChildEventMask),
     kIOHIDDigitizerEventUpdateIsDisplayIntegratedMask = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerIsDisplayIntegrated),
     kIOHIDDigitizerEventUpdateQualityRadiiAccuracyMask = 1<<IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerQualityRadiiAccuracy),
-} IOHIDDigitizerEventUpdateMask;
+};
 
 enum {
     kIOHIDGenericGestureTypeTap = 0,

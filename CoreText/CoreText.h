@@ -56,6 +56,7 @@ CFIndex CTFontGetLigatureCaretPositions(CTFontRef font, CGGlyph glyph, CGFloat *
 CFIndex CTLineGetGlyphCount(CTLineRef line);
 CFIndex CTLineGetStringIndexForPosition(CTLineRef line, CGPoint position);
 
+CFTypeRef CTFontCopyAttribute(CTFontRef font, CFStringRef attribute);
 CFTypeRef CTFontDescriptorCopyAttribute(CTFontDescriptorRef descriptor, CFStringRef attribute);
 CFTypeRef CTFontDescriptorCopyLocalizedAttribute(CTFontDescriptorRef descriptor, CFStringRef attribute, CFStringRef *language);
 

@@ -8,6 +8,9 @@
 // ^(.+) (.+)\((.*)\);$\n^(.+) _imp__(.+)\((.*)\);
 // $1 $2($3);
 
+#define CF_ENUM(_type, _name) _type _name; enum
+#define NS_ENUM(_type, _name) _type _name; enum
+
 typedef signed char int8;
 typedef unsigned char uint8;
 typedef signed short int16;

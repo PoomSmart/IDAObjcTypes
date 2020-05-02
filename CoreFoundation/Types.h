@@ -68,20 +68,20 @@ typedef CFIndex CFStreamStatus;
 typedef CFIndex CFURLPathStyle;
 typedef CFIndex CFURLComponentType;
 
-typedef SInt32 CFRunLoopRunResult; enum CFRunLoopRunResult {
+typedef CF_ENUM(SInt32, CFRunLoopRunResult) {
     kCFRunLoopRunFinished = 1,
     kCFRunLoopRunStopped = 2,
     kCFRunLoopRunTimedOut = 3,
     kCFRunLoopRunHandledSource = 4
-} CFRunLoopRunResult;
+};
 
-typedef CFIndex CFComparisonResult; enum CFComparisonResult {
-   kCFCompareLessThan = -1L,
+typedef CF_ENUM(CFIndex, CFComparisonResult) {
+   kCFCompareLessThan = -1,
    kCFCompareEqualTo = 0,
    kCFCompareGreaterThan = 1
-} CFComparisonResult;
+};
 
-typedef CFIndex CFSearchPathDirectory; enum CFSearchPathDirectory {
+typedef CF_ENUM(CFIndex, CFSearchPathDirectory) {
     kCFApplicationDirectory = 1,
     kCFDemoApplicationDirectory,
     kCFDeveloperApplicationDirectory,
@@ -93,23 +93,23 @@ typedef CFIndex CFSearchPathDirectory; enum CFSearchPathDirectory {
     kCFDocumentDirectory,
     kCFAllApplicationsDirectory = 100,
     kCFAllLibrariesDirectory = 101
-} CFSearchPathDirectory;
+};
 
-typedef CFIndex CFPropertyListFormat; enum CFPropertyListFormat {
+typedef CF_ENUM(CFIndex, CFPropertyListFormat) {
    kCFPropertyListOpenStepFormat = 1,
    kCFPropertyListXMLFormat_v1_0 = 100,
    kCFPropertyListBinaryFormat_v1_0 = 200
-} CFPropertyListFormat;
+};
 
-typedef CFOptionFlags CFSearchPathDomainMask; enum CFSearchPathDomainMask {
+typedef CF_ENUM(CFOptionFlags, CFSearchPathDomainMask) {
     kCFUserDomainMask = 1,
     kCFLocalDomainMask = 2,
     kCFNetworkDomainMask = 4,
     kCFSystemDomainMask = 8,
     kCFAllDomainsMask = 0x0ffff
-} CFSearchPathDomainMask;
+};
 
-typedef CFOptionFlags CFRunLoopActivity; enum CFRunLoopActivity {
+typedef CF_ENUM(CFOptionFlags, CFRunLoopActivity) {
     kCFRunLoopEntry = (1UL << 0),
     kCFRunLoopBeforeTimers = (1UL << 1),
     kCFRunLoopBeforeSources = (1UL << 2),
@@ -117,7 +117,7 @@ typedef CFOptionFlags CFRunLoopActivity; enum CFRunLoopActivity {
     kCFRunLoopAfterWaiting = (1UL << 6),
     kCFRunLoopExit = (1UL << 7),
     kCFRunLoopAllActivities = 0x0FFFFFFFU
-} CFRunLoopActivity;
+};
 
 typedef CFStringRef CFNotificationName;
 typedef CFStringRef CFErrorDomain;

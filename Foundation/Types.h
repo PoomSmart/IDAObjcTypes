@@ -29,11 +29,11 @@ typedef NSUInteger NSRectEdge;
 typedef NSUInteger NSSearchPathDirectory;
 typedef NSUInteger NSSearchPathDomainMask;
 
-typedef NSInteger NSComparisonResult; enum NSComparisonResult {
+typedef NS_ENUM(NSInteger, NSComparisonResult) {
     NSOrderedAscending = -1L,
     NSOrderedSame,
     NSOrderedDescending
-} NSComparisonResult;
+};
 
 struct _NSMapTable;
 
