@@ -93,12 +93,14 @@ typedef struct _NSRange {
     NSUInteger length;
 } NSRange;
 
-typedef CGPoint *NSPoint;
-typedef CGSize *NSSize;
-typedef CGRect *NSRect;
+typedef CGPoint NSPoint;
+typedef CGSize NSSize;
+typedef CGRect NSRect;
 
 typedef NSString *NSNotificationName;
 
 typedef void NSUncaughtExceptionHandler(NSException *exception);
+
+const NSPoint NSZeroPoint;
 
 #endif
