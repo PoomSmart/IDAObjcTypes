@@ -1,3 +1,6 @@
+#ifndef _NX_TYPES
+#define _NX_TYPES
+
 #import "../Types.h"
 
 typedef struct _NXTabletPointData {
@@ -33,8 +36,8 @@ typedef struct _NXTabletProximityData {
 	SInt16  reserved1;
 } NXTabletProximityData, *NXTabletProximityDataPtr;
 
-typedef	union {
-    struct {
+typedef	union NXEventData {
+    typedef struct mouse {
         UInt8   subx;
         UInt8   suby;
         SInt16  eventNum;
@@ -44,12 +47,12 @@ typedef	union {
         UInt8   subType;
         UInt8   reserved2;
         SInt32  reserved3;
-        union {
+        typedef union tablet {
             NXTabletPointData      point;
             NXTabletProximityData  proximity;
         } tablet;
     } mouse;
-    struct {
+    typedef struct mouseMove {
         SInt32  dx;
         SInt32  dy;
         UInt8   subx;
@@ -57,12 +60,12 @@ typedef	union {
         UInt8   subType;
         UInt8   reserved1;
         SInt32  reserved2;
-        union {
+        typedef union tablet {
             NXTabletPointData      point;
             NXTabletProximityData  proximity;
         } tablet;
     } mouseMove;
-    struct {
+    typedef struct key {
         UInt16  origCharSet;
         SInt16  repeat;
         UInt16  charSet;
@@ -76,7 +79,7 @@ typedef	union {
         SInt32  reserved4;
         SInt32  reserved5[4];
     } key;
-    struct {
+    typedef struct tracking {
         SInt16  reserved;
         SInt16  eventNum;
         SInt32  trackingNum;
@@ -88,7 +91,7 @@ typedef	union {
         SInt32  reserved5;
         SInt32  reserved6[4];
     } tracking;
-    struct {
+    typedef struct {
         SInt16  deltaAxis1;
         SInt16  deltaAxis2;
         SInt16  deltaAxis3;
@@ -101,23 +104,23 @@ typedef	union {
         SInt32  pointDeltaAxis3;
         SInt32  reserved8[4];
     } scrollWheel, zoom;
-    struct {
+    typedef struct compound {
         SInt16  reserved;
         SInt16  subType;
-        union {
+        typedef union misc {
             float   F[11];
             SInt32  L[11];
             SInt16  S[22];
             char    C[44];
         } misc;
     } compound;
-    struct {
+    typedef struct tablet {
         SInt32  x;
         SInt32  y;
         SInt32  z;
         UInt16  buttons;
         UInt16  pressure;
-        struct {
+        typedef struct {
             SInt16 x;
             SInt16 y;
         } tilt;
@@ -129,7 +132,7 @@ typedef	union {
         SInt16  vendor3;
         SInt32  reserved[4];
     } tablet;
-    struct {
+    typedef struct proximity {
         UInt16  vendorID;
         UInt16  tabletID;
         UInt16  pointerID;
@@ -145,3 +148,5 @@ typedef	union {
         SInt32  reserved2[4];
     } proximity;
 } NXEventData;
+
+#endif
