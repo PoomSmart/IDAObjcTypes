@@ -68,20 +68,20 @@ typedef CFIndex CFStreamStatus;
 typedef CFIndex CFURLPathStyle;
 typedef CFIndex CFURLComponentType;
 
-typedef CF_ENUM(SInt32, CFRunLoopRunResult) {
+CF_ENUM(SInt32, CFRunLoopRunResult) {
     kCFRunLoopRunFinished = 1,
     kCFRunLoopRunStopped = 2,
     kCFRunLoopRunTimedOut = 3,
     kCFRunLoopRunHandledSource = 4
 };
 
-typedef CF_ENUM(CFIndex, CFComparisonResult) {
+CF_ENUM(CFIndex, CFComparisonResult) {
    kCFCompareLessThan = -1,
    kCFCompareEqualTo = 0,
    kCFCompareGreaterThan = 1
 };
 
-typedef CF_ENUM(CFIndex, CFSearchPathDirectory) {
+CF_ENUM(CFIndex, CFSearchPathDirectory) {
     kCFApplicationDirectory = 1,
     kCFDemoApplicationDirectory,
     kCFDeveloperApplicationDirectory,
@@ -95,13 +95,13 @@ typedef CF_ENUM(CFIndex, CFSearchPathDirectory) {
     kCFAllLibrariesDirectory = 101
 };
 
-typedef CF_ENUM(CFIndex, CFPropertyListFormat) {
+CF_ENUM(CFIndex, CFPropertyListFormat) {
    kCFPropertyListOpenStepFormat = 1,
    kCFPropertyListXMLFormat_v1_0 = 100,
    kCFPropertyListBinaryFormat_v1_0 = 200
 };
 
-typedef CF_ENUM(CFOptionFlags, CFSearchPathDomainMask) {
+CF_ENUM(CFOptionFlags, CFSearchPathDomainMask) {
     kCFUserDomainMask = 1,
     kCFLocalDomainMask = 2,
     kCFNetworkDomainMask = 4,
@@ -109,7 +109,7 @@ typedef CF_ENUM(CFOptionFlags, CFSearchPathDomainMask) {
     kCFAllDomainsMask = 0x0ffff
 };
 
-typedef CF_ENUM(CFOptionFlags, CFRunLoopActivity) {
+CF_ENUM(CFOptionFlags, CFRunLoopActivity) {
     kCFRunLoopEntry = (1UL << 0),
     kCFRunLoopBeforeTimers = (1UL << 1),
     kCFRunLoopBeforeSources = (1UL << 2),

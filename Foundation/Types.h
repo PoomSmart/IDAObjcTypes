@@ -29,7 +29,7 @@ typedef NSUInteger NSRectEdge;
 typedef NSUInteger NSSearchPathDirectory;
 typedef NSUInteger NSSearchPathDomainMask;
 
-typedef NS_ENUM(NSInteger, NSComparisonResult) {
+NS_ENUM(NSInteger, NSComparisonResult) {
     NSOrderedAscending = -1L,
     NSOrderedSame,
     NSOrderedDescending

@@ -22,7 +22,7 @@ typedef struct NSDirectionalEdgeInsets {
 	CGFloat trailing;
 } NSDirectionalEdgeInsets;
 
-typedef NS_ENUM(NSInteger, UIEventType) {
+NS_ENUM(NSInteger, UIEventType) {
     UIEventTypeTouches,
     UIEventTypeMotion,
     UIEventTypeRemoteControl,
@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, UIEventType) {
     UIEventTypeTransform = 14
 };
 
-typedef NS_ENUM(NSInteger, UIEventSubtype) {
+NS_ENUM(NSInteger, UIEventSubtype) {
     UIEventSubtypeNone = 0,
     UIEventSubtypeMotionShake = 1,
     UIEventSubtypeRemoteControlPlay = 100,
@@ -52,12 +52,12 @@ typedef NS_ENUM(NSInteger, UIEventSubtype) {
     UIEventSubtypeRemoteControlEndSeekingForward = 109,
 };
 
-typedef NS_ENUM(NSInteger, UIEventButtonMask) {
+NS_ENUM(NSInteger, UIEventButtonMask) {
     UIEventButtonMaskPrimary = 1 << 0,
     UIEventButtonMaskSecondary = 1 << 1
 };
 
-typedef NS_ENUM(NSInteger, UIButtonType) {
+NS_ENUM(NSInteger, UIButtonType) {
     UIButtonTypeCustom = 0,
     UIButtonTypeSystem, // iOS 7+
     UIButtonTypeDetailDisclosure,
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSInteger, UIButtonType) {
     UIButtonTypeRoundedRect = UIButtonTypeSystem
 };
 
-typedef NS_ENUM(NSInteger, UITouchPhase) {
+NS_ENUM(NSInteger, UITouchPhase) {
     UITouchPhaseBegan,
     UITouchPhaseMoved,
     UITouchPhaseStationary,
@@ -79,7 +79,7 @@ typedef NS_ENUM(NSInteger, UITouchPhase) {
     UITouchPhaseRegionExited
 };
 
-typedef NS_ENUM(NSInteger, UITouchType) {
+NS_ENUM(NSInteger, UITouchType) {
     UITouchTypeDirect,
     UITouchTypeIndirect,
     UITouchTypePencil,
@@ -87,20 +87,20 @@ typedef NS_ENUM(NSInteger, UITouchType) {
     UITouchTypeIndirectPointer
 };
 
-typedef NS_ENUM(NSInteger, UITouchProperties) {
+NS_ENUM(NSInteger, UITouchProperties) {
     UITouchPropertyForce = (1UL << 0),
     UITouchPropertyAzimuth = (1UL << 1),
     UITouchPropertyAltitude = (1UL << 2),
     UITouchPropertyLocation = (1UL << 3)
 };
 
-typedef NS_ENUM(NSInteger, UIForceTouchCapability) {
+NS_ENUM(NSInteger, UIForceTouchCapability) {
     UIForceTouchCapabilityUnknown = 0,
     UIForceTouchCapabilityUnavailable = 1,
     UIForceTouchCapabilityAvailable = 2
 };
 
-typedef NS_ENUM(NSUInteger, UIControlEvents) {
+NS_ENUM(NSUInteger, UIControlEvents) {
     UIControlEventTouchDown = 1 << 0,
     UIControlEventTouchDownRepeat = 1 << 1,
     UIControlEventTouchDragInside = 1 << 2,
@@ -123,14 +123,14 @@ typedef NS_ENUM(NSUInteger, UIControlEvents) {
     UIControlEventAllEvents = 0xFFFFFFFF
 };
 
-typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
+NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
     UIControlContentVerticalAlignmentCenter = 0,
     UIControlContentVerticalAlignmentTop = 1,
     UIControlContentVerticalAlignmentBottom = 2,
     UIControlContentVerticalAlignmentFill = 3
 };
 
-typedef NS_ENUM(NSInteger, UIControlContentHorizontalAlignment) {
+NS_ENUM(NSInteger, UIControlContentHorizontalAlignment) {
     UIControlContentHorizontalAlignmentCenter = 0,
     UIControlContentHorizontalAlignmentLeft = 1,
     UIControlContentHorizontalAlignmentRight = 2,
@@ -139,7 +139,7 @@ typedef NS_ENUM(NSInteger, UIControlContentHorizontalAlignment) {
     UIControlContentHorizontalAlignmentTrailing = 5
 };
 
-typedef NS_ENUM(NSUInteger, UIControlState) {
+NS_ENUM(NSUInteger, UIControlState) {
     UIControlStateNormal = 0,
     UIControlStateHighlighted = 1 << 0,
     UIControlStateDisabled = 1 << 1,
@@ -149,25 +149,25 @@ typedef NS_ENUM(NSUInteger, UIControlState) {
     UIControlStateReserved = 0xFF000000
 };
 
-typedef NS_ENUM(NSInteger, UIUserInterfaceSizeClass) {
+NS_ENUM(NSInteger, UIUserInterfaceSizeClass) {
     UIUserInterfaceSizeClassUnspecified = 0,
     UIUserInterfaceSizeClassCompact = 1,
     UIUserInterfaceSizeClassRegular = 2,
 };
 
-typedef NS_ENUM(NSInteger, UIUserInterfaceStyle) {
+NS_ENUM(NSInteger, UIUserInterfaceStyle) {
     UIUserInterfaceStyleUnspecified,
     UIUserInterfaceStyleLight,
     UIUserInterfaceStyleDark,
 };
 
-typedef NS_ENUM(NSInteger, UIDisplayGamut) {
+NS_ENUM(NSInteger, UIDisplayGamut) {
     UIDisplayGamutUnspecified = -1,
     UIDisplayGamutSRGB,
     UIDisplayGamutP3
 };
 
-typedef NS_ENUM(NSInteger, UIDeviceOrientation) {
+NS_ENUM(NSInteger, UIDeviceOrientation) {
     UIDeviceOrientationUnknown,
     UIDeviceOrientationPortrait,
     UIDeviceOrientationPortraitUpsideDown,
@@ -177,14 +177,14 @@ typedef NS_ENUM(NSInteger, UIDeviceOrientation) {
     UIDeviceOrientationFaceDown
 };
 
-typedef NS_ENUM(NSInteger, UIDeviceBatteryState) {
+NS_ENUM(NSInteger, UIDeviceBatteryState) {
     UIDeviceBatteryStateUnknown,
     UIDeviceBatteryStateUnplugged,
     UIDeviceBatteryStateCharging,
     UIDeviceBatteryStateFull,
 };
 
-typedef NS_ENUM(NSInteger, UIUserInterfaceIdiom) {
+NS_ENUM(NSInteger, UIUserInterfaceIdiom) {
     UIUserInterfaceIdiomUnspecified = -1,
     UIUserInterfaceIdiomPhone,
     UIUserInterfaceIdiomPad,
@@ -192,7 +192,7 @@ typedef NS_ENUM(NSInteger, UIUserInterfaceIdiom) {
     UIUserInterfaceIdiomCarPlay,
 };
 
-typedef NS_ENUM(NSInteger, UIUserInterfaceLevel) {
+NS_ENUM(NSInteger, UIUserInterfaceLevel) {
     UIUserInterfaceLevelUnspecified = -1,
     UIUserInterfaceLevelBase,
     UIUserInterfaceLevelElevated

@@ -18,7 +18,7 @@ enum {
 
 typedef uint32_t CTFontOrientation;
 
-typedef CF_ENUM(uint32_t, CTFontDescriptorOptions) {
+CF_ENUM(uint32_t, CTFontDescriptorOptions) {
     kCTFontDescriptorOptionSystemUIFont = 1 << 1,
     kCTFontDescriptorOptionPreferAppleSystemFont = kCTFontOptionsPreferSystemFont
 };
@@ -27,7 +27,7 @@ enum {
     kCTFontClassMaskShift = 28
 };
 
-typedef CF_ENUM(uint32_t, CTFontSymbolicTraits) {
+CF_ENUM(uint32_t, CTFontSymbolicTraits) {
     kCTFontTraitItalic              = (1 << 0),
     kCTFontTraitBold                = (1 << 1),
     kCTFontTraitExpanded            = (1 << 5),
@@ -50,7 +50,7 @@ typedef CF_ENUM(uint32_t, CTFontSymbolicTraits) {
     kCTFontClassMaskTrait = kCTFontTraitClassMask
 };
 
-typedef CF_ENUM(uint32_t, CTFontUIFontType) {
+CF_ENUM(uint32_t, CTFontUIFontType) {
     kCTFontUIFontNone = (uint32_t)-1,
     kCTFontUIFontUser = 0,
     kCTFontUIFontUserFixedPitch = 1,
@@ -110,14 +110,14 @@ typedef CF_ENUM(uint32_t, CTFontUIFontType) {
     kCTFontControlContentFontType = kCTFontUIFontControlContent
 };
 
-typedef CF_ENUM(uint32_t, CTRunStatus) {
+CF_ENUM(uint32_t, CTRunStatus) {
     kCTRunStatusNoStatus = 0,
     kCTRunStatusRightToLeft = (1 << 0),
     kCTRunStatusNonMonotonic = (1 << 1),
     kCTRunStatusHasNonIdentityMatrix = (1 << 2)
 };
 
-typedef CF_ENUM(uint32_t, CTLineBoundsOptions) {
+CF_ENUM(uint32_t, CTLineBoundsOptions) {
     kCTLineBoundsExcludeTypographicLeading  = 1 << 0,
     kCTLineBoundsExcludeTypographicShifts   = 1 << 1,
     kCTLineBoundsUseHangingPunctuation      = 1 << 2,
@@ -126,7 +126,7 @@ typedef CF_ENUM(uint32_t, CTLineBoundsOptions) {
     kCTLineBoundsIncludeLanguageExtents = 1 << 5,
 };
 
-typedef CF_ENUM(uint32_t, CTLineTruncationType) {
+CF_ENUM(uint32_t, CTLineTruncationType) {
     kCTLineTruncationStart = 0,
     kCTLineTruncationEnd = 1,
     kCTLineTruncationMiddle = 2

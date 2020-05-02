@@ -30,7 +30,7 @@ typedef struct objc_super {
     Class super_class;
 } objc_super;
 
-typedef CF_ENUM(uint8_t, objc_tag_index_t) {
+CF_ENUM(uint8_t, objc_tag_index_t) {
     OBJC_TAG_NSAtom            = 0,
     OBJC_TAG_1                 = 1,
     OBJC_TAG_NSString          = 2,

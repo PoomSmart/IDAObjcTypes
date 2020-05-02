@@ -51,7 +51,7 @@ typedef struct cssm_tp_verify_context_result {
     CSSM_EVIDENCE_PTR Evidence;
 } CSSM_TP_VERIFY_CONTEXT_RESULT, *CSSM_TP_VERIFY_CONTEXT_RESULT_PTR;
 
-typedef CF_ENUM(uint32, CSSM_TP_APPLE_CERT_STATUS) {
+CF_ENUM(uint32, CSSM_TP_APPLE_CERT_STATUS) {
     CSSM_CERT_STATUS_EXPIRED            = 0x00000001,
     CSSM_CERT_STATUS_NOT_VALID_YET      = 0x00000002,
     CSSM_CERT_STATUS_IS_IN_INPUT_CERTS  = 0x00000004,
@@ -146,7 +146,7 @@ typedef struct SecKeychainAttributeInfo {
 
 typedef UInt32 SecKeychainStatus;
 
-typedef CF_ENUM(uint32_t, SecTrustResultType) {
+CF_ENUM(uint32_t, SecTrustResultType) {
     kSecTrustResultInvalid = 0,
     kSecTrustResultProceed = 1,
     kSecTrustResultConfirm = 2,
@@ -161,7 +161,7 @@ typedef void (*SecTrustCallback)(SecTrustRef trustRef, SecTrustResultType trustR
 
 typedef SecTrustResultType SecTrustUserSetting;
 
-typedef CF_ENUM(uint32_t, SecPadding) {
+CF_ENUM(uint32_t, SecPadding) {
     kSecPaddingNone      = 0,
     kSecPaddingPKCS1     = 1,
     kSecPaddingOAEP      = 2,
@@ -170,7 +170,7 @@ typedef CF_ENUM(uint32_t, SecPadding) {
     kSecPaddingPKCS1SHA1 = 0x8002
 };
 
-typedef CF_ENUM(uint32_t, SecTrustOptionFlags) {
+CF_ENUM(uint32_t, SecTrustOptionFlags) {
     kSecTrustOptionAllowExpired       = 0x00000001,
     kSecTrustOptionLeafIsCA           = 0x00000002,
     kSecTrustOptionFetchIssuerFromNet = 0x00000004,
@@ -180,7 +180,7 @@ typedef CF_ENUM(uint32_t, SecTrustOptionFlags) {
     kSecTrustOptionImplicitAnchors    = 0x00000040
 };
 
-typedef CF_ENUM(CFOptionFlags, SecAccessControlCreateFlags) {
+CF_ENUM(CFOptionFlags, SecAccessControlCreateFlags) {
     kSecAccessControlUserPresence           = 1u << 0,
     kSecAccessControlBiometryAny            = 1u << 1,
     kSecAccessControlTouchIDAny             = 1u << 1,
