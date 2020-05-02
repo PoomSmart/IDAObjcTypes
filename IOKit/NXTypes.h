@@ -91,7 +91,7 @@ typedef	union NXEventData {
         SInt32  reserved5;
         SInt32  reserved6[4];
     } tracking;
-    typedef struct {
+    typedef struct zoom {
         SInt16  deltaAxis1;
         SInt16  deltaAxis2;
         SInt16  deltaAxis3;
@@ -120,7 +120,7 @@ typedef	union NXEventData {
         SInt32  z;
         UInt16  buttons;
         UInt16  pressure;
-        typedef struct {
+        typedef struct tilt {
             SInt16 x;
             SInt16 y;
         } tilt;
