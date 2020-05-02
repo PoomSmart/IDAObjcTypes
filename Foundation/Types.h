@@ -102,5 +102,7 @@ typedef NSString *NSNotificationName;
 typedef void NSUncaughtExceptionHandler(NSException *exception);
 
 const NSPoint NSZeroPoint;
+const NSSize NSZeroSize;
+const NSRect NSZeroRect;
 
 #endif
