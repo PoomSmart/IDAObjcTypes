@@ -70,6 +70,7 @@ char *method_copyReturnType(Method m);
 
 const uint8_t *class_getIvarLayout(Class cls);
 
+const char *_protocol_getMethodTypeEncoding(Protocol *, SEL, BOOL isRequiredMethod, BOOL isInstanceMethod);
 const char **objc_copyImageNames(unsigned int *outCount);
 const char *object_getClassName(id obj);
 const char *protocol_getName(Protocol *proto);

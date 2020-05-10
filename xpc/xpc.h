@@ -41,8 +41,13 @@ xpc_object_t xpc_shmem_create(void *region, size_t length);
 xpc_object_t xpc_copy_bootstrap(void);
 xpc_object_t xpc_retain(xpc_object_t);
 xpc_object_t xpc_activity_copy_criteria(xpc_activity_t activity);
+xpc_object_t xpc_bundle_get_info_dictionary(xpc_bundle_t bundle);
+
+xpc_bundle_t xpc_bundle_create(const char *path, __int64 __unk);
 
 xpc_activity_state_t xpc_activity_get_state(xpc_activity_t activity);
+
+OS_xpc_mach_send *xpc_mach_send_create(mach_port_t);
 
 pid_t xpc_connection_get_pid(xpc_connection_t connection);
 
@@ -85,6 +90,7 @@ int xpc_array_dup_fd(xpc_object_t xarray, size_t index);
 int xpc_fd_dup(xpc_object_t xfd);
 
 mach_port_t xpc_dictionary_copy_mach_send(xpc_object_t, const char *);
+mach_port_t xpc_mach_send_copy_right(OS_xpc_mach_send *);
 
 void xpc_release(xpc_object_t object);
 void xpc_connection_activate(xpc_connection_t connection);
@@ -100,7 +106,7 @@ void xpc_connection_set_target_queue(xpc_connection_t connection, dispatch_queue
 void xpc_connection_set_bootstrap(xpc_connection_t, xpc_object_t bootstrap);
 void xpc_connection_set_instance(xpc_connection_t, uuid_t);
 void xpc_connection_set_oneshot_instance(xpc_connection_t, uuid_t instance);
-void xpc_connection_get_audit_token(xpc_connection_t, audit_token_t*);
+void xpc_connection_get_audit_token(xpc_connection_t, audit_token_t *);
 void xpc_connection_kill(xpc_connection_t, int);
 void xpc_connection_set_finalizer_f(xpc_connection_t connection, xpc_finalizer_t finalizer);
 
@@ -127,6 +133,9 @@ void xpc_dictionary_set_data(xpc_object_t xdict, const char *key, const void *by
 void xpc_dictionary_set_date(xpc_object_t xdict, const char *key, int64_t value);
 void xpc_dictionary_set_value(xpc_object_t xdict, const char *key, xpc_object_t value);
 void xpc_dictionary_set_fd(xpc_object_t xdict, const char *key, int fd);
+void xpc_dictionary_set_mach_recv(xpc_object_t xdict, const char *, mach_port_t);
+void xpc_dictionary_set_mach_send(xpc_object_t xdict, const char *, mach_port_t);
+void xpc_dictionary_get_audit_token(xpc_object_t xdict, audit_token_t *);
 
 void xpc_transaction_begin(void);
 void xpc_transaction_end(void);
@@ -149,3 +158,4 @@ const char *xpc_connection_get_name(xpc_connection_t connection);
 const char *xpc_dictionary_get_string(xpc_object_t xdict, const char *key);
 const char *xpc_array_get_string(xpc_object_t xarray, size_t index);
 const char *xpc_string_get_string_ptr(xpc_object_t);
+const char *xpc_bundle_get_executable_path(xpc_object_t bundle);

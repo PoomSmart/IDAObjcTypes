@@ -41,6 +41,7 @@ void _os_signpost_emit_with_name_impl(void *dso, os_log_t log, os_signpost_type_
 void _os_nospin_lock_lock(_os_nospin_lock_t lock);
 void _os_nospin_lock_unlock(_os_nospin_lock_t lock);
 void _os_crash(const char *message);
+void _os_assumes_log(kern_return_t);
 
 bool _os_nospin_lock_trylock(_os_nospin_lock_t lock);
 bool _os_feature_enabled_impl(const char *domain, const char *feature);

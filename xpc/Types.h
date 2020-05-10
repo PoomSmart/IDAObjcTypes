@@ -4,10 +4,12 @@
 #import "../Foundation/Types.h"
 
 typedef NSObject *xpc_object_t;
+typedef NSObject *OS_xpc_mach_send;
 
 typedef const struct _xpc_type_s *xpc_type_t;
 
 typedef xpc_object_t xpc_connection_t;
+typedef xpc_object_t xpc_bundle_t;
 typedef xpc_object_t xpc_endpoint_t;
 typedef xpc_object_t xpc_activity_t;
 

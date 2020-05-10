@@ -78,6 +78,7 @@ CFTypeRef IORegistryEntryCreateCFProperty(io_registry_entry_t entry, CFStringRef
 CFTypeRef IORegistryEntrySearchCFProperty(io_registry_entry_t entry, const io_name_t plane, CFStringRef key, CFAllocatorRef allocator, IOOptionBits options);
 
 CFStringRef IORegistryEntryCopyPath(io_registry_entry_t entry, const io_name_t plane);
+CFStringRef IOHIDEventTypeGetName(IOHIDEventType type);
 
 IOHIDUserDeviceRef IOHIDUserDeviceCreate(CFAllocatorRef allocator, CFDictionaryRef properties);
 
