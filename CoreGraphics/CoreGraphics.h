@@ -227,13 +227,6 @@ size_t CGBitmapGetAlignedBytesPerRow(size_t);
 size_t CGColorGetNumberOfComponents(CGColorRef color);
 size_t CGColorSpaceGetNumberOfComponents(CGColorSpaceRef space);
 
-int CGFontGetAscent(CGFontRef font);
-int CGFontGetDescent(CGFontRef font);
-int CGFontGetLeading(CGFontRef font);
-int CGFontGetCapHeight(CGFontRef font);
-int CGFontGetXHeight(CGFontRef font);
-int CGFontGetUnitsPerEm(CGFontRef font);
-
 bool CGFontGetGlyphBBoxes(CGFontRef font, const CGGlyph *glyphs, size_t count, CGRect *bboxes);
 bool CGFontGetGlyphAdvances(CGFontRef font, const CGGlyph *glyphs, size_t count, int *advances);
 bool CGFontGetGlyphAdvancesForStyle(CGFontRef font, const CGAffineTransform *transform, CGFontRenderingStyle style, const CGGlyph *glyphs, size_t count, CGSize *advances);
@@ -272,7 +265,22 @@ bool CGColorSpaceEqualToColorSpace(CGColorSpaceRef space1, CGColorSpaceRef space
 bool CGFloatIsValid(CGFloat value);
 
 bool CGCFDictionaryGetBoolean(CFDictionaryRef theDict, const void *key, bool *result);
+bool CGCFDictionaryGetBooleanWithDefault(CFDictionaryRef theDict, const void *key, bool defaultValue);
+bool CGCFDictionaryGetFloat(CFMutableDictionaryRef theDict, const void *key, double *value);
+bool CGCFDictionaryGetNumber(CFMutableDictionaryRef theDict, const void *key, CFNumberType type, void *valuePtr);
+bool CGCFDictionaryGetInteger(CFMutableDictionaryRef theDict, const void *key, int *valuePtr);
 bool CGCFDictionaryGetCFTypeRef(CFDictionaryRef theDict, const void *key, CFTypeID typeID, CFTypeRef *valuePtr);
+
+double CGCFDictionaryGetFloatWithDefault(CFMutableDictionaryRef theDict, const void *key, double defaultValue);
+
+int CGCFDictionaryGetIntegerWithDefault(CFMutableDictionaryRef theDict, const void *key, int defaultValue);
+
+int CGFontGetAscent(CGFontRef font);
+int CGFontGetDescent(CGFontRef font);
+int CGFontGetLeading(CGFontRef font);
+int CGFontGetCapHeight(CGFontRef font);
+int CGFontGetXHeight(CGFontRef font);
+int CGFontGetUnitsPerEm(CGFontRef font);
 
 void CGContextDestroy(CFTypeRef c);
 void CGContextSaveGState(CGContextRef c);
@@ -371,6 +379,7 @@ void CGImageDestinationAddImage(CGImageDestinationRef idst, CGImageRef image, CF
 void CGImageDestinationAddImageFromSource(CGImageDestinationRef idst, CGImageSourceRef isrc, size_t index, CFDictionaryRef properties);
 void CGImageDestinationAddImageAndMetadata(CGImageDestinationRef idst, CGImageRef image, CGImageMetadataRef metadata, CFDictionaryRef options);
 void CGImageDestinationSetProperties(CGImageDestinationRef idst, CFDictionaryRef properties);
+void CGImageSetProperty(CGImageRef image, CFStringRef property, const void *value);
 void CGImageRelease(CGImageRef image);
 void CGPathAddPath(CGMutablePathRef path1, const CGAffineTransform *m, CGPathRef path2);
 void CGPathAddArc(CGMutablePathRef path, const CGAffineTransform *m, CGFloat x, CGFloat y, CGFloat radius, CGFloat startAngle, CGFloat endAngle, bool clockwise);
@@ -402,6 +411,7 @@ void CGCFDictionaryApplyBlock(CFDictionaryRef theDict, void *context);
 void CGCFDictionarySetCString(CFMutableDictionaryRef theDict, const char *cStr);
 void CGCFDictionarySetBoolean(CFMutableDictionaryRef theDict, const void *key, bool value);
 void CGCFDictionarySetFloat(CFMutableDictionaryRef theDict, const void *key, double value);
+void CGCFDictionarySetInteger(CFMutableDictionaryRef theDict, const void *key, int value);
 void CGCFDictionarySetNumber(CFMutableDictionaryRef theDict, const void *key, CFNumberType type, const void *valuePtr);
 void CGCFDictionarySetCFTypeRef(CFMutableDictionaryRef theDict, const void *key, const void *value);
 
