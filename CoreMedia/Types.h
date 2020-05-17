@@ -2,8 +2,8 @@
 #define COREMEDIA_H_
 
 #import "../BaseTypes.h"
-#import "../Kernel/Types.h"
 #import "../CoreFoundation/Types.h"
+#import "../Kernel/Types.h"
 
 typedef int64_t CMTimeValue;
 typedef int64_t CMTimeEpoch;
@@ -46,10 +46,10 @@ typedef struct CMVideoDimensions {
 } CMVideoDimensions;
 
 typedef struct CMTime {
-	CMTimeValue	value;
-	CMTimeScale	timescale;
-	CMTimeFlags	flags;
-	CMTimeEpoch	epoch;
+    CMTimeValue value;
+    CMTimeScale timescale;
+    CMTimeFlags flags;
+    CMTimeEpoch epoch;
 } CMTime;
 
 typedef struct CMTimeRange {
@@ -58,9 +58,9 @@ typedef struct CMTimeRange {
 } CMTimeRange;
 
 typedef struct CMSampleTimingInfo {
-  CMTime duration;
-  CMTime presentationTimeStamp;
-  CMTime decodeTimeStamp;
+    CMTime duration;
+    CMTime presentationTimeStamp;
+    CMTime decodeTimeStamp;
 } CMSampleTimingInfo;
 
 CMTime kCMTimeZero;

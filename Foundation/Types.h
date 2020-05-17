@@ -30,7 +30,7 @@ typedef NSUInteger NSRectEdge;
 typedef NSUInteger NSSearchPathDirectory;
 typedef NSUInteger NSSearchPathDomainMask;
 
-NS_ENUM(NSInteger, NSComparisonResult) {
+typedef enum NSComparisonResult : NSInteger {
     NSOrderedAscending = -1L,
     NSOrderedSame,
     NSOrderedDescending
@@ -51,14 +51,14 @@ typedef struct _NSMapTableKeyCallBacks {
     BOOL (*isEqual)(struct _NSMapTable *table, const void *anObject1, const void *anObject2);
     void (*retain)(struct _NSMapTable *table, const void *anObject);
     void (*release)(struct _NSMapTable *table, void *anObject);
-    NSString  *(*describe)(struct _NSMapTable *table, const void *anObject);
+    NSString *(*describe)(struct _NSMapTable *table, const void *anObject);
     const void *notAKeyMarker;
 } NSMapTableKeyCallBacks;
 
 typedef struct _NSMapTableValueCallBacks {
     void (*retain)(struct _NSMapTable *table, const void *anObject);
     void (*release)(struct _NSMapTable *table, void *anObject);
-    NSString  *(*describe)(struct _NSMapTable *table, const void *anObject);
+    NSString *(*describe)(struct _NSMapTable *table, const void *anObject);
 } NSMapTableValueCallBacks;
 
 typedef struct _NSMapTable {

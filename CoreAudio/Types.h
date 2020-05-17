@@ -41,7 +41,7 @@ typedef struct AudioStreamPacketDescription {
 } AudioStreamPacketDescription;
 
 typedef struct AudioChannelDescription {
-    AudioChannelLabel  mChannelLabel;
+    AudioChannelLabel mChannelLabel;
     UInt32 mChannelFlags;
     Float32 mCoordinates[3];
 } AudioChannelDescription;

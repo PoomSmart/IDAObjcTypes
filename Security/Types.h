@@ -2,8 +2,8 @@
 #define SECURITY_H_
 
 #import "../BaseTypes.h"
-#import "../Kernel/Types.h"
 #import "../CoreFoundation/Types.h"
+#import "../Kernel/Types.h"
 
 typedef struct __SecCertificate *SecCertificateRef;
 typedef struct __SecIdentity *SecIdentityRef;
@@ -27,45 +27,42 @@ typedef uint32 CSSM_EVIDENCE_FORM;
 typedef uint32 CSSM_DL_HANDLE;
 typedef uint32 CSSM_DB_HANDLE;
 
-#define CSSM_EVIDENCE_FORM_UNSPECIFIC    0x0
-#define CSSM_EVIDENCE_FORM_CERT          0x1
-#define CSSM_EVIDENCE_FORM_CRL           0x2
-#define CSSM_EVIDENCE_FORM_CERT_ID       0x3
-#define CSSM_EVIDENCE_FORM_CRL_ID        0x4
+#define CSSM_EVIDENCE_FORM_UNSPECIFIC 0x0
+#define CSSM_EVIDENCE_FORM_CERT 0x1
+#define CSSM_EVIDENCE_FORM_CRL 0x2
+#define CSSM_EVIDENCE_FORM_CERT_ID 0x3
+#define CSSM_EVIDENCE_FORM_CRL_ID 0x4
 #define CSSM_EVIDENCE_FORM_VERIFIER_TIME 0x5
-#define CSSM_EVIDENCE_FORM_CRL_THISTIME  0x6
-#define CSSM_EVIDENCE_FORM_CRL_NEXTTIME  0x7
-#define CSSM_EVIDENCE_FORM_POLICYINFO    0x8
-#define CSSM_EVIDENCE_FORM_TUPLEGROUP    0x9
+#define CSSM_EVIDENCE_FORM_CRL_THISTIME 0x6
+#define CSSM_EVIDENCE_FORM_CRL_NEXTTIME 0x7
+#define CSSM_EVIDENCE_FORM_POLICYINFO 0x8
+#define CSSM_EVIDENCE_FORM_TUPLEGROUP 0x9
 
-typedef enum cssm_return {
-    CSSM_OK = 0,
-    CSSM_FAIL = -1
-} CSSM_RETURN;
+typedef enum cssm_return { CSSM_OK = 0, CSSM_FAIL = -1 } CSSM_RETURN;
 
 typedef struct cssm_evidence {
     CSSM_EVIDENCE_FORM EvidenceForm;
     void *Evidence;
-} CSSM_EVIDENCE, *CSSM_EVIDENCE_PTR; 
+} CSSM_EVIDENCE, *CSSM_EVIDENCE_PTR;
 
 typedef struct cssm_tp_verify_context_result {
     uint32 NumberOfEvidences;
     CSSM_EVIDENCE_PTR Evidence;
 } CSSM_TP_VERIFY_CONTEXT_RESULT, *CSSM_TP_VERIFY_CONTEXT_RESULT_PTR;
 
-CF_ENUM(uint32, CSSM_TP_APPLE_CERT_STATUS) {
-    CSSM_CERT_STATUS_EXPIRED            = 0x00000001,
-    CSSM_CERT_STATUS_NOT_VALID_YET      = 0x00000002,
-    CSSM_CERT_STATUS_IS_IN_INPUT_CERTS  = 0x00000004,
-    CSSM_CERT_STATUS_IS_IN_ANCHORS      = 0x00000008,
-    CSSM_CERT_STATUS_IS_ROOT            = 0x00000010,
-    CSSM_CERT_STATUS_IS_FROM_NET        = 0x00000020,
-    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_USER      = 0x00000040,
-    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_ADMIN     = 0x00000080,
-    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_SYSTEM    = 0x00000100,
-    CSSM_CERT_STATUS_TRUST_SETTINGS_TRUST           = 0x00000200,
-    CSSM_CERT_STATUS_TRUST_SETTINGS_DENY            = 0x00000400,
-    CSSM_CERT_STATUS_TRUST_SETTINGS_IGNORED_ERROR   = 0x00000800
+typedef enum CSSM_TP_APPLE_CERT_STATUS : uint32 {
+    CSSM_CERT_STATUS_EXPIRED = 0x00000001,
+    CSSM_CERT_STATUS_NOT_VALID_YET = 0x00000002,
+    CSSM_CERT_STATUS_IS_IN_INPUT_CERTS = 0x00000004,
+    CSSM_CERT_STATUS_IS_IN_ANCHORS = 0x00000008,
+    CSSM_CERT_STATUS_IS_ROOT = 0x00000010,
+    CSSM_CERT_STATUS_IS_FROM_NET = 0x00000020,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_USER = 0x00000040,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_ADMIN = 0x00000080,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_FOUND_SYSTEM = 0x00000100,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_TRUST = 0x00000200,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_DENY = 0x00000400,
+    CSSM_CERT_STATUS_TRUST_SETTINGS_IGNORED_ERROR = 0x00000800
 };
 
 typedef enum cssm_db_index_type {
@@ -85,10 +82,11 @@ typedef struct cssm_dl_db_handle {
 } CSSM_DL_DB_HANDLE, *CSSM_DL_DB_HANDLE_PTR;
 
 typedef enum cssm_db_attribute_name_format {
-    CSSM_DB_ATTRIBUTE_NAME_AS_STRING = 0, 
+    CSSM_DB_ATTRIBUTE_NAME_AS_STRING = 0,
     CSSM_DB_ATTRIBUTE_NAME_AS_OID = 1,
     CSSM_DB_ATTRIBUTE_NAME_AS_NUMBER = 2
-} CSSM_DB_ATTRIBUTE_NAME_FORMAT, *CSSM_DB_ATTRIBUTE_NAME_FORMAT_PTR;
+} CSSM_DB_ATTRIBUTE_NAME_FORMAT,
+    *CSSM_DB_ATTRIBUTE_NAME_FORMAT_PTR;
 
 typedef struct cssm_data {
     uint32 Length;
@@ -106,23 +104,23 @@ typedef struct cssm_db_attribute_info {
 } CSSM_DB_ATTRIBUTE_INFO, *CSSM_DB_ATTRIBUTE_INFO_PTR;
 
 typedef struct cssm_db_index_info {
-    CSSM_DB_INDEX_TYPE IndexType; 
-    CSSM_DB_INDEXED_DATA_LOCATION IndexedDataLocation; 
+    CSSM_DB_INDEX_TYPE IndexType;
+    CSSM_DB_INDEXED_DATA_LOCATION IndexedDataLocation;
     CSSM_DB_ATTRIBUTE_INFO Info;
 } CSSM_DB_INDEX_INFO, *CSSM_DB_INDEX_INFO_PTR;
 
 typedef struct cssm_db_unique_record {
-    CSSM_DB_INDEX_INFO RecordLocator; 
+    CSSM_DB_INDEX_INFO RecordLocator;
     CSSM_DATA RecordIdentifier;
 } CSSM_DB_UNIQUE_RECORD, *CSSM_DB_UNIQUE_RECORD_PTR;
 
 typedef struct CSSM_TP_APPLE_EVIDENCE_INFO {
-    CSSM_TP_APPLE_CERT_STATUS   StatusBits;
-    uint32                      NumStatusCodes;
-    CSSM_RETURN                 *StatusCodes;
-    uint32                      Index;   
-    CSSM_DL_DB_HANDLE           DlDbHandle;
-    CSSM_DB_UNIQUE_RECORD_PTR   UniqueRecord;
+    CSSM_TP_APPLE_CERT_STATUS StatusBits;
+    uint32 NumStatusCodes;
+    CSSM_RETURN *StatusCodes;
+    uint32 Index;
+    CSSM_DL_DB_HANDLE DlDbHandle;
+    CSSM_DB_UNIQUE_RECORD_PTR UniqueRecord;
 } CSSM_TP_APPLE_EVIDENCE_INFO;
 
 typedef OSType SecKeychainAttrType;
@@ -148,7 +146,7 @@ typedef struct SecKeychainAttributeInfo {
 
 typedef UInt32 SecKeychainStatus;
 
-CF_ENUM(uint32_t, SecTrustResultType) {
+typedef enum SecTrustResultType : uint32_t {
     kSecTrustResultInvalid = 0,
     kSecTrustResultProceed = 1,
     kSecTrustResultConfirm = 2,
@@ -163,37 +161,37 @@ typedef void (*SecTrustCallback)(SecTrustRef trustRef, SecTrustResultType trustR
 
 typedef SecTrustResultType SecTrustUserSetting;
 
-CF_ENUM(uint32_t, SecPadding) {
-    kSecPaddingNone      = 0,
-    kSecPaddingPKCS1     = 1,
-    kSecPaddingOAEP      = 2,
-    kSecPaddingPKCS1MD2  = 0x8000,
-    kSecPaddingPKCS1MD5  = 0x8001,
+typedef enum SecPadding : uint32_t {
+    kSecPaddingNone = 0,
+    kSecPaddingPKCS1 = 1,
+    kSecPaddingOAEP = 2,
+    kSecPaddingPKCS1MD2 = 0x8000,
+    kSecPaddingPKCS1MD5 = 0x8001,
     kSecPaddingPKCS1SHA1 = 0x8002
 };
 
-CF_ENUM(uint32_t, SecTrustOptionFlags) {
-    kSecTrustOptionAllowExpired       = 0x00000001,
-    kSecTrustOptionLeafIsCA           = 0x00000002,
+typedef enum SecTrustOptionFlags : uint32_t {
+    kSecTrustOptionAllowExpired = 0x00000001,
+    kSecTrustOptionLeafIsCA = 0x00000002,
     kSecTrustOptionFetchIssuerFromNet = 0x00000004,
-    kSecTrustOptionAllowExpiredRoot   = 0x00000008,
-    kSecTrustOptionRequireRevPerCert  = 0x00000010,
-    kSecTrustOptionUseTrustSettings   = 0x00000020,
-    kSecTrustOptionImplicitAnchors    = 0x00000040
+    kSecTrustOptionAllowExpiredRoot = 0x00000008,
+    kSecTrustOptionRequireRevPerCert = 0x00000010,
+    kSecTrustOptionUseTrustSettings = 0x00000020,
+    kSecTrustOptionImplicitAnchors = 0x00000040
 };
 
-CF_ENUM(CFOptionFlags, SecAccessControlCreateFlags) {
-    kSecAccessControlUserPresence           = 1u << 0,
-    kSecAccessControlBiometryAny            = 1u << 1,
-    kSecAccessControlTouchIDAny             = 1u << 1,
-    kSecAccessControlBiometryCurrentSet     = 1u << 3,
-    kSecAccessControlTouchIDCurrentSet      = 1u << 3,
-    kSecAccessControlDevicePasscode         = 1u << 4,
-    kSecAccessControlWatch                  = 1u << 5,
-    kSecAccessControlOr                     = 1u << 14,
-    kSecAccessControlAnd                    = 1u << 15,
-    kSecAccessControlPrivateKeyUsage        = 1u << 30,
-    kSecAccessControlApplicationPassword    = 1u << 31
+typedef enum SecAccessControlCreateFlags : CFOptionFlags {
+    kSecAccessControlUserPresence = 1u << 0,
+    kSecAccessControlBiometryAny = 1u << 1,
+    kSecAccessControlTouchIDAny = 1u << 1,
+    kSecAccessControlBiometryCurrentSet = 1u << 3,
+    kSecAccessControlTouchIDCurrentSet = 1u << 3,
+    kSecAccessControlDevicePasscode = 1u << 4,
+    kSecAccessControlWatch = 1u << 5,
+    kSecAccessControlOr = 1u << 14,
+    kSecAccessControlAnd = 1u << 15,
+    kSecAccessControlPrivateKeyUsage = 1u << 30,
+    kSecAccessControlApplicationPassword = 1u << 31
 };
 
 extern const CFStringRef kSecPropertyTypeTitle;

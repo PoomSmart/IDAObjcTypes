@@ -1,6 +1,6 @@
 BasedOnStyle: LLVM
-Language: ObjC
-ColumnLimit: 250
+Language: Cpp
+ColumnLimit: 200
 MaxEmptyLinesToKeep: 1
 PointerBindsToType: false
 AllowShortBlocksOnASingleLine: true
@@ -9,8 +9,5 @@ AlignTrailingComments: true
 SpaceBeforeParens: ControlStatements
 SpaceBeforeAssignmentOperators: true
 SpacesInContainerLiterals: true
-ObjCSpaceAfterProperty: false
-ObjCSpaceBeforeProtocolList: true
 IndentWidth: 4
 TabWidth: 4
-ObjCBlockIndentWidth: 4

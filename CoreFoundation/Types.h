@@ -66,20 +66,16 @@ typedef CFIndex CFStreamStatus;
 typedef CFIndex CFURLPathStyle;
 typedef CFIndex CFURLComponentType;
 
-CF_ENUM(SInt32, CFRunLoopRunResult) {
+typedef enum CFRunLoopRunResult : SInt32 {
     kCFRunLoopRunFinished = 1,
     kCFRunLoopRunStopped = 2,
     kCFRunLoopRunTimedOut = 3,
     kCFRunLoopRunHandledSource = 4
 };
 
-CF_ENUM(CFIndex, CFComparisonResult) {
-   kCFCompareLessThan = -1,
-   kCFCompareEqualTo = 0,
-   kCFCompareGreaterThan = 1
-};
+typedef enum CFComparisonResult : CFIndex { kCFCompareLessThan = -1, kCFCompareEqualTo = 0, kCFCompareGreaterThan = 1 };
 
-CF_ENUM(CFIndex, CFSearchPathDirectory) {
+typedef enum CFSearchPathDirectory : CFIndex {
     kCFApplicationDirectory = 1,
     kCFDemoApplicationDirectory,
     kCFDeveloperApplicationDirectory,
@@ -93,13 +89,13 @@ CF_ENUM(CFIndex, CFSearchPathDirectory) {
     kCFAllLibrariesDirectory = 101
 };
 
-CF_ENUM(CFIndex, CFPropertyListFormat) {
-   kCFPropertyListOpenStepFormat = 1,
-   kCFPropertyListXMLFormat_v1_0 = 100,
-   kCFPropertyListBinaryFormat_v1_0 = 200
+typedef enum CFPropertyListFormat : CFIndex {
+    kCFPropertyListOpenStepFormat = 1,
+    kCFPropertyListXMLFormat_v1_0 = 100,
+    kCFPropertyListBinaryFormat_v1_0 = 200
 };
 
-CF_ENUM(CFOptionFlags, CFSearchPathDomainMask) {
+typedef enum CFSearchPathDomainMask : CFOptionFlags {
     kCFUserDomainMask = 1,
     kCFLocalDomainMask = 2,
     kCFNetworkDomainMask = 4,
@@ -107,7 +103,7 @@ CF_ENUM(CFOptionFlags, CFSearchPathDomainMask) {
     kCFAllDomainsMask = 0x0ffff
 };
 
-CF_ENUM(CFOptionFlags, CFRunLoopActivity) {
+typedef enum CFRunLoopActivity : CFOptionFlags {
     kCFRunLoopEntry = (1UL << 0),
     kCFRunLoopBeforeTimers = (1UL << 1),
     kCFRunLoopBeforeSources = (1UL << 2),
@@ -129,7 +125,8 @@ typedef CFComparisonResult (*CFComparatorFunction)(const void *val1, const void 
 typedef const void *(*CFArrayRetainCallBack)(CFAllocatorRef allocator, const void *value);
 typedef void (*CFArrayApplierFunction)(const void *value, void *context);
 typedef void (*CFArrayReleaseCallBack)(CFAllocatorRef allocator, const void *value);
-typedef void (*CFNotificationCallback)(CFNotificationCenterRef center, void *observer, CFNotificationName name, const void *object, CFDictionaryRef userInfo);
+typedef void (*CFNotificationCallback)(CFNotificationCenterRef center, void *observer, CFNotificationName name, const void *object,
+                                       CFDictionaryRef userInfo);
 
 typedef CFStringRef (*CFArrayCopyDescriptionCallBack)(const void *value);
 
@@ -193,7 +190,7 @@ typedef struct CFAllocatorContext {
     CFIndex version;
     void *info;
     CFAllocatorRetainCallBack retain;
-    CFAllocatorReleaseCallBack release;        
+    CFAllocatorReleaseCallBack release;
     CFAllocatorCopyDescriptionCallBack copyDescription;
     CFAllocatorAllocateCallBack allocate;
     CFAllocatorReallocateCallBack reallocate;
@@ -232,7 +229,7 @@ typedef struct CFStringInlineBuffer {
     CFIndex bufferedRangeEnd;
 } CFStringInlineBuffer;
 
-CF_ENUM(CFIndex, CFNumberType) {
+typedef enum CFNumberType : CFIndex {
     kCFNumberSInt8Type = 1,
     kCFNumberSInt16Type = 2,
     kCFNumberSInt32Type = 3,
@@ -252,7 +249,7 @@ CF_ENUM(CFIndex, CFNumberType) {
     kCFNumberMaxType = 16
 };
 
-CF_ENUM(UInt32, CFStringEncoding) {
+typedef enum CFStringEncoding : UInt32 {
     kCFStringEncodingMacRoman = 0,
     kCFStringEncodingWindowsLatin1 = 0x0500,
     kCFStringEncodingISOLatin1 = 0x0201,
@@ -269,8 +266,8 @@ CF_ENUM(UInt32, CFStringEncoding) {
     kCFStringEncodingUTF32LE = 0x1c000100
 };
 
-CF_ENUM(CFOptionFlags, CFStringCompareFlags) {
-    kCFCompareCaseInsensitive = 1,	
+typedef enum CFStringCompareFlags : CFOptionFlags {
+    kCFCompareCaseInsensitive = 1,
     kCFCompareBackwards = 4,
     kCFCompareAnchored = 8,
     kCFCompareNonliteral = 16,
@@ -281,7 +278,7 @@ CF_ENUM(CFOptionFlags, CFStringCompareFlags) {
     kCFCompareForcedOrdering = 512
 };
 
-CF_ENUM(CFOptionFlags, CFStringTokenizerTokenType) {
+typedef enum CFStringTokenizerTokenType : CFOptionFlags {
     kCFStringTokenizerTokenNone = 0,
     kCFStringTokenizerTokenNormal = 1UL << 0,
     kCFStringTokenizerTokenHasSubTokensMask = 1UL << 1,
@@ -291,7 +288,7 @@ CF_ENUM(CFOptionFlags, CFStringTokenizerTokenType) {
     kCFStringTokenizerTokenIsCJWordMask = 1UL << 5
 };
 
-CF_ENUM(CFIndex, CFCharacterSetPredefinedSet) {
+typedef enum CFCharacterSetPredefinedSet : CFIndex {
     kCFCharacterSetControl = 1,
     kCFCharacterSetWhitespace,
     kCFCharacterSetWhitespaceAndNewline,
@@ -310,12 +307,12 @@ CF_ENUM(CFIndex, CFCharacterSetPredefinedSet) {
 };
 
 typedef enum CFStreamEventType {
-   kCFStreamEventNone             =0,
-   kCFStreamEventOpenCompleted    =(1<<0),
-   kCFStreamEventHasBytesAvailable=(1<<1),
-   kCFStreamEventCanAcceptBytes   =(1<<2),
-   kCFStreamEventErrorOccurred    =(1<<3),
-   kCFStreamEventEndEncountered   =(1<<4)
+    kCFStreamEventNone = 0,
+    kCFStreamEventOpenCompleted = (1 << 0),
+    kCFStreamEventHasBytesAvailable = (1 << 1),
+    kCFStreamEventCanAcceptBytes = (1 << 2),
+    kCFStreamEventErrorOccurred = (1 << 3),
+    kCFStreamEventEndEncountered = (1 << 4)
 } CFStreamEventType;
 
 typedef struct __CFRuntimeClass {
@@ -409,12 +406,12 @@ typedef struct CFStreamClientContext {
 } CFStreamClientContext;
 
 typedef struct CFRunLoopSourceContext {
-    CFIndex	version;
+    CFIndex version;
     void *info;
     const void *(*retain)(const void *info);
     void (*release)(const void *info);
-    CFStringRef	(*copyDescription)(const void *info);
-    Boolean	(*equal)(const void *info1, const void *info2);
+    CFStringRef (*copyDescription)(const void *info);
+    Boolean (*equal)(const void *info1, const void *info2);
     CFHashCode (*hash)(const void *info);
     void (*schedule)(void *info, CFRunLoopRef rl, CFRunLoopMode mode);
     void (*cancel)(void *info, CFRunLoopRef rl, CFRunLoopMode mode);
@@ -422,41 +419,41 @@ typedef struct CFRunLoopSourceContext {
 } CFRunLoopSourceContext;
 
 typedef struct CFRunLoopSourceContext1 {
-    CFIndex	version;
+    CFIndex version;
     void *info;
     const void *(*retain)(const void *info);
     void (*release)(const void *info);
-    CFStringRef	(*copyDescription)(const void *info);
-    Boolean	(*equal)(const void *info1, const void *info2);
+    CFStringRef (*copyDescription)(const void *info);
+    Boolean (*equal)(const void *info1, const void *info2);
     CFHashCode (*hash)(const void *info);
-    mach_port_t	(*getPort)(void *info);
+    mach_port_t (*getPort)(void *info);
     void *(*perform)(void *msg, CFIndex size, CFAllocatorRef allocator, void *info);
 } CFRunLoopSourceContext1;
 
 typedef struct CFRunLoopObserverContext {
-    CFIndex	version;
+    CFIndex version;
     void *info;
     const void *(*retain)(const void *info);
     void (*release)(const void *info);
-    CFStringRef	(*copyDescription)(const void *info);
+    CFStringRef (*copyDescription)(const void *info);
 } CFRunLoopObserverContext;
 
 typedef void (*CFRunLoopObserverCallBack)(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info);
 
 typedef struct CFRunLoopTimerContext {
-    CFIndex	version;
+    CFIndex version;
     void *info;
     const void *(*retain)(const void *info);
     void (*release)(const void *info);
-    CFStringRef	(*copyDescription)(const void *info);
+    CFStringRef (*copyDescription)(const void *info);
 } CFRunLoopTimerContext;
 
 typedef struct {
-    CFIndex	version;
+    CFIndex version;
     void *info;
     const void *(*retain)(const void *info);
     void (*release)(const void *info);
-    CFStringRef	(*copyDescription)(const void *info);
+    CFStringRef (*copyDescription)(const void *info);
 } CFMachPortContext;
 
 typedef void (*CFRunLoopTimerCallBack)(CFRunLoopTimerRef timer, void *info);

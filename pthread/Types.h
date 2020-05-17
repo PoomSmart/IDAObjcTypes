@@ -14,9 +14,9 @@
 typedef unsigned int qos_class_t;
 
 struct __darwin_pthread_handler_rec {
-	void (*__routine)(void *);
-	void *__arg;
-	struct __darwin_pthread_handler_rec *__next;
+    void (*__routine)(void *);
+    void *__arg;
+    struct __darwin_pthread_handler_rec *__next;
 };
 
 struct _opaque_pthread_attr_t {
@@ -25,9 +25,9 @@ struct _opaque_pthread_attr_t {
 };
 
 struct _opaque_pthread_t {
-	long __sig;
-	struct __darwin_pthread_handler_rec *__cleanup_stack;
-	char __opaque[__PTHREAD_SIZE__];
+    long __sig;
+    struct __darwin_pthread_handler_rec *__cleanup_stack;
+    char __opaque[__PTHREAD_SIZE__];
 };
 
 struct _opaque_pthread_mutex_t {
@@ -47,16 +47,16 @@ typedef struct _opaque_pthread_cond_t __darwin_pthread_cond_t;
 typedef __darwin_pthread_cond_t pthread_cond_t;
 
 typedef struct pthread_mutexattr_t {
-    int pshared;    
-    int kind;       
-    int protocol;   
-    int robustness; 
+    int pshared;
+    int kind;
+    int protocol;
+    int robustness;
 } pthread_mutexattr_t;
 
 typedef struct _opaque_pthread_t *__darwin_pthread_t;
 typedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;
 
 typedef __darwin_pthread_t pthread_t;
-typedef __darwin_pthread_attr_t	pthread_attr_t;
+typedef __darwin_pthread_attr_t pthread_attr_t;
 
 #endif

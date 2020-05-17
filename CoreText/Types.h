@@ -13,32 +13,25 @@ typedef struct __CTTypesetter *CTTypesetterRef;
 typedef struct __CTFrame *CTFrameRef;
 typedef struct __CTFramesetter *CTFramesetterRef;
 
-enum {
-    kCTFontOptionsPreferSystemFont = 1 << 2
-};
+enum { kCTFontOptionsPreferSystemFont = 1 << 2 };
 
 typedef uint32_t CTFontOrientation;
 
-CF_ENUM(uint32_t, CTFontDescriptorOptions) {
-    kCTFontDescriptorOptionSystemUIFont = 1 << 1,
-    kCTFontDescriptorOptionPreferAppleSystemFont = kCTFontOptionsPreferSystemFont
-};
+typedef enum CTFontDescriptorOptions : uint32_t { kCTFontDescriptorOptionSystemUIFont = 1 << 1, kCTFontDescriptorOptionPreferAppleSystemFont = kCTFontOptionsPreferSystemFont };
 
-enum {
-    kCTFontClassMaskShift = 28
-};
+enum { kCTFontClassMaskShift = 28 };
 
-CF_ENUM(uint32_t, CTFontSymbolicTraits) {
-    kCTFontTraitItalic              = (1 << 0),
-    kCTFontTraitBold                = (1 << 1),
-    kCTFontTraitExpanded            = (1 << 5),
-    kCTFontTraitCondensed           = (1 << 6),
-    kCTFontTraitMonoSpace           = (1 << 10),
-    kCTFontTraitVertical            = (1 << 11),
-    kCTFontTraitUIOptimized         = (1 << 12),
-    kCTFontTraitColorGlyphs         = (1 << 13),
-    kCTFontTraitComposite           = (1 << 14),
-    kCTFontTraitClassMask           = (15U << kCTFontClassMaskShift),
+typedef enum CTFontSymbolicTraits : uint32_t {
+    kCTFontTraitItalic = (1 << 0),
+    kCTFontTraitBold = (1 << 1),
+    kCTFontTraitExpanded = (1 << 5),
+    kCTFontTraitCondensed = (1 << 6),
+    kCTFontTraitMonoSpace = (1 << 10),
+    kCTFontTraitVertical = (1 << 11),
+    kCTFontTraitUIOptimized = (1 << 12),
+    kCTFontTraitColorGlyphs = (1 << 13),
+    kCTFontTraitComposite = (1 << 14),
+    kCTFontTraitClassMask = (15U << kCTFontClassMaskShift),
     kCTFontItalicTrait = kCTFontTraitItalic,
     kCTFontBoldTrait = kCTFontTraitBold,
     kCTFontExpandedTrait = kCTFontTraitExpanded,
@@ -51,7 +44,7 @@ CF_ENUM(uint32_t, CTFontSymbolicTraits) {
     kCTFontClassMaskTrait = kCTFontTraitClassMask
 };
 
-CF_ENUM(uint32_t, CTFontUIFontType) {
+typedef enum CTFontUIFontType : uint32_t {
     kCTFontUIFontNone = (uint32_t)-1,
     kCTFontUIFontUser = 0,
     kCTFontUIFontUserFixedPitch = 1,
@@ -111,27 +104,18 @@ CF_ENUM(uint32_t, CTFontUIFontType) {
     kCTFontControlContentFontType = kCTFontUIFontControlContent
 };
 
-CF_ENUM(uint32_t, CTRunStatus) {
-    kCTRunStatusNoStatus = 0,
-    kCTRunStatusRightToLeft = (1 << 0),
-    kCTRunStatusNonMonotonic = (1 << 1),
-    kCTRunStatusHasNonIdentityMatrix = (1 << 2)
-};
+typedef enum CTRunStatus : uint32_t { kCTRunStatusNoStatus = 0, kCTRunStatusRightToLeft = (1 << 0), kCTRunStatusNonMonotonic = (1 << 1), kCTRunStatusHasNonIdentityMatrix = (1 << 2) };
 
-CF_ENUM(uint32_t, CTLineBoundsOptions) {
-    kCTLineBoundsExcludeTypographicLeading  = 1 << 0,
-    kCTLineBoundsExcludeTypographicShifts   = 1 << 1,
-    kCTLineBoundsUseHangingPunctuation      = 1 << 2,
-    kCTLineBoundsUseGlyphPathBounds         = 1 << 3,
-    kCTLineBoundsUseOpticalBounds           = 1 << 4,
+typedef enum CTLineBoundsOptions : uint32_t {
+    kCTLineBoundsExcludeTypographicLeading = 1 << 0,
+    kCTLineBoundsExcludeTypographicShifts = 1 << 1,
+    kCTLineBoundsUseHangingPunctuation = 1 << 2,
+    kCTLineBoundsUseGlyphPathBounds = 1 << 3,
+    kCTLineBoundsUseOpticalBounds = 1 << 4,
     kCTLineBoundsIncludeLanguageExtents = 1 << 5,
 };
 
-CF_ENUM(uint32_t, CTLineTruncationType) {
-    kCTLineTruncationStart = 0,
-    kCTLineTruncationEnd = 1,
-    kCTLineTruncationMiddle = 2
-};
+typedef enum CTLineTruncationType : uint32_t { kCTLineTruncationStart = 0, kCTLineTruncationEnd = 1, kCTLineTruncationMiddle = 2 };
 
 typedef CFOptionFlags CTFontOptions;
 
