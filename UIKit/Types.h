@@ -22,7 +22,7 @@ typedef struct NSDirectionalEdgeInsets {
     CGFloat trailing;
 } NSDirectionalEdgeInsets;
 
-typedef enum UIEventType : NSInteger {
+enum UIEventType : NSInteger {
     UIEventTypeTouches,
     UIEventTypeMotion,
     UIEventTypeRemoteControl,
@@ -37,7 +37,7 @@ typedef enum UIEventType : NSInteger {
     UIEventTypeTransform = 14
 };
 
-typedef enum UIEventSubtype : NSInteger {
+enum UIEventSubtype : NSInteger {
     UIEventSubtypeNone = 0,
     UIEventSubtypeMotionShake = 1,
     UIEventSubtypeRemoteControlPlay = 100,
@@ -52,12 +52,12 @@ typedef enum UIEventSubtype : NSInteger {
     UIEventSubtypeRemoteControlEndSeekingForward = 109,
 };
 
-typedef enum UIEventButtonMask : NSInteger {
+enum UIEventButtonMask : NSInteger {
     UIEventButtonMaskPrimary = 1 << 0,
     UIEventButtonMaskSecondary = 1 << 1
 };
 
-typedef enum UIButtonType : NSInteger {
+enum UIButtonType : NSInteger {
     UIButtonTypeCustom = 0,
     UIButtonTypeSystem, // iOS 7+
     UIButtonTypeDetailDisclosure,
@@ -68,7 +68,7 @@ typedef enum UIButtonType : NSInteger {
     UIButtonTypeRoundedRect = UIButtonTypeSystem
 };
 
-typedef enum UITouchPhase : NSInteger {
+enum UITouchPhase : NSInteger {
     UITouchPhaseBegan,
     UITouchPhaseMoved,
     UITouchPhaseStationary,
@@ -79,7 +79,7 @@ typedef enum UITouchPhase : NSInteger {
     UITouchPhaseRegionExited
 };
 
-typedef enum UITouchType : NSInteger {
+enum UITouchType : NSInteger {
     UITouchTypeDirect,
     UITouchTypeIndirect,
     UITouchTypePencil,
@@ -87,20 +87,20 @@ typedef enum UITouchType : NSInteger {
     UITouchTypeIndirectPointer
 };
 
-typedef enum UITouchProperties : NSInteger {
+enum UITouchProperties : NSInteger {
     UITouchPropertyForce = (1UL << 0),
     UITouchPropertyAzimuth = (1UL << 1),
     UITouchPropertyAltitude = (1UL << 2),
     UITouchPropertyLocation = (1UL << 3)
 };
 
-typedef enum UIForceTouchCapability : NSInteger {
+enum UIForceTouchCapability : NSInteger {
     UIForceTouchCapabilityUnknown = 0,
     UIForceTouchCapabilityUnavailable = 1,
     UIForceTouchCapabilityAvailable = 2
 };
 
-typedef enum UIControlEvents : NSUInteger {
+enum UIControlEvents : NSUInteger {
     UIControlEventTouchDown = 1 << 0,
     UIControlEventTouchDownRepeat = 1 << 1,
     UIControlEventTouchDragInside = 1 << 2,
@@ -123,14 +123,14 @@ typedef enum UIControlEvents : NSUInteger {
     UIControlEventAllEvents = 0xFFFFFFFF
 };
 
-typedef enum UIControlContentVerticalAlignment : NSInteger {
+enum UIControlContentVerticalAlignment : NSInteger {
     UIControlContentVerticalAlignmentCenter = 0,
     UIControlContentVerticalAlignmentTop = 1,
     UIControlContentVerticalAlignmentBottom = 2,
     UIControlContentVerticalAlignmentFill = 3
 };
 
-typedef enum UIControlContentHorizontalAlignment : NSInteger {
+enum UIControlContentHorizontalAlignment : NSInteger {
     UIControlContentHorizontalAlignmentCenter = 0,
     UIControlContentHorizontalAlignmentLeft = 1,
     UIControlContentHorizontalAlignmentRight = 2,
@@ -139,7 +139,7 @@ typedef enum UIControlContentHorizontalAlignment : NSInteger {
     UIControlContentHorizontalAlignmentTrailing = 5
 };
 
-typedef enum UIControlState : NSUInteger {
+enum UIControlState : NSUInteger {
     UIControlStateNormal = 0,
     UIControlStateHighlighted = 1 << 0,
     UIControlStateDisabled = 1 << 1,
@@ -149,25 +149,25 @@ typedef enum UIControlState : NSUInteger {
     UIControlStateReserved = 0xFF000000
 };
 
-typedef enum UIUserInterfaceSizeClass : NSInteger {
+enum UIUserInterfaceSizeClass : NSInteger {
     UIUserInterfaceSizeClassUnspecified = 0,
     UIUserInterfaceSizeClassCompact = 1,
     UIUserInterfaceSizeClassRegular = 2,
 };
 
-typedef enum UIUserInterfaceStyle : NSInteger {
+enum UIUserInterfaceStyle : NSInteger {
     UIUserInterfaceStyleUnspecified,
     UIUserInterfaceStyleLight,
     UIUserInterfaceStyleDark,
 };
 
-typedef enum UIDisplayGamut : NSInteger {
+enum UIDisplayGamut : NSInteger {
     UIDisplayGamutUnspecified = -1,
     UIDisplayGamutSRGB,
     UIDisplayGamutP3
 };
 
-typedef enum UIDeviceOrientation : NSInteger {
+enum UIDeviceOrientation : NSInteger {
     UIDeviceOrientationUnknown,
     UIDeviceOrientationPortrait,
     UIDeviceOrientationPortraitUpsideDown,
@@ -177,14 +177,14 @@ typedef enum UIDeviceOrientation : NSInteger {
     UIDeviceOrientationFaceDown
 };
 
-typedef enum UIDeviceBatteryState : NSInteger {
+enum UIDeviceBatteryState : NSInteger {
     UIDeviceBatteryStateUnknown,
     UIDeviceBatteryStateUnplugged,
     UIDeviceBatteryStateCharging,
     UIDeviceBatteryStateFull,
 };
 
-typedef enum UIUserInterfaceIdiom : NSInteger {
+enum UIUserInterfaceIdiom : NSInteger {
     UIUserInterfaceIdiomUnspecified = -1,
     UIUserInterfaceIdiomPhone,
     UIUserInterfaceIdiomPad,
@@ -192,7 +192,7 @@ typedef enum UIUserInterfaceIdiom : NSInteger {
     UIUserInterfaceIdiomCarPlay,
 };
 
-typedef enum UIUserInterfaceLevel : NSInteger {
+enum UIUserInterfaceLevel : NSInteger {
     UIUserInterfaceLevelUnspecified = -1,
     UIUserInterfaceLevelBase,
     UIUserInterfaceLevelElevated

@@ -30,7 +30,7 @@ typedef NSUInteger NSRectEdge;
 typedef NSUInteger NSSearchPathDirectory;
 typedef NSUInteger NSSearchPathDomainMask;
 
-typedef enum NSComparisonResult : NSInteger {
+enum NSComparisonResult : NSInteger {
     NSOrderedAscending = -1L,
     NSOrderedSame,
     NSOrderedDescending

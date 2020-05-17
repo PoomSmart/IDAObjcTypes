@@ -83,7 +83,7 @@ typedef struct CC_SHA512state_st {
 #define CC_SHA512_DIGEST_LENGTH 64
 #define CC_SHA512_BLOCK_BYTES 128
 
-typedef enum CCStatus : int32_t {
+enum CCStatus : int32_t {
     kCCSuccess = 0,
     kCCParamError = -4300,
     kCCBufferTooSmall = -4301,
@@ -100,12 +100,12 @@ typedef enum CCStatus : int32_t {
 };
 typedef int32_t CCCryptorStatus;
 
-typedef enum CCOperation : uint32_t {
+enum CCOperation : uint32_t {
     kCCEncrypt = 0,
     kCCDecrypt,
 };
 
-typedef enum CCAlgorithm : uint32_t {
+enum CCAlgorithm : uint32_t {
     kCCAlgorithmAES128 = 0,
     kCCAlgorithmAES = 0,
     kCCAlgorithmDES,
@@ -116,9 +116,9 @@ typedef enum CCAlgorithm : uint32_t {
     kCCAlgorithmBlowfish
 };
 
-typedef enum CCOptions : uint32_t { kCCOptionPKCS7Padding = 0x0001, kCCOptionECBMode = 0x0002 };
+enum CCOptions : uint32_t { kCCOptionPKCS7Padding = 0x0001, kCCOptionECBMode = 0x0002 };
 
-typedef enum CCMode : uint32_t {
+enum CCMode : uint32_t {
     kCCModeECB = 1,
     kCCModeCBC = 2,
     kCCModeCFB = 3,
@@ -128,9 +128,9 @@ typedef enum CCMode : uint32_t {
     kCCModeCFB8 = 10,
 };
 
-typedef enum CCModeOptions : uint32_t { kCCModeOptionCTR_BE = 2 };
+enum CCModeOptions : uint32_t { kCCModeOptionCTR_BE = 2 };
 
-typedef enum CCPadding : uint32_t {
+enum CCPadding : uint32_t {
     ccNoPadding = 0,
     ccPKCS7Padding = 1,
 };
@@ -170,7 +170,7 @@ enum {
 };
 */
 
-typedef enum CCHmacAlgorithm : uint32_t {
+enum CCHmacAlgorithm : uint32_t {
     kCCHmacAlgSHA1,
     kCCHmacAlgMD5,
     kCCHmacAlgSHA256,
@@ -184,11 +184,11 @@ typedef struct CCHmacContext {
     uint32_t ctx[CC_HMAC_CONTEXT_SIZE];
 } CCHmacContext;
 
-typedef enum CCPBKDFAlgorithm : uint32_t {
+enum CCPBKDFAlgorithm : uint32_t {
     kCCPBKDF2 = 2,
 };
 
-typedef enum CCPseudoRandomAlgorithm : uint32_t {
+enum CCPseudoRandomAlgorithm : uint32_t {
     kCCPRFHmacAlgSHA1 = 1,
     kCCPRFHmacAlgSHA224 = 2,
     kCCPRFHmacAlgSHA256 = 3,

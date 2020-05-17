@@ -14,11 +14,11 @@ typedef uint64_t CVOptionFlags;
 
 typedef int32_t CVReturn;
 
-typedef enum CVPixelBufferLockFlags : CVOptionFlags {
+enum CVPixelBufferLockFlags : CVOptionFlags {
     kCVPixelBufferLock_ReadOnly = 0x00000001,
 };
 
-typedef enum CVPixelBufferPoolFlushFlags : CVOptionFlags {
+enum CVPixelBufferPoolFlushFlags : CVOptionFlags {
     kCVPixelBufferPoolFlushExcessBuffers = 1,
 };
 
