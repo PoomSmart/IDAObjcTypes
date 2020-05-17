@@ -90,10 +90,18 @@ enum GSEventSubType : unsigned {
 };
 
 enum GSEventFlags : unsigned {
-    kGSEventFlagMaskShift     = 1 << 17,
-    kGSEventFlagMaskControl   = 1 << 18,
+    kGSEventFlagMaskShift = 1 << 17,
+    kGSEventFlagMaskControl = 1 << 18,
     kGSEventFlagMaskAlternate = 1 << 19,
-    kGSEventFlagMaskCommand   = 1 << 20
+    kGSEventFlagMaskCommand = 1 << 20
+};
+
+enum GSHandInfoType : unsigned {
+    kGSHandInfoTypeTouchDown = 0,
+    kGSHandInfoTypeTouchDragged = 1,
+    kGSHandInfoTypeTouchMoved = 4,
+    kGSHandInfoTypeTouchUp = 5,
+    kGSHandInfoTypeCancel = 8
 };
 
 typedef struct GSAccelerometerInfo {
@@ -124,6 +132,35 @@ typedef struct GSKeyInfo {
 	unsigned short characterSet;
 	Boolean isKeyRepeating;
 } GSKeyInfo;
+
+typedef struct GSPathInfo {
+    unsigned char pathIndex;
+    unsigned char pathIdentity;
+    unsigned char pathProximity;
+    CGFloat pathPressure;
+    CGFloat pathMajorRadius;
+    CGPoint pathLocation;
+    GSWindowRef pathWindow;
+} GSPathInfo;
+
+typedef struct GSHandInfo {
+	GSHandInfoType type;
+	short deltaX, deltaY;
+	float _0x44;
+	float _0x48;
+	float width;
+	float _0x50;
+	float height;
+	float _0x58;
+	unsigned char _0x5C;
+	unsigned char pathInfosCount;
+	GSPathInfo pathInfos[0];
+} GSHandInfo;
+
+typedef struct GSScrollWheelInfo {
+    int deltaY;
+    int deltaX;
+} GSScrollWheelInfo;
 
 // Suspect that there are more to this since OS 3.2
 typedef struct GSEventRecord {

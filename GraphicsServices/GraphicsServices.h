@@ -2,6 +2,8 @@
 #import "../Kernel/Types.h"
 #import "Types.h"
 
+float GSEventGetDeltaX(GSEventRef event); 
+float GSEventGetDeltaY(GSEventRef event); 
 float GSEventAccelerometerAxisX(GSEventRef event);
 float GSEventAccelerometerAxisY(GSEventRef event);
 float GSEventAccelerometerAxisZ(GSEventRef event);
@@ -14,6 +16,8 @@ Boolean GSEventIsHardwareKeyboardEvent(GSEventRef event);
 Boolean GSEventIsHardwareKeyboardAttached(void);
 Boolean GSEventIsKeyCharacterEventType(GSEventRef event, UniChar expected_keycode);
 Boolean GSEventIsTabKeyEvent(GSEventRef event);
+Boolean GSEventIsHandEvent(GSEventRef event);
+Boolean GSEventIsChordingHandEvent(GSEventRef event);
 Boolean GSEventShouldRouteToFrontMost(GSEventRef event);
 Boolean GSEventQueueContainsMouseEvent();
 
@@ -28,6 +32,8 @@ void GSEventResetIdleTimer();
 void GSEventResetIdleDuration(int a, int b);
 void GSEventSetBacklightLevel(float level);
 void GSEventSetBacklightFactor(int factor);
+void GSEventSetType(GSEventRef event, GSEventType type);
+void GSEventSetPathInfoAtIndex(GSEventRef event, GSPathInfo pathInfo, CFIndex index);
 // void GSEventSetSensitivity(int (float) sensitivity);
 void GSEventSetHardwareKeyboardAttached(Boolean attached);
 void GSEventRemoveShouldRouteToFrontMost(GSEventRef event);
@@ -73,3 +79,7 @@ GSEventRef GSEventCreateWithEventRecord(const GSEventRecord* record);
 const GSEventRecord *GSEventRecordGetRecordDataWithPlist(CFDictionaryRef plist);
 
 GSKeyboardRef GSKeyboardCreate(CFStringRef layoutName, UInt32 keyboardType);
+
+GSHandInfo GSEventGetHandInfo(GSEventRef event);
+
+GSPathInfo GSEventGetPathInfoAtIndex(GSEventRef event, CFIndex index);
