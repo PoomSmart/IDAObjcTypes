@@ -1,3 +1,4 @@
+#import "../Kernel/Types.h"
 #import "Types.h"
 
 int pthread_getname_np(pthread_t thread, char *name, size_t len);

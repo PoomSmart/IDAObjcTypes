@@ -1,6 +1,7 @@
 #ifndef FOUNDATION_H_
 #define FOUNDATION_H_
 
+#import "../BaseTypes.h"
 #import "../CoreFoundation/Types.h"
 #import "../CoreGraphics/Types.h"
 #import "../objc/Types.h"
@@ -15,7 +16,7 @@ typedef int NSInteger;
 
 typedef struct __NSObject NSObject;
 typedef struct __NSValue NSValue;
-typedef const struct __CFString NSString;
+typedef const __CFString NSString;
 typedef struct __NSData NSData;
 typedef struct __NSArray NSArray;
 typedef struct __NSArray NSMutableArray;
@@ -42,6 +43,8 @@ struct _NSMapNode {
     void *value;
     struct _NSMapNode *next;
 };
+
+typedef NSObject *NSHashTable;
 
 typedef struct _NSMapTableKeyCallBacks {
     unsigned (*hash)(struct _NSMapTable *table, const void *anObject);
@@ -101,8 +104,8 @@ typedef NSString *NSNotificationName;
 
 typedef void NSUncaughtExceptionHandler(NSException *exception);
 
-const NSPoint NSZeroPoint;
-const NSSize NSZeroSize;
-const NSRect NSZeroRect;
+extern const NSPoint NSZeroPoint;
+extern const NSSize NSZeroSize;
+extern const NSRect NSZeroRect;
 
 #endif

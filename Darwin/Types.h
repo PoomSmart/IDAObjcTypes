@@ -3,13 +3,13 @@
 
 #import "../Kernel/Types.h"
 #import "../Foundation/Types.h"
-#import "../Types.h"
+#import "../BaseTypes.h"
 
 typedef uint32_t mach_error_t;
 typedef uint32_t dispatch_lock;
 typedef uint32_t dispatch_priority_t;
-typedef uint32_t dispatch_mach_msg_t;
 typedef uint64_t dispatch_time_t;
+typedef intptr_t dispatch_once_t;
 typedef unsigned int qos_class_t;
 typedef unsigned long dispatch_block_flags_t;
 typedef unsigned long dispatch_workloop_param_flags_t;
@@ -20,7 +20,6 @@ typedef long dispatch_queue_priority_t;
 
 typedef NSObject *dispatch_object_t;
 typedef NSObject *dispatch_source_t;
-typedef NSObject *dispatch_queue_t;
 typedef NSObject *dispatch_group_t;
 typedef NSObject *dispatch_data_t;
 typedef NSObject *dispatch_workloop_t;
@@ -75,7 +74,7 @@ typedef bool (*dispatch_data_applier_t)(dispatch_data_t region, size_t offset, c
 typedef boolean_t (*dispatch_mig_callback_t)(mach_msg_header_t *message, mach_msg_header_t *reply);
 
 // problematic
-struct dispatch_queue_s _dispatch_main_q;
-struct dispatch_queue_attr_s _dispatch_queue_attr_concurrent;
+extern struct dispatch_queue_s _dispatch_main_q;
+extern struct dispatch_queue_attr_s _dispatch_queue_attr_concurrent;
 
 #endif

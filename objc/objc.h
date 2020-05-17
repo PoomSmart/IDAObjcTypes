@@ -1,4 +1,5 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
+#import "../Kernel/Types.h"
 #import "Types.h"
 
 id objc_alloc(id);

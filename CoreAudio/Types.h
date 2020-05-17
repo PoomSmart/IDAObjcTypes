@@ -1,7 +1,7 @@
 #ifndef COREAUDIO_H_
 #define COREAUDIO_H_
 
-#import "../Types.h"
+#import "../BaseTypes.h"
 
 typedef UInt32 AudioChannelLabel;
 typedef UInt32 AudioChannelLayoutTag;
@@ -19,7 +19,7 @@ typedef struct AudioBuffer {
 
 typedef struct AudioBufferList {
     UInt32 mNumberBuffers;
-    AudioBuffer mBuffers[kVariableLengthArray];
+    AudioBuffer mBuffers[1];
 } AudioBufferList;
 
 typedef struct AudioStreamBasicDescription {
@@ -50,7 +50,7 @@ typedef struct AudioChannelLayout {
     AudioChannelLayoutTag mChannelLayoutTag;
     UInt32 mChannelBitmap;
     UInt32 mNumberChannelDescriptions;
-    AudioChannelDescription mChannelDescriptions[kVariableLengthArray];
+    AudioChannelDescription mChannelDescriptions[1];
 } AudioChannelLayout;
 
 #endif

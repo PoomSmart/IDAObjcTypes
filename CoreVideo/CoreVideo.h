@@ -1,4 +1,5 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
+#import "../Kernel/Types.h"
 #import "../CoreFoundation/Types.h"
 #import "../IOSurface/Types.h"
 #import "Types.h"

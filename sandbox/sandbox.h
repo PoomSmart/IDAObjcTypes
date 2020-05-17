@@ -1,4 +1,5 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
+#import "../Kernel/Types.h"
 #import "Types.h"
 
 char *sandbox_extension_issue_file(const char *extension_class, const char *path, uint32_t flags);

@@ -1,7 +1,7 @@
 #ifndef IOKIT_H_
 #define IOKIT_H_
 
-#import "../Types.h"
+#import "../BaseTypes.h"
 #import "../CoreFoundation/Types.h"
 #import "NXTypes.h"
 
@@ -56,7 +56,7 @@ typedef struct __IOHIDServiceClient *IOHIDServiceClientRef;
 typedef struct __IOHIDElement *IOHIDElementRef;
 typedef struct __IOHIDUserDevice *IOHIDUserDeviceRef;
 
-const mach_port_t kIOMasterPortDefault;
+extern const mach_port_t kIOMasterPortDefault;
 
 typedef struct IOGPoint {
     SInt16 x;
@@ -77,9 +77,6 @@ typedef struct __IOHIDEvent {
 } *IOHIDEventRef;
 
 CF_ENUM(uint32_t, IOHIDEventType) {
-    kIOHIDDigitizerEventUpdateAltitudeMask = 1<<28,
-    kIOHIDDigitizerEventUpdateAzimuthMask = 1<<29,
-    kIOHIDDigitizerEventUpdatePressureMask = 1<<30,
     kIOHIDEventTypeNULL = 0,
     kIOHIDEventTypeVendorDefined,
     kIOHIDEventTypeButton,

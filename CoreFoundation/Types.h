@@ -1,8 +1,7 @@
 #ifndef COREFOUNDATION_H_
 #define COREFOUNDATION_H_
 
-#import "../Darwin/Types.h"
-#import "../Types.h"
+#import "../BaseTypes.h"
 
 typedef struct __CFError *CFErrorRef;
 typedef const struct __CFAllocator *CFAllocatorRef;
@@ -60,7 +59,6 @@ typedef CFOptionFlags CFDataSearchFlags;
 typedef CFOptionFlags CFURLBookmarkResolutionOptions;
 
 typedef CFIndex CFNotificationSuspensionBehavior;
-typedef CFIndex CFCharacterSetPredefinedSet;
 typedef CFIndex CFStringNormalizationForm;
 typedef CFIndex CFStringCharacterClusterType;
 typedef CFIndex CFSystemVersion;
@@ -163,8 +161,8 @@ typedef struct CFDictionaryKeyCallBacks {
     CFDictionaryHashCallBack hash;
 } CFDictionaryKeyCallBacks;
 
-const CFDictionaryKeyCallBacks kCFTypeDictionaryKeyCallBacks;
-const CFDictionaryKeyCallBacks kCFCopyStringDictionaryKeyCallBacks;
+extern const CFDictionaryKeyCallBacks kCFTypeDictionaryKeyCallBacks;
+extern const CFDictionaryKeyCallBacks kCFCopyStringDictionaryKeyCallBacks;
 
 typedef struct CFDictionaryValueCallBacks {
     CFIndex version;
@@ -174,7 +172,7 @@ typedef struct CFDictionaryValueCallBacks {
     CFDictionaryEqualCallBack equal;
 } CFDictionaryValueCallBacks;
 
-const CFDictionaryValueCallBacks kCFTypeDictionaryValueCallBacks;
+extern const CFDictionaryValueCallBacks kCFTypeDictionaryValueCallBacks;
 
 typedef const void *(*CFSetRetainCallBack)(CFAllocatorRef allocator, const void *value);
 typedef void (*CFSetReleaseCallBack)(CFAllocatorRef allocator, const void *value);
@@ -354,20 +352,20 @@ typedef struct CFUUIDBytes {
     UInt8 byte15;
 } CFUUIDBytes;
 
-const CFAllocatorRef kCFAllocatorDefault;
-const CFAllocatorRef kCFAllocatorSystemDefault;
-const CFAllocatorRef kCFAllocatorMalloc;
-const CFAllocatorRef kCFAllocatorMallocZone;
-const CFAllocatorRef kCFAllocatorNull;
-const CFAllocatorRef kCFAllocatorUseContext;
+extern const CFAllocatorRef kCFAllocatorDefault;
+extern const CFAllocatorRef kCFAllocatorSystemDefault;
+extern const CFAllocatorRef kCFAllocatorMalloc;
+extern const CFAllocatorRef kCFAllocatorMallocZone;
+extern const CFAllocatorRef kCFAllocatorNull;
+extern const CFAllocatorRef kCFAllocatorUseContext;
 
-const CFArrayCallBacks kCFTypeArrayCallBacks;
+extern const CFArrayCallBacks kCFTypeArrayCallBacks;
 
-const CFBooleanRef kCFBooleanTrue;
-const CFBooleanRef kCFBooleanFalse;
+extern const CFBooleanRef kCFBooleanTrue;
+extern const CFBooleanRef kCFBooleanFalse;
 
-const CFRunLoopMode kCFRunLoopDefaultMode;
-const CFRunLoopMode kCFRunLoopCommonModes;
+extern const CFRunLoopMode kCFRunLoopDefaultMode;
+extern const CFRunLoopMode kCFRunLoopCommonModes;
 
 typedef const void *(*CFBagRetainCallBack)(CFAllocatorRef allocator, const void *value);
 typedef void (*CFBagReleaseCallBack)(CFAllocatorRef allocator, const void *value);
@@ -384,11 +382,14 @@ typedef struct CFBagCallBacks {
     CFBagHashCallBack hash;
 } CFBagCallBacks;
 
-const CFBagCallBacks kCFTypeBagCallBacks;
-const CFBagCallBacks kCFCopyStringBagCallBacks;
+extern const CFBagCallBacks kCFTypeBagCallBacks;
+extern const CFBagCallBacks kCFCopyStringBagCallBacks;
 
 typedef void (*CFBagApplierFunction)(const void *value, void *context);
 
+#ifndef NULL
+#define NULL 0
+#endif
 static const CFBagCallBacks __kCFNullBagCallBacks = {0, NULL, NULL, NULL, NULL, NULL};
 
 typedef struct __CFRuntimeBase {
@@ -399,7 +400,7 @@ typedef struct __CFRuntimeBase {
 #endif
 } CFRuntimeBase;
 
-struct CFStreamClientContext {
+typedef struct CFStreamClientContext {
     CFIndex version;
     void *info;
     void *(*retain)(void *info);

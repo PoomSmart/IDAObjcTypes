@@ -25,6 +25,7 @@ More to be added as the owner reverses more binaries.
 - CydiaSubstrate (if you ever want to RE tweaks)
 - Darwin
 - Foundation
+- GraphicsServices
 - IOKit
 - IOSurface
 - Kernel

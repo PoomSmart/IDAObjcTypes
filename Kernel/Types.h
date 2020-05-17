@@ -1,7 +1,7 @@
 #ifndef KERNEL_H_
 #define KERNEL_H_
 
-#define kVariableLengthArray 1
+#import "../BaseTypes.h"
 
 typedef __darwin_natural_t natural_t;
 typedef natural_t mach_port_name_t;
@@ -45,6 +45,7 @@ typedef unsigned int mach_msg_bits_t;
 
 typedef SInt16 OSErr;
 typedef SInt32 OSStatus;
+typedef UInt32 OptionBits;
 
 typedef FourCharCode OSType;
 

@@ -1,6 +1,8 @@
 #ifndef OBJC_H_
 #define OBJC_H_
 
+#import "../BaseTypes.h"
+
 typedef struct objc_class *Class;
 
 typedef struct objc_object {
@@ -30,7 +32,7 @@ typedef struct objc_super {
     Class super_class;
 } objc_super;
 
-CF_ENUM(uint8_t, objc_tag_index_t) {
+typedef enum objc_tag_index_t {
     OBJC_TAG_NSAtom            = 0,
     OBJC_TAG_1                 = 1,
     OBJC_TAG_NSString          = 2,
@@ -56,7 +58,7 @@ CF_ENUM(uint8_t, objc_tag_index_t) {
     OBJC_TAG_First52BitPayload = 8, 
     OBJC_TAG_Last52BitPayload  = 263, 
     OBJC_TAG_RESERVED_264      = 264
-};
+} objc_tag_index_t;
 
 typedef BOOL (*objc_hook_getClass)(const char *name, Class *outClass);
 

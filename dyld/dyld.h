@@ -1,4 +1,4 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
 #import "Types.h"
 
 int _dyld_func_lookup(const char *dyld_func_name, void **address);

@@ -1,7 +1,7 @@
 #ifndef AUDIOTOOLBOX_H_
 #define AUDIOTOOLBOX_H_
 
-#import "../Types.h"
+#import "../CoreAudio/Types.h"
 
 typedef struct AudioFormatListItem {
     AudioStreamBasicDescription mASBD;

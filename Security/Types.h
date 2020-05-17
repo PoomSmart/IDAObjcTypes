@@ -1,7 +1,9 @@
 #ifndef SECURITY_H_
 #define SECURITY_H_
 
-#import "../Types.h"
+#import "../BaseTypes.h"
+#import "../Kernel/Types.h"
+#import "../CoreFoundation/Types.h"
 
 typedef struct __SecCertificate *SecCertificateRef;
 typedef struct __SecIdentity *SecIdentityRef;
@@ -378,6 +380,6 @@ extern const CFStringRef kSecUseAuthenticationUISkip;
 extern const CFStringRef kSecAttrTokenIDSecureEnclave;
 extern const CFStringRef kSecAttrAccessGroupToken;
 
-const SecRandomRef kSecRandomDefault;
+extern const SecRandomRef kSecRandomDefault;
 
 #endif

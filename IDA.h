@@ -18,6 +18,7 @@
 #import "CoreVideo/CoreVideo.h"
 #import "CydiaSubstrate/CydiaSubstrate.h"
 #import "Foundation/Foundation.h"
+#import "GraphicsServices/GraphicsServices.h"
 #import "IOKit/IOKit.h"
 #import "IOSurface/IOSurface.h"
 #import "MobileGestalt/MobileGestalt.h"

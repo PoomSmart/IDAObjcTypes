@@ -2,6 +2,8 @@
 #ifndef ICU_H_
 #define ICU_H_
 
+#import "../BaseTypes.h"
+
 typedef struct USet USet;
 
 typedef int8_t UBool;

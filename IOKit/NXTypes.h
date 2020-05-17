@@ -1,7 +1,7 @@
 #ifndef _NX_TYPES
 #define _NX_TYPES
 
-#import "../Types.h"
+#import "../BaseTypes.h"
 
 typedef struct _NXTabletPointData {
 	SInt32  x;

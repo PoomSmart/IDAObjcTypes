@@ -1,4 +1,5 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
+#import "../CoreFoundation/Types.h"
 #import "Types.h"
 
 os_log_t os_log_create(const char *subsystem, const char *category);

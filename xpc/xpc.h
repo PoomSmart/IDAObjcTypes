@@ -1,5 +1,7 @@
+#import "../BaseTypes.h"
+#import "../Kernel/Types.h"
+#import "../Darwin/Types.h"
 #import "Types.h"
-#import "../Types.h"
 
 xpc_type_t xpc_get_type(xpc_object_t object);
 

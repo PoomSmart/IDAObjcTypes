@@ -1,4 +1,4 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
 #import "../CoreGraphics/Types.h"
 #import "Types.h"
 
@@ -13,6 +13,7 @@ CGFloat NSMinY(NSRect aRect);
 
 NSUInteger NSRoundUpToMultipleOfPageSize(NSUInteger bytes);
 NSUInteger NSPageSize(void);
+NSUInteger NSCountMapTable(NSMapTable *table);
 
 NSString *NSStringFromClass(Class aClass);
 NSString *NSStringFromProtocol(Protocol *proto);
@@ -58,6 +59,8 @@ BOOL NSIsEmptyRect(NSRect aRect);
 BOOL NSIntersectsRect(NSRect aRect, NSRect bRect);
 BOOL NSIntersectsRange(NSRange aRange, NSRange bRange);
 BOOL NSMapMember(NSMapTable *table, const void *key, void **originalKey, void **value);
+BOOL NSCompareMapTables(NSMapTable *table1, NSMapTable *table2);
+BOOL NSCompareHashTables(NSHashTable *table1, NSHashTable *table2);
 BOOL NSNextMapEnumeratorPair(NSMapEnumerator *enumerator, void **key, void **value);
 
 Class NSClassFromString(CFStringRef string);
@@ -67,6 +70,8 @@ SEL NSSelectorFromString(NSString *aSelectorName);
 Protocol *NSProtocolFromString(NSString *namestr);
 
 NSMapEnumerator NSEnumerateMapTable(NSMapTable *table);
+
+NSHashEnumerator NSEnumerateHashTable(NSHashTable *table);
 
 NSMapTable *NSCreateMapTable(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity);
 NSMapTable *NSCreateMapTableWithZone(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity, NSZone *zone);
@@ -86,6 +91,7 @@ void *NSReallocateCollectable(void *ptr, NSUInteger size, NSUInteger options);
 void *NSMapInsertIfAbsent(NSMapTable *table, const void *key, const void *value);
 void *NSMapGet(NSMapTable *table, const void *key);
 void *NSNextHashEnumeratorItem(NSHashEnumerator *enumerator);
+void *NSHashGet(NSHashTable *table, const void *pointer);
 
 id NSAllocateObject(Class aClass, NSUInteger extraBytes, NSZone *zone);
 
@@ -105,5 +111,8 @@ void NSMapInsertKnownAbsent(NSMapTable *table, const void *key, const void *valu
 void NSMapRemove(NSMapTable *table, const void *key);
 void NSFreeMapTable(NSMapTable *table);
 void NSEndMapTableEnumeration(NSMapEnumerator *enumerator);
+void NSHashInsert(NSHashTable *table, const void *pointer);
+void NSHashRemove(NSHashTable *table, const void *pointer);
+void NSEndHashTableEnumeration(NSHashEnumerator *enumerator);
 void NSDeallocateObject(id object);
 void NSSetUncaughtExceptionHandler(NSUncaughtExceptionHandler *);

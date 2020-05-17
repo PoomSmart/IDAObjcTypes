@@ -1,6 +1,8 @@
 #ifndef OS_H_
 #define OS_H_
 
+#import "../BaseTypes.h"
+
 typedef struct os_log_s *os_log_t;
 typedef struct os_activity_s *os_activity_t;
 typedef struct os_transaction_s *os_transaction_t;

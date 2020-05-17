@@ -1,4 +1,5 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
+#import "../Darwin/Types.h"
 #import "Types.h"
 
 double CFStringGetDoubleValue(CFStringRef str);

@@ -1,5 +1,7 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
+#import "../Kernel/Types.h"
 #import "../CoreFoundation/Types.h"
+#import "../Foundation/Types.h"
 #import "Types.h"
 
 kern_return_t IOConnectCallMethod(mach_port_t connection, uint32_t selector, const uint64_t *input, uint32_t inputCnt, const void *inputStruct, size_t inputStructCnt, uint64_t *output, uint32_t *outputCnt, void *outputStruct, size_t *outputStructCnt);

@@ -1,6 +1,8 @@
 #ifndef DYLD_H_
 #define DYLD_H_
 
+#import "../BaseTypes.h"
+
 typedef struct dyld_unwind_sections {
 	const struct mach_header *mh;
 	const void *dwarf_section;

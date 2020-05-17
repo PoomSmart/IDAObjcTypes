@@ -1,4 +1,6 @@
-#import "../Types.h"
+#import "../BaseTypes.h"
+#import "../Kernel/Types.h"
+#import "../Darwin/Types.h"
 #import "../CoreFoundation/Types.h"
 #import "Types.h"
 
