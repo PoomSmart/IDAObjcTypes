@@ -1,4 +1,5 @@
 #import "../BaseTypes.h"
+#import "../Kernel/Types.h"
 #import "Types.h"
 
 float GSEventAccelerometerAxisX(GSEventRef event);
