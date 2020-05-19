@@ -19,6 +19,9 @@ typedef struct __SecTrust *SecACLRef;
 typedef struct __SecPassword *SecPasswordRef;
 typedef struct __SecTrust *SecTrustRef;
 typedef struct __SecTask *SecTaskRef;
+typedef struct __SecCode *SecCodeRef;
+typedef struct __SecRequirement *SecRequirementRef;
+
 typedef const struct __SecRandom *SecRandomRef;
 
 typedef uint32 CSSM_TP_ACTION;
@@ -168,6 +171,16 @@ enum SecPadding : uint32_t {
     kSecPaddingPKCS1MD2 = 0x8000,
     kSecPaddingPKCS1MD5 = 0x8001,
     kSecPaddingPKCS1SHA1 = 0x8002
+};
+
+enum SecCSFlags : uint32_t {
+    kSecCSDefaultFlags = 0,
+    kSecCSConsiderExpiration = 1u << 31,
+    kSecCSEnforceRevocationChecks = 1 << 30,
+    kSecCSNoNetworkAccess = 1 << 29,
+    kSecCSReportProgress = 1 << 28,
+    kSecCSCheckTrustedAnchors = 1 << 27,
+    kSecCSQuickCheck = 1 << 26,
 };
 
 enum SecTrustOptionFlags : uint32_t {
