@@ -76,6 +76,7 @@ CFArrayRef CTLineGetGlyphRuns(CTLineRef line);
 CFArrayRef CTFrameGetLines(CTFrameRef frame);
 CFArrayRef CTFontCopySupportedLanguages(CTFontRef font);
 CFArrayRef CTFontCopyFeatures(CTFontRef font);
+CFArrayRef CTFontCopyDefaultCascadeListForLanguages(CTFontRef font, CFArrayRef languagePrefList);
 CFArrayRef CTFontCollectionCreateMatchingFontDescriptors(CTFontCollectionRef collection);
 
 CFCharacterSetRef CTFontCopyCharacterSet(CTFontRef font);
@@ -126,6 +127,8 @@ CTFontDescriptorRef CTFontDescriptorCreateCopyWithSymbolicTraits(CTFontDescripto
 CTFontDescriptorRef CTFontDescriptorCreateCopyWithAttributes(CTFontDescriptorRef original, CFDictionaryRef attributes);
 CTFontDescriptorRef CTFontDescriptorCreateLastResort(void);
 CTFontDescriptorRef CTFontCopyFontDescriptor(CTFontRef font);
+
+CTFontCollectionRef CTFontCollectionCreateFromAvailableFonts(CFDictionaryRef options);
 
 CTFontSymbolicTraits CTFontGetSymbolicTraits(CTFontRef font);
 

@@ -119,6 +119,7 @@ size_t class_getInstanceSize(Class cls);
 unsigned int method_getNumberOfArguments(Method m);
 
 BOOL protocol_conformsToProtocol(Protocol *proto, Protocol *other);
+BOOL protocol_isEqual(Protocol *proto, Protocol *other);
 BOOL sel_isEqual(SEL lhs, SEL rhs);
 BOOL sel_isMapped(SEL aSelector);
 BOOL class_conformsToProtocol(Class cls, Protocol *protocol);

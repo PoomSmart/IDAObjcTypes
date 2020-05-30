@@ -18,12 +18,22 @@ typedef int opaque_t;
 typedef int dispatch_fd_t;
 typedef long dispatch_queue_priority_t;
 
+enum dispatch_io_type_t : unsigned long {
+    DISPATCH_IO_STREAM = 0,
+    DISPATCH_IO_RANDOM = 1
+};
+
+enum dispatch_io_close_flags_t : unsigned long {
+    DISPATCH_IO_STOP = 0x1
+};
+
 typedef NSObject *dispatch_object_t;
 typedef NSObject *dispatch_source_t;
 typedef NSObject *dispatch_group_t;
 typedef NSObject *dispatch_data_t;
 typedef NSObject *dispatch_workloop_t;
 typedef NSObject *dispatch_queue_global_t;
+typedef NSObject *dispatch_io_t;
 
 typedef struct dispatch_queue_s *dispatch_queue_t;
 typedef struct dispatch_queue_attr_s *dispatch_queue_attr_t;
@@ -66,6 +76,7 @@ typedef mach_msg_context_trailer_t dispatch_mach_trailer_t;
 typedef void (*notify_handler_t)(int token);
 typedef void (*dispatch_block_t)(void);
 typedef void (*dispatch_function_t)(void *);
+typedef void (*dispatch_io_handler_t)(bool done, dispatch_data_t data, int error);
 typedef void (*dispatch_mach_handler_t)(dispatch_mach_reason_t reason, dispatch_mach_msg_t message,
                                         mach_error_t error);
 typedef void (*dispatch_mach_handler_function_t)(void *context, dispatch_mach_reason_t reason,

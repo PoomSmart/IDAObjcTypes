@@ -9,10 +9,14 @@ typedef struct __CVPixelBufferPool *CVPixelBufferPoolRef;
 typedef CVBufferRef CVImageBufferRef;
 typedef CVImageBufferRef CVPixelBufferRef;
 
-typedef uint32_t CVAttachmentMode;
 typedef uint64_t CVOptionFlags;
 
 typedef int32_t CVReturn;
+
+enum CVAttachmentMode : uint32_t {
+    kCVAttachmentMode_ShouldNotPropagate    = 0,
+    kCVAttachmentMode_ShouldPropagate       = 1
+};
 
 enum CVPixelBufferLockFlags : CVOptionFlags {
     kCVPixelBufferLock_ReadOnly = 0x00000001,

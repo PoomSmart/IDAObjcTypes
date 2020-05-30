@@ -1,13 +1,6 @@
 #ifndef IDATYPES_H_
 #define IDATYPES_H_
 
-// ^(.+) (.+)\((.*)\);$
-// $1 $2($3);\n$1 _imp__$2($3);
-
-// Revert
-// ^(.+) (.+)\((.*)\);$\n^(.+) _imp__(.+)\((.*)\);
-// $1 $2($3);
-
 #import "BaseTypes.h"
 
 #import "AudioToolbox/Types.h"
