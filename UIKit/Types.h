@@ -177,6 +177,13 @@ enum UIDeviceOrientation : NSInteger {
     UIDeviceOrientationFaceDown
 };
 
+enum UIInterfaceOrientation : NSInteger {
+    UIInterfaceOrientationPortrait = UIDeviceOrientationPortrait,
+    UIInterfaceOrientationPortraitUpsideDown = UIDeviceOrientationPortraitUpsideDown,
+    UIInterfaceOrientationLandscapeLeft = UIDeviceOrientationLandscapeLeft,
+    UIInterfaceOrientationLandscapeRight = UIDeviceOrientationLandscapeRight
+};
+
 enum UIDeviceBatteryState : NSInteger {
     UIDeviceBatteryStateUnknown,
     UIDeviceBatteryStateUnplugged,
