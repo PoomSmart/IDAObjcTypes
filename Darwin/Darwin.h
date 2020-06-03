@@ -1,5 +1,4 @@
 #import "../pthread/Types.h"
-#import "../Darwin/Types.h"
 #import "Types.h"
 
 struct __float2 { float __sinval; float __cosval; };
