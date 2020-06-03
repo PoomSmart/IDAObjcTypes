@@ -31,10 +31,6 @@ typedef signed __int64 int64_t;
 typedef unsigned __int64 uint64_t;
 // typedef unsigned long long size_t;
 typedef unsigned __int64 uintptr_t;
-// TODO: should move to Kernel/Types.h
-typedef char gid_t;
-typedef short uid_t;
-typedef int pid_t;
 // END
 typedef long intptr_t;
 

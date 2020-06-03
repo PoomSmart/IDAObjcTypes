@@ -39,6 +39,10 @@ typedef u_int64_t user_addr_t;
 
 typedef int boolean_t;
 
+typedef char gid_t;
+typedef short uid_t;
+typedef int pid_t;
+
 typedef unsigned int FourCharCode;
 typedef unsigned int mach_msg_trailer_type_t;
 typedef unsigned int mach_msg_trailer_size_t;
