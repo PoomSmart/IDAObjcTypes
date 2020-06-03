@@ -29,7 +29,7 @@ typedef int int32_t;
 typedef unsigned int uint32_t;
 typedef signed __int64 int64_t;
 typedef unsigned __int64 uint64_t;
-typedef unsigned long long size_t;
+// typedef unsigned long long size_t;
 typedef unsigned __int64 uintptr_t;
 // TODO: should move to Kernel/Types.h
 typedef char gid_t;
