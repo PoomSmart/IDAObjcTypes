@@ -84,6 +84,8 @@ void CFDictionaryAddValue(CFMutableDictionaryRef theDict, const void *key, const
 void CFDictionaryRemoveAllValues(CFMutableDictionaryRef theDict);
 void CFDictionaryReplaceValue(CFMutableDictionaryRef theDict, const void *key, const void *value);
 void CFAttributedStringSetAttribute(CFMutableAttributedStringRef aStr, CFRange range, CFStringRef attrName, CFTypeRef value);
+void CFAttributedStringReplaceAttributedString(CFMutableAttributedStringRef aStr, CFRange range, CFAttributedStringRef replacement);
+void CFAttributedStringReplaceString(CFMutableAttributedStringRef aStr, CFRange range, CFStringRef replacement);
 void CFStringGetLineBounds(CFStringRef theString, CFRange range, CFIndex *lineBeginIndex, CFIndex *lineEndIndex, CFIndex *contentsEndIndex);
 void CFStringDelete(CFMutableStringRef theString, CFRange range);
 void CFStringFold(CFMutableStringRef theString, CFStringCompareFlags theFlags, CFLocaleRef theLocale);
@@ -203,6 +205,7 @@ Boolean CFRunLoopContainsTimer(CFRunLoopRef rl, CFRunLoopTimerRef timer, CFRunLo
 Boolean CFRunLoopSourceIsValid(CFRunLoopSourceRef source);
 Boolean CFRunLoopTimerDoesRepeat(CFRunLoopTimerRef timer);
 Boolean CFRunLoopTimerIsValid(CFRunLoopTimerRef timer);
+Boolean CFLocaleGetLanguageRegionEncodingForLocaleIdentifier(CFStringRef locale, LangCode *, RegionCode *, ScriptCode *, CFStringEncoding *);
 
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
 Boolean _CFIsDeallocating(CFTypeRef);
@@ -287,6 +290,8 @@ CFLocaleRef CFLocaleGetSystem(void);
 
 CFLocaleIdentifier CFLocaleGetIdentifier(CFLocaleRef locale);
 CFLocaleIdentifier CFLocaleCreateCanonicalLanguageIdentifierFromString(CFAllocatorRef allocator, CFStringRef localeIdentifier);
+CFLocaleIdentifier CFLocaleCreateCanonicalLocaleIdentifierFromString(CFAllocatorRef allocator, CFStringRef localeIdentifier);
+CFLocaleIdentifier CFLocaleCreateLocaleIdentifierFromComponents(CFAllocatorRef allocator, CFDictionaryRef dictionary);
 CFLocaleIdentifier CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode(CFAllocatorRef allocator, uint32_t lcid);
 
 CFUUIDRef CFUUIDCreate(CFAllocatorRef alloc);
@@ -399,6 +404,7 @@ CFDictionaryRef CFPreferencesCopyMultiple(CFArrayRef keysToFetch, CFStringRef ap
 CFDictionaryRef CFLocaleCreateComponentsFromLocaleIdentifier(CFAllocatorRef allocator, CFLocaleIdentifier localeID);
 CFDictionaryRef CFUserNotificationGetResponseDictionary(CFUserNotificationRef userNotification);
 CFDictionaryRef CFErrorCopyUserInfo(CFErrorRef err);
+CFDictionaryRef CFAttributedStringGetAttributes(CFAttributedStringRef aStr, CFIndex loc, CFRange *effectiveRange);
 
 CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);
 CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);
@@ -420,6 +426,8 @@ CFArrayRef CFBundleCopyLocalizationsForPreferences(CFArrayRef locArray, CFArrayR
 CFArrayRef CFBundleCopyBundleLocalizations(CFBundleRef bundle);
 CFArrayRef CFRunLoopCopyAllModes(CFRunLoopRef rl);
 CFArrayRef CFLocaleCopyPreferredLanguages(void);
+CFArrayRef CFLocaleCopyAvailableLocaleIdentifiers(void);
+CFArrayRef CFLocaleCopyISOLanguageCodes(void);
 CFArrayRef CFCopySearchPathForDirectoriesInDomains(CFSearchPathDirectory directory, CFSearchPathDomainMask domainMask, Boolean expandTilde);
 
 CFStringTokenizerRef CFStringTokenizerCreate(CFAllocatorRef alloc, CFStringRef string, CFRange range, CFOptionFlags options, CFLocaleRef locale);
@@ -481,6 +489,8 @@ CFStringTokenizerTokenType CFStringTokenizerGoToTokenAtIndex(CFStringTokenizerRe
 CFAttributedStringRef CFAttributedStringCreate(CFAllocatorRef alloc, CFStringRef str, CFDictionaryRef attributes);
 CFAttributedStringRef CFAttributedStringCreateCopy(CFAllocatorRef alloc, CFAttributedStringRef aStr);
 CFAttributedStringRef CFAttributedStringCreateWithSubstring(CFAllocatorRef alloc, CFAttributedStringRef aStr, CFRange range);
+
+CFMutableAttributedStringRef CFAttributedStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFAttributedStringRef aStr);
 
 CFBundleRef CFBundleCreate(CFAllocatorRef allocator, CFURLRef bundleURL);
 CFBundleRef CFBundleGetBundleWithIdentifier(CFStringRef bundleID);

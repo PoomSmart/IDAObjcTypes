@@ -72,7 +72,8 @@ CGFloat CGRectGetMidY(CGRect rect);
 CGFloat CGRectGetMinY(CGRect rect);
 CGFloat CGColorGetAlpha(CGColorRef color);
 CGFloat CGContextGetAlpha(CGContextRef c);
-CGFloat CGContextGetLineWidth(CGContextRef);
+CGFloat CGContextGetLineWidth(CGContextRef c);
+CGFloat CGContextGetFontSize(CGContextRef c);
 
 CGBlendMode CGContextGetBlendMode(CGContextRef c);
 
@@ -373,6 +374,7 @@ void CGContextBeginTransparencyLayer(CGContextRef c, CFDictionaryRef auxiliaryIn
 void CGContextBeginTransparencyLayerWithRect(CGContextRef c, CGRect rect, CFDictionaryRef auxInfo);
 void CGContextEndTransparencyLayer(CGContextRef c);
 void CGContextShowGlyphsAtPositions(CGContextRef c, const CGGlyph *glyphs, const CGPoint *Lpositions, size_t count);
+void CGContextShowGlyphsWithAdvances(CGContextRef c, const CGGlyph *glyphs, const CGSize *advances, size_t count);
 void CGContextResetClip(CGContextRef c);
 void CGContextClear(CGContextRef c);
 void CGGradientRelease(CGGradientRef gradient);

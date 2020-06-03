@@ -53,6 +53,10 @@ typedef unsigned long CFTypeID;
 typedef unsigned long CFOptionFlags;
 typedef unsigned long CFHashCode;
 
+typedef SInt16 LangCode;
+typedef SInt16 RegionCode;
+typedef SInt16 ScriptCode;
+
 typedef double CFTimeInterval;
 
 typedef CFOptionFlags CFDataSearchFlags;
