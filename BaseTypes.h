@@ -10,7 +10,7 @@ typedef unsigned long uint32;
 typedef signed long long int64;
 typedef unsigned long long uint64;
 
-#ifdef GHIDRA
+//#ifdef GHIDRA
 
 // Ghidra doesn't know these
 typedef uint8 UInt8;
@@ -67,7 +67,7 @@ typedef bool BOOL;
 typedef signed char BOOL;
 #endif
 
-#endif
+//#endif
 
 typedef float Float32;
 typedef double Float64;
