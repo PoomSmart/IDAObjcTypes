@@ -8,6 +8,8 @@ CFTypeID CVPixelBufferGetTypeID(void);
 
 CFTypeRef CVBufferGetAttachment(CVBufferRef buffer, CFStringRef key, CVAttachmentMode *attachmentMode);
 
+CFDictionaryRef CVBufferGetAttachments(CVBufferRef buffer, CVAttachmentMode attachmentMode);
+
 IOSurfaceRef CVPixelBufferGetIOSurface(CVPixelBufferRef pixelBuffer);
 
 Boolean CVPixelBufferIsPlanar(CVPixelBufferRef pixelBuffer);

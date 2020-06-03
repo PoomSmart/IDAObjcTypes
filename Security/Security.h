@@ -38,6 +38,7 @@ int SecRandomCopyBytes(SecRandomRef rnd, size_t count, void *bytes);
 
 uint32_t SecTaskGetCodeSignStatus(SecTaskRef task);
 
+OSStatus SecCodeCheckValidity(SecCodeRef code, SecCSFlags flags, SecRequirementRef requirement);
 OSStatus SecTrustEvaluate(SecTrustRef trust, SecTrustResultType *result);
 OSStatus SecTrustEvaluateAsync(SecTrustRef trust, dispatch_queue_t queue, SecTrustCallback result);
 OSStatus SecTrustEvaluateWithError(SecTrustRef trust, CFErrorRef *error);

@@ -62,6 +62,9 @@ void dispatch_group_notify(dispatch_group_t group, dispatch_queue_t queue, dispa
 void dispatch_activate(dispatch_object_t object);
 void dispatch_barrier_sync(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_barrier_async(dispatch_queue_t queue, dispatch_block_t block);
+void dispatch_io_barrier(dispatch_io_t channel, dispatch_block_t barrier);
+void dispatch_io_read(dispatch_io_t channel, off_t offset, size_t length, dispatch_queue_t queue, dispatch_io_handler_t io_handler);
+void dispatch_io_close(dispatch_io_t channel, dispatch_io_close_flags_t flags);
 void dispatch_block_cancel(dispatch_block_t block);
 void dispatch_set_qos_class_fallback(dispatch_object_t object, dispatch_qos_class_t qos_class);
 void dispatch_set_qos_class_floor(dispatch_object_t object, dispatch_qos_class_t qos_class, int relative_priority);
@@ -112,5 +115,9 @@ dispatch_queue_attr_t dispatch_queue_attr_make_initially_inactive(dispatch_queue
 
 dispatch_workloop_t dispatch_workloop_create(const char *label);
 dispatch_workloop_t dispatch_workloop_create_inactive(const char *label);
+
+dispatch_io_t dispatch_io_create(dispatch_io_type_t type, dispatch_fd_t fd, dispatch_queue_t queue, void (*cleanup_handler)(int error));
+dispatch_io_t dispatch_io_create_with_io(dispatch_io_type_t type, dispatch_io_t io, dispatch_queue_t queue, void (*cleanup_handler)(int error));
+dispatch_io_t dispatch_io_create_with_path(dispatch_io_type_t type, const char *path, int oflag, mode_t mode, dispatch_queue_t queue, void (*cleanup_handler)(int error));
 
 dispatch_queue_global_t _dispatch_pthread_root_queue_create_with_observer_hooks_4IOHID(const char *label, unsigned long flags, const pthread_attr_t *attr, dispatch_pthread_root_queue_observer_hooks_t observer_hooks, dispatch_block_t configure);
