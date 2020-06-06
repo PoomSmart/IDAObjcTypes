@@ -1,5 +1,6 @@
 #import "../BaseTypes.h"
 #import "../CoreGraphics/Types.h"
+#import "../UIKit/Types.h"
 #import "Types.h"
 
 CGFloat NSWidth(NSRect aRect);
@@ -75,6 +76,8 @@ NSHashEnumerator NSEnumerateHashTable(NSHashTable *table);
 
 NSMapTable *NSCreateMapTable(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity);
 NSMapTable *NSCreateMapTableWithZone(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity, NSZone *zone);
+
+NSHashTable *NSCreateHashTable(NSHashTableCallBacks callBacks, NSUInteger capacity);
 
 NSZone *NSZoneFromPointer(void *ptr);
 

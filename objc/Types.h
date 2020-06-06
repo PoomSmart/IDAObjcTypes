@@ -5,11 +5,13 @@
 
 typedef struct objc_class *Class;
 
-typedef struct objc_object {
+struct objc_object {
     Class isa;
-} * id;
+};
 
-typedef struct objc_object *Protocol;
+typedef struct objc_object *id;
+
+typedef struct objc_object Protocol;
 // typedef struct objc_selector *SEL;
 typedef const char *SEL;
 typedef struct objc_ivar *Ivar;

@@ -55,6 +55,14 @@ typedef struct _NSMapTableKeyCallBacks {
     const void *notAKeyMarker;
 } NSMapTableKeyCallBacks;
 
+typedef struct NSHashTableCallBacks {
+    unsigned (*hash)(NSHashTable *table, const void *);
+    BOOL (*isEqual)(NSHashTable *table, const void *, const void *);
+    void (*retain)(NSHashTable *table, const void *);
+    void (*release)(NSHashTable *table, void *);
+    NSString *(*describe)(NSHashTable *table, const void *);
+} NSHashTableCallBacks;
+
 typedef struct _NSMapTableValueCallBacks {
     void (*retain)(struct _NSMapTable *table, const void *anObject);
     void (*release)(struct _NSMapTable *table, void *anObject);
