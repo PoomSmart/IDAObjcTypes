@@ -3,12 +3,19 @@
 
 #import "../BaseTypes.h"
 
+struct __CFString {
+    void *isa;
+    __int64 info;
+    char *data;
+    __int64 length;
+};
+
 typedef struct __CFError *CFErrorRef;
 typedef const struct __CFAllocator *CFAllocatorRef;
 typedef struct __CFArray *CFArrayRef;
 typedef struct __CFArray *CFMutableArrayRef;
-typedef const struct __CFString *CFStringRef;
-typedef struct __CFString *CFMutableStringRef;
+typedef __CFString *CFStringRef;
+typedef __CFString *CFMutableStringRef;
 typedef const struct __CFDictionary *CFDictionaryRef;
 typedef struct __CFDictionary *CFMutableDictionaryRef;
 typedef struct __CFBundle *CFBundleRef;
