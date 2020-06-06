@@ -75,6 +75,7 @@ typedef UInt8 UTF8Char;
 
 typedef int errno_t;
 typedef int32_t integer_t;
+typedef int64_t off_t;
 typedef size_t rsize_t;
 
 extern uintptr_t __stack_chk_guard;

@@ -50,6 +50,7 @@ NSPoint NSPointFromString(NSString *aString);
 
 NSRange NSUnionRange(NSRange range1, NSRange range2);
 NSRange NSIntersectionRange(NSRange range1, NSRange range2);
+NSRange NSRangeFromString(NSString *aString);
 
 BOOL NSPointInRect(NSPoint aPoint, NSRect aRect);
 BOOL NSContainsRect(NSRect aRect, NSRect bRect);
