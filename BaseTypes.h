@@ -41,7 +41,7 @@ typedef struct {
     void *reg_save_area;
 } va_list[1];
 
-typedef int Boolean;
+typedef bool Boolean;
 typedef int kern_return_t;
 typedef unsigned int __darwin_natural_t;
 typedef unsigned long long u_int64_t;
