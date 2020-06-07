@@ -49,6 +49,7 @@ typedef struct CGImageSource *CGImageSourceRef;
 typedef struct CGImageMetadata *CGImageMetadataRef;
 typedef struct CGImageMetadata *CGMutableImageMetadataRef;
 typedef struct CGImageMetadataTag *CGImageMetadataTagRef;
+typedef struct CGShading *CGShadingRef;
 
 typedef uint32_t CGRectEdge;
 

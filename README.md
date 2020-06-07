@@ -11,6 +11,7 @@ Or, run this IDA command: `idaapi.idc_parse_types("/path/to/IDAObjcTypes/IDA.h",
 
 ## Included Frameworks/Libraries
 More to be added as the owner reverses more binaries.
+- AppSupport
 - AudioToolbox
 - AVFoundation
 - CommonCrypto

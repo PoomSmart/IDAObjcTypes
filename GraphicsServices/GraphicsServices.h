@@ -54,6 +54,8 @@ void GSKeyboardReset(GSKeyboardRef keyboard);
 
 mach_port_t GSGetPurpleApplicationPort();
 
+mach_port_name_t GSCopyPurpleNamedPort(const char *appId);
+
 CGPoint GSEventGetLocationInWindow(GSEventRef event);
 CGPoint GSEventGetOuterMostPathPosition(GSEventRef event);
 CGPoint GSEventGetInnerMostPathPosition(GSEventRef event);
@@ -72,6 +74,8 @@ CFStringRef GSEventCopyCharactersIgnoringModifiers(GSEventRef event);
 CFStringRef GSEventCopyCharacters(GSEventRef event);
 CFStringRef GSKeyboardGetLayout(GSKeyboardRef keyboard);
 
+CFDictionaryRef GSEventCreatePlistRepresentation(GSEventRef event);
+
 GSEventType GSEventGetType(GSEventRef event);
 GSEventSubType GSEventGetSubType(GSEventRef event);
 
@@ -79,6 +83,7 @@ GSWindowRef GSEventGetWindow(GSEventRef event);
 
 GSEventRef GSEventCopy(GSEventRef event);
 GSEventRef GSEventCreateWithEventRecord(const GSEventRecord* record);
+GSEventRef GSEventCreateWithPlist(CFDictionaryRef dictionary);
 
 const GSEventRecord *GSEventRecordGetRecordDataWithPlist(CFDictionaryRef plist);
 

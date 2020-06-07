@@ -186,6 +186,8 @@ CGDataProviderRef CGImageGetDataProvider(CGImageRef image);
 const CGFloat *CGImageGetDecode(CGImageRef image);
 const CGFloat *CGColorGetComponents(CGColorRef color);
 
+const void *CGImageGetProperty(CGImageRef image, CFStringRef property);
+
 CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d, CGFloat tx, CGFloat ty);
 CGAffineTransform CGAffineTransformMakeScale(CGFloat sx, CGFloat sy);
 CGAffineTransform CGAffineTransformMakeRotation(CGFloat angle);
@@ -326,6 +328,7 @@ void CGContextSetRenderingIntent(CGContextRef c, CGColorRenderingIntent intent);
 void CGContextSetCompositeOperation(CGContextRef c, CGCompositeOperation operation);
 void CGContextSetCTM(CGContextRef, CGAffineTransform);
 void CGContextSetBaseCTM(CGContextRef, CGAffineTransform);
+void CGContextResetCTM(CGContextRef c);
 void CGContextSetBlendMode(CGContextRef c, CGBlendMode mode);
 void CGContextSetFlatness(CGContextRef c, CGFloat flatness);
 void CGContextSetMiterLimit(CGContextRef c, CGFloat limit);
@@ -348,9 +351,11 @@ void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y, CGFloat radius, CGFlo
 void CGContextAddArcToPoint(CGContextRef c, CGFloat x1, CGFloat y1, CGFloat x2, CGFloat y2, CGFloat radius);
 void CGContextReplacePathWithStrokedPath(CGContextRef c);
 void CGContextDrawImage(CGContextRef c, CGRect rect, CGImageRef image);
+void CGContextDrawTiledImage(CGContextRef c, CGRect rect, CGImageRef image);
 void CGContextDrawRadialGradient(CGContextRef c, CGGradientRef gradient, CGPoint startCenter, CGFloat startRadius, CGPoint endCenter, CGFloat endRadius, CGGradientDrawingOptions options);
 void CGContextDrawLinearGradient(CGContextRef c, CGGradientRef gradient, CGPoint startPoint, CGPoint endPoint, CGGradientDrawingOptions options);
 void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode);
+void CGContextDrawShading(CGContextRef c, CGShadingRef shading);
 void CGContextFillRect(CGContextRef c, CGRect rect);
 void CGContextFillRects(CGContextRef c, const CGRect rects[], size_t count);
 void CGContextFillEllipseInRect(CGContextRef context, CGRect rect);
@@ -377,6 +382,7 @@ void CGContextShowGlyphsAtPositions(CGContextRef c, const CGGlyph *glyphs, const
 void CGContextShowGlyphsWithAdvances(CGContextRef c, const CGGlyph *glyphs, const CGSize *advances, size_t count);
 void CGContextResetClip(CGContextRef c);
 void CGContextClear(CGContextRef c);
+void CGGradientRetain(CGGradientRef gradient);
 void CGGradientRelease(CGGradientRef gradient);
 void CGImageSourceUpdateData(CGImageSourceRef isrc, CFDataRef data, bool final);
 void CGImageSourceUpdateDataProvider(CGImageSourceRef isrc, CGDataProviderRef provider, bool final);

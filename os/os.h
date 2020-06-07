@@ -3,10 +3,12 @@
 #import "Types.h"
 
 os_log_t os_log_create(const char *subsystem, const char *category);
+os_log_t _os_log_create(void *dso, const char *subsystem, const char *category);
 
 os_activity_id_t os_activity_get_identifier(os_activity_t activity, os_activity_id_t *parent_id);
 
 os_activity_t _os_activity_create(void *dso, const char *description, os_activity_t activity, os_activity_flag_t flags);
+os_activity_t _os_activity_start(void *dso, const char *description, os_activity_flag_t flags);
 
 os_transaction_t os_transaction_create(const char *description);
 
@@ -28,6 +30,7 @@ void os_activity_scope_enter(os_activity_t activity, os_activity_scope_state_t s
 void os_activity_scope_leave(os_activity_scope_state_t state);
 void os_activity_apply(os_activity_t activity, os_block_t block);
 void os_activity_apply_f(os_activity_t activity, void *context, os_function_t function);
+void os_activity_end(os_activity_t activity);
 
 void os_log_with_args(os_log_t oslog, os_log_type_t type, const char *format, va_list args, void *ret_addr);
 void os_log_shim_with_CFString(void *, os_log_type_t, const uint8_t, CFStringRef, va_list args, void *ret_addr);
