@@ -11,6 +11,7 @@ const char *_amkrtemp(const char *);
 
 int sandbox_check(pid_t, const char *operation, enum sandbox_filter_type, ...);
 int sandbox_check_by_audit_token(audit_token_t, const char *operation, enum sandbox_filter_type, ...);
+int sandbox_container_path_for_audit_token(char *buffer, size_t bufsize);
 int sandbox_container_path_for_pid(pid_t, char *buffer, size_t bufsize);
 int sandbox_extension_release(int64_t extension_handle);
 int sandbox_init_with_parameters(const char *profile, uint64_t flags, const char *const parameters[], char **errorbuf);

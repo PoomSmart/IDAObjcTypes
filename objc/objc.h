@@ -1,5 +1,6 @@
 #import "../BaseTypes.h"
 #import "../Kernel/Types.h"
+#import "../System/Types.h"
 #import "Types.h"
 
 id objc_alloc(id);
@@ -25,14 +26,19 @@ id objc_getAssociatedObject(id object, const void *key);
 id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic);
 id objc_getMetaClass(const char *name);
 id objc_retainBlock(id value);
+id objc_begin_catch(void *exc_buf);
 id object_getIvar(id obj, Ivar ivar);
 id object_dispose(id obj);
 id class_createInstance(Class cls, size_t extraBytes);
 id method_invoke(id receiver, Method m, ...);
-id objc_begin_catch(void *exc_buf);
 
 id objc_opt_self(id self);
 id objc_opt_new(Class cls);
+
+id _objc_rootAlloc(Class cls);
+id _objc_rootAllocWithZone(Class cls, malloc_zone_t *zone);
+id _objc_rootAutorelease(id object);
+id _objc_rootRetain(id object);
 
 #ifdef __EA64__
 long double objc_msgSend_fpret(id self, SEL op, ...);
@@ -169,6 +175,12 @@ void method_getArgumentType(Method m, unsigned int index, char *dst, size_t dst_
 void method_exchangeImplementations(Method m1, Method m2);
 
 void _objc_registerTaggedPointerClass(objc_tag_index_t tag, Class cls);
+void _objc_autoreleasePoolPrint();
+void _objc_rootDealloc(id obj);
+void _objc_rootRelease(id obj);
+void _objc_setBadAllocHandler(id (*newHandler)(Class isa));
+
+bool _objc_rootTryRetain(id obj);
 
 void *objc_autoreleasePoolPush(void);
 void *objc_destructInstance(id obj);

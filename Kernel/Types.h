@@ -31,6 +31,7 @@ typedef struct task *task_t;
 typedef task_t task_port_t;
 
 typedef integer_t mach_msg_id_t;
+typedef integer_t mach_port_delta_t;
 
 typedef char *mach_msg_trailer_info_t;
 

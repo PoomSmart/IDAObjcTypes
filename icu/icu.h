@@ -69,11 +69,14 @@ int32_t u_getFC_NFKC_Closure(UChar32 c, UChar *dest, int32_t destCapacity, UErro
 int32_t u_getPropertyValueEnum(UProperty property, const char *alias);
 int32_t u_charDigitValue(UChar32 c);
 int32_t u_charName(UChar32 code, UCharNameChoice nameChoice, char *buffer, int32_t bufferLength, UErrorCode *pErrorCode);
+int32_t u_strlen(const UChar *str);
 int32_t u_strToUpper(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, const char *locale, UErrorCode *pErrorCode);
 int32_t u_strToLower(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, const char *locale, UErrorCode *pErrorCode);
 int32_t u_strToTitle(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, UBreakIterator *titleIter, const char *locale, UErrorCode *pErrorCode);
 int32_t u_digit(UChar32 ch, int8_t radix);
+int32_t u_formatMessage(const char *locale, const UChar *pattern, int32_t patternLength, UChar *result, int32_t resultLength, UErrorCode *status, ...);
 
+const char *u_errorName(UErrorCode code);
 const char *u_getPropertyName(UProperty property, UPropertyNameChoice nameChoice);
 const char *u_getPropertyValueName(UProperty property, int32_t value, UPropertyNameChoice nameChoice);
 UProperty u_getPropertyEnum(const char *alias);
@@ -83,6 +86,7 @@ char *u_strToUTF8(char *dest, int32_t destCapacity, int32_t *pDestLength, const 
 void u_enumCharTypes(UCharEnumTypeRange *enumRange, const void *context);
 void u_enumCharNames(UChar32 start, UChar32 limit, UEnumCharNamesFn *fn, void *context, UCharNameChoice nameChoice, UErrorCode *pErrorCode);
 void u_charAge(UChar32 c, UVersionInfo versionArray);
+void u_charsToUChars(const char *cs, UChar *us, int32_t length);
 void u_getVersion(UVersionInfo versionArray);
 void u_getUnicodeVersion(UVersionInfo versionArray);
 void u_versionToString(UVersionInfo versionArray, char *versionString);

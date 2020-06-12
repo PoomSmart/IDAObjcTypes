@@ -80,4 +80,6 @@ typedef struct os_log_pack_s {
 
 typedef struct _os_nospin_lock_s *_os_nospin_lock_t;
 
+typedef bool (*_os_log_NSCF_callback)(const void *obj, char *string_value, size_t string_sz, bool *publicData);
+
 #endif
