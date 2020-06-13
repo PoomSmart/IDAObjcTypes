@@ -1,5 +1,6 @@
 #import "../BaseTypes.h"
 #import "../CoreGraphics/Types.h"
+#import "../IOSurface/Types.h"
 #import "Types.h"
 
 UIEdgeInsets UIEdgeInsetsFromString(NSString *str);
@@ -43,6 +44,8 @@ CGFloat UIDistanceBetweenPoints(CGPoint a, CGPoint b);
 CGAffineTransform UIIntegralTransform(CGAffineTransform t);
 
 CGContextRef UIGraphicsGetCurrentContext(void);
+
+CGImageRef UICreateCGImageFromIOSurface(IOSurfaceRef surface);
 
 NSComparisonResult UIContentSizeCategoryCompareToCategory(UIContentSizeCategory lhs, UIContentSizeCategory rhs);
 

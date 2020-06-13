@@ -14,6 +14,8 @@ typedef unsigned int NSUInteger;
 typedef int NSInteger;
 #endif
 
+typedef double NSTimeInterval;
+
 typedef struct __NSObject NSObject;
 typedef struct __NSValue NSValue;
 typedef const __CFString NSString;
