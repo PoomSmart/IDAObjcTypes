@@ -104,11 +104,11 @@ NSArray *NSAllMapTableValues(NSMapTable *table);
 
 NSUncaughtExceptionHandler *NSGetUncaughtExceptionHandler(void);
 
-void NSLogv(NSString *format, va_list args);
+void NSLogv(CFStringRef format, va_list args);
 void NSRequestConcreteImplementation(id self, SEL _cmd, Class absClass);
 void NSPopAutoreleasePool(void *token);
 void NSDivideRect(NSRect inRect, NSRect *slice, NSRect *rem, CGFloat amount, NSRectEdge edge);
-void NSLog(NSString *format, ...);
+void NSLog(CFStringRef format, ...);
 void NSZoneFree(NSZone *zone, void *ptr);
 void NSMapInsert(NSMapTable *table, const void *key, const void *value);
 void NSMapInsertKnownAbsent(NSMapTable *table, const void *key, const void *value);
