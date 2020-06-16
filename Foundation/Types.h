@@ -106,6 +106,10 @@ typedef struct _NSRange {
     NSUInteger length;
 } NSRange;
 
+typedef struct NSEdgeInsets {
+    CGFloat top, left, bottom, right;
+} NSEdgeInsets;
+
 typedef CGPoint NSPoint;
 typedef CGSize NSSize;
 typedef CGRect NSRect;
@@ -117,5 +121,7 @@ typedef void NSUncaughtExceptionHandler(NSException *exception);
 extern const NSPoint NSZeroPoint;
 extern const NSSize NSZeroSize;
 extern const NSRect NSZeroRect;
+
+extern const NSEdgeInsets NSEdgeInsetsZero;
 
 #endif
