@@ -104,6 +104,8 @@ CGImageRef CGImageSourceCreateImageAtIndex(CGImageSourceRef isrc, size_t index, 
 CGImageRef CGImageSourceCreateThumbnailAtIndex(CGImageSourceRef isrc, size_t index, CFDictionaryRef options);
 CGImageRef CGPatternGetImage(CGPatternRef pattern);
 CGImageRef CGBitmapContextCreateImage(CGContextRef context);
+CGImageRef CGIOSurfaceContextCreateImage(CGContextRef);
+CGImageRef CGIOSurfaceContextCreateImageReference(CGContextRef);
 
 CGImageMetadataRef CGImageSourceCopyMetadataAtIndex(CGImageSourceRef isrc, size_t index, CFDictionaryRef options);
 
@@ -133,6 +135,7 @@ CFMutableArrayRef CGCFArrayCreate(void);
 
 CGContextRef CGBitmapContextCreate(void *data, size_t width, size_t height, size_t bitsPerComponent, size_t bytesPerRow, CGColorSpaceRef space, uint32_t bitmapInfo);
 CGContextRef CGContextRetain(CGContextRef c);
+CGContextRef CGIOSurfaceContextCreate(IOSurfaceRef, size_t, size_t, size_t, size_t, CGColorSpaceRef, CGBitmapInfo);
 
 CGColorRef CGColorRetain(CGColorRef color);
 CGColorRef CGColorGetConstantColor(CFStringRef colorName);
@@ -159,6 +162,7 @@ CGColorSpaceRef CGColorSpaceCreateLab(const CGFloat *whitePoint, const CGFloat *
 CGColorSpaceRef CGColorSpaceCreatePattern(CGColorSpaceRef baseSpace);
 CGColorSpaceRef CGColorSpaceCreateWithPropertyList(CFPropertyListRef plist);
 CGColorSpaceRef CGColorSpaceGetBaseColorSpace(CGColorSpaceRef space);
+CGColorSpaceRef CGIOSurfaceContextGetColorSpace(CGContextRef context);
 CGColorSpaceRef CGBitmapContextGetColorSpace(CGContextRef context);
 
 CGColorSpaceModel CGColorSpaceGetModel(CGColorSpaceRef space);
@@ -204,6 +208,23 @@ CGAffineTransform CGContextGetBaseCTM(CGContextRef c);
 CGAffineTransform CGContextGetTextMatrix(CGContextRef c);
 CGAffineTransform CGContextGetUserSpaceToDeviceSpaceTransform(CGContextRef c);
 
+CGDataProviderRef CGPDFDocumentGetDataProvider(CGPDFDocumentRef);
+
+CGError CGSPackagesEnableConnectionOcclusionNotifications(CGSConnectionID, bool flag, bool *outCurrentVisibilityState);
+CGError CGSPackagesEnableConnectionWindowModificationNotifications(CGSConnectionID, bool flag, bool *outConnectionIsCurrentlyIdle);
+CGError CGSNewRegionWithRect(const CGRect*, CGRegionRef *);
+CGError CGSNewEmptyRegion(CGSRegionObj *outRegion);
+CGError CGSCopyRegion(CGSRegionObj region, CGSRegionObj *outRegion);
+CGError CGSUnionRegion(CGSRegionObj region1, CGSRegionObj region2, CGSRegionObj *outRegion);
+CGError CGSUnionRegionWithRect(CGSRegionObj region, CGRect *rect, CGSRegionObj *outRegion);
+CGError CGSReleaseRegion(const CGRegionRef);
+CGError CGSReleaseRegionEnumerator(const CGSRegionEnumeratorObj);
+CGError CGSSetWindowAlpha(CGSConnectionID, CGSWindowID, float alpha);
+CGError CGSSetWindowClipShape(CGSConnectionID, CGSWindowID, CGRegionRef shape);
+CGError CGSSetWindowWarp(CGSConnectionID, CGSWindowID, int w, int h, const float *mesh);
+
+CGRect *CGSNextRect(const CGSRegionEnumeratorObj);
+
 CGFontAntialiasingStyle CGContextGetFontAntialiasingStyle(CGContextRef);
 
 CGContextType CGContextGetType(CGContextRef c);
@@ -213,6 +234,14 @@ CGGlyph CGFontGetGlyphWithGlyphName(CGFontRef font, CFStringRef name);
 CGCompositeOperation CGContextGetCompositeOperation(CGContextRef c);
 
 const char *CGFontGetPostScriptName(CGFontRef font);
+
+bool CGSRegionIsEmpty(CGSRegionObj region);
+bool CGSRegionIsRectangular(CGSRegionObj region);
+bool CGSPointInRegion(CGSRegionObj region, const CGPoint *point);
+bool CGSRectInRegion(CGSRegionObj region, const CGRect *rect);
+bool CGSRegionInRegion(CGSRegionObj region1, CGSRegionObj region2);
+bool CGSRegionIntersectsRect(CGSRegionObj obj, const CGRect *rect);
+bool CGSRegionIntersectsRegion(CGSRegionObj region1, CGSRegionObj region2);
 
 size_t CGFontGetNumberOfGlyphs(CGFontRef font);
 size_t CGImageGetWidth(CGImageRef image);
@@ -382,6 +411,9 @@ void CGContextShowGlyphsAtPositions(CGContextRef c, const CGGlyph *glyphs, const
 void CGContextShowGlyphsWithAdvances(CGContextRef c, const CGGlyph *glyphs, const CGSize *advances, size_t count);
 void CGContextResetClip(CGContextRef c);
 void CGContextClear(CGContextRef c);
+void CGContextDrawPDFPage(CGContextRef c, CGPDFPageRef page);
+void CGContextDrawPDFPageWithAnnotations(CGContextRef c, CGPDFPageRef page, CGPDFAnnotationDrawCallbackType);
+void CGContextDrawPathDirect(CGContextRef, CGPathDrawingMode, CGPathRef, const CGRect *boundingBox);
 void CGGradientRetain(CGGradientRef gradient);
 void CGGradientRelease(CGGradientRef gradient);
 void CGImageSourceUpdateData(CGImageSourceRef isrc, CFDataRef data, bool final);
@@ -416,6 +448,7 @@ void CGColorRelease(CGColorRef color);
 void CGPatternRelease(CGPatternRef pattern);
 void CGFontGetGlyphsForUnichars(CGFontRef font, const UniChar chars[], CGGlyph glyphs[], size_t length);
 void CGFontRelease(CGFontRef font);
+void CGIOSurfaceContextSetDisplayMask(CGContextRef, uint32_t mask);
 
 void CGPostError(const char *format, ...);
 void CGCFRelease(CFTypeRef cf);

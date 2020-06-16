@@ -50,12 +50,38 @@ typedef struct CGImageMetadata *CGImageMetadataRef;
 typedef struct CGImageMetadata *CGMutableImageMetadataRef;
 typedef struct CGImageMetadataTag *CGImageMetadataTagRef;
 typedef struct CGShading *CGShadingRef;
+typedef struct CGPDFAnnotation *CGPDFAnnotationRef;
+typedef struct CGPDFPage *CGPDFPageRef;
+typedef struct CGPDFDocument *CGPDFDocumentRef;
+
+typedef struct CGSRegionEnumeratorObject *CGSRegionEnumeratorObj;
+typedef struct CGSRegionObject *CGSRegionObj;
+typedef struct CGSRegionObject *CGRegionRef;
 
 typedef uint32_t CGRectEdge;
+
+typedef uint32_t CGSByteCount;
+typedef uint32_t CGSConnectionID;
+typedef uint32_t CGSWindowCount;
+typedef uint32_t CGSWindowID;
 
 typedef unsigned short CGFontIndex;
 
 typedef CGFontIndex CGGlyph;
+
+enum CGError : int32_t {
+    kCGErrorSuccess = 0,
+    kCGErrorFailure = 1000,
+    kCGErrorIllegalArgument = 1001,
+    kCGErrorInvalidConnection = 1002,
+    kCGErrorInvalidContext = 1003,
+    kCGErrorCannotComplete = 1004,
+    kCGErrorNotImplemented = 1006,
+    kCGErrorRangeCheck = 1007,
+    kCGErrorTypeCheck = 1008,
+    kCGErrorInvalidOperation = 1010,
+    kCGErrorNoneAvailable = 1011
+};
 
 typedef enum CGCompositeOperation {
     kCGCompositeCopy = 1,
@@ -252,6 +278,8 @@ typedef void (*CGPathApplyBlock)(const CGPathElement *element);
 typedef void (*CGPathApplierFunction)(void *info, const CGPathElement *element);
 typedef void (*CGPatternDrawPatternCallback)(void *info, CGContextRef context);
 typedef void (*CGPatternReleaseInfoCallback)(void *info);
+
+typedef bool (*CGPDFAnnotationDrawCallbackType)(CGContextRef context, CGPDFPageRef page, CGPDFAnnotationRef annotation);
 
 typedef struct CGPatternCallbacks {
     unsigned int version;
