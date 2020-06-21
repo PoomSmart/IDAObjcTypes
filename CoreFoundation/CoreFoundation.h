@@ -139,7 +139,7 @@ void CFRunLoopRemoveObserver(CFRunLoopRef rl, CFRunLoopObserverRef observer, CFR
 void CFRunLoopRun(void);
 void CFRunLoopWakeUp(CFRunLoopRef rl);
 void CFRunLoopStop(CFRunLoopRef rl);
-void CFRunLoopPerformBlock(CFRunLoopRef rl, CFTypeRef mode, void (*block)(void)); 
+void CFRunLoopPerformBlock(CFRunLoopRef rl, CFTypeRef mode, void (*block)(void));
 void CFRunLoopSourceInvalidate(CFRunLoopSourceRef source);
 void CFRunLoopSourceGetContext(CFRunLoopSourceRef source, CFRunLoopSourceContext *context);
 void CFRunLoopSourceSignal(CFRunLoopSourceRef source);
@@ -233,6 +233,7 @@ CFTypeID CFArrayGetTypeID(void);
 CFTypeID CFCharacterSetGetTypeID(void);
 CFTypeID CFDataGetTypeID(void);
 CFTypeID CFStringGetTypeID(void);
+CFTypeID CFAttributedStringGetTypeID(void);
 CFTypeID CFNumberGetTypeID(void);
 CFTypeID CFSetGetTypeID(void);
 CFTypeID CFURLGetTypeID(void);

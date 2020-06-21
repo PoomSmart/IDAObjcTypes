@@ -6,6 +6,8 @@
 CFTypeID CGPathGetTypeID(void);
 CFTypeID CGImageGetTypeID(void);
 CFTypeID CGColorGetTypeID(void);
+CFTypeID CGColorSpaceGetTypeID(void);
+CFTypeID CGColorTransformGetTypeID(void);
 CFTypeID CGPatternGetTypeID(void);
 CFTypeID CGFontGetTypeID(void);
 
@@ -14,6 +16,7 @@ CFTypeRef CGTypeCreateInstance(CFTypeID typeID, CFIndex extraBytes);
 CFTypeRef CGCFDictionaryGetValueWithType(CFDictionaryRef theDict, const void *key, CFTypeID typeID);
 
 CFDataRef CGFontCopyTableForTag(CGFontRef font, uint32_t tag);
+CFDataRef CGColorSpaceCopyICCData(CGColorSpaceRef space);
 
 CFDictionaryRef CGFontCopyVariations(CGFontRef font);
 CFDictionaryRef CGRectCreateDictionaryRepresentation(CGRect rect);
@@ -28,8 +31,9 @@ CFMutableDictionaryRef CGCFDictionaryCreateCopy(CFDictionaryRef theDict);
 CFArrayRef CGCFDictionaryCopyKeys(CFDictionaryRef theDict, const CFArrayCallBacks *callBacks);
 CFArrayRef CGCFDictionaryCopyValues(CFDictionaryRef theDict, const CFArrayCallBacks *callBacks);
 CFArrayRef CGFontCopyTableTags(CGFontRef font);
-
 CFArrayRef CGFontCopyVariationAxes(CGFontRef font);
+
+CFPropertyListRef CGColorSpaceCopyPropertyList(CGColorSpaceRef space);
 
 CFStringRef CGFontCopyFullName(CGFontRef font);
 CFStringRef CGFontCopyFamilyName(CGFontRef font);
@@ -38,7 +42,9 @@ CFStringRef CGFontCopyGlyphNameForGlyph(CGFontRef font, CGGlyph glyph);
 CFStringRef CGImageSourceGetType(CGImageSourceRef isrc); // ImageIO ?
 CFStringRef CGImageSourceGetTypeWithData(CFDataRef, CFStringRef, bool *); // ImageIO ?
 CFStringRef CGImageMetadataCopyStringValueWithPath(CGImageMetadataRef metadata, CGImageMetadataTagRef parent, CFStringRef path);
+CFStringRef CGColorSpaceGetName(CGColorSpaceRef space);
 
+CGRect CGPatternGetBounds(CGPatternRef pattern);
 CGRect CGContextGetPathBoundingBox(CGContextRef c);
 CGRect CGContextGetClipBoundingBox(CGContextRef c);
 CGRect CGPathGetBoundingBox(CGPathRef path);
@@ -51,6 +57,8 @@ CGRect CGRectStandardize(CGRect rect);
 CGRect CGRectOffset(CGRect rect, CGFloat dx, CGFloat dy);
 CGRect CGRectIntegral(CGRect rect);
 CGRect CGRectIntersection(CGRect r1, CGRect r2);
+
+CGRect *CGSNextRect(CGSRegionEnumeratorRef enumerator);
 
 CGPoint CGPointApplyAffineTransform(CGPoint point, CGAffineTransform t);
 CGPoint CGContextGetPathCurrentPoint(CGContextRef context);
@@ -122,6 +130,8 @@ CGImageSourceRef CGImageSourceCreateIncremental(CFDictionaryRef options);
 CGImageDestinationRef CGImageDestinationCreateWithData(CFMutableDataRef data, CFStringRef type, size_t count, CFDictionaryRef options);
 CGImageDestinationRef CGImageDestinationCreateWithURL(CFURLRef url, CFStringRef type, size_t count, CFDictionaryRef options);
 
+CGImageProviderRef CGImageGetImageProvider(CGImage image);
+
 CGFontRef CGFontRetain(CGFontRef font);
 CGFontRef CGFontCreateWithFontName(CFStringRef name);
 CGFontRef CGFontCreateWithDataProvider(CGDataProviderRef provider);
@@ -152,6 +162,7 @@ CGColorRef CGColorTransformConvertColor(CGColorTransformRef, CGColorRef, CGColor
 CGColorRef CGContextGetFillColorAsColor(CGContextRef);
 
 CGColorSpaceRef CGImageGetColorSpace(CGImageRef image);
+CGColorSpaceRef CGGradientGetColorSpace(CGGradientRef gradient);
 CGColorSpaceRef CGColorGetColorSpace(CGColorRef color);
 CGColorSpaceRef CGColorSpaceRetain(CGColorSpaceRef space);
 CGColorSpaceRef CGColorSpaceCreateWithName(CFStringRef name);
@@ -161,6 +172,8 @@ CGColorSpaceRef CGColorSpaceCreateDeviceGray(void);
 CGColorSpaceRef CGColorSpaceCreateLab(const CGFloat *whitePoint, const CGFloat *blackPoint, const CGFloat *range);
 CGColorSpaceRef CGColorSpaceCreatePattern(CGColorSpaceRef baseSpace);
 CGColorSpaceRef CGColorSpaceCreateWithPropertyList(CFPropertyListRef plist);
+CGColorSpaceRef CGColorSpaceCreateWithICCData(CFTypeRef data);
+CGColorSpaceRef CGColorSpaceCreateCalibratedRGB(const CGFloat *whitePoint, const CGFloat *blackPoint, const CGFloat *gamma, const CGFloat *matrix);
 CGColorSpaceRef CGColorSpaceGetBaseColorSpace(CGColorSpaceRef space);
 CGColorSpaceRef CGIOSurfaceContextGetColorSpace(CGContextRef context);
 CGColorSpaceRef CGBitmapContextGetColorSpace(CGContextRef context);
@@ -168,6 +181,7 @@ CGColorSpaceRef CGBitmapContextGetColorSpace(CGContextRef context);
 CGColorSpaceModel CGColorSpaceGetModel(CGColorSpaceRef space);
 
 CGColorTransformRef CGColorTransformCreate(CGColorSpaceRef, CFDictionaryRef attributes);
+CGColorTransformRef CGColorTransformRetain(CGColorTransformRef colorTransform);
 
 CGColorRenderingIntent CGImageGetRenderingIntent(CGImageRef image);
 
@@ -217,21 +231,29 @@ CGError CGSNewEmptyRegion(CGSRegionObj *outRegion);
 CGError CGSCopyRegion(CGSRegionObj region, CGSRegionObj *outRegion);
 CGError CGSUnionRegion(CGSRegionObj region1, CGSRegionObj region2, CGSRegionObj *outRegion);
 CGError CGSUnionRegionWithRect(CGSRegionObj region, CGRect *rect, CGSRegionObj *outRegion);
+CGError CGSDiffRegion(CGSRegionRef region1, CGSRegionRef region2, CGSRegionRef *outRegion);
+CGError CGSXorRegion(CGSRegionRef region1, CGSRegionRef region2, CGSRegionRef *outRegion);
+CGError CGSOffsetRegion(CGSRegionRef region, CGFloat offsetLeft, CGFloat offsetTop, CGSRegionRef *outRegion);
+CGError CGSIntersectRegionWithRect(const CGSRegionObj region,const CGRect *rect, CGSRegionObj *intersectRegion);
 CGError CGSReleaseRegion(const CGRegionRef);
 CGError CGSReleaseRegionEnumerator(const CGSRegionEnumeratorObj);
+CGError CGSGetRegionBounds(CGSRegionRef region, CGRect *outRect);
 CGError CGSSetWindowAlpha(CGSConnectionID, CGSWindowID, float alpha);
 CGError CGSSetWindowClipShape(CGSConnectionID, CGSWindowID, CGRegionRef shape);
 CGError CGSSetWindowWarp(CGSConnectionID, CGSWindowID, int w, int h, const float *mesh);
-
-CGRect *CGSNextRect(const CGSRegionEnumeratorObj);
+CGError CGSFetchDirtyScreenRegion(CGSConnectionID cid, CGSRegionRef *outDirtyRegion);
 
 CGFontAntialiasingStyle CGContextGetFontAntialiasingStyle(CGContextRef);
+
+CGImageCachingFlags CGImageGetCachingFlags(CGImageRef image);
 
 CGContextType CGContextGetType(CGContextRef c);
 
 CGGlyph CGFontGetGlyphWithGlyphName(CGFontRef font, CFStringRef name);
 
 CGCompositeOperation CGContextGetCompositeOperation(CGContextRef c);
+
+CGSRegionEnumeratorRef CGSRegionEnumerator(CGSRegionRef region);
 
 const char *CGFontGetPostScriptName(CGFontRef font);
 
@@ -273,6 +295,7 @@ bool CGRectMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGRect *rect);
 bool CGSizeMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGSize *size);
 bool CGSizeEqualToSize(CGSize size1, CGSize size2);
 bool CGAffineTransformIsIdentity(CGAffineTransform t);
+bool CGAffineTransformIsRectilinear(CGAffineTransform t);
 bool CGAffineTransformEqualToTransform(CGAffineTransform t1, CGAffineTransform t2);
 bool CGContextIsPathEmpty(CGContextRef context);
 bool CGContextDrawsWithCorrectShadowOffsets(CGContextRef);
@@ -291,9 +314,12 @@ bool CGPathIsRect(CGPathRef path, CGRect *rect);
 bool CGPathContainsPoint(CGPathRef path, const CGAffineTransform *m, CGPoint point, bool eoFill);
 bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict, CGPoint *point);
 bool CGColorEqualToColor(CGColorRef color1, CGColorRef color2);
+bool CGColorSpaceIsUncalibrated(CGColorSpaceRef space);
+bool CGColorSpaceIsWideGamutRGB(CGColorSpaceRef space);
 bool CGColorSpaceSupportsOutput(CGColorSpaceRef space);
 bool CGColorSpaceUsesExtendedRange(CGColorSpaceRef space);
 bool CGColorSpaceEqualToColorSpace(CGColorSpaceRef space1, CGColorSpaceRef space2);
+bool CGColorSpaceEqualToColorSpaceIgnoringRange(CGColorSpaceRef space1, CGColorSpaceRef space2);
 bool CGFloatIsValid(CGFloat value);
 
 bool CGCFDictionaryGetBoolean(CFDictionaryRef theDict, const void *key, bool *result);
@@ -313,6 +339,8 @@ int CGFontGetLeading(CGFontRef font);
 int CGFontGetCapHeight(CGFontRef font);
 int CGFontGetXHeight(CGFontRef font);
 int CGFontGetUnitsPerEm(CGFontRef font);
+
+int32_t CGImageGetIdentifier(CGImageRef image);
 
 void CGContextDestroy(CFTypeRef c);
 void CGContextSaveGState(CGContextRef c);
@@ -414,6 +442,7 @@ void CGContextClear(CGContextRef c);
 void CGContextDrawPDFPage(CGContextRef c, CGPDFPageRef page);
 void CGContextDrawPDFPageWithAnnotations(CGContextRef c, CGPDFPageRef page, CGPDFAnnotationDrawCallbackType);
 void CGContextDrawPathDirect(CGContextRef, CGPathDrawingMode, CGPathRef, const CGRect *boundingBox);
+void CGBitmapContextSetData(CGContextRef c, size_t x, size_t y, size_t width, size_t height, void* data, size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow);
 void CGGradientRetain(CGGradientRef gradient);
 void CGGradientRelease(CGGradientRef gradient);
 void CGImageSourceUpdateData(CGImageSourceRef isrc, CFDataRef data, bool final);
@@ -424,6 +453,7 @@ void CGImageDestinationAddImageFromSource(CGImageDestinationRef idst, CGImageSou
 void CGImageDestinationAddImageAndMetadata(CGImageDestinationRef idst, CGImageRef image, CGImageMetadataRef metadata, CFDictionaryRef options);
 void CGImageDestinationSetProperties(CGImageDestinationRef idst, CFDictionaryRef properties);
 void CGImageSetProperty(CGImageRef image, CFStringRef property, const void *value);
+void CGImageSetCachingFlags(CGImageRef image, CGImageCachingFlags flags);
 void CGImageRelease(CGImageRef image);
 void CGPathAddPath(CGMutablePathRef path1, const CGAffineTransform *m, CGPathRef path2);
 void CGPathAddArc(CGMutablePathRef path, const CGAffineTransform *m, CGFloat x, CGFloat y, CGFloat radius, CGFloat startAngle, CGFloat endAngle, bool clockwise);
@@ -444,13 +474,16 @@ void CGPathCloseSubpath(CGMutablePathRef path);
 void CGPathRelease(CGPathRef path);
 void CGRectDivide(CGRect rect, CGRect *slice, CGRect *remainder, CGFloat amount, CGRectEdge edge);
 void CGColorSpaceRelease(CGColorSpaceRef space);
+void CGColorTransformRelease(CGColorTransformRef colorTransform);
 void CGColorRelease(CGColorRef color);
 void CGPatternRelease(CGPatternRef pattern);
 void CGFontGetGlyphsForUnichars(CGFontRef font, const UniChar chars[], CGGlyph glyphs[], size_t length);
 void CGFontRelease(CGFontRef font);
+void CGPostError(const char *format, ...);
 void CGIOSurfaceContextSetDisplayMask(CGContextRef, uint32_t mask);
 
-void CGPostError(const char *format, ...);
+void CGSReleaseRegionEnumerator(CGSRegionEnumeratorRef enumerator);
+
 void CGCFRelease(CFTypeRef cf);
 void CGCFDictionaryApplyBlock(CFDictionaryRef theDict, void *context);
 void CGCFDictionarySetCString(CFMutableDictionaryRef theDict, const char *cStr);

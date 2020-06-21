@@ -1,5 +1,6 @@
 #import "../BaseTypes.h"
 #import "../Kernel/Types.h"
+#import "../CoreGraphics/Types.h"
 #import "../CoreFoundation/Types.h"
 #import "../IOSurface/Types.h"
 #import "Types.h"
@@ -10,9 +11,17 @@ CFTypeRef CVBufferGetAttachment(CVBufferRef buffer, CFStringRef key, CVAttachmen
 
 CFDictionaryRef CVBufferGetAttachments(CVBufferRef buffer, CVAttachmentMode attachmentMode);
 
+CGRect CVImageBufferGetCleanRect(CVImageBufferRef imageBuffer);
+
+CGSize CVImageBufferGetEncodedSize(CVImageBufferRef imageBuffer);
+CGSize CVImageBufferGetDisplaySize(CVImageBufferRef imageBuffer);
+
+CGColorSpaceRef CVImageBufferCreateColorSpaceFromAttachments(CFDictionaryRef attachments);
+
 IOSurfaceRef CVPixelBufferGetIOSurface(CVPixelBufferRef pixelBuffer);
 
 Boolean CVPixelBufferIsPlanar(CVPixelBufferRef pixelBuffer);
+Boolean CVImageBufferIsFlipped(CVImageBufferRef imageBuffer);
 
 OSType CVPixelBufferGetPixelFormatType(CVPixelBufferRef pixelBuffer);
 

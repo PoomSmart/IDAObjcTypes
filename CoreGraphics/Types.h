@@ -2,6 +2,7 @@
 #define COREGRAPHICS_H_
 
 #import "../BaseTypes.h"
+#import "../CoreFoundation/Types.h"
 
 #ifdef __EA64__
 typedef double CGFloat;
@@ -53,6 +54,7 @@ typedef struct CGShading *CGShadingRef;
 typedef struct CGPDFAnnotation *CGPDFAnnotationRef;
 typedef struct CGPDFPage *CGPDFPageRef;
 typedef struct CGPDFDocument *CGPDFDocumentRef;
+typedef struct CGImageProvider *CGImageProviderRef;
 
 typedef struct CGSRegionEnumeratorObject *CGSRegionEnumeratorObj;
 typedef struct CGSRegionObject *CGSRegionObj;
@@ -68,6 +70,14 @@ typedef uint32_t CGSWindowID;
 typedef unsigned short CGFontIndex;
 
 typedef CGFontIndex CGGlyph;
+
+typedef CFTypeRef CGSRegionRef;
+typedef CFTypeRef CGSRegionEnumeratorRef;
+
+enum CGImageCachingFlags : uint32_t {
+    kCGImageCachingTransient = 1,
+    kCGImageCachingTemporary = 3,
+};
 
 enum CGError : int32_t {
     kCGErrorSuccess = 0,

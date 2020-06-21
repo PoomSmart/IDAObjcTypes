@@ -9,6 +9,7 @@ uint32_t dyld_get_program_min_os_version(void);
 
 intptr_t _dyld_get_image_slide(const struct mach_header *mh);
 
+bool dyld_program_sdk_at_least(dyld_build_version_t version);
 bool dyld_has_inserted_or_interposing_libraries(void);
 bool _dyld_is_memory_immutable(char *ptr, int64_t unk1);
 bool _dyld_find_unwind_sections(void *addr, struct dyld_unwind_sections *info);

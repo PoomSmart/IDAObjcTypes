@@ -3,6 +3,13 @@
 
 #import "../BaseTypes.h"
 
+typedef uint32_t dyld_platform_t;
+
+typedef struct dyld_build_version_t {
+    dyld_platform_t platform;
+    uint32_t version;
+} dyld_build_version_t;
+
 typedef struct dyld_unwind_sections {
     const struct mach_header *mh;
     const void *dwarf_section;
