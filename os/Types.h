@@ -2,11 +2,46 @@
 #define OS_H_
 
 #import "../BaseTypes.h"
+#import "../Foundation/Types.h"
+
+#ifdef __EA64__
+#define __OS_WORKGROUP_ATTR_SIZE__ 60
+#define __OS_WORKGROUP_INTERVAL_DATA_SIZE__ 56
+#define __OS_WORKGROUP_JOIN_TOKEN_SIZE__ 36
+#else
+#define __OS_WORKGROUP_ATTR_SIZE__ 60
+#define __OS_WORKGROUP_INTERVAL_DATA_SIZE__ 56
+#define __OS_WORKGROUP_JOIN_TOKEN_SIZE__ 28
+#endif
 
 typedef struct os_log_s *os_log_t;
 typedef struct os_activity_s *os_activity_t;
 typedef struct os_transaction_s *os_transaction_t;
 typedef struct os_activity_scope_state_s *os_activity_scope_state_t;
+
+struct os_workgroup_attr_opaque_s {
+    uint32_t sig;
+    char opaque[__OS_WORKGROUP_ATTR_SIZE__];
+};
+
+struct os_workgroup_interval_data_opaque_s {
+    uint32_t sig;
+    char opaque[__OS_WORKGROUP_INTERVAL_DATA_SIZE__];
+};
+
+struct os_workgroup_join_token_opaque_s {
+    uint32_t sig;
+    char opaque[__OS_WORKGROUP_JOIN_TOKEN_SIZE__];
+};
+
+typedef struct os_workgroup_interval_data_opaque_s os_workgroup_interval_data_s;
+typedef struct os_workgroup_interval_data_opaque_s *os_workgroup_interval_data_t;
+typedef struct os_workgroup_attr_opaque_s os_workgroup_attr_s;
+typedef struct os_workgroup_attr_opaque_s *os_workgroup_attr_t;
+typedef struct os_workgroup_max_parallel_threads_attr_s os_workgroup_mpt_attr_s;
+typedef struct os_workgroup_max_parallel_threads_attr_s *os_workgroup_mpt_attr_t;
+typedef struct os_workgroup_join_token_opaque_s os_workgroup_join_token_s;
+typedef struct os_workgroup_join_token_opaque_s *os_workgroup_join_token_t;
 
 typedef struct os_unfair_lock_s {
     uint32_t _os_unfair_lock_opaque;
@@ -16,6 +51,9 @@ typedef struct os_unfair_recursive_lock_s {
     os_unfair_lock ourl_lock;
     uint32_t ourl_count;
 } os_unfair_recursive_lock, *os_unfair_recursive_lock_t;
+
+typedef NSObject *os_workgroup_t;
+typedef os_workgroup_t *os_workgroup_interval_t;
 
 enum os_log_type_t : uint8_t {
     OS_LOG_TYPE_DEFAULT = 0x00,
@@ -32,6 +70,7 @@ enum os_activity_flag_t : uint32_t {
 };
 
 typedef uint32_t os_unfair_lock_options_t;
+typedef uint32_t os_workgroup_index;
 
 typedef uint64_t os_activity_id_t;
 typedef uint64_t os_signpost_id_t;

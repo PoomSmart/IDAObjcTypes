@@ -165,6 +165,7 @@ void objc_exception_throw(id exception);
 void objc_exception_rethrow(void);
 void objc_end_catch(void);
 void objc_setHook_getClass(objc_hook_getClass newValue, objc_hook_getClass *outOldValue);
+void objc_setHook_lazyClassNamer(objc_hook_lazyClassNamer newValue, objc_hook_lazyClassNamer *outOldValue);
 void object_setIvar(id obj, Ivar ivar, id value);
 void protocol_addMethodDescription(Protocol *proto, SEL name, const char *types, BOOL isRequiredMethod, BOOL isInstanceMethod);
 void protocol_addProtocol(Protocol *proto, Protocol *addition);

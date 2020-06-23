@@ -64,4 +64,6 @@ typedef enum objc_tag_index_t {
 
 typedef BOOL (*objc_hook_getClass)(const char *name, Class *outClass);
 
+typedef const char *(*objc_hook_lazyClassNamer)(Class cls);
+
 #endif

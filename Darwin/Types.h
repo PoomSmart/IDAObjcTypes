@@ -27,7 +27,9 @@ typedef NSObject *dispatch_data_t;
 typedef NSObject *dispatch_workloop_t;
 typedef NSObject *dispatch_queue_global_t;
 typedef NSObject *dispatch_io_t;
+typedef NSObject *dispatch_semaphore_t;
 
+typedef const struct dispatch_source_type_s *dispatch_source_type_t;
 typedef struct dispatch_queue_s *dispatch_queue_t;
 typedef struct dispatch_queue_attr_s *dispatch_queue_attr_t;
 typedef struct dispatch_mach_s *dispatch_mach_t;

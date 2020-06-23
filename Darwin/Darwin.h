@@ -20,7 +20,14 @@ size_t __strlcat_chk(char *dest, char *src, size_t len, size_t dstlen);
 int backtrace(void **array, int size);
 int _stdlib_memcmp(const void *s1, const void *s2, size_t n);
 
-long dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
+intptr_t dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
+intptr_t dispatch_block_testcancel(dispatch_block_t block);
+intptr_t dispatch_group_wait(dispatch_group_t group, dispatch_time_t timeout);
+intptr_t dispatch_semaphore_wait(dispatch_semaphore_t dsema, dispatch_time_t timeout);
+intptr_t dispatch_semaphore_signal(dispatch_semaphore_t dsema);
+intptr_t dispatch_source_testcancel(dispatch_source_t source);
+
+uintptr_t dispatch_source_get_mask(dispatch_source_t source);
 
 bool dispatch_data_apply(dispatch_data_t data, dispatch_data_applier_t applier);
 bool dispatch_mach_mig_demux(void *context, const struct mig_subsystem *const subsystems[], size_t count, dispatch_mach_msg_t dmsg);
@@ -56,6 +63,7 @@ void dispatch_after(dispatch_time_t when, dispatch_queue_t queue, dispatch_block
 void dispatch_source_set_event_handler(dispatch_source_t source, dispatch_block_t handler);
 void dispatch_source_set_mandatory_cancel_handler(dispatch_source_t source, dispatch_block_t handler);
 void dispatch_source_set_cancel_handler(dispatch_source_t source, dispatch_block_t handler);
+void dispatch_source_merge_data(dispatch_source_t source, uintptr_t value);
 void dispatch_group_async(dispatch_group_t group, dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_group_notify(dispatch_group_t group, dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_activate(dispatch_object_t object);
@@ -119,4 +127,9 @@ dispatch_io_t dispatch_io_create(dispatch_io_type_t type, dispatch_fd_t fd, disp
 dispatch_io_t dispatch_io_create_with_io(dispatch_io_type_t type, dispatch_io_t io, dispatch_queue_t queue, void (*cleanup_handler)(int error));
 dispatch_io_t dispatch_io_create_with_path(dispatch_io_type_t type, const char *path, int oflag, mode_t mode, dispatch_queue_t queue, void (*cleanup_handler)(int error));
 
+dispatch_queue_global_t dispatch_get_global_queue(intptr_t identifier, uintptr_t flags);
 dispatch_queue_global_t _dispatch_pthread_root_queue_create_with_observer_hooks_4IOHID(const char *label, unsigned long flags, const pthread_attr_t *attr, dispatch_pthread_root_queue_observer_hooks_t observer_hooks, dispatch_block_t configure);
+
+dispatch_semaphore_t dispatch_semaphore_create(intptr_t value);
+
+dispatch_source_t dispatch_source_create(dispatch_source_type_t type, uintptr_t handle, uintptr_t mask, dispatch_queue_t queue);
