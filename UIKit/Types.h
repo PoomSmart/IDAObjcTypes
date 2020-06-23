@@ -197,6 +197,7 @@ enum UIUserInterfaceIdiom : NSInteger {
     UIUserInterfaceIdiomPad,
     UIUserInterfaceIdiomTV,
     UIUserInterfaceIdiomCarPlay,
+    UIUserInterfaceIdiomMac = 5,
 };
 
 enum UIUserInterfaceLevel : NSInteger {
