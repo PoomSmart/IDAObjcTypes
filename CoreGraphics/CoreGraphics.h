@@ -130,7 +130,7 @@ CGImageSourceRef CGImageSourceCreateIncremental(CFDictionaryRef options);
 CGImageDestinationRef CGImageDestinationCreateWithData(CFMutableDataRef data, CFStringRef type, size_t count, CFDictionaryRef options);
 CGImageDestinationRef CGImageDestinationCreateWithURL(CFURLRef url, CFStringRef type, size_t count, CFDictionaryRef options);
 
-CGImageProviderRef CGImageGetImageProvider(CGImage image);
+CGImageProviderRef CGImageGetImageProvider(CGImageRef image);
 
 CGFontRef CGFontRetain(CGFontRef font);
 CGFontRef CGFontCreateWithFontName(CFStringRef name);
