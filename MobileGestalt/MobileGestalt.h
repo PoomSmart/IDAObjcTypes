@@ -10,7 +10,7 @@ bool MGGetBoolAnswer(CFStringRef key);
 bool MGIsQuestionValid(CFStringRef key);
 
 CFTypeRef MGCopyAnswer(CFStringRef key, CFDictionaryRef options);
-CFTypeRef MGCopyAnswerWithError(CFStringRef key, int *error);
+CFTypeRef MGCopyAnswerWithError(CFStringRef key, int unk, int *error);
 CFPropertyListRef MGCopyMultipleAnswers(CFArrayRef keys, CFDictionaryRef unk);
 CFStringRef MGGetStringAnswer(CFStringRef key);
 

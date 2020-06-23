@@ -214,6 +214,7 @@ Boolean _CFNonObjCEqual(CFTypeRef cf1, CFTypeRef cf2);
 
 CFTypeRef CFRetain(CFTypeRef cf);
 CFTypeRef CFAutorelease(CFTypeRef arg);
+CFTypeRef CFAttributedStringGetAttribute(CFAttributedStringRef aStr, CFIndex loc, CFStringRef attrName, CFRange *effectiveRange);
 CFTypeRef CFDictionaryGetValue(CFDictionaryRef theDict, const void *key);
 CFTypeRef CFMakeCollectable(CFTypeRef cf);
 CFTypeRef CFWriteStreamCopyProperty(CFWriteStreamRef stream, CFStreamPropertyKey propertyName);

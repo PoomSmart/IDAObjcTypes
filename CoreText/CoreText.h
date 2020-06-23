@@ -66,6 +66,7 @@ CFStringRef CTFontCopyFamilyName(CTFontRef font);
 CFStringRef CTFontCopyDisplayName(CTFontRef font);
 CFStringRef CTFontCopyName(CTFontRef font, CFStringRef nameKey);
 CFStringRef CTFontCopyLocalizedName(CTFontRef font, CFStringRef nameKey, CFStringRef *actualLanguage);
+CFStringRef CTFontCopyNameForGlyph(CTFontRef font, CGGlyph glyph);
 
 CFDictionaryRef CTRunGetAttributes(CTRunRef run);
 CFDictionaryRef CTFrameGetFrameAttributes(CTFrameRef frame);
