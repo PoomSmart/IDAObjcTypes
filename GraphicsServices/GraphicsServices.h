@@ -12,6 +12,8 @@ int GSEventDeviceOrientation(GSEventRef event);
 
 uint64_t GSCurrentEventTimestamp();
 
+UInt8 GSEventGetHardwareKeyboardCountry();
+
 UInt32 GSKeyboardGetHWKeyboardType();
 
 Boolean GSEventIsHardwareKeyboardEvent(GSEventRef event);

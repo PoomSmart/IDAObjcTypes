@@ -131,6 +131,8 @@ IOHIDElementRef IOHIDValueGetElement(IOHIDValueRef value);
 int IOHIDEventSystemClientSetMatching(IOHIDEventSystemClientRef client, CFDictionaryRef match);
 int IOHIDServiceClientSetProperty(IOHIDServiceClientRef, CFStringRef, CFNumberRef);
 
+unsigned int IOHIDEventIsRepeat(IOHIDEventRef event);
+
 uint32_t IOHIDEventGetEventFlags(IOHIDEventRef event);
 uint32_t IOHIDEventQueueGetToken(IOHIDEventQueueRef queue);
 uint32_t IOHIDElementGetUsage(IOHIDElementRef element);

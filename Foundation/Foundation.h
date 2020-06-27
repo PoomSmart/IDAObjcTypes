@@ -67,9 +67,9 @@ BOOL NSNextMapEnumeratorPair(NSMapEnumerator *enumerator, void **key, void **val
 
 Class NSClassFromString(CFStringRef string);
 
-SEL NSSelectorFromString(NSString *aSelectorName);
+SEL NSSelectorFromString(CFStringRef aSelectorName);
 
-Protocol *NSProtocolFromString(NSString *namestr);
+Protocol *NSProtocolFromString(CFStringRef namestr);
 
 NSMapEnumerator NSEnumerateMapTable(NSMapTable *table);
 

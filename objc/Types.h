@@ -9,7 +9,7 @@ struct objc_object {
     Class isa;
 };
 
-typedef struct objc_object *id;
+typedef _QWORD id;
 
 typedef struct objc_object Protocol;
 // typedef struct objc_selector *SEL;
