@@ -75,10 +75,18 @@ typedef uint32_t os_workgroup_index;
 typedef uint64_t os_activity_id_t;
 typedef uint64_t os_signpost_id_t;
 
+typedef long os_once_t;
+typedef os_once_t os_alloc_token_t;
+
 enum os_signpost_type_t : uint8_t {
     OS_SIGNPOST_EVENT = 0x00,
     OS_SIGNPOST_INTERVAL_BEGIN = 0x01,
     OS_SIGNPOST_INTERVAL_END = 0x02,
+};
+
+struct _os_alloc_once_s {
+	os_alloc_token_t once;
+	void *ptr;
 };
 
 typedef void (*os_function_t)(void *);

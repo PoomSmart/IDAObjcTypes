@@ -5,6 +5,7 @@
 
 OSStatus AudioServicesCreateSystemSoundID(CFURLRef inFileURL, SystemSoundID *outSystemSoundID);
 OSStatus AudioServicesDisposeSystemSoundID(SystemSoundID inSystemSoundID);
+OSStatus AudioServicesSetProperty(AudioServicesPropertyID inPropertyID, UInt32 inSpecifierSize, const void *inSpecifier, UInt32 inPropertyDataSize, const void *inPropertyData);
 
 void AudioServicesStartSystemSound(SystemSoundID inSystemSoundID);
 void AudioServicesStopSystemSound(SystemSoundID inSystemSoundID, int64_t unk1);

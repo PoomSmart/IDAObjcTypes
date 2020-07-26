@@ -87,6 +87,7 @@ size_t xpc_data_get_length(xpc_object_t xdata);
 size_t xpc_string_get_length(xpc_object_t xstring);
 size_t xpc_shmem_map(xpc_object_t xshmem, void **region);
 
+int xpc_pipe_routine(xpc_pipe_t pipe, xpc_object_t request, xpc_object_t* reply);
 int xpc_dictionary_dup_fd(xpc_object_t xdict, const char *key);
 int xpc_array_dup_fd(xpc_object_t xarray, size_t index);
 int xpc_fd_dup(xpc_object_t xfd);
@@ -161,3 +162,4 @@ const char *xpc_dictionary_get_string(xpc_object_t xdict, const char *key);
 const char *xpc_array_get_string(xpc_object_t xarray, size_t index);
 const char *xpc_string_get_string_ptr(xpc_object_t);
 const char *xpc_bundle_get_executable_path(xpc_object_t bundle);
+const char *xpc_strerror(int error);

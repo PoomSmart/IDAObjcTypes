@@ -40,6 +40,8 @@ kern_return_t IOHIDPostEvent(io_connect_t connect, UInt32 eventType, IOGPoint lo
 
 io_service_t IOServiceGetMatchingService(mach_port_t masterPort, CFDictionaryRef matching);
 
+io_object_t IOIteratorNext(io_iterator_t iterator);
+
 io_registry_entry_t IORegistryEntryFromPath(mach_port_t masterPort, const io_string_t path);
 io_registry_entry_t IORegistryEntryCopyFromPath(mach_port_t masterPort, CFStringRef path);
 

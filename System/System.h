@@ -7,6 +7,8 @@ void asl_release(asl_object_t obj);
 int renamex_np(const char *from, const char *to, unsigned int flags);
 int memorystatus_get_level(user_addr_t level);
 int memorystatus_control(uint32_t command, int32_t pid, uint32_t flags, void *buffer, size_t buffersize);
+int csops(pid_t pid, unsigned int ops, void *useraddr, size_t usersize);
+int csops_audittoken(pid_t pid, unsigned int ops, void *useraddr, size_t usersize, audit_token_t *token);
 
 asl_object_t asl_next(asl_object_t obj);
 

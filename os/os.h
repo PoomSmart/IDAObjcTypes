@@ -66,6 +66,7 @@ void _os_assumes_log(kern_return_t);
 bool _os_nospin_lock_trylock(_os_nospin_lock_t lock);
 bool _os_feature_enabled_impl(const char *domain, const char *feature);
 
+void *_os_alloc_once(struct _os_alloc_once_s *slot, size_t sz, os_function_t init);
 void *os_retain(void *object);
 void *os_workgroup_set_context(os_workgroup_t wg, void *context);
 void *os_workgroup_get_context(os_workgroup_t wg);

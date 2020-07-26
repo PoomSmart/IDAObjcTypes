@@ -82,6 +82,7 @@ SecKeyRef SecTrustCopyPublicKey(SecTrustRef trust);
 SecKeyRef SecCertificateCopyKey(SecCertificateRef certificate);
 SecKeyRef SecCertificateCopyPublicKey(SecCertificateRef certificate);
 SecKeyRef SecKeyCreateWithData(CFDataRef keyData, CFDictionaryRef attributes, CFErrorRef *error);
+SecKeyRef SecKeyCreateRSAPublicKey(CFAllocatorRef allocator, const uint8_t *keyData, CFIndex keyDataLength, SecKeyEncoding encoding);
 
 SecPolicyRef SecPolicyCreateBasicX509(void);
 SecPolicyRef SecPolicyCreateSSL(Boolean server, CFStringRef hostname);

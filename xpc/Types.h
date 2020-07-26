@@ -7,6 +7,7 @@ typedef NSObject *xpc_object_t;
 typedef NSObject *OS_xpc_mach_send;
 
 typedef const struct _xpc_type_s *xpc_type_t;
+typedef struct _xpc_pipe_s *xpc_pipe_t;
 
 typedef xpc_object_t xpc_connection_t;
 typedef xpc_object_t xpc_bundle_t;

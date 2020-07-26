@@ -38,4 +38,10 @@ enum SystemSoundID : UInt32 {
     kUserPreferredAlert = kSystemSoundID_UserPreferredAlert
 };
 
+enum AudioServicesPropertyID : UInt32 {
+    kAudioServicesPropertyIsUISound = 'isui',
+    kAudioServicesPropertyCompletePlaybackIfAppDies = 'ifdi',
+    kAudioServicesPropertyBeingActive = 'actt' // Research
+};
+
 #endif

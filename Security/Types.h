@@ -207,6 +207,18 @@ enum SecAccessControlCreateFlags : CFOptionFlags {
     kSecAccessControlApplicationPassword = 1u << 31
 };
 
+enum SecKeyEncoding : uint32_t {
+    kSecKeyEncodingRaw = 0,
+    kSecKeyEncodingPkcs1 = 1,
+    kSecKeyEncodingApplePkcs1 = 2,
+    kSecKeyEncodingRSAPublicParams = 3,
+    kSecDERKeyEncoding = 4,
+    kSecGenerateKey = 5,
+    kSecExtractPublicFromPrivate = 6,
+    kSecKeyEncodingBytes = 7,
+    kSecKeyCoreCrypto = 8
+};
+
 extern const CFStringRef kSecPropertyTypeTitle;
 extern const CFStringRef kSecPropertyTypeError;
 extern const CFStringRef kSecTrustEvaluationDate;
