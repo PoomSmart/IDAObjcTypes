@@ -12,6 +12,8 @@ kern_return_t IOConnectCallAsyncStructMethod(mach_port_t connection, uint32_t se
 kern_return_t IOConnectCallAsyncScalarMethod(mach_port_t connection, uint32_t selector, mach_port_t wake_port, uint64_t *reference, uint32_t referenceCnt, const uint64_t *input, uint32_t inputCnt, uint64_t *output, uint32_t *outputCnt);
 kern_return_t IOConnectSetCFProperty(io_connect_t connect, CFStringRef propertyName, CFTypeRef property);
 kern_return_t IOConnectSetCFProperties(io_connect_t connect, CFTypeRef properties);
+kern_return_t IOConnectAddClient(io_connect_t connect, io_connect_t client);
+kern_return_t IOConnectMapMemory64(io_connect_t connect, uint32_t memoryType, task_port_t intoTask, mach_vm_address_t *atAddress, mach_vm_size_t *ofSize, IOOptionBits options);
 kern_return_t IOObjectGetClass(io_object_t object, io_name_t className);
 kern_return_t IOObjectRelease(io_object_t object);
 kern_return_t IOObjectRetain(io_object_t object);

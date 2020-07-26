@@ -36,6 +36,7 @@ typedef integer_t mach_port_delta_t;
 typedef char *mach_msg_trailer_info_t;
 
 typedef uint16_t mode_t;
+typedef uint64_t mach_vm_size_t;
 typedef u_int64_t user_addr_t;
 
 typedef int boolean_t;
