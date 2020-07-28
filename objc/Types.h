@@ -9,6 +9,10 @@ struct objc_object {
     Class isa;
 };
 
+#ifdef GHIDRA
+typedef objc_object *id;
+#endif
+
 typedef struct objc_object Protocol;
 // typedef struct objc_selector *SEL;
 typedef const char *SEL;

@@ -77,16 +77,16 @@ typedef CFIndex CFStreamStatus;
 typedef CFIndex CFURLPathStyle;
 typedef CFIndex CFURLComponentType;
 
-enum CFRunLoopRunResult : SInt32 {
+PS_ENUM(SInt32, CFRunLoopRunResult) {
     kCFRunLoopRunFinished = 1,
     kCFRunLoopRunStopped = 2,
     kCFRunLoopRunTimedOut = 3,
     kCFRunLoopRunHandledSource = 4
 };
 
-enum CFComparisonResult : CFIndex { kCFCompareLessThan = -1, kCFCompareEqualTo = 0, kCFCompareGreaterThan = 1 };
+PS_ENUM(CFIndex, CFComparisonResult) { kCFCompareLessThan = -1, kCFCompareEqualTo = 0, kCFCompareGreaterThan = 1 };
 
-enum CFSearchPathDirectory : CFIndex {
+PS_ENUM(CFIndex, CFSearchPathDirectory) {
     kCFApplicationDirectory = 1,
     kCFDemoApplicationDirectory,
     kCFDeveloperApplicationDirectory,
@@ -100,13 +100,13 @@ enum CFSearchPathDirectory : CFIndex {
     kCFAllLibrariesDirectory = 101
 };
 
-enum CFPropertyListFormat : CFIndex {
+PS_ENUM(CFIndex, CFPropertyListFormat) {
     kCFPropertyListOpenStepFormat = 1,
     kCFPropertyListXMLFormat_v1_0 = 100,
     kCFPropertyListBinaryFormat_v1_0 = 200
 };
 
-enum CFSearchPathDomainMask : CFOptionFlags {
+PS_ENUM(CFOptionFlags, CFSearchPathDomainMask) {
     kCFUserDomainMask = 1,
     kCFLocalDomainMask = 2,
     kCFNetworkDomainMask = 4,
@@ -114,7 +114,7 @@ enum CFSearchPathDomainMask : CFOptionFlags {
     kCFAllDomainsMask = 0x0ffff
 };
 
-enum CFRunLoopActivity : CFOptionFlags {
+PS_ENUM(CFOptionFlags, CFRunLoopActivity) {
     kCFRunLoopEntry = (1UL << 0),
     kCFRunLoopBeforeTimers = (1UL << 1),
     kCFRunLoopBeforeSources = (1UL << 2),
@@ -240,7 +240,7 @@ typedef struct CFStringInlineBuffer {
     CFIndex bufferedRangeEnd;
 } CFStringInlineBuffer;
 
-enum CFNumberType : CFIndex {
+PS_ENUM(CFIndex, CFNumberType) {
     kCFNumberSInt8Type = 1,
     kCFNumberSInt16Type = 2,
     kCFNumberSInt32Type = 3,
@@ -260,7 +260,7 @@ enum CFNumberType : CFIndex {
     kCFNumberMaxType = 16
 };
 
-enum CFStringEncoding : UInt32 {
+PS_ENUM(UInt32, CFStringEncoding) {
     kCFStringEncodingMacRoman = 0,
     kCFStringEncodingWindowsLatin1 = 0x0500,
     kCFStringEncodingISOLatin1 = 0x0201,
@@ -277,7 +277,7 @@ enum CFStringEncoding : UInt32 {
     kCFStringEncodingUTF32LE = 0x1c000100
 };
 
-enum CFStringCompareFlags : CFOptionFlags {
+PS_ENUM(CFOptionFlags, CFStringCompareFlags) {
     kCFCompareCaseInsensitive = 1,
     kCFCompareBackwards = 4,
     kCFCompareAnchored = 8,
@@ -289,7 +289,7 @@ enum CFStringCompareFlags : CFOptionFlags {
     kCFCompareForcedOrdering = 512
 };
 
-enum CFStringTokenizerTokenType : CFOptionFlags {
+PS_ENUM(CFOptionFlags, CFStringTokenizerTokenType) {
     kCFStringTokenizerTokenNone = 0,
     kCFStringTokenizerTokenNormal = 1UL << 0,
     kCFStringTokenizerTokenHasSubTokensMask = 1UL << 1,
@@ -299,7 +299,7 @@ enum CFStringTokenizerTokenType : CFOptionFlags {
     kCFStringTokenizerTokenIsCJWordMask = 1UL << 5
 };
 
-enum CFCharacterSetPredefinedSet : CFIndex {
+PS_ENUM(CFIndex, CFCharacterSetPredefinedSet) {
     kCFCharacterSetControl = 1,
     kCFCharacterSetWhitespace,
     kCFCharacterSetWhitespaceAndNewline,

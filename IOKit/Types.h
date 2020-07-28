@@ -21,7 +21,7 @@ typedef char io_struct_inband_t[4096];
 
 typedef kern_return_t IOReturn;
 
-enum IOOptionBits : UInt32 {
+PS_ENUM(UInt32, IOOptionBits) {
     kIOHIDEventOptionNone = 0,
 };
 
@@ -76,7 +76,7 @@ typedef struct __IOHIDEvent {
     void *record;
 } * IOHIDEventRef;
 
-enum IOHIDEventType : uint32_t {
+PS_ENUM(uint32_t, IOHIDEventType) {
     kIOHIDEventTypeNULL = 0,
     kIOHIDEventTypeVendorDefined,
     kIOHIDEventTypeButton,
@@ -123,9 +123,9 @@ enum IOHIDEventType : uint32_t {
     kIOHIDEventTypeMouse = kIOHIDEventTypePointer
 };
 
-enum IOHIDAccelerometerType : uint32_t { kIOHIDAccelerometerTypeNormal = 0, kIOHIDAccelerometerTypeShake = 1 };
+PS_ENUM(uint32_t, IOHIDAccelerometerType) { kIOHIDAccelerometerTypeNormal = 0, kIOHIDAccelerometerTypeShake = 1 };
 
-enum IOHIDSwipeMask : uint32_t {
+PS_ENUM(uint32_t, IOHIDSwipeMask) {
     kIOHIDSwipeNone = 0,
     kIOHIDSwipeUp = 1 << 0,
     kIOHIDSwipeDown = 1 << 1,
@@ -137,7 +137,7 @@ enum IOHIDSwipeMask : uint32_t {
     kIOHIDRotateCCW = 1 << 7,
 };
 
-enum IOHIDProximityDetectionMask : uint32_t {
+PS_ENUM(uint32_t, IOHIDProximityDetectionMask) {
     kIOHIDProximityDetectionLargeBodyContact = 0x0001,
     kIOHIDProximityDetectionLargeBodyFarField = 0x0002,
     kIOHIDProximityDetectionIrregularObjects = 0x0004,
@@ -149,14 +149,14 @@ enum IOHIDProximityDetectionMask : uint32_t {
     kIOHIDProximityDetectionReceiverCrude = 0x0100
 };
 
-enum IOHIDDigitizerTransducerType : uint32_t {
+PS_ENUM(uint32_t, IOHIDDigitizerTransducerType) {
     kIOHIDDigitizerTransducerTypeStylus = 0x20,
     kIOHIDDigitizerTransducerTypePuck,
     kIOHIDDigitizerTransducerTypeFinger,
     kIOHIDDigitizerTransducerTypeHand
 };
 
-enum IOHIDDigitizerEventMask : uint32_t {
+PS_ENUM(uint32_t, IOHIDDigitizerEventMask) {
     kIOHIDDigitizerEventRange = 1 << 0,
     kIOHIDDigitizerEventTouch = 1 << 1,
     kIOHIDDigitizerEventPosition = 1 << 2,
@@ -184,13 +184,13 @@ enum IOHIDDigitizerEventMask : uint32_t {
     kIOHIDDigitizerEventSwipeMask = 0xF << 24,
 };
 
-enum IOHIDEventOptionBits : uint32_t {
+PS_ENUM(uint32_t, IOHIDEventOptionBits) {
     kIOHIDEventOptionIsAbsolute = 0x00000001,
     kIOHIDEventOptionIsCollection = 0x00000002,
     kIOHIDEventOptionPixelUnits = 0x00000004
 };
 
-enum IOHIDReportType : uint32_t { kIOHIDReportTypeInput = 0, kIOHIDReportTypeOutput, kIOHIDReportTypeFeature, kIOHIDReportTypeCount };
+PS_ENUM(uint32_t, IOHIDReportType) { kIOHIDReportTypeInput = 0, kIOHIDReportTypeOutput, kIOHIDReportTypeFeature, kIOHIDReportTypeCount };
 
 #ifdef __EA64__
 typedef double IOHIDFloat;
@@ -204,7 +204,7 @@ typedef struct _IOHID3DPoint {
     IOHIDFloat z;
 } IOHID3DPoint;
 
-enum IOHIDEventField : uint32_t {
+PS_ENUM(uint32_t, IOHIDEventField) {
     kIOHIDEventFieldAccelerometerX = IOHIDEventFieldBase(kIOHIDEventTypeAccelerometer),
     kIOHIDEventFieldAccelerometerY,
     kIOHIDEventFieldAccelerometerZ,
@@ -353,7 +353,7 @@ enum IOHIDEventField : uint32_t {
     kIOHIDEventFieldMultiAxisPointerButtonPressure = kIOHIDEventFieldButtonPressure,
 };
 
-enum IOHIDDigitizerEventUpdateMask : uint32_t {
+PS_ENUM(uint32_t, IOHIDDigitizerEventUpdateMask) {
     kIOHIDDigitizerEventUpdateXMask = 1 << IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerX),
     kIOHIDDigitizerEventUpdateYMask = 1 << IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerY),
     kIOHIDDigitizerEventUpdateZMask = 1 << IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerZ),

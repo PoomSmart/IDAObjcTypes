@@ -13,16 +13,16 @@ typedef uint64_t CVOptionFlags;
 
 typedef int32_t CVReturn;
 
-enum CVAttachmentMode : uint32_t {
+PS_ENUM(uint32_t, CVAttachmentMode) {
     kCVAttachmentMode_ShouldNotPropagate    = 0,
     kCVAttachmentMode_ShouldPropagate       = 1
 };
 
-enum CVPixelBufferLockFlags : CVOptionFlags {
+PS_ENUM(CVOptionFlags, CVPixelBufferLockFlags) {
     kCVPixelBufferLock_ReadOnly = 0x00000001,
 };
 
-enum CVPixelBufferPoolFlushFlags : CVOptionFlags {
+PS_ENUM(CVOptionFlags, CVPixelBufferPoolFlushFlags) {
     kCVPixelBufferPoolFlushExcessBuffers = 1,
 };
 

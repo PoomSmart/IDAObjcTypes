@@ -9,7 +9,7 @@ typedef struct AudioFormatListItem {
 } AudioFormatListItem;
 
 // Credits: https://github.com/TUNER88/iOSSystemSoundsLibrary
-enum SystemSoundID : UInt32 {
+PS_ENUM(UInt32, SystemSoundID) {
     kSystemSoundID_MailSent = 1000,
     kSystemSoundID_MailReceived = 1001,
     kSystemSoundID_VoicemailReceived = 1002,
@@ -38,7 +38,7 @@ enum SystemSoundID : UInt32 {
     kUserPreferredAlert = kSystemSoundID_UserPreferredAlert
 };
 
-enum AudioServicesPropertyID : UInt32 {
+PS_ENUM(UInt32, AudioServicesPropertyID) {
     kAudioServicesPropertyIsUISound = 'isui',
     kAudioServicesPropertyCompletePlaybackIfAppDies = 'ifdi',
     kAudioServicesPropertyBeingActive = 'actt' // Research

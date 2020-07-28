@@ -7,7 +7,7 @@
 typedef void *GSWindowRef;
 typedef struct __GSKeyboard * GSKeyboardRef;
 
-enum GSEventType : int {
+PS_ENUM(int, GSEventType) {
     kGSEventLeftMouseDown    = 1,
     kGSEventLeftMouseUp      = 2,
     kGSEventMouseMoved       = 5,
@@ -85,18 +85,18 @@ enum GSEventType : int {
     kGSEventShouldRouteToFrontMost = 1<<17
 };
 
-enum GSEventSubType : unsigned {
+PS_ENUM(unsigned, GSEventSubType) {
     kGSEventSubTypeUnknown,
 };
 
-enum GSEventFlags : unsigned {
+PS_ENUM(unsigned, GSEventFlags) {
     kGSEventFlagMaskShift = 1 << 17,
     kGSEventFlagMaskControl = 1 << 18,
     kGSEventFlagMaskAlternate = 1 << 19,
     kGSEventFlagMaskCommand = 1 << 20
 };
 
-enum GSHandInfoType : unsigned {
+PS_ENUM(unsigned, GSHandInfoType) {
     kGSHandInfoTypeTouchDown = 0,
     kGSHandInfoTypeTouchDragged = 1,
     kGSHandInfoTypeTouchMoved = 4,

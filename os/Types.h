@@ -55,7 +55,7 @@ typedef struct os_unfair_recursive_lock_s {
 typedef NSObject *os_workgroup_t;
 typedef os_workgroup_t *os_workgroup_interval_t;
 
-enum os_log_type_t : uint8_t {
+PS_ENUM(uint8_t, os_log_type_t) {
     OS_LOG_TYPE_DEFAULT = 0x00,
     OS_LOG_TYPE_INFO = 0x01,
     OS_LOG_TYPE_DEBUG = 0x02,
@@ -63,7 +63,7 @@ enum os_log_type_t : uint8_t {
     OS_LOG_TYPE_FAULT = 0x11,
 };
 
-enum os_activity_flag_t : uint32_t {
+PS_ENUM(uint32_t, os_activity_flag_t) {
     OS_ACTIVITY_FLAG_DEFAULT = 0,
     OS_ACTIVITY_FLAG_DETACHED = 0x1,
     OS_ACTIVITY_FLAG_IF_NONE_PRESENT = 0x2
@@ -78,7 +78,7 @@ typedef uint64_t os_signpost_id_t;
 typedef long os_once_t;
 typedef os_once_t os_alloc_token_t;
 
-enum os_signpost_type_t : uint8_t {
+PS_ENUM(uint8_t, os_signpost_type_t) {
     OS_SIGNPOST_EVENT = 0x00,
     OS_SIGNPOST_INTERVAL_BEGIN = 0x01,
     OS_SIGNPOST_INTERVAL_END = 0x02,

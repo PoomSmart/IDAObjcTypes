@@ -19,7 +19,7 @@ typedef double Float64;
 typedef long CMItemCount;
 typedef long CMItemIndex;
 
-enum CMMediaType : FourCharCode {
+PS_ENUM(FourCharCode, CMMediaType) {
     kCMMediaType_Video				= 'vide',
     kCMMediaType_Audio				= 'soun',
     kCMMediaType_Muxed				= 'muxx',
@@ -30,7 +30,7 @@ enum CMMediaType : FourCharCode {
     kCMMediaType_Metadata			= 'meta'
 };
 
-enum CMPixelFormatType : FourCharCode {
+PS_ENUM(FourCharCode, CMPixelFormatType) {
     kCMPixelFormat_32ARGB                   = 32,
     kCMPixelFormat_32BGRA                   = 'BGRA',
     kCMPixelFormat_24RGB                    = 24,
@@ -49,7 +49,7 @@ enum CMPixelFormatType : FourCharCode {
     kCMPixelFormat_8IndexedGray_WhiteIsZero = 0x00000028
 };
 
-enum CMVideoCodecType : FourCharCode {
+PS_ENUM(FourCharCode, CMVideoCodecType) {
     kCMVideoCodecType_422YpCbCr8       = kCMPixelFormat_422YpCbCr8,
     kCMVideoCodecType_Animation        = 'rle ',
     kCMVideoCodecType_Cinepak          = 'cvid',

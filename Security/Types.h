@@ -53,7 +53,7 @@ typedef struct cssm_tp_verify_context_result {
     CSSM_EVIDENCE_PTR Evidence;
 } CSSM_TP_VERIFY_CONTEXT_RESULT, *CSSM_TP_VERIFY_CONTEXT_RESULT_PTR;
 
-enum CSSM_TP_APPLE_CERT_STATUS : uint32 {
+PS_ENUM(uint32, CSSM_TP_APPLE_CERT_STATUS) {
     CSSM_CERT_STATUS_EXPIRED = 0x00000001,
     CSSM_CERT_STATUS_NOT_VALID_YET = 0x00000002,
     CSSM_CERT_STATUS_IS_IN_INPUT_CERTS = 0x00000004,
@@ -149,7 +149,7 @@ typedef struct SecKeychainAttributeInfo {
 
 typedef UInt32 SecKeychainStatus;
 
-enum SecTrustResultType : uint32_t {
+PS_ENUM(uint32_t, SecTrustResultType) {
     kSecTrustResultInvalid = 0,
     kSecTrustResultProceed = 1,
     kSecTrustResultConfirm = 2,
@@ -164,7 +164,7 @@ typedef void (*SecTrustCallback)(SecTrustRef trustRef, SecTrustResultType trustR
 
 typedef SecTrustResultType SecTrustUserSetting;
 
-enum SecPadding : uint32_t {
+PS_ENUM(uint32_t, SecPadding) {
     kSecPaddingNone = 0,
     kSecPaddingPKCS1 = 1,
     kSecPaddingOAEP = 2,
@@ -173,7 +173,7 @@ enum SecPadding : uint32_t {
     kSecPaddingPKCS1SHA1 = 0x8002
 };
 
-enum SecCSFlags : uint32_t {
+PS_ENUM(uint32_t, SecCSFlags) {
     kSecCSDefaultFlags = 0,
     kSecCSConsiderExpiration = 1u << 31,
     kSecCSEnforceRevocationChecks = 1 << 30,
@@ -183,7 +183,7 @@ enum SecCSFlags : uint32_t {
     kSecCSQuickCheck = 1 << 26,
 };
 
-enum SecTrustOptionFlags : uint32_t {
+PS_ENUM(uint32_t, SecTrustOptionFlags) {
     kSecTrustOptionAllowExpired = 0x00000001,
     kSecTrustOptionLeafIsCA = 0x00000002,
     kSecTrustOptionFetchIssuerFromNet = 0x00000004,
@@ -193,7 +193,7 @@ enum SecTrustOptionFlags : uint32_t {
     kSecTrustOptionImplicitAnchors = 0x00000040
 };
 
-enum SecAccessControlCreateFlags : CFOptionFlags {
+PS_ENUM(CFOptionFlags, SecAccessControlCreateFlags) {
     kSecAccessControlUserPresence = 1u << 0,
     kSecAccessControlBiometryAny = 1u << 1,
     kSecAccessControlTouchIDAny = 1u << 1,
@@ -207,7 +207,7 @@ enum SecAccessControlCreateFlags : CFOptionFlags {
     kSecAccessControlApplicationPassword = 1u << 31
 };
 
-enum SecKeyEncoding : uint32_t {
+PS_ENUM(uint32_t, SecKeyEncoding) {
     kSecKeyEncodingRaw = 0,
     kSecKeyEncodingPkcs1 = 1,
     kSecKeyEncodingApplePkcs1 = 2,

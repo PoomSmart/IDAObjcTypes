@@ -74,12 +74,12 @@ typedef CGFontIndex CGGlyph;
 typedef CFTypeRef CGSRegionRef;
 typedef CFTypeRef CGSRegionEnumeratorRef;
 
-enum CGImageCachingFlags : uint32_t {
+PS_ENUM(uint32_t, CGImageCachingFlags) {
     kCGImageCachingTransient = 1,
     kCGImageCachingTemporary = 3,
 };
 
-enum CGError : int32_t {
+PS_ENUM(int32_t, CGError) {
     kCGErrorSuccess = 0,
     kCGErrorFailure = 1000,
     kCGErrorIllegalArgument = 1001,
@@ -98,7 +98,7 @@ typedef enum CGCompositeOperation {
     kCGCompositeSover = 2,
 } CGCompositeOperation;
 
-enum CGImageMetadataType : int32_t {
+PS_ENUM(int32_t, CGImageMetadataType) {
     kCGImageMetadataTypeInvalid = -1,
     kCGImageMetadataTypeDefault = 0,
     kCGImageMetadataTypeString = 1,
@@ -109,7 +109,7 @@ enum CGImageMetadataType : int32_t {
     kCGImageMetadataTypeStructure = 6
 };
 
-enum CGBlendMode : int32_t {
+PS_ENUM(int32_t, CGBlendMode) {
     kCGBlendModeNormal,
     kCGBlendModeMultiply,
     kCGBlendModeScreen,
@@ -140,7 +140,7 @@ enum CGBlendMode : int32_t {
     kCGBlendModePlusLighter
 };
 
-enum CGInterpolationQuality : int32_t {
+PS_ENUM(int32_t, CGInterpolationQuality) {
     kCGInterpolationDefault = 0,
     kCGInterpolationNone = 1,
     kCGInterpolationLow = 2,
@@ -148,7 +148,7 @@ enum CGInterpolationQuality : int32_t {
     kCGInterpolationHigh = 3
 };
 
-enum CGPathDrawingMode : int32_t {
+PS_ENUM(int32_t, CGPathDrawingMode) {
     kCGPathFill,
     kCGPathEOFill,
     kCGPathStroke,
@@ -156,7 +156,7 @@ enum CGPathDrawingMode : int32_t {
     kCGPathEOFillStroke
 };
 
-enum CGTextDrawingMode : int32_t {
+PS_ENUM(int32_t, CGTextDrawingMode) {
     kCGTextFill,
     kCGTextStroke,
     kCGTextFillStroke,
@@ -167,13 +167,13 @@ enum CGTextDrawingMode : int32_t {
     kCGTextClip
 };
 
-enum CGPatternTiling : int32_t {
+PS_ENUM(int32_t, CGPatternTiling) {
     kCGPatternTilingNoDistortion,
     kCGPatternTilingConstantSpacingMinimalDistortion,
     kCGPatternTilingConstantSpacing
 };
 
-enum CGImageAlphaInfo : uint32_t {
+PS_ENUM(uint32_t, CGImageAlphaInfo) {
     kCGImageAlphaNone,
     kCGImageAlphaPremultipliedLast,
     kCGImageAlphaPremultipliedFirst,
@@ -184,12 +184,12 @@ enum CGImageAlphaInfo : uint32_t {
     kCGImageAlphaOnly
 };
 
-enum CGGradientDrawingOptions : uint32_t {
+PS_ENUM(uint32_t, CGGradientDrawingOptions) {
     kCGGradientDrawsBeforeStartLocation = (1 << 0),
     kCGGradientDrawsAfterEndLocation = (1 << 1)
 };
 
-enum CGColorRenderingIntent : int32_t {
+PS_ENUM(int32_t, CGColorRenderingIntent) {
     kCGRenderingIntentDefault,
     kCGRenderingIntentAbsoluteColorimetric,
     kCGRenderingIntentRelativeColorimetric,
@@ -197,7 +197,7 @@ enum CGColorRenderingIntent : int32_t {
     kCGRenderingIntentSaturation
 };
 
-enum CGColorSpaceModel : int32_t {
+PS_ENUM(int32_t, CGColorSpaceModel) {
     kCGColorSpaceModelUnknown = -1,
     kCGColorSpaceModelMonochrome,
     kCGColorSpaceModelRGB,
@@ -209,11 +209,11 @@ enum CGColorSpaceModel : int32_t {
     kCGColorSpaceModelXYZ
 };
 
-enum CGLineCap : int32_t { kCGLineCapButt, kCGLineCapRound, kCGLineCapSquare };
+PS_ENUM(int32_t, CGLineCap) { kCGLineCapButt, kCGLineCapRound, kCGLineCapSquare };
 
-enum CGLineJoin : int32_t { kCGLineJoinMiter, kCGLineJoinRound, kCGLineJoinBevel };
+PS_ENUM(int32_t, CGLineJoin) { kCGLineJoinMiter, kCGLineJoinRound, kCGLineJoinBevel };
 
-enum CGPathElementType : int32_t {
+PS_ENUM(int32_t, CGPathElementType) {
     kCGPathElementMoveToPoint,
     kCGPathElementAddLineToPoint,
     kCGPathElementAddQuadCurveToPoint,
@@ -221,7 +221,7 @@ enum CGPathElementType : int32_t {
     kCGPathElementCloseSubpath
 };
 
-enum CGImageByteOrderInfo : uint32_t {
+PS_ENUM(uint32_t, CGImageByteOrderInfo) {
     kCGImageByteOrderMask = 0x7000,
     kCGImageByteOrderDefault = (0 << 12),
     kCGImageByteOrder16Little = (1 << 12),
@@ -230,7 +230,7 @@ enum CGImageByteOrderInfo : uint32_t {
     kCGImageByteOrder32Big = (4 << 12)
 };
 
-enum CGImagePixelFormatInfo : uint32_t {
+PS_ENUM(uint32_t, CGImagePixelFormatInfo) {
     kCGImagePixelFormatMask = 0xF0000,
     kCGImagePixelFormatPacked = (0 << 16),
     kCGImagePixelFormatRGB555 = (1 << 16),
@@ -239,7 +239,7 @@ enum CGImagePixelFormatInfo : uint32_t {
     kCGImagePixelFormatRGBCIF10 = (4 << 16),
 };
 
-enum CGBitmapInfo : uint32_t {
+PS_ENUM(uint32_t, CGBitmapInfo) {
     kCGBitmapAlphaInfoMask = 0x1F,
     kCGBitmapFloatInfoMask = 0xF00,
     kCGBitmapFloatComponents = (1 << 8),
@@ -251,7 +251,7 @@ enum CGBitmapInfo : uint32_t {
     kCGBitmapByteOrder32Big = kCGImageByteOrder32Big
 };
 
-enum CGFontAntialiasingStyle : uint32_t {
+PS_ENUM(uint32_t, CGFontAntialiasingStyle) {
     kCGFontAntialiasingStyleUnfiltered = 0 << 7,
     kCGFontAntialiasingStyleFilterLight = 1 << 7,
     kCGFontAntialiasingStyleUnfilteredCustomDilation = (8 << 7),
@@ -270,7 +270,7 @@ typedef enum CGContextType {
     kCGContextTypeCount
 } CGContextType;
 
-enum CGFontRenderingStyle : uint32_t {
+PS_ENUM(uint32_t, CGFontRenderingStyle) {
     kCGFontRenderingStyleAntialiasing = 1 << 0,
     kCGFontRenderingStyleSmoothing = 1 << 1,
     kCGFontRenderingStyleSubpixelPositioning = 1 << 2,

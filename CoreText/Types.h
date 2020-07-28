@@ -17,11 +17,11 @@ enum { kCTFontOptionsPreferSystemFont = 1 << 2 };
 
 typedef uint32_t CTFontOrientation;
 
-enum CTFontDescriptorOptions : uint32_t { kCTFontDescriptorOptionSystemUIFont = 1 << 1, kCTFontDescriptorOptionPreferAppleSystemFont = kCTFontOptionsPreferSystemFont };
+PS_ENUM(uint32_t, CTFontDescriptorOptions) { kCTFontDescriptorOptionSystemUIFont = 1 << 1, kCTFontDescriptorOptionPreferAppleSystemFont = kCTFontOptionsPreferSystemFont };
 
 enum { kCTFontClassMaskShift = 28 };
 
-enum CTFontSymbolicTraits : uint32_t {
+PS_ENUM(uint32_t, CTFontSymbolicTraits) {
     kCTFontTraitItalic = (1 << 0),
     kCTFontTraitBold = (1 << 1),
     kCTFontTraitExpanded = (1 << 5),
@@ -44,7 +44,7 @@ enum CTFontSymbolicTraits : uint32_t {
     kCTFontClassMaskTrait = kCTFontTraitClassMask
 };
 
-enum CTFontUIFontType : uint32_t {
+PS_ENUM(uint32_t, CTFontUIFontType) {
     kCTFontUIFontNone = (uint32_t)-1,
     kCTFontUIFontUser = 0,
     kCTFontUIFontUserFixedPitch = 1,
@@ -104,9 +104,9 @@ enum CTFontUIFontType : uint32_t {
     kCTFontControlContentFontType = kCTFontUIFontControlContent
 };
 
-enum CTRunStatus : uint32_t { kCTRunStatusNoStatus = 0, kCTRunStatusRightToLeft = (1 << 0), kCTRunStatusNonMonotonic = (1 << 1), kCTRunStatusHasNonIdentityMatrix = (1 << 2) };
+PS_ENUM(uint32_t, CTRunStatus) { kCTRunStatusNoStatus = 0, kCTRunStatusRightToLeft = (1 << 0), kCTRunStatusNonMonotonic = (1 << 1), kCTRunStatusHasNonIdentityMatrix = (1 << 2) };
 
-enum CTLineBoundsOptions : uint32_t {
+PS_ENUM(uint32_t, CTLineBoundsOptions) {
     kCTLineBoundsExcludeTypographicLeading = 1 << 0,
     kCTLineBoundsExcludeTypographicShifts = 1 << 1,
     kCTLineBoundsUseHangingPunctuation = 1 << 2,
@@ -115,7 +115,7 @@ enum CTLineBoundsOptions : uint32_t {
     kCTLineBoundsIncludeLanguageExtents = 1 << 5,
 };
 
-enum CTLineTruncationType : uint32_t { kCTLineTruncationStart = 0, kCTLineTruncationEnd = 1, kCTLineTruncationMiddle = 2 };
+PS_ENUM(uint32_t, CTLineTruncationType) { kCTLineTruncationStart = 0, kCTLineTruncationEnd = 1, kCTLineTruncationMiddle = 2 };
 
 typedef CFOptionFlags CTFontOptions;
 

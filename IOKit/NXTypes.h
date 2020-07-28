@@ -1,5 +1,8 @@
 #ifndef _NX_TYPES
 #define _NX_TYPES
+#ifndef GHIDRA
+
+// Doesn't work correctly on IDA Pro 7.0
 
 #import "../BaseTypes.h"
 
@@ -149,4 +152,5 @@ typedef union NXEventData {
     } proximity;
 } NXEventData;
 
+#endif
 #endif

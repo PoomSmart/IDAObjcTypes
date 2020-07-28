@@ -38,7 +38,9 @@ kern_return_t IORegistryEntrySetCFProperty(io_registry_entry_t entry, CFStringRe
 kern_return_t IORegistryEntrySetCFProperties(io_registry_entry_t entry, CFTypeRef properties);
 kern_return_t IORegistryIteratorEnterEntry(io_iterator_t iterator);
 kern_return_t IORegistryIteratorExitEntry(io_iterator_t iterator);
+#ifndef GHIDRA
 kern_return_t IOHIDPostEvent(io_connect_t connect, UInt32 eventType, IOGPoint location, const NXEventData *eventData, UInt32 eventDataVersion, IOOptionBits eventFlags, IOOptionBits options);
+#endif
 
 io_service_t IOServiceGetMatchingService(mach_port_t masterPort, CFDictionaryRef matching);
 
