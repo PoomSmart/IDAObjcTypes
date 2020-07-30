@@ -151,6 +151,12 @@ void CFRunLoopObserverGetContext(CFRunLoopObserverRef observer, CFRunLoopObserve
 void CFRunLoopObserverInvalidate(CFRunLoopObserverRef observer);
 void CFMachPortSetInvalidationCallBack(CFMachPortRef port, CFMachPortInvalidationCallBack callout);
 void CFMachPortInvalidate(CFMachPortRef port);
+CFMessagePortRef CFMessagePortCreateLocal(CFAllocatorRef allocator, CFStringRef name, CFMessagePortCallBack callout, CFMessagePortContext *context, Boolean *shouldFreeInfo);
+CFMessagePortRef CFMessagePortCreateRemote(CFAllocatorRef allocator, CFStringRef name);
+CFRunLoopSourceRef CFMessagePortCreateRunLoopSource(CFAllocatorRef allocator, CFMessagePortRef local, CFIndex order);
+void CFMessagePortInvalidate(CFMessagePortRef ms);
+Boolean CFMessagePortIsValid(CFMessagePortRef ms);
+SInt32 CFMessagePortSendRequest(CFMessagePortRef remote, SInt32 msgid, CFDataRef data, CFTimeInterval sendTimeout, CFTimeInterval rcvTimeout, CFStringRef replyMode, CFDataRef *returnData);
 
 void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
 void _CFNonObjCRelease(CFTypeRef cf);
