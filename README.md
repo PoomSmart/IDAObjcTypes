@@ -16,7 +16,7 @@ Or, run this IDA command: `idaapi.idc_parse_types("/path/to/IDAObjcTypes/IDA.h",
 4. Add two additional flags: `-D__EA64__ -DGHIDRA` to Parse Options.
 5. Save `OBJC.prf` profile as you might use it later.
 6. Click `Parse to Program`, click `Proceed` if anything pops up.
-7. Check `Data Type Manager` window (at bottom-left), (long) right-click at `CoreFoundation` and select `Apply Function Data Types`.
+7. Check `Data Type Manager` window (at bottom-left), (long) right-click at `<your-binary-name>` and select `Apply Function Data Types`.
 
 ### Ghidra limitation
 You have to manually specify the size of enum members if what you get is incorrect.
