@@ -45,6 +45,8 @@ typedef const struct __CFBag *CFBagRef;
 typedef struct __CFBag *CFMutableBagRef;
 typedef struct __CFStringTokenizer *CFStringTokenizerRef;
 typedef struct __CFMachPort *CFMachPortRef;
+typedef struct __CFMessagePort *CFMessagePortRef;
+typedef struct __CFMessagePortContext CFMessagePortContext;
 typedef struct __CFHTTPMessage *CFHTTPMessageRef;
 
 typedef const void *CFTypeRef;
@@ -181,6 +183,8 @@ typedef struct CFDictionaryValueCallBacks {
 } CFDictionaryValueCallBacks;
 
 extern const CFDictionaryValueCallBacks kCFTypeDictionaryValueCallBacks;
+
+typedef CFDataRef (*CFMessagePortCallBack)(CFMessagePortRef local, SInt32 msgid, CFDataRef data, void *info);
 
 typedef const void *(*CFSetRetainCallBack)(CFAllocatorRef allocator, const void *value);
 typedef void (*CFSetReleaseCallBack)(CFAllocatorRef allocator, const void *value);

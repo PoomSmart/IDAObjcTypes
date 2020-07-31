@@ -12,6 +12,7 @@ SInt32 CFURLGetPortNumber(CFURLRef anURL);
 SInt32 CFRunLoopRunSpecific(CFRunLoopRef rl, CFStringRef modeName, CFTimeInterval seconds, Boolean returnAfterSourceHandled);
 SInt32 CFUserNotificationReceiveResponse(CFUserNotificationRef userNotification, CFTimeInterval timeout, CFOptionFlags *responseFlags);
 SInt32 CFUserNotificationCancel(CFUserNotificationRef userNotification);
+SInt32 CFMessagePortSendRequest(CFMessagePortRef remote, SInt32 msgid, CFDataRef data, CFTimeInterval sendTimeout, CFTimeInterval rcvTimeout, CFStringRef replyMode, CFDataRef *returnData);
 
 UInt32 CFBundleGetVersionNumber(CFBundleRef bundle);
 
@@ -151,6 +152,7 @@ void CFRunLoopObserverGetContext(CFRunLoopObserverRef observer, CFRunLoopObserve
 void CFRunLoopObserverInvalidate(CFRunLoopObserverRef observer);
 void CFMachPortSetInvalidationCallBack(CFMachPortRef port, CFMachPortInvalidationCallBack callout);
 void CFMachPortInvalidate(CFMachPortRef port);
+void CFMessagePortInvalidate(CFMessagePortRef ms);
 
 void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
 void _CFNonObjCRelease(CFTypeRef cf);
@@ -206,6 +208,7 @@ Boolean CFRunLoopSourceIsValid(CFRunLoopSourceRef source);
 Boolean CFRunLoopTimerDoesRepeat(CFRunLoopTimerRef timer);
 Boolean CFRunLoopTimerIsValid(CFRunLoopTimerRef timer);
 Boolean CFLocaleGetLanguageRegionEncodingForLocaleIdentifier(CFStringRef locale, LangCode *, RegionCode *, ScriptCode *, CFStringEncoding *);
+Boolean CFMessagePortIsValid(CFMessagePortRef ms);
 
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
 Boolean _CFIsDeallocating(CFTypeRef);
@@ -264,6 +267,7 @@ CFHashCode _CFNonObjCHash(CFTypeRef cf);
 CFRunLoopRef CFRunLoopGetCurrent(void);
 CFRunLoopRef CFRunLoopGetMain(void);
 
+CFRunLoopSourceRef CFMessagePortCreateRunLoopSource(CFAllocatorRef allocator, CFMessagePortRef local, CFIndex order);
 CFRunLoopSourceRef CFRunLoopSourceCreate(CFAllocatorRef allocator, CFIndex order, CFRunLoopSourceContext *context);
 CFRunLoopSourceRef CFUserNotificationCreateRunLoopSource(CFAllocatorRef allocator, CFUserNotificationRef userNotification, CFUserNotificationCallBack callout, CFIndex order);
 CFRunLoopSourceRef CFMachPortCreateRunLoopSource(CFAllocatorRef allocator, CFMachPortRef port, CFIndex order);
@@ -505,6 +509,9 @@ CFURLRef CFBundleCopyResourceURL(CFBundleRef bundle, CFStringRef resourceName, C
 CFURLRef CFBundleCopyResourceURLInDirectory(CFURLRef bundleURL, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName);
 CFURLRef CFBundleCopyResourceURLForLocalization(CFBundleRef bundle, CFStringRef resourceName, CFStringRef resourceType, CFStringRef subDirName, CFStringRef localizationName);
 CFURLRef CFURLGetBaseURL(CFURLRef anURL);
+
+CFMessagePortRef CFMessagePortCreateLocal(CFAllocatorRef allocator, CFStringRef name, CFMessagePortCallBack callout, CFMessagePortContext *context, Boolean *shouldFreeInfo);
+CFMessagePortRef CFMessagePortCreateRemote(CFAllocatorRef allocator, CFStringRef name);
 
 CFMachPortRef CFMachPortCreate(CFAllocatorRef allocator, CFMachPortCallBack callout, CFMachPortContext *context, Boolean *shouldFreeInfo);
 CFMachPortRef CFMachPortCreateWithPort(CFAllocatorRef allocator, mach_port_t portNum, CFMachPortCallBack callout, CFMachPortContext *context, Boolean *shouldFreeInfo);
