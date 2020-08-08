@@ -13,6 +13,7 @@
 #import "CoreMedia/Types.h"
 #import "CoreText/Types.h"
 #import "CoreVideo/Types.h"
+#import "CydiaSubstrate/Types.h"
 #import "Darwin/Types.h"
 #import "Foundation/Types.h"
 #import "GraphicsServices/Types.h"
