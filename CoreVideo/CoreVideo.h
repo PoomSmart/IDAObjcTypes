@@ -9,6 +9,7 @@ Boolean CVImageBufferIsFlipped(CVImageBufferRef imageBuffer);
 Boolean CVPixelBufferIsPlanar(CVPixelBufferRef pixelBuffer);
 
 CFDictionaryRef CVBufferGetAttachments(CVBufferRef buffer, CVAttachmentMode attachmentMode);
+CFDictionaryRef CVPixelBufferPoolGetPixelBufferAttributes(CVPixelBufferPoolRef pool);
 
 CFTypeID CVPixelBufferGetTypeID(void);
 
@@ -22,6 +23,8 @@ CGSize CVImageBufferGetDisplaySize(CVImageBufferRef imageBuffer);
 CGSize CVImageBufferGetEncodedSize(CVImageBufferRef imageBuffer);
 
 CVPixelBufferRef CVPixelBufferRetain(CVPixelBufferRef texture);
+
+CVPixelBufferPoolRef CVPixelBufferPoolRetain(CVPixelBufferPoolRef pixelBufferPool);
 
 CVReturn CVPixelBufferCreate(CFAllocatorRef allocator, size_t width, size_t height, OSType pixelFormatType, CFDictionaryRef pixelBufferAttributes, CVPixelBufferRef *pixelBufferOut);
 CVReturn CVPixelBufferCreateResolvedAttributesDictionary(CFAllocatorRef allocator, CFArrayRef attributes, CFDictionaryRef *resolvedDictionaryOut);
