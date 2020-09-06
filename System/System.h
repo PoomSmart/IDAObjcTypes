@@ -4,6 +4,8 @@
 
 void asl_release(asl_object_t obj);
 
+void *__memccpy_chk(void *dest, const void *src, int c, size_t len, size_t dstlen);
+
 int renamex_np(const char *from, const char *to, unsigned int flags);
 int memorystatus_get_level(user_addr_t level);
 int memorystatus_control(uint32_t command, int32_t pid, uint32_t flags, void *buffer, size_t buffersize);
