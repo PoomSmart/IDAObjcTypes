@@ -64,7 +64,7 @@ id _objc_rootRetain(id object);
 id class_createInstance(Class cls, size_t extraBytes);
 id method_invoke(id receiver, Method m, ...);
 id objc_alloc_init(Class);
-id objc_alloc(id);
+id objc_alloc(Class);
 id objc_allocWithZone(Class cls);
 id objc_autorelease(id value);
 id objc_autoreleaseReturnValue(id value);
