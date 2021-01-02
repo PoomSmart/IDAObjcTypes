@@ -254,6 +254,7 @@ CGGlyph CGFontGetGlyphWithGlyphName(CGFontRef font, CFStringRef name);
 CGCompositeOperation CGContextGetCompositeOperation(CGContextRef c);
 
 CGSRegionEnumeratorRef CGSRegionEnumerator(CGSRegionRef region);
+CGSRegionEnumeratorObj CGSRegionPathEnumerator(const CGSRegionObj region);
 
 const char *CGFontGetPostScriptName(CGFontRef font);
 
@@ -339,6 +340,8 @@ int CGFontGetLeading(CGFontRef font);
 int CGFontGetCapHeight(CGFontRef font);
 int CGFontGetXHeight(CGFontRef font);
 int CGFontGetUnitsPerEm(CGFontRef font);
+
+int CGSNextPoint(const CGSRegionEnumeratorObj enumerator, CGPoint *point);
 
 int32_t CGImageGetIdentifier(CGImageRef image);
 

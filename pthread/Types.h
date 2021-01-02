@@ -11,8 +11,6 @@
 #define __PTHREAD_COND_SIZE__ 24
 #endif
 
-typedef unsigned int qos_class_t;
-
 struct __darwin_pthread_handler_rec {
     void (*__routine)(void *);
     void *__arg;

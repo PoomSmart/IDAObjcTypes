@@ -258,6 +258,7 @@ CFTimeInterval CFRunLoopTimerGetTolerance(CFRunLoopTimerRef timer);
 CFTimeInterval CFRunLoopTimerGetInterval(CFRunLoopTimerRef timer);
 
 CFAbsoluteTime CFRunLoopGetNextTimerFireDate(CFRunLoopRef rl, CFRunLoopMode mode);
+CFAbsoluteTime CFDateGetAbsoluteTime(CFDateRef theDate);
 
 CFHashCode CFHash(CFTypeRef cf);
 CFHashCode CFHashBytes(uint8_t *bytes, CFIndex length);

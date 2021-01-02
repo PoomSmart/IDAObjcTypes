@@ -52,6 +52,35 @@ typedef struct os_unfair_recursive_lock_s {
     uint32_t ourl_count;
 } os_unfair_recursive_lock, *os_unfair_recursive_lock_t;
 
+#ifdef _OS_STATE_API
+
+typedef struct os_state_hints_s {
+    unsigned int var0;
+    char *var1;
+    unsigned int var2;
+    unsigned int var3;
+} *os_state_hints_t;
+
+typedef struct os_state_data_decoder_s {
+    char var0[64];
+    char var1[64];
+} *os_state_data_decoder_t;
+
+union os_state_unk_stru_1 {
+    __int32 var0 : 32;
+    unsigned int var1;
+};
+
+typedef struct os_state_data_s {
+    unsigned int type;
+    os_state_unk_stru_1 var1;
+    os_state_data_decoder_s var2;
+    char osd_title[64];
+    unsigned __int8 osd_data[];
+} *os_state_data_t;
+
+#endif
+
 typedef NSObject *os_workgroup_t;
 typedef os_workgroup_t *os_workgroup_interval_t;
 

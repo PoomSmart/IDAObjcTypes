@@ -10,7 +10,6 @@ typedef uint32_t dispatch_lock;
 typedef uint32_t dispatch_priority_t;
 typedef uint64_t dispatch_time_t;
 typedef intptr_t dispatch_once_t;
-typedef unsigned int qos_class_t;
 typedef unsigned long dispatch_io_type_t;
 typedef unsigned long dispatch_io_close_flags_t;
 typedef unsigned long dispatch_block_flags_t;
@@ -19,6 +18,15 @@ typedef unsigned long dispatch_autorelease_frequency_t;
 typedef int opaque_t;
 typedef int dispatch_fd_t;
 typedef long dispatch_queue_priority_t;
+
+PS_ENUM(unsigned int, qos_class_t) {
+    QOS_CLASS_USER_INTERACTIVE = 0x21,
+    QOS_CLASS_USER_INITIATED = 0x19,
+    QOS_CLASS_DEFAULT = 0x15,
+    QOS_CLASS_UTILITY = 0x11,
+    QOS_CLASS_BACKGROUND = 0x09,
+    QOS_CLASS_UNSPECIFIED = 0x00
+};
 
 typedef NSObject *dispatch_object_t;
 typedef NSObject *dispatch_source_t;

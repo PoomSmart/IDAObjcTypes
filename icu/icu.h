@@ -33,6 +33,8 @@ UBool u_isIDIgnorable(UChar32 c);
 UBool u_isJavaIDStart(UChar32 c);
 UBool u_isJavaIDPart(UChar32 c);
 
+UBool uscript_hasScript(UChar32 c, UScriptCode sc);
+
 UBool uset_contains(const USet *set, UChar32 c);
 UBool uset_containsRange(const USet *set, UChar32 start, UChar32 end);
 UBool uset_containsString(const USet *set, const UChar *str, int32_t strLen);
