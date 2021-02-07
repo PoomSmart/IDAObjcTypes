@@ -21,8 +21,7 @@ typedef struct objc_method *Method;
 
 typedef uintptr_t objc_AssociationPolicy;
 
-// id (*IMP)(id, SEL, ...);
-typedef void *IMP;
+typedef id (*IMP)(id, SEL, ...);
 
 typedef struct objc_property_attribute {
     const char *name;
