@@ -79,8 +79,11 @@ CFArrayRef CTFontCopySupportedLanguages(CTFontRef font);
 CFArrayRef CTFontCopyFeatures(CTFontRef font);
 CFArrayRef CTFontCopyDefaultCascadeListForLanguages(CTFontRef font, CFArrayRef languagePrefList);
 CFArrayRef CTFontCollectionCreateMatchingFontDescriptors(CTFontCollectionRef collection);
+CFArrayRef CTFontManagerCreateFontDescriptorsFromData(CFDataRef);
 
 CFCharacterSetRef CTFontCopyCharacterSet(CTFontRef font);
+
+CFBitVectorRef CTFontCopyGlyphCoverageForFeature(CTFontRef, CFDictionaryRef feature);
 
 CTRunStatus CTRunGetStatus(CTRunRef run);
 
@@ -93,9 +96,13 @@ double CTRunGetTypographicBounds(CTRunRef run, CFRange range, CGFloat *ascent, C
 unsigned int CTFontGetUnitsPerEm(CTFontRef font);
 
 bool CTFontGetGlyphsForCharacters(CTFontRef font, const UniChar *characters, CGGlyph *glyphs, CFIndex count);
+bool CTFontGetVerticalGlyphsForCharacters(CTFontRef, const UniChar *characters, CGGlyph *glyphs, CFIndex count);
+bool CTFontTransformGlyphs(CTFontRef, CGGlyph *glyphs, CGSize *advances, CFIndex count, CTFontTransformOptions);
 bool CTFontIsAppleColorEmoji(CTFontRef font);
+bool CTFontDescriptorIsSystemUIFont(CTFontDescriptorRef);
 
 void CTFontGetVerticalTranslationsForGlyphs(CTFontRef font, const CGGlyph *glyphs, CGSize *translations, CFIndex count);
+void CTFontGetUnsummedAdvancesForGlyphsAndStyle(CTFontRef, CTFontOrientation, CGFontRenderingStyle, const CGGlyph *, CGSize *advances, CFIndex count);
 void CTFontDrawGlyphs(CTFontRef font, const CGGlyph *glyphs, const CGPoint *positions, size_t count, CGContextRef context);
 void CTRunGetGlyphs(CTRunRef run, CFRange range, CGGlyph *buffer);
 void CTRunGetPositions(CTRunRef run, CFRange range, CGPoint *buffer);
@@ -112,11 +119,13 @@ CTFontRef CTFontCreateWithNameAndOptions(CFStringRef name, CGFloat size, const C
 CTFontRef CTFontCreateWithFontDescriptor(CTFontDescriptorRef descriptor, CGFloat size, const CGAffineTransform *matrix);
 CTFontRef CTFontCreateWithFontDescriptorAndOptions(CTFontDescriptorRef descriptor, CGFloat size, const CGAffineTransform *matrix, CTFontOptions options);
 CTFontRef CTFontCreateWithGraphicsFont(CGFontRef graphicsFont, CGFloat size, const CGAffineTransform *matrix, CTFontDescriptorRef attributes);
+CTFontRef CTFontCreateForCharactersWithLanguageAndOption(CTFontRef currentFont, const UTF16Char *characters, CFIndex length, CFStringRef language, CTFontFallbackOption option, CFIndex *coveredLength);
 CTFontRef CTFontCreateUIFontForLanguage(CTFontUIFontType uiType, CGFloat size, CFStringRef language);
 CTFontRef CTFontCreateCopyWithAttributes(CTFontRef font, CGFloat size, const CGAffineTransform *matrix, CTFontDescriptorRef attributes);
 CTFontRef CTFontCreateCopyWithSymbolicTraits(CTFontRef font, CGFloat size, const CGAffineTransform *matrix, CTFontSymbolicTraits symTraitValue, CTFontSymbolicTraits symTraitMask);
 CTFontRef CTFontCreateCopyWithFamily(CTFontRef font, CGFloat size, const CGAffineTransform *matrix, CFStringRef family);
 CTFontRef CTFontCreateForString(CTFontRef currentFont, CFStringRef string, CFRange range);
+CTFontRef CTFontCopyPhysicalFont(CTFontRef);
 
 CTFontDescriptorRef CTFontDescriptorCreateMatchingFontDescriptor(CTFontDescriptorRef descriptor, CFSetRef mandatoryAttributes);
 CTFontDescriptorRef CTFontDescriptorCreateWithAttributes(CFDictionaryRef attributes);
@@ -126,6 +135,7 @@ CTFontDescriptorRef CTFontDescriptorCreateWithTextStyle(CFStringRef style, CFStr
 CTFontDescriptorRef CTFontDescriptorCreateForUIType(CTFontUIFontType, CGFloat size, CFStringRef language);
 CTFontDescriptorRef CTFontDescriptorCreateCopyWithSymbolicTraits(CTFontDescriptorRef original, CTFontSymbolicTraits symTraitValue, CTFontSymbolicTraits symTraitMask);
 CTFontDescriptorRef CTFontDescriptorCreateCopyWithAttributes(CTFontDescriptorRef original, CFDictionaryRef attributes);
+CTFontDescriptorRef CTFontDescriptorCreateForCSSFamily(CFStringRef cssFamily, CFStringRef language);
 CTFontDescriptorRef CTFontDescriptorCreateLastResort(void);
 CTFontDescriptorRef CTFontCopyFontDescriptor(CTFontRef font);
 
@@ -138,7 +148,9 @@ CTFrameRef CTFramesetterCreateFrame(CTFramesetterRef framesetter, CFRange string
 CTFramesetterRef CTFramesetterCreateWithAttributedString(CFAttributedStringRef string);
 
 CTTypesetterRef CTFramesetterGetTypesetter(CTFramesetterRef framesetter);
+CTTypesetterRef CTTypesetterCreateWithUniCharProviderAndOptions(CTUniCharProviderCallback, CTUniCharDisposeCallback, void *refCon, CFDictionaryRef options);
 
 CTLineRef CTLineCreateWithAttributedString(CFAttributedStringRef attrString);
+CTLineRef CTLineCreateWithUniCharProvider(CTUniCharProviderCallback, CTUniCharDisposeCallback, void *refCon);
 CTLineRef CTLineCreateTruncatedLine(CTLineRef line, double width, CTLineTruncationType truncationType, CTLineRef truncationToken);
 CTLineRef CTLineCreateJustifiedLine(CTLineRef line, CGFloat justificationFactor, double justificationWidth);

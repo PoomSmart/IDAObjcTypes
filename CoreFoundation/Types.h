@@ -48,6 +48,7 @@ typedef struct __CFMachPort *CFMachPortRef;
 typedef struct __CFMessagePort *CFMessagePortRef;
 typedef struct __CFMessagePortContext CFMessagePortContext;
 typedef struct __CFHTTPMessage *CFHTTPMessageRef;
+typedef struct __CFBitVector *CFBitVectorRef;
 
 typedef const void *CFTypeRef;
 typedef const unsigned char *ConstStr255Param;

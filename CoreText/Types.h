@@ -117,6 +117,21 @@ PS_ENUM(uint32_t, CTLineBoundsOptions) {
 
 PS_ENUM(uint32_t, CTLineTruncationType) { kCTLineTruncationStart = 0, kCTLineTruncationEnd = 1, kCTLineTruncationMiddle = 2 };
 
+PS_ENUM(CFOptionFlags, CTFontFallbackOption) {
+    kCTFontFallbackOptionNone = 0,
+    kCTFontFallbackOptionSystem = 1 << 0,
+    kCTFontFallbackOptionUserInstalled = 1 << 1,
+    kCTFontFallbackOptionDefault = kCTFontFallbackOptionSystem | kCTFontFallbackOptionUserInstalled,
+};
+
+PS_ENUM(uint32_t, CTFontTransformOptions) {
+    kCTFontTransformApplyShaping = (1 << 0),
+    kCTFontTransformApplyPositioning = (1 << 1)
+};
+
 typedef CFOptionFlags CTFontOptions;
+
+typedef const UniChar *(*CTUniCharProviderCallback)(CFIndex stringIndex, CFIndex *charCount, CFDictionaryRef *attributes, void *refCon);
+typedef void (*CTUniCharDisposeCallback)(const UniChar *chars, void *refCon);
 
 #endif

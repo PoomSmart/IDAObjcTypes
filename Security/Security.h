@@ -17,6 +17,7 @@ CFDataRef SecCertificateCopySerialNumber(SecCertificateRef certificate, CFErrorR
 CFDataRef SecCertificateCopySerialNumber(SecCertificateRef certificate);
 CFDataRef SecCertificateCopySerialNumberData(SecCertificateRef certificate, CFErrorRef *error);
 CFDataRef SecTrustCopyExceptions(SecTrustRef trust);
+CFDataRef SecTrustSerialize(SecTrustRef trust, CFErrorRef *error);
 
 CFDictionaryRef SecTrustCopyResult(SecTrustRef trust);
 
@@ -73,6 +74,8 @@ OSStatus SecTrustSetPolicies(SecTrustRef trust, CFTypeRef policies);
 OSStatus SecTrustSetSignedCertificateTimestamps(SecTrustRef trust, CFArrayRef sctArray);
 OSStatus SecTrustSetVerifyDate(SecTrustRef trust, CFDateRef verifyDate);
 
+SecSignatureHashAlgorithm SecCertificateGetSignatureHashAlgorithm(SecCertificateRef certificate);
+
 SecAccessControlRef SecAccessControlCreateWithFlags(CFAllocatorRef allocator, CFTypeRef protection, SecAccessControlCreateFlags flags, CFErrorRef *error);
 
 SecCertificateRef SecCertificateCreateWithData(CFAllocatorRef allocator, CFDataRef data);
@@ -90,5 +93,7 @@ SecPolicyRef SecPolicyCreateSSL(Boolean server, CFStringRef hostname);
 
 SecTaskRef SecTaskCreateFromSelf(CFAllocatorRef allocator);
 SecTaskRef SecTaskCreateWithAuditToken(CFAllocatorRef allocator, audit_token_t token);
+
+SecTrustRef SecTrustDeserialize(CFDataRef serializedTrust, CFErrorRef *error);
 
 uint32_t SecTaskGetCodeSignStatus(SecTaskRef task);

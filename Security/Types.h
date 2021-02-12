@@ -219,6 +219,18 @@ PS_ENUM(uint32_t, SecKeyEncoding) {
     kSecKeyCoreCrypto = 8
 };
 
+PS_ENUM(uint32_t, SecSignatureHashAlgorithm) {
+    kSecSignatureHashAlgorithmUnknown = 0,
+    kSecSignatureHashAlgorithmMD2 = 1,
+    kSecSignatureHashAlgorithmMD4 = 2,
+    kSecSignatureHashAlgorithmMD5 = 3,
+    kSecSignatureHashAlgorithmSHA1 = 4,
+    kSecSignatureHashAlgorithmSHA224 = 5,
+    kSecSignatureHashAlgorithmSHA256 = 6,
+    kSecSignatureHashAlgorithmSHA384 = 7,
+    kSecSignatureHashAlgorithmSHA512 = 8
+};
+
 extern const CFStringRef kSecPropertyTypeTitle;
 extern const CFStringRef kSecPropertyTypeError;
 extern const CFStringRef kSecTrustEvaluationDate;
