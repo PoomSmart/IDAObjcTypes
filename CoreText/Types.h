@@ -12,6 +12,7 @@ typedef struct __CTLine *CTLineRef;
 typedef struct __CTTypesetter *CTTypesetterRef;
 typedef struct __CTFrame *CTFrameRef;
 typedef struct __CTFramesetter *CTFramesetterRef;
+typedef struct __CTParagraphStyle *CTParagraphStyleRef;
 
 enum { kCTFontOptionsPreferSystemFont = 1 << 2 };
 
@@ -127,6 +128,20 @@ PS_ENUM(CFOptionFlags, CTFontFallbackOption) {
 PS_ENUM(uint32_t, CTFontTransformOptions) {
     kCTFontTransformApplyShaping = (1 << 0),
     kCTFontTransformApplyPositioning = (1 << 1)
+};
+
+PS_ENUM(CFOptionFlags, CTFontShapeOptions) {
+    kCTFontShapeWithKerning = (1 << 0),
+    kCTFontShapeWithClusterComposition = (1 << 1),
+    kCTFontShapeRightToLeft = (1 << 2),
+};
+
+PS_ENUM(uint8_t, CTCompositionLanguage) {
+    kCTCompositionLanguageUnset,
+    kCTCompositionLanguageNone,
+    kCTCompositionLanguageJapanese,
+    kCTCompositionLanguageSimplifiedChinese,
+    kCTCompositionLanguageTraditionalChinese,
 };
 
 typedef CFOptionFlags CTFontOptions;

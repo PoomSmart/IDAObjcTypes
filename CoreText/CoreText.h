@@ -28,14 +28,16 @@ CGFloat CTFontGetCapHeight(CTFontRef font);
 CGFloat CTFontGetXHeight(CTFontRef font);
 CGFloat CTLineGetOffsetForStringIndex(CTLineRef line, CFIndex charIndex, CGFloat *secondaryOffset);
 
-CGRect CTFontGetBoundingRectsForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph *glyphs, CGRect *boundingRects, CFIndex count);
-CGRect CTFontGetOpticalBoundsForGlyphs(CTFontRef font, const CGGlyph *glyphs, CGRect *boundingRects, CFIndex count, CFOptionFlags options);
+CGRect CTFontGetBoundingRectsForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph glyphs[], CGRect *boundingRects, CFIndex count);
+CGRect CTFontGetOpticalBoundsForGlyphs(CTFontRef font, const CGGlyph glyphs[], CGRect *boundingRects, CFIndex count, CFOptionFlags options);
 CGRect CTFontGetBoundingBox(CTFontRef font);
 CGRect CTLineGetBoundsWithOptions(CTLineRef line, CTLineBoundsOptions options);
 CGRect CTLineGetImageBounds(CTLineRef line, CGContextRef context);
 CGRect CTRunGetImageBounds(CTRunRef run, CGContextRef context, CFRange range);
 
 CGSize CTFramesetterSuggestFrameSizeWithConstraints(CTFramesetterRef framesetter, CFRange stringRange, CFDictionaryRef frameAttributes, CGSize constraints, CFRange *fitRange);
+CGSize CTFontShapeGlyphs(CTFontRef, CGGlyph glyphs[], CGSize advances[], CGPoint origins[], CFIndex indexes[], const UniChar chars[], CFIndex count, CTFontShapeOptions, CFStringRef language, void (*handler)(CFRange, CGGlyph**, CGSize**, CGPoint**, CFIndex**));
+CGSize CTRunGetInitialAdvance(CTRunRef);
 
 CGAffineTransform CTFontGetMatrix(CTFontRef font);
 
@@ -87,7 +89,7 @@ CFBitVectorRef CTFontCopyGlyphCoverageForFeature(CTFontRef, CFDictionaryRef feat
 
 CTRunStatus CTRunGetStatus(CTRunRef run);
 
-double CTFontGetAdvancesForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph *glyphs, CGSize *advances, CFIndex count);
+double CTFontGetAdvancesForGlyphs(CTFontRef font, CTFontOrientation orientation, const CGGlyph glyphs[], CGSize advances[], CFIndex count);
 double CTLineGetPenOffsetForFlush(CTLineRef line, CGFloat flushFactor, double flushWidth);
 double CTLineGetTypographicBounds(CTLineRef line, CGFloat *ascent, CGFloat *descent, CGFloat *leading);
 double CTLineGetTrailingWhitespaceWidth(CTLineRef line);
@@ -95,15 +97,17 @@ double CTRunGetTypographicBounds(CTRunRef run, CFRange range, CGFloat *ascent, C
 
 unsigned int CTFontGetUnitsPerEm(CTFontRef font);
 
-bool CTFontGetGlyphsForCharacters(CTFontRef font, const UniChar *characters, CGGlyph *glyphs, CFIndex count);
-bool CTFontGetVerticalGlyphsForCharacters(CTFontRef, const UniChar *characters, CGGlyph *glyphs, CFIndex count);
+bool CTFontGetGlyphsForCharacters(CTFontRef font, const UniChar characters[], CGGlyph glyphs[], CFIndex count);
+bool CTFontGetVerticalGlyphsForCharacters(CTFontRef, const UniChar characters[], CGGlyph glyphs[], CFIndex count);
+bool CTFontGetGlyphsForCharacterRange(CTFontRef, CGGlyph glyphs[], CFRange);
 bool CTFontTransformGlyphs(CTFontRef, CGGlyph *glyphs, CGSize *advances, CFIndex count, CTFontTransformOptions);
 bool CTFontIsAppleColorEmoji(CTFontRef font);
+bool CTFontIsSystemUIFont(CTFontRef font);
 bool CTFontDescriptorIsSystemUIFont(CTFontDescriptorRef);
 
-void CTFontGetVerticalTranslationsForGlyphs(CTFontRef font, const CGGlyph *glyphs, CGSize *translations, CFIndex count);
-void CTFontGetUnsummedAdvancesForGlyphsAndStyle(CTFontRef, CTFontOrientation, CGFontRenderingStyle, const CGGlyph *, CGSize *advances, CFIndex count);
-void CTFontDrawGlyphs(CTFontRef font, const CGGlyph *glyphs, const CGPoint *positions, size_t count, CGContextRef context);
+void CTFontGetVerticalTranslationsForGlyphs(CTFontRef font, const CGGlyph glyphs[], CGSize translations[], CFIndex count);
+void CTFontGetUnsummedAdvancesForGlyphsAndStyle(CTFontRef, CTFontOrientation, CGFontRenderingStyle, const CGGlyph[], CGSize advances[], CFIndex count);
+void CTFontDrawGlyphs(CTFontRef font, const CGGlyph glyphs[], const CGPoint positions[], size_t count, CGContextRef context);
 void CTRunGetGlyphs(CTRunRef run, CFRange range, CGGlyph *buffer);
 void CTRunGetPositions(CTRunRef run, CFRange range, CGPoint *buffer);
 void CTRunGetAdvances(CTRunRef run, CFRange range, CGSize *buffer);
@@ -113,6 +117,7 @@ void CTRunDraw(CTRunRef run, CGContextRef context, CFRange range);
 void CTFrameDraw(CTFrameRef frame, CGContextRef context);
 void CTFrameGetLineOrigins(CTFrameRef frame, CFRange range, CGPoint *origins);
 void CTLineDraw(CTLineRef line, CGContextRef context);
+void CTParagraphStyleSetCompositionLanguage(CTParagraphStyleRef, CTCompositionLanguage);
 
 CTFontRef CTFontCreateWithName(CFStringRef name, CGFloat size, const CGAffineTransform *matrix);
 CTFontRef CTFontCreateWithNameAndOptions(CFStringRef name, CGFloat size, const CGAffineTransform *matrix, CTFontOptions options);
@@ -142,6 +147,7 @@ CTFontDescriptorRef CTFontCopyFontDescriptor(CTFontRef font);
 CTFontCollectionRef CTFontCollectionCreateFromAvailableFonts(CFDictionaryRef options);
 
 CTFontSymbolicTraits CTFontGetSymbolicTraits(CTFontRef font);
+CTFontSymbolicTraits CTFontGetPhysicalSymbolicTraits(CTFontRef font);
 
 CTFrameRef CTFramesetterCreateFrame(CTFramesetterRef framesetter, CFRange stringRange, CGPathRef path, CFDictionaryRef frameAttributes);
 
