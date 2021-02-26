@@ -71,6 +71,7 @@ int32_t u_getFC_NFKC_Closure(UChar32 c, UChar *dest, int32_t destCapacity, UErro
 int32_t u_getPropertyValueEnum(UProperty property, const char *alias);
 int32_t u_charDigitValue(UChar32 c);
 int32_t u_charName(UChar32 code, UCharNameChoice nameChoice, char *buffer, int32_t bufferLength, UErrorCode *pErrorCode);
+int32_t uscript_getCode(const char *nameOrAbbrOrLocale, UScriptCode *fillIn, int32_t capacity, UErrorCode *err);
 int32_t u_strlen(const UChar *str);
 int32_t u_strToUpper(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, const char *locale, UErrorCode *pErrorCode);
 int32_t u_strToLower(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, const char *locale, UErrorCode *pErrorCode);

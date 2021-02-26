@@ -206,9 +206,9 @@ PS_ENUM(NSInteger, UIUserInterfaceLevel) {
     UIUserInterfaceLevelElevated
 };
 
-UIOffset UIOffsetZero;
+const UIOffset UIOffsetZero;
 
-UIEdgeInsets UIEdgeInsetsZero;
+const UIEdgeInsets UIEdgeInsetsZero;
 
 typedef NSString *UIContentSizeCategory;
 

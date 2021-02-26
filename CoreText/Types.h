@@ -16,7 +16,11 @@ typedef struct __CTParagraphStyle *CTParagraphStyleRef;
 
 enum { kCTFontOptionsPreferSystemFont = 1 << 2 };
 
-typedef uint32_t CTFontOrientation;
+PS_ENUM(uint32_t, CTFontOrientation) {
+    kCTFontOrientationDefault = 0,
+    kCTFontOrientationHorizontal = 1,
+    kCTFontOrientationVertical = 2
+};
 
 PS_ENUM(uint32_t, CTFontDescriptorOptions) { kCTFontDescriptorOptionSystemUIFont = 1 << 1, kCTFontDescriptorOptionPreferAppleSystemFont = kCTFontOptionsPreferSystemFont };
 

@@ -55,6 +55,7 @@ void _os_log_set_nscf_formatter(_os_log_NSCF_callback function);
 void _os_nospin_lock_lock(_os_nospin_lock_t lock);
 void _os_nospin_lock_unlock(_os_nospin_lock_t lock);
 void _os_signpost_emit_with_name_impl(void *dso, os_log_t log, os_signpost_type_t type, os_signpost_id_t spid, const char *name, const char *format, uint8_t *buf, uint32_t size);
+void _os_signpost_emit_unreliably_with_name_impl(void *dso, os_log_t log, os_signpost_type_t type, os_signpost_id_t spid, const char *name, const char *format, uint8_t *buf, uint32_t size);
 
 void *_os_alloc_once(struct _os_alloc_once_s *slot, size_t sz, os_function_t init);
 void *os_retain(void *object);

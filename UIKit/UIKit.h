@@ -10,7 +10,7 @@ UIEdgeInsets UIEdgeInsetsSubtract(UIEdgeInsets a, UIEdgeInsets b);
 
 UIOffset UIOffsetFromString(NSString *str);
 
-NSString  *NSStringFromDirectionalEdgeInsets(NSDirectionalEdgeInsets insets);
+NSString *NSStringFromDirectionalEdgeInsets(NSDirectionalEdgeInsets insets);
 
 NSData *UIImagePNGRepresentation(UIImage *image);
 NSData *UIImageJPEGRepresentation(UIImage *image, CGFloat compressionQuality);
