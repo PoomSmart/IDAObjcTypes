@@ -98,7 +98,11 @@ PS_ENUM(uint32_t, os_activity_flag_t) {
     OS_ACTIVITY_FLAG_IF_NONE_PRESENT = 0x2
 };
 
-typedef uint32_t os_unfair_lock_options_t;
+PS_ENUM(uint32_t, os_unfair_lock_options_t) {
+    OS_UNFAIR_LOCK_NONE = 0x00000000,
+	OS_UNFAIR_LOCK_DATA_SYNCHRONIZATION = 0x00010000
+};
+
 typedef uint32_t os_workgroup_index;
 
 typedef uint64_t os_activity_id_t;
