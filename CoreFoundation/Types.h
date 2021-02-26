@@ -69,16 +69,66 @@ typedef SInt16 ScriptCode;
 
 typedef double CFTimeInterval;
 
-typedef CFOptionFlags CFDataSearchFlags;
 typedef CFOptionFlags CFURLBookmarkResolutionOptions;
 
-typedef CFIndex CFNotificationSuspensionBehavior;
-typedef CFIndex CFStringNormalizationForm;
-typedef CFIndex CFStringCharacterClusterType;
 typedef CFIndex CFSystemVersion;
-typedef CFIndex CFStreamStatus;
-typedef CFIndex CFURLPathStyle;
-typedef CFIndex CFURLComponentType;
+
+PS_ENUM(CFOptionFlags, CFDataSearchFlags) {
+    kCFDataSearchBackwards = 1UL << 0,
+    kCFDataSearchAnchored = 1UL << 1
+};
+
+PS_ENUM(CFIndex, CFNotificationSuspensionBehavior) {
+    CFNotificationSuspensionBehaviorDrop = 1,
+    CFNotificationSuspensionBehaviorCoalesce = 2,
+    CFNotificationSuspensionBehaviorHold = 3,
+    CFNotificationSuspensionBehaviorDeliverImmediately = 4
+};
+
+PS_ENUM(CFIndex, CFStreamStatus) {
+    kCFStreamStatusNotOpen = 0,
+    kCFStreamStatusOpening,
+    kCFStreamStatusOpen,
+    kCFStreamStatusReading,
+    kCFStreamStatusWriting,
+    kCFStreamStatusAtEnd,
+    kCFStreamStatusClosed,
+    kCFStreamStatusError
+};
+
+PS_ENUM(CFIndex, CFStringNormalizationForm) {
+    kCFStringNormalizationFormD = 0,
+    kCFStringNormalizationFormKD,
+    kCFStringNormalizationFormC,
+    kCFStringNormalizationFormKC
+};
+
+PS_ENUM(CFIndex, CFStringCharacterClusterType) {
+    kCFStringComposedCharacterCluster = 2,
+    kCFStringCursorMovementCluster = 3,
+    kCFStringBackwardDeletionCluster = 4
+};
+
+PS_ENUM(CFIndex, CFURLComponentType) {
+    kCFURLComponentScheme = 1,
+    kCFURLComponentNetLocation = 2,
+    kCFURLComponentPath = 3,
+    kCFURLComponentResourceSpecifier = 4,
+    kCFURLComponentUser = 5,
+    kCFURLComponentPassword = 6,
+    kCFURLComponentUserInfo = 7,
+    kCFURLComponentHost = 8,
+    kCFURLComponentPort = 9,
+    kCFURLComponentParameterString = 10,
+    kCFURLComponentQuery = 11,
+    kCFURLComponentFragment = 12
+};
+
+PS_ENUM(CFIndex, CFURLPathStyle) {
+    kCFURLPOSIXPathStyle = 0,
+    kCFURLHFSPathStyle,
+    kCFURLWindowsPathStyle
+};
 
 PS_ENUM(SInt32, CFRunLoopRunResult) {
     kCFRunLoopRunFinished = 1,
