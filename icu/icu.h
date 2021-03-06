@@ -61,6 +61,8 @@ typedef UBool UEnumCharNamesFn(void *context, UChar32 code, UCharNameChoice name
 
 UBlockCode ublock_getCode(UChar32 c);
 
+UScriptCode uscript_getScript(UChar32 codepoint, UErrorCode *err);
+
 double u_getNumericValue(UChar32 c);
 
 int32_t u_getIntPropertyValue(UChar32 c, UProperty which);
