@@ -20,6 +20,7 @@ kern_return_t IOObjectRetain(io_object_t object);
 kern_return_t IOServiceOpen(io_service_t service, task_port_t owningTask, uint32_t type, io_connect_t *connect);
 kern_return_t IOServiceClose(io_connect_t connect);
 kern_return_t IOServiceGetMatchingServices(mach_port_t masterPort, CFDictionaryRef matching, io_iterator_t *existing);
+kern_return_t IOServiceGetState(io_service_t service, uint64_t *state);
 kern_return_t IOServiceMatchPropertyTable(io_service_t service, CFDictionaryRef matching, boolean_t *matches);
 kern_return_t IOServiceAddMatchingNotification(IONotificationPortRef notifyPort, const io_name_t notificationType, CFDictionaryRef matching, IOServiceMatchingCallback callback, void *refCon, io_iterator_t *notification);
 kern_return_t IORegistryCreateIterator(mach_port_t masterPort, const io_name_t plane, IOOptionBits options, io_iterator_t *iterator);
@@ -59,6 +60,7 @@ CFTypeID IOHIDEventQueueGetTypeID(void);
 CFTypeID IOHIDDeviceGetTypeID(void);
 CFTypeID IOHIDManagerGetTypeID(void);
 CFTypeID IOHIDUserDeviceGetTypeID(void);
+CFTypeID IOUSBDeviceControllerGetTypeID(void);
 
 CFMutableDictionaryRef IOBSDNameMatching(mach_port_t masterPort, uint32_t options, const char *bsdName);
 CFMutableDictionaryRef IOServiceMatching(const char *name);
@@ -183,6 +185,8 @@ void IOHIDUserDeviceScheduleWithRunLoop(IOHIDUserDeviceRef device, CFRunLoopRef 
 void IOHIDUserDeviceUnscheduleFromRunLoop(IOHIDUserDeviceRef device, CFRunLoopRef runLoop, CFStringRef runLoopMode);
 void IOHIDUserDeviceRegisterGetReportCallback(IOHIDUserDeviceRef device, IOHIDUserDeviceReportCallback callback, void *refcon);
 void IOHIDUserDeviceRegisterSetReportCallback(IOHIDUserDeviceRef device, IOHIDUserDeviceReportCallback callback, void *refcon);
+void IOUSBDeviceDescriptionSetSerialString(IOUSBDeviceDescriptionRef ref, CFStringRef serial);
+void IOUSBDeviceDescriptionRemoveAllConfigurations(IOUSBDeviceDescriptionRef devDesc);
 
 IOHIDFloat IOHIDEventGetFloatValueWithOptions(IOHIDEventRef event, IOHIDEventField field, IOOptionBits options);
 IOHIDFloat IOHIDEventGetFloatValue(IOHIDEventRef event, IOHIDEventField field);
@@ -202,9 +206,15 @@ Boolean IOHIDEventConformsTo(IOHIDEventRef event, IOHIDEventType type);
 
 IOHIDManagerRef IOHIDManagerCreate(CFAllocatorRef allocator, IOOptionBits options);
 
+IOUSBDeviceDescriptionRef IOUSBDeviceDescriptionCreateWithType(CFAllocatorRef al,  CFStringRef type);
+IOUSBDeviceDescriptionRef IOUSBDeviceDescriptionCreateFromController(CFAllocatorRef allocator, IOUSBDeviceControllerRef);
+
 IOReturn IOHIDDeviceOpen(IOHIDDeviceRef device, IOOptionBits options);
 IOReturn IOHIDDeviceClose(IOHIDDeviceRef device, IOOptionBits options);
 IOReturn IOHIDManagerOpen(IOHIDManagerRef manager, IOOptionBits options);
 IOReturn IOHIDManagerClose(IOHIDManagerRef manager, IOOptionBits options);
 IOReturn IOHIDUserDeviceHandleReport(IOHIDUserDeviceRef device, uint8_t *report, CFIndex reportLength);
 IOReturn IOHIDUserDeviceHandleReportAsync(IOHIDUserDeviceRef device, uint8_t *report, CFIndex reportLength, IOHIDUserDeviceHandleReportAsyncCallback callback, void *refcon);
+IOReturn IOUSBDeviceControllerCreate(CFAllocatorRef allocator, IOUSBDeviceControllerRef *deviceRef);
+IOReturn IOUSBDeviceControllerSetDescription(IOUSBDeviceControllerRef device, IOUSBDeviceDescriptionRef description);
+IOReturn IOUSBDeviceControllerSendCommand(IOUSBDeviceControllerRef device, CFStringRef command, CFTypeRef param);

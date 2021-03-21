@@ -55,6 +55,8 @@ typedef struct __IOHIDEventQueue *IOHIDEventQueueRef;
 typedef struct __IOHIDServiceClient *IOHIDServiceClientRef;
 typedef struct __IOHIDElement *IOHIDElementRef;
 typedef struct __IOHIDUserDevice *IOHIDUserDeviceRef;
+typedef struct __IOUSBDeviceController *IOUSBDeviceControllerRef;
+typedef struct __IOUSBDeviceDescription *IOUSBDeviceDescriptionRef;
 
 extern const mach_port_t kIOMasterPortDefault;
 

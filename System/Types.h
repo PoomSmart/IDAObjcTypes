@@ -1,6 +1,8 @@
 #ifndef SYSTEM_H_
 #define SYSTEM_H_
 
+#import "../BaseTypes.h"
+
 typedef struct __asl_object_s *asl_object_t;
 
 typedef int clockid_t;
@@ -21,5 +23,10 @@ typedef struct _malloc_zone_t {
     struct malloc_introspection_t *introspect;
     unsigned version;
 } malloc_zone_t;
+
+PS_ENUM(int, OSThermalNotificationLevel) {
+	OSThermalNotificationLevelAny      = -1,
+	OSThermalNotificationLevelNormal   =  0,
+};
 
 #endif
