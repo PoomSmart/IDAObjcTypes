@@ -68,6 +68,7 @@ CFStringRef CTFontCopyFamilyName(CTFontRef font);
 CFStringRef CTFontCopyDisplayName(CTFontRef font);
 CFStringRef CTFontCopyName(CTFontRef font, CFStringRef nameKey);
 CFStringRef CTFontCopyLocalizedName(CTFontRef font, CFStringRef nameKey, CFStringRef *actualLanguage);
+CFStringRef CTFontCopyLocalizedNameWithLanguages(CTFontRef font, CFStringRef nameKey, int unk, CFStringRef *actualLanguage);
 CFStringRef CTFontCopyNameForGlyph(CTFontRef font, CGGlyph glyph);
 
 CFDictionaryRef CTRunGetAttributes(CTRunRef run);
@@ -84,6 +85,7 @@ CFArrayRef CTFontCollectionCreateMatchingFontDescriptors(CTFontCollectionRef col
 CFArrayRef CTFontManagerCreateFontDescriptorsFromData(CFDataRef);
 
 CFCharacterSetRef CTFontCopyCharacterSet(CTFontRef font);
+CFCharacterSetRef CTFontCopyLogicalCharacterSet(CTFontRef font);
 
 CFBitVectorRef CTFontCopyGlyphCoverageForFeature(CTFontRef, CFDictionaryRef feature);
 
@@ -124,12 +126,15 @@ CTFontRef CTFontCreateWithNameAndOptions(CFStringRef name, CGFloat size, const C
 CTFontRef CTFontCreateWithFontDescriptor(CTFontDescriptorRef descriptor, CGFloat size, const CGAffineTransform *matrix);
 CTFontRef CTFontCreateWithFontDescriptorAndOptions(CTFontDescriptorRef descriptor, CGFloat size, const CGAffineTransform *matrix, CTFontOptions options);
 CTFontRef CTFontCreateWithGraphicsFont(CGFontRef graphicsFont, CGFloat size, const CGAffineTransform *matrix, CTFontDescriptorRef attributes);
+CTFontRef CTFontCreateForCharacters(CTFontRef currentFont, const UTF16Char *characters, CFIndex length, CFIndex *coveredLength);
+CTFontRef CTFontCreateForCharactersWithLanguage(CTFontRef currentFont, const UTF16Char *characters, CFIndex length, CFStringRef language, CFIndex *coveredLength);
 CTFontRef CTFontCreateForCharactersWithLanguageAndOption(CTFontRef currentFont, const UTF16Char *characters, CFIndex length, CFStringRef language, CTFontFallbackOption option, CFIndex *coveredLength);
 CTFontRef CTFontCreateUIFontForLanguage(CTFontUIFontType uiType, CGFloat size, CFStringRef language);
 CTFontRef CTFontCreateCopyWithAttributes(CTFontRef font, CGFloat size, const CGAffineTransform *matrix, CTFontDescriptorRef attributes);
 CTFontRef CTFontCreateCopyWithSymbolicTraits(CTFontRef font, CGFloat size, const CGAffineTransform *matrix, CTFontSymbolicTraits symTraitValue, CTFontSymbolicTraits symTraitMask);
 CTFontRef CTFontCreateCopyWithFamily(CTFontRef font, CGFloat size, const CGAffineTransform *matrix, CFStringRef family);
 CTFontRef CTFontCreateForString(CTFontRef currentFont, CFStringRef string, CFRange range);
+CTFontRef CTFontCreateForStringWithLanguage(CTFontRef currentFont, CFStringRef string, CFRange range, CFStringRef language);
 CTFontRef CTFontCopyPhysicalFont(CTFontRef);
 
 CTFontDescriptorRef CTFontDescriptorCreateMatchingFontDescriptor(CTFontDescriptorRef descriptor, CFSetRef mandatoryAttributes);
