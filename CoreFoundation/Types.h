@@ -16,9 +16,9 @@ struct __CFString {
 
 struct __CFString {
     void *isa;
-    int info;
+    __int32 info;
     char *data;
-    int length;
+    __int32 length;
 };
 
 #endif
