@@ -3,12 +3,25 @@
 
 #import "../BaseTypes.h"
 
+#ifdef __EA64__
+
 struct __CFString {
     void *isa;
     __int64 info;
     char *data;
     __int64 length;
 };
+
+#else
+
+struct __CFString {
+    void *isa;
+    int info;
+    char *data;
+    int length;
+};
+
+#endif
 
 typedef struct __CFError *CFErrorRef;
 typedef const struct __CFAllocator *CFAllocatorRef;
