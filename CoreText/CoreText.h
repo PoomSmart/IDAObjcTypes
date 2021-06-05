@@ -109,6 +109,7 @@ bool CTFontDescriptorIsSystemUIFont(CTFontDescriptorRef);
 
 void CTFontGetVerticalTranslationsForGlyphs(CTFontRef font, const CGGlyph glyphs[], CGSize translations[], CFIndex count);
 void CTFontGetUnsummedAdvancesForGlyphsAndStyle(CTFontRef, CTFontOrientation, CGFontRenderingStyle, const CGGlyph[], CGSize advances[], CFIndex count);
+void CTFontGetTransformedAdvancesForGlyphsAndStyle(CTFontRef, CTFontOrientation, CGFontRenderingStyle, const CGAffineTransform *, const CGGlyph[], CGSize advances[], CFIndex count);
 void CTFontDrawGlyphs(CTFontRef font, const CGGlyph glyphs[], const CGPoint positions[], size_t count, CGContextRef context);
 void CTRunGetGlyphs(CTRunRef run, CFRange range, CGGlyph *buffer);
 void CTRunGetPositions(CTRunRef run, CFRange range, CGPoint *buffer);

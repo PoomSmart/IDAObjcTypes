@@ -22,6 +22,8 @@
 #import "Kernel/Types.h"
 #import "Security/Types.h"
 #import "UIKit/Types.h"
+#import "SpringBoard/Types.h"
+#import "SpringBoardHome/Types.h"
 #import "dyld/Types.h"
 #import "icu/Types.h"
 #import "objc/Types.h"
