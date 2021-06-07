@@ -4,7 +4,7 @@ A collection of (public and private) types and functions definitions useful for 
 ## Why even?
 Would you rather re-define the same functions or types over and over as you work with different binaries?
 
-## Usage (IDA Pro)
+## Usage (IDA Pro, 7.2+ recommended)
 Go to `File > Load file > Parse C header file` then choose `IDA.h` to import everything at once.
 
 Or, run this IDA command: `idaapi.idc_parse_types("/path/to/IDAObjcTypes/IDA.h", idc.PT_FILE)`
