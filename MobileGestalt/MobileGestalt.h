@@ -1,5 +1,6 @@
 #import "../BaseTypes.h"
 #import "../CoreFoundation/Types.h"
+#import "../Foundation/Types.h"
 
 SInt32 MGGetSInt32Answer(CFStringRef key, SInt32 defaultVal);
 SInt64 MGGetSInt64Answer(CFStringRef key, SInt64 defaultVal);
@@ -15,3 +16,5 @@ CFPropertyListRef MGCopyMultipleAnswers(CFArrayRef keys, CFDictionaryRef unk);
 CFStringRef MGGetStringAnswer(CFStringRef key);
 
 int MGSetAnswer(CFStringRef key, CFTypeRef answer);
+
+void _MGLog(CFStringRef fileName, NSInteger lineNumber, CFStringRef format, ...);
