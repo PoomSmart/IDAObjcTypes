@@ -17,4 +17,4 @@ CFStringRef MGGetStringAnswer(CFStringRef key);
 
 int MGSetAnswer(CFStringRef key, CFTypeRef answer);
 
-void _MGLog(CFStringRef fileName, NSInteger lineNumber, CFStringRef format, ...);
+void _MGLog(CFStringRef filePath, NSInteger lineNumber, CFStringRef format, ...);

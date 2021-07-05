@@ -1,6 +1,7 @@
 #ifndef SPRINGBOARD_H_
 #define SPRINGBOARD_H_
 
+#import "../CoreFoundation/Types.h"
 #import "../Foundation/Types.h"
 
 PS_ENUM(NSInteger, SBApplicationClassicMode) {
@@ -19,5 +20,11 @@ PS_ENUM(NSInteger, SBApplicationClassicMode) {
     SBApplicationClassicModePad_12_9 = 12,
     SBApplicationClassicModePad_11 = 13
 };
+
+typedef struct SBIconImageInfo {
+    CGSize size;
+    CGFloat scale;
+    CGFloat continuousCornerRadius;
+} SBIconImageInfo;
 
 #endif
