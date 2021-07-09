@@ -157,6 +157,7 @@ void CFMessagePortInvalidate(CFMessagePortRef ms);
 void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
 void _CFNonObjCRelease(CFTypeRef cf);
 void _CFRuntimeBridgeClasses(CFTypeID cfType, const char *className);
+void _CFPreferencesSetValueWithContainer(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName, CFStringRef containerPath);
 
 Boolean CFEqual(CFTypeRef cf1, CFTypeRef cf2);
 Boolean CFBooleanGetValue(CFBooleanRef boolean);
@@ -214,6 +215,7 @@ Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
 Boolean _CFIsDeallocating(CFTypeRef);
 Boolean _CFIsObjC(CFTypeID typeID, CFTypeRef obj);
 Boolean _CFNonObjCEqual(CFTypeRef cf1, CFTypeRef cf2);
+Boolean _CFPreferencesAppSynchronizeWithContainer(CFStringRef appID, CFStringRef containerPath);
 
 CFTypeRef CFRetain(CFTypeRef cf);
 CFTypeRef CFAutorelease(CFTypeRef arg);
@@ -393,6 +395,8 @@ CFPropertyListRef CFPropertyListCreateWithData(CFAllocatorRef allocator, CFDataR
 CFPropertyListRef CFPropertyListCreateWithStream(CFAllocatorRef allocator, CFReadStreamRef stream, CFIndex streamLength, CFOptionFlags options, CFPropertyListFormat *format, CFErrorRef *error);
 CFPropertyListRef CFPropertyListCreateFromStream(CFAllocatorRef allocator, CFReadStreamRef stream, CFIndex streamLength, CFOptionFlags mutabilityOption, CFPropertyListFormat *format, CFStringRef *errorString);
 CFPropertyListRef CFPropertyListCreateFromXMLData(CFAllocatorRef allocator, CFDataRef xmlData, CFOptionFlags mutabilityOption, CFStringRef *errorString);
+
+CFPropertyListRef _CFPreferencesCopyValueWithContainer(CFStringRef key, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName, CFStringRef containerPath);
 
 CFReadStreamRef CFReadStreamCreateWithFile(CFAllocatorRef alloc, CFURLRef fileURL);
 CFReadStreamRef CFReadStreamCreateWithFTPURL(CFAllocatorRef alloc, CFURLRef ftpURL);
