@@ -6,7 +6,10 @@
 typedef uint32_t CC_LONG;
 typedef uint64_t CC_LONG64;
 
+typedef uint32_t CNStatus;
+
 typedef struct _CCCryptor *CCCryptorRef;
+typedef struct _CNEncoder *CNEncoderRef;
 
 #define CC_MD2_DIGEST_LENGTH 16
 #define CC_MD2_BLOCK_BYTES 64
@@ -194,6 +197,20 @@ PS_ENUM(uint32_t, CCPseudoRandomAlgorithm) {
     kCCPRFHmacAlgSHA256 = 3,
     kCCPRFHmacAlgSHA384 = 4,
     kCCPRFHmacAlgSHA512 = 5,
+};
+
+PS_ENUM(uint32_t, CNEncodings) {
+    kCNEncodingBase64   			= 0x0001,
+    kCNEncodingBase32   			= 0x0002,
+    kCNEncodingBase32Recovery       = 0x0003,
+    kCNEncodingBase32HEX            = 0x0004,
+    kCNEncodingBase16               = 0x0005,
+    kCNEncodingCustom               = 0xcafe
+};
+
+PS_ENUM(uint32_t, CNEncodingDirection) {
+    kCNEncode            = 0x0001,
+    kCNDecode            = 0x0002,
 };
 
 #endif

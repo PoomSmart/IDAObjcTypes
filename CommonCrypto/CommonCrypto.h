@@ -61,3 +61,5 @@ CCCryptorStatus CCCryptorUpdate(CCCryptorRef cryptorRef, const void *dataIn, siz
 CCCryptorStatus CCCryptorFinal(CCCryptorRef cryptorRef, void *dataOut, size_t dataOutAvailable, size_t *dataOutMoved);
 CCCryptorStatus CCCryptorReset(CCCryptorRef cryptorRef, const void *iv);
 CCCryptorStatus CCCrypt(CCOperation op, CCAlgorithm alg, CCOptions options, const void *key, size_t keyLength, const void *iv, const void *dataIn, size_t dataInLength, void *dataOut, size_t dataOutAvailable, size_t *dataOutMoved);
+
+CNStatus CNEncode(CNEncodings encoding, CNEncodingDirection direction, const void *in, const size_t inLen, void *out, size_t *outLen);
