@@ -55,6 +55,7 @@ void MSCloseImage(MSImageRef);
 void MSHookFunction(void *symbol, void *replace, void **result);
 void MSHookMemory(void *target, const void *data, size_t size);
 void MSHookMessageEx(Class _class, SEL sel, IMP imp, IMP *result);
+void _MSHookMessageEx(Class _class, SEL sel, IMP imp, IMP *result);
 void MSHookClassPair(Class target, Class hook, Class old);
 
 #ifdef __arm__
