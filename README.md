@@ -32,8 +32,8 @@ More to be added as the owner reverses more binaries.
 - CoreFoundation
 - CoreGraphics
 - CoreMedia
-- CoreText
 - CoreServices
+- CoreText
 - CoreVideo
 - CydiaSubstrate (if you ever want to RE tweaks)
 - Darwin
@@ -44,8 +44,11 @@ More to be added as the owner reverses more binaries.
 - Kernel
 - MobileGestalt
 - Security
+- SpringBoard
+- SpringBoardHome
 - Swift (WIP, PRs welcome)
 - System (libSystem)
+- SystemConfiguration
 - UIKit
 - dyld
 - icu

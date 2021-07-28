@@ -34,6 +34,7 @@
 #import "Swift/Swift.h"
 #endif
 #import "System/System.h"
+#import "SystemConfiguration/SystemConfiguration.h"
 
 /*
 *  Copyright (C) Apple Inc. All rights reserved.
