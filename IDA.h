@@ -22,6 +22,7 @@
 #import "GraphicsServices/GraphicsServices.h"
 #import "IOKit/IOKit.h"
 #import "IOSurface/IOSurface.h"
+#import "MediaRemote/MediaRemote.h"
 #import "MobileGestalt/MobileGestalt.h"
 #import "UIKit/UIKit.h"
 #import "objc/objc.h"

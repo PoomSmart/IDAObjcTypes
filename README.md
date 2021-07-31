@@ -42,6 +42,7 @@ More to be added as the owner reverses more binaries.
 - IOKit
 - IOSurface
 - Kernel
+- MediaRemote
 - MobileGestalt
 - Security
 - SpringBoard
