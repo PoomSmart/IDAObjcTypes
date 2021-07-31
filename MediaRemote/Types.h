@@ -33,7 +33,7 @@ PS_ENUM(NSInteger, MRMediaRemoteCommand) {
     MRMediaRemoteCommandChangeShuffleMode,
     MRMediaRemoteCommandEnableLanguageOption,
     MRMediaRemoteCommandDisableLanguageOption
-} MRMediaRemoteCommand;
+};
 
 typedef void (*MRMediaRemoteGetNowPlayingInfoCompletion)(CFDictionaryRef information);
 typedef void (*MRMediaRemoteGetNowPlayingApplicationPIDCompletion)(int PID);
