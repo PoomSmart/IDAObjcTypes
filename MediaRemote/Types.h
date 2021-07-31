@@ -1,3 +1,6 @@
+#ifndef MEDIAREMOTE_H_
+#define MEDIAREMOTE_H_
+
 #import "../CoreFoundation/Types.h"
 #import "../Foundation/Types.h"
 
@@ -89,3 +92,5 @@ CFStringRef kMRMediaRemoteOptionStationID;
 CFStringRef kMRMediaRemoteOptionStationHash;
 CFStringRef kMRMediaRemoteRouteDescriptionUserInfoKey;
 CFStringRef kMRMediaRemoteRouteStatusUserInfoKey;
+
+#endif
