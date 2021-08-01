@@ -9,15 +9,44 @@ typedef int64_t CMTimeValue;
 typedef int64_t CMTimeEpoch;
 
 typedef int32_t CMTimeScale;
-typedef uint32_t CMTimeFlags;
-typedef uint32_t CMTimeRoundingMethod;
-typedef uint32_t CMAudioFormatDescriptionMask;
-typedef uint32_t CMAttachmentMode;
 
 typedef double Float64;
 
 typedef long CMItemCount;
 typedef long CMItemIndex;
+
+PS_ENUM(uint32_t, CMAttachmentMode) {
+    kCMAttachmentMode_ShouldNotPropagate    = 0,
+    kCMAttachmentMode_ShouldPropagate       = 1
+};
+
+PS_ENUM(uint32_t, CMTimeFlags) {
+    kCMTimeFlags_Valid = 1UL<<0,
+    kCMTimeFlags_HasBeenRounded = 1UL<<1,
+    kCMTimeFlags_PositiveInfinity = 1UL<<2,
+    kCMTimeFlags_NegativeInfinity = 1UL<<3,
+    kCMTimeFlags_Indefinite = 1UL<<4,
+    kCMTimeFlags_ImpliedValueFlagsMask = kCMTimeFlags_PositiveInfinity | kCMTimeFlags_NegativeInfinity | kCMTimeFlags_Indefinite
+};
+
+PS_ENUM(uint32_t, CMAudioFormatDescriptionMask) {
+    kCMAudioFormatDescriptionMask_StreamBasicDescription	= (1<<0),
+    kCMAudioFormatDescriptionMask_MagicCookie				= (1<<1),
+    kCMAudioFormatDescriptionMask_ChannelLayout				= (1<<2),
+    kCMAudioFormatDescriptionMask_Extensions				= (1<<3),
+    kCMAudioFormatDescriptionMask_All						= kCMAudioFormatDescriptionMask_StreamBasicDescription | kCMAudioFormatDescriptionMask_MagicCookie | kCMAudioFormatDescriptionMask_ChannelLayout | kCMAudioFormatDescriptionMask_Extensions
+};
+
+PS_ENUM(uint32_t, CMTimeRoundingMethod) {
+   kCMTimeRoundingMethod_RoundHalfAwayFromZero = 1,
+   kCMTimeRoundingMethod_RoundTowardZero = 2,
+   kCMTimeRoundingMethod_RoundAwayFromZero = 3,
+   kCMTimeRoundingMethod_QuickTime = 4,
+   kCMTimeRoundingMethod_RoundTowardPositiveInfinity = 5,
+   kCMTimeRoundingMethod_RoundTowardNegativeInfinity = 6,
+
+   kCMTimeRoundingMethod_Default = kCMTimeRoundingMethod_RoundHalfAwayFromZero
+};
 
 PS_ENUM(FourCharCode, CMMediaType) {
     kCMMediaType_Video				= 'vide',
@@ -77,7 +106,7 @@ PS_ENUM(FourCharCode, CMVideoCodecType) {
     kCMVideoCodecType_DVCPROHD1080i50  = 'dvh5',
     kCMVideoCodecType_DVCPROHD1080p30  = 'dvh3',
     kCMVideoCodecType_DVCPROHD1080p25  = 'dvh2',
-    
+
     kCMVideoCodecType_AppleProRes4444XQ = 'ap4x',
     kCMVideoCodecType_AppleProRes4444  = 'ap4h',
     kCMVideoCodecType_AppleProRes422HQ = 'apch',
