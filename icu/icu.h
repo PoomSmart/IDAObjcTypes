@@ -80,6 +80,8 @@ int32_t u_strToLower(UChar *dest, int32_t destCapacity, const UChar *src, int32_
 int32_t u_strToTitle(UChar *dest, int32_t destCapacity, const UChar *src, int32_t srcLength, UBreakIterator *titleIter, const char *locale, UErrorCode *pErrorCode);
 int32_t u_digit(UChar32 ch, int8_t radix);
 int32_t u_formatMessage(const char *locale, const UChar *pattern, int32_t patternLength, UChar *result, int32_t resultLength, UErrorCode *status, ...);
+int32_t uset_getItemCount(const USet *set);
+int32_t uset_getItem(const USet *set, int32_t itemIndex, UChar32 *start, UChar32 *end, UChar *str, int32_t strCapacity, UErrorCode *ec);
 
 const char *u_errorName(UErrorCode code);
 const char *u_getPropertyName(UProperty property, UPropertyNameChoice nameChoice);

@@ -52,6 +52,10 @@ void CCHmacInit(CCHmacContext *ctx, CCHmacAlgorithm algorithm, const void *key, 
 void CCHmacUpdate(CCHmacContext *ctx, const void *data, size_t dataLength);
 void CCHmacFinal(CCHmacContext *ctx, void *macOut);
 void CCHmac(CCHmacAlgorithm algorithm, const void *key, size_t keyLength, const void *data, size_t dataLength, void *macOut);
+void CCKDFParametersDestroy(CCKDFParametersRef params);
+
+CCStatus CCDeriveKey(const CCKDFParametersRef params, CCDigestAlgorithm digest, const void *keyDerivationKey, size_t keyDerivationKeyLen, void *derivedKey, size_t derivedKeyLen);
+CCStatus CCKDFParametersCreateHkdf(CCKDFParametersRef *params, const void *salt, size_t saltLen, const void *context, size_t contextLen);
 
 CCCryptorStatus CCCryptorCreate(CCOperation op, CCAlgorithm alg, CCOptions options, const void *key, size_t keyLength, const void *iv, CCCryptorRef *cryptorRef);
 CCCryptorStatus CCCryptorCreateFromData(CCOperation op, CCAlgorithm alg, CCOptions options, const void *key, size_t keyLength, const void *iv, const void *data, size_t dataLength, CCCryptorRef *cryptorRef, size_t *dataUsed);

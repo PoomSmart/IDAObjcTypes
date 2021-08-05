@@ -8,6 +8,7 @@ bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
 
 CFAbsoluteTime SecTrustGetVerifyTime(SecTrustRef trust);
 
+CFArrayRef SecCertificateCopyCommonNames(SecCertificateRef certificate);
 CFArrayRef SecTrustCopyProperties(SecTrustRef trust);
 
 CFDataRef SecCertificateCopyData(SecCertificateRef certificate);
@@ -90,6 +91,7 @@ SecKeyRef SecTrustCopyPublicKey(SecTrustRef trust);
 SecPolicyRef SecPolicyCreateBasicX509(void);
 SecPolicyRef SecPolicyCreateRevocation(CFOptionFlags revocationFlags);
 SecPolicyRef SecPolicyCreateSSL(Boolean server, CFStringRef hostname);
+SecPolicyRef SecPolicyCreateAppleIDAuthorityPolicy(void);
 
 SecTaskRef SecTaskCreateFromSelf(CFAllocatorRef allocator);
 SecTaskRef SecTaskCreateWithAuditToken(CFAllocatorRef allocator, audit_token_t token);

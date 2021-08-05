@@ -10,6 +10,7 @@ typedef uint32_t CNStatus;
 
 typedef struct _CCCryptor *CCCryptorRef;
 typedef struct _CNEncoder *CNEncoderRef;
+typedef struct CCKDFParameters *CCKDFParametersRef;
 
 #define CC_MD2_DIGEST_LENGTH 16
 #define CC_MD2_BLOCK_BYTES 64
@@ -211,6 +212,28 @@ PS_ENUM(uint32_t, CNEncodings) {
 PS_ENUM(uint32_t, CNEncodingDirection) {
     kCNEncode            = 0x0001,
     kCNDecode            = 0x0002,
+};
+
+PS_ENUM(uint32_t, CCDigestAlgorithm) {
+    kCCDigestNone               = 0,
+    kCCDigestMD2				= 1,
+    kCCDigestMD4				= 2,
+    kCCDigestMD5				= 3,
+    kCCDigestRMD128				= 4,
+    kCCDigestRMD160				= 5,
+    kCCDigestRMD256				= 6,
+    kCCDigestRMD320				= 7,
+    kCCDigestSHA1				= 8,
+    kCCDigestSHA224				= 9,
+    kCCDigestSHA256				= 10,
+    kCCDigestSHA384				= 11,
+    kCCDigestSHA512				= 12,
+    kCCDigestSkein128			= 13,
+    kCCDigestSkein160			= 14,
+    kCCDigestSkein224			= 16,
+    kCCDigestSkein256			= 17,
+    kCCDigestSkein384			= 18,
+    kCCDigestSkein512			= 19,
 };
 
 #endif

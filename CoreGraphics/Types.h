@@ -297,11 +297,11 @@ typedef struct CGPatternCallbacks {
     CGPatternReleaseInfoCallback releaseInfo;
 } CGPatternCallbacks;
 
-const CGAffineTransform CGAffineTransformIdentity;
+extern const CGAffineTransform CGAffineTransformIdentity;
 
-const CGRect CGRectZero;
-const CGRect CGRectNull;
-const CGSize CGSizeZero;
-const CGPoint CGPointZero;
+extern const CGRect CGRectZero;
+extern const CGRect CGRectNull;
+extern const CGSize CGSizeZero;
+extern const CGPoint CGPointZero;
 
 #endif
