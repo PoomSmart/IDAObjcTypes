@@ -8,6 +8,8 @@ bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
 
 CFAbsoluteTime SecTrustGetVerifyTime(SecTrustRef trust);
 
+CFArrayRef CFArrayCreateForCFTypes(CFAllocatorRef allocator, ...);
+
 CFArrayRef SecCertificateCopyCommonNames(SecCertificateRef certificate);
 CFArrayRef SecTrustCopyProperties(SecTrustRef trust);
 
