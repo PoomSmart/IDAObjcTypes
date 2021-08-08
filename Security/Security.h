@@ -2,9 +2,13 @@
 #import "../CoreFoundation/Types.h"
 #import "../Darwin/Types.h"
 #import "../Kernel/Types.h"
+#import "../xpc/Types.h"
 #import "Types.h"
 
+bool SecTaskLoadEntitlements(SecTaskRef task, CFErrorRef *error);
 bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
+
+Boolean SecTaskEntitlementsValidated(SecTaskRef task);
 
 CFAbsoluteTime SecTrustGetVerifyTime(SecTrustRef trust);
 
@@ -29,6 +33,8 @@ CFIndex SecTrustGetCertificateCount(SecTrustRef trust);
 CFStringRef SecCertificateCopySubjectSummary(SecCertificateRef certificate);
 CFStringRef SecCopyErrorMessageString(OSStatus status, void *reserved);
 CFStringRef SecTaskCopySigningIdentifier(SecTaskRef task, CFErrorRef *error);
+CFStringRef SecTaskCopyDebugDescription(CFTypeRef cfTask);
+CFStringRef SecTaskCopyIdentifier(SecTaskRef task, int op, CFErrorRef *error);
 
 CFTypeID SecAccessControlGetTypeID(void);
 CFTypeID SecCertificateGetTypeID(void);
@@ -97,7 +103,10 @@ SecPolicyRef SecPolicyCreateAppleIDAuthorityPolicy(void);
 
 SecTaskRef SecTaskCreateFromSelf(CFAllocatorRef allocator);
 SecTaskRef SecTaskCreateWithAuditToken(CFAllocatorRef allocator, audit_token_t token);
+SecTaskRef SecTaskCreateWithXPCMessage(xpc_object_t message);
 
 SecTrustRef SecTrustDeserialize(CFDataRef serializedTrust, CFErrorRef *error);
 
 uint32_t SecTaskGetCodeSignStatus(SecTaskRef task);
+
+void SecTaskFinalize(CFTypeRef cfTask);

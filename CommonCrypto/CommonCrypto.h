@@ -42,6 +42,8 @@ int CC_SHA512_Final(unsigned char *md, CC_SHA512_CTX *c);
 
 unsigned char *CC_SHA512(const void *data, CC_LONG len, unsigned char *md);
 
+int CCRandomCopyBytes(CCRandomRef rnd, void *bytes, size_t count);
+
 size_t CCCryptorGetOutputLength(CCCryptorRef cryptorRef, size_t inputLength, bool final);
 
 int CCKeyDerivationPBKDF(CCPBKDFAlgorithm algorithm, const char *password, size_t passwordLen, const uint8_t *salt, size_t saltLen, CCPseudoRandomAlgorithm prf, unsigned rounds, uint8_t *derivedKey, size_t derivedKeyLen);

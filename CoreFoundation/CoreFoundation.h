@@ -1,5 +1,6 @@
 #import "../BaseTypes.h"
 #import "../Darwin/Types.h"
+#import "../xpc/Types.h"
 #import "Types.h"
 
 double CFStringGetDoubleValue(CFStringRef str);
@@ -15,6 +16,8 @@ SInt32 CFUserNotificationCancel(CFUserNotificationRef userNotification);
 SInt32 CFMessagePortSendRequest(CFMessagePortRef remote, SInt32 msgid, CFDataRef data, CFTimeInterval sendTimeout, CFTimeInterval rcvTimeout, CFStringRef replyMode, CFDataRef *returnData);
 
 UInt32 CFBundleGetVersionNumber(CFBundleRef bundle);
+
+const char **_CFGetProgname(void);
 
 const char *CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);
 const void *CFUniCharGetUnicodePropertyDataForPlane(uint32_t propertyType, uint32_t plane);
@@ -38,6 +41,8 @@ const UInt8 *CFReadStreamGetBuffer(CFReadStreamRef stream, CFIndex maxBytesToRea
 UInt8 *CFDataGetMutableBytePtr(CFMutableDataRef theData);
 
 mach_port_t CFMachPortGetPort(CFMachPortRef port);
+
+xpc_object_t _CFXPCCreateXPCObjectFromCFObject(CFTypeRef attrs);
 
 void CFLog(int32_t level, CFStringRef format, ...);
 void CFShow(CFTypeRef obj);
@@ -231,6 +236,7 @@ CFTypeRef CFBundleGetValueForInfoDictionaryKey(CFBundleRef bundle, CFStringRef k
 CFTypeRef _CFRuntimeCreateInstance(CFAllocatorRef allocator, CFTypeID typeID, CFIndex extraBytes, unsigned char *category);
 CFTypeRef _CFTryRetain(CFTypeRef);
 CFTypeRef _CFNonObjCRetain(CFTypeRef cf);
+CFTypeRef _CFXPCCreateCFObjectFromXPCObject(xpc_object_t xpcattrs);
 
 CFTypeID CFGetTypeID(CFTypeRef cf);
 CFTypeID CFBooleanGetTypeID(void);
@@ -353,6 +359,8 @@ CFURLRef CFURLCreateWithBytes(CFAllocatorRef allocator, const UInt8 *URLBytes, C
 CFURLRef CFCopyHomeDirectoryURLForUser(CFStringRef uName);
 CFURLRef CFBundleCopyExecutableURL(CFBundleRef bundle);
 
+CFURLRef _CFBundleCopyInfoPlistURL(CFBundleRef bundle);
+
 CFDataRef CFDataCreate(CFAllocatorRef allocator, const UInt8 *bytes, CFIndex length);
 CFDataRef CFDataCreateCopy(CFAllocatorRef allocator, CFDataRef theData);
 CFDataRef CFDataCreateWithBytesNoCopy(CFAllocatorRef allocator, const UInt8 *bytes, CFIndex length, CFAllocatorRef bytesDeallocator);
@@ -417,6 +425,8 @@ CFDictionaryRef CFLocaleCreateComponentsFromLocaleIdentifier(CFAllocatorRef allo
 CFDictionaryRef CFUserNotificationGetResponseDictionary(CFUserNotificationRef userNotification);
 CFDictionaryRef CFErrorCopyUserInfo(CFErrorRef err);
 CFDictionaryRef CFAttributedStringGetAttributes(CFAttributedStringRef aStr, CFIndex loc, CFRange *effectiveRange);
+
+CFDictionaryRef _CFCopySystemVersionDictionary(void);
 
 CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);
 CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);
@@ -507,6 +517,10 @@ CFMutableAttributedStringRef CFAttributedStringCreateMutableCopy(CFAllocatorRef 
 CFBundleRef CFBundleCreate(CFAllocatorRef allocator, CFURLRef bundleURL);
 CFBundleRef CFBundleGetBundleWithIdentifier(CFStringRef bundleID);
 CFBundleRef CFBundleGetMainBundle(void);
+
+CFBundleRef _CFBundleCreateUnique(CFAllocatorRef allocator, CFURLRef bundleURL);
+CFBundleRef _CFBundleCreateIfMightBeBundle(CFAllocatorRef allocator, CFURLRef url);
+CFBundleRef _CFBundleCreateWithExecutableURLIfMightBeBundle(CFAllocatorRef allocator, CFURLRef url);
 
 CFURLRef CFBundleCopyBundleURL(CFBundleRef bundle);
 CFURLRef CFBundleCopyResourcesDirectoryURL(CFBundleRef bundle);

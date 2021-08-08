@@ -22,4 +22,10 @@ typedef bool (*xpc_array_applier_t)(size_t index, xpc_object_t value);
 
 typedef long xpc_activity_state_t;
 
+extern const struct _xpc_type_s _xpc_type_array;
+extern const struct _xpc_type_s _xpc_type_bool;
+extern const struct _xpc_type_s _xpc_type_dictionary;
+extern const struct _xpc_type_s _xpc_type_error;
+extern const struct _xpc_type_s _xpc_type_string;
+
 #endif

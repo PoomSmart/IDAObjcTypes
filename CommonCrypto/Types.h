@@ -11,6 +11,7 @@ typedef uint32_t CNStatus;
 typedef struct _CCCryptor *CCCryptorRef;
 typedef struct _CNEncoder *CNEncoderRef;
 typedef struct CCKDFParameters *CCKDFParametersRef;
+typedef struct __CCRandom *CCRandomRef;
 
 #define CC_MD2_DIGEST_LENGTH 16
 #define CC_MD2_BLOCK_BYTES 64

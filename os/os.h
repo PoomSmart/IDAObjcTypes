@@ -23,6 +23,8 @@ int os_workgroup_interval_update(os_workgroup_interval_t wg, uint64_t deadline, 
 int os_workgroup_join_self(os_workgroup_t wg, os_workgroup_join_token_t token_out, os_workgroup_index *id_out);
 int os_workgroup_max_parallel_threads(os_workgroup_t wh, os_workgroup_mpt_attr_t attr);
 
+char *_os_assert_log(uint64_t code);
+
 os_activity_id_t os_activity_get_identifier(os_activity_t activity, os_activity_id_t *parent_id);
 
 os_activity_t _os_activity_create(void *dso, const char *description, os_activity_t activity, os_activity_flag_t flags);

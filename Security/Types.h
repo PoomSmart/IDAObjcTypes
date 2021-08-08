@@ -5,6 +5,14 @@
 #import "../CoreFoundation/Types.h"
 #import "../Kernel/Types.h"
 
+struct __SecTask {
+    CFRuntimeBase base;
+    audit_token_t token;
+    Boolean entitlementsLoaded;
+    CFDictionaryRef entitlements;
+    int lastFailure;
+};
+
 typedef struct __SecCertificate *SecCertificateRef;
 typedef struct __SecIdentity *SecIdentityRef;
 typedef struct __SecKey *SecKeyRef;
