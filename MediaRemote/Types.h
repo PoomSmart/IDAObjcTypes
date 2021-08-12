@@ -42,7 +42,7 @@ PS_ENUM(NSInteger, MRMediaRemoteCommand) {
     MRMediaRemoteCommandNextAlbum = 102,
     MRMediaRemoteCommandPreviousAlbum = 103,
     MRMediaRemoteCommandNextPlaylist = 104,
-    MRMediaRemoteCommandPreviousPlaylist = 105
+    MRMediaRemoteCommandPreviousPlaylist = 105,
 
     MRMediaRemoteCommandBanTrack = 106,
     MRMediaRemoteCommandAddTrackToWishList = 107,
