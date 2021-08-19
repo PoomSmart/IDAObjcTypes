@@ -19,6 +19,7 @@ typedef double NSTimeInterval;
 typedef struct __NSObject NSObject;
 typedef struct __NSValue NSValue;
 // typedef struct __NSObject NSString;
+#define NSString const __CFString
 typedef struct __NSData NSData;
 typedef struct __NSArray NSArray;
 typedef struct __NSArray NSMutableArray;
