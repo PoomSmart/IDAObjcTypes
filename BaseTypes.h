@@ -16,12 +16,9 @@ typedef unsigned long uint32;
 typedef signed long long int64;
 typedef unsigned long long uint64;
 
-#ifdef GHIDRA
-typedef unsigned long __darwin_size_t;
+typedef unsigned __int64 __darwin_size_t;
 typedef __darwin_size_t size_t;
-#endif
 
-// Ghidra doesn't know these
 typedef uint8 UInt8;
 typedef uint16 UInt16;
 typedef uint32 UInt32;
@@ -36,12 +33,9 @@ typedef signed short int16_t;
 typedef unsigned short uint16_t;
 typedef int int32_t;
 typedef unsigned int uint32_t;
-#ifdef GHIDRA
 typedef signed __int64 int64_t;
 typedef unsigned __int64 uint64_t;
 typedef unsigned __int64 uintptr_t;
-#endif
-// END
 typedef long intptr_t;
 
 typedef struct {

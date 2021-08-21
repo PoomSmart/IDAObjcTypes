@@ -215,9 +215,9 @@ PS_ENUM(NSUInteger, UIRectEdge) {
     UIRectEdgeAll    = UIRectEdgeTop | UIRectEdgeLeft | UIRectEdgeBottom | UIRectEdgeRight
 };
 
-const UIOffset UIOffsetZero;
+extern const UIOffset UIOffsetZero;
 
-const UIEdgeInsets UIEdgeInsetsZero;
+extern const UIEdgeInsets UIEdgeInsetsZero;
 
 typedef NSString *UIContentSizeCategory;
 

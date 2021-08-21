@@ -9,15 +9,11 @@ struct objc_object {
     Class isa;
 };
 
-#ifdef __EA64__
-
-typedef objc_object *id;
-
-#else
-
-typedef void *id;
-
-#endif
+// #ifdef __EA64__
+// typedef objc_object *id;
+// #else
+// typedef void *id;
+// #endif
 
 typedef struct objc_object Protocol;
 // typedef struct objc_selector *SEL;
