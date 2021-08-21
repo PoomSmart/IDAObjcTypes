@@ -11,6 +11,13 @@ UIEdgeInsets UIEdgeInsetsSubtract(UIEdgeInsets a, UIEdgeInsets b);
 UIOffset UIOffsetFromString(NSString *str);
 
 NSString *NSStringFromDirectionalEdgeInsets(NSDirectionalEdgeInsets insets);
+NSString *NSStringFromCGAffineTransform(CGAffineTransform t);
+NSString *NSStringFromCGPoint(CGPoint point);
+NSString *NSStringFromCGRect(CGRect rect);
+NSString *NSStringFromCGSize(CGSize size);
+NSString *NSStringFromCGVector(CGVector vector);
+NSString *NSStringFromUIEdgeInsets(UIEdgeInsets insets);
+NSString *NSStringFromUIOffset(UIOffset offset);
 
 NSData *UIImagePNGRepresentation(UIImage *image);
 NSData *UIImageJPEGRepresentation(UIImage *image, CGFloat compressionQuality);
@@ -28,6 +35,8 @@ CGSize CGSizeFromString(NSString *str);
 CGPoint UIRectGetCenter(CGRect rect);
 CGPoint UIMidPointBetweenPoints(CGPoint a, CGPoint b);
 CGPoint CGPointFromString(NSString *str);
+
+CGVector CGVectorFromString(NSString *str);
 
 CGFloat UIRoundToScale(CGFloat, CGFloat);
 CGFloat UIRoundToViewScale(CGFloat);
@@ -50,13 +59,15 @@ CGImageRef UICreateCGImageFromIOSurface(IOSurfaceRef surface);
 
 NSComparisonResult UIContentSizeCategoryCompareToCategory(UIContentSizeCategory lhs, UIContentSizeCategory rhs);
 
+NSDirectionalEdgeInsets NSDirectionalEdgeInsetsFromString(NSString *str);
+
 void UIRectFrame(CGRect rect);
 void UIRectFill(CGRect rect);
 void UIRectFillUsingBlendMode(CGRect rect, CGBlendMode blendMode);
 void UIRectClip(CGRect rect);
 void UIImageWriteToSavedPhotosAlbum(UIImage *image, id completionTarget, SEL completionSelector, void *contextInfo);
 void UIImageDataWriteToSavedPhotosAlbum(NSData *imageData, id completionTarget, SEL completionSelector, void *contextInfo);
-void UISaveVideoAtPathToSavedPhotosAlbum(NSString *videoPath, id completionTarget, SEL completionSelector, void *contextInfo);
+void UISaveVideoAtPathToSavedPhotosAlbum(CFNSString videoPath, id completionTarget, SEL completionSelector, void *contextInfo);
 void UIGraphicsPushContext(CGContextRef context);
 void UIGraphicsPopContext(void);
 void UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale);

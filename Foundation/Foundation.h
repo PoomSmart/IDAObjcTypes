@@ -46,10 +46,10 @@ NSMapEnumerator NSEnumerateMapTable(NSMapTable *table);
 NSMapTable *NSCreateMapTable(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity);
 NSMapTable *NSCreateMapTableWithZone(NSMapTableKeyCallBacks keyCallBacks, NSMapTableValueCallBacks valueCallBacks, NSUInteger capacity, NSZone *zone);
 
-NSPoint NSPointFromString(NSString *aString);
+NSPoint NSPointFromString(CFNSString aString);
 
 NSRange NSIntersectionRange(NSRange range1, NSRange range2);
-NSRange NSRangeFromString(NSString *aString);
+NSRange NSRangeFromString(CFNSString aString);
 NSRange NSUnionRange(NSRange range1, NSRange range2);
 
 NSRect NSInsetRect(NSRect aRect, CGFloat dX, CGFloat dY);
@@ -63,10 +63,6 @@ NSRect NSUnionRect(NSRect aRect, NSRect bRect);
 NSString *NSHomeDirectory(void);
 NSString *NSOpenStepRootDirectory(void);
 NSString *NSStringFromBOOL(BOOL theBOOL);
-NSString *NSStringFromCGAffineTransform(CGAffineTransform t);
-NSString *NSStringFromCGPoint(CGPoint point);
-NSString *NSStringFromCGRect(CGRect rect);
-NSString *NSStringFromCGSize(CGSize size);
 NSString *NSStringFromClass(Class aClass);
 NSString *NSStringFromPoint(NSPoint aPoint);
 NSString *NSStringFromProtocol(Protocol *proto);
@@ -74,8 +70,6 @@ NSString *NSStringFromRange(NSRange range);
 NSString *NSStringFromRect(NSRect aRect);
 NSString *NSStringFromSelector(SEL aSelector);
 NSString *NSStringFromSize(NSSize aSize);
-NSString *NSStringFromUIEdgeInsets(UIEdgeInsets insets);
-NSString *NSStringFromUIOffset(UIOffset offset);
 NSString *NSTemporaryDirectory(void);
 
 NSUInteger NSCountMapTable(NSMapTable *table);
@@ -110,8 +104,8 @@ void NSEndMapTableEnumeration(NSMapEnumerator *enumerator);
 void NSFreeMapTable(NSMapTable *table);
 void NSHashInsert(NSHashTable *table, const void *pointer);
 void NSHashRemove(NSHashTable *table, const void *pointer);
-void NSLog(CFStringRef format, ...);
-void NSLogv(CFStringRef format, va_list args);
+void NSLog(CFNSString format, ...);
+void NSLogv(CFNSString format, va_list args);
 void NSMapInsert(NSMapTable *table, const void *key, const void *value);
 void NSMapInsertKnownAbsent(NSMapTable *table, const void *key, const void *value);
 void NSMapRemove(NSMapTable *table, const void *key);

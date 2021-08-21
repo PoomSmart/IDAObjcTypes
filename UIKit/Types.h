@@ -219,7 +219,7 @@ extern const UIOffset UIOffsetZero;
 
 extern const UIEdgeInsets UIEdgeInsetsZero;
 
-typedef NSString *UIContentSizeCategory;
+typedef CFNSString UIContentSizeCategory;
 
 extern const float UITableCellDefaultFontSize;
 extern const float UITableViewCellDefaultFontSize;
@@ -227,17 +227,17 @@ extern const float UIWebViewGrowsAndShrinksToFitHeight;
 extern const float UIWebViewScalesToFitScale;
 extern const float UIWebViewStandardViewportWidth;
 
-extern NSString *const UIWindowDidMoveToScreenNotification;
-extern NSString *const UIWindowDidRotateNotification;
-extern NSString *const UIWindowNewScreenUserInfoKey;
-extern NSString *const UIWindowWillRotateNotification;
-extern NSString *const UIKeyboardIsLocalUserInfoKey;
-extern NSString *const UIKeyInputPageUp;
-extern NSString *const UIKeyInputPageDown;
+extern CFNSString UIWindowDidMoveToScreenNotification;
+extern CFNSString UIWindowDidRotateNotification;
+extern CFNSString UIWindowNewScreenUserInfoKey;
+extern CFNSString UIWindowWillRotateNotification;
+extern CFNSString UIKeyboardIsLocalUserInfoKey;
+extern CFNSString UIKeyInputPageUp;
+extern CFNSString UIKeyInputPageDown;
 
-extern const NSNotificationName UIApplicationDidReceiveMemoryWarningNotification;
-extern const NSNotificationName UIApplicationBackgroundRefreshStatusDidChangeNotification;
-extern const NSNotificationName UIApplicationDidChangeStatusBarFrameNotification;
-extern const NSNotificationName UIApplicationDidBecomeActiveNotification;
+extern NSNotificationName UIApplicationDidReceiveMemoryWarningNotification;
+extern NSNotificationName UIApplicationBackgroundRefreshStatusDidChangeNotification;
+extern NSNotificationName UIApplicationDidChangeStatusBarFrameNotification;
+extern NSNotificationName UIApplicationDidBecomeActiveNotification;
 
 #endif

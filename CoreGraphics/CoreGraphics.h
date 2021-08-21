@@ -216,7 +216,7 @@ CGAffineTransform CGAffineTransformRotate(CGAffineTransform t, CGFloat angle);
 CGAffineTransform CGAffineTransformTranslate(CGAffineTransform t, CGFloat tx, CGFloat ty);
 CGAffineTransform CGAffineTransformInvert(CGAffineTransform t);
 CGAffineTransform CGAffineTransformConcat(CGAffineTransform t1, CGAffineTransform t2);
-CGAffineTransform CGAffineTransformFromString(NSString *string);
+CGAffineTransform CGAffineTransformFromString(CFNSString string);
 CGAffineTransform CGContextGetCTM(CGContextRef c);
 CGAffineTransform CGContextGetBaseCTM(CGContextRef c);
 CGAffineTransform CGContextGetTextMatrix(CGContextRef c);

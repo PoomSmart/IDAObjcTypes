@@ -18,8 +18,8 @@ typedef double NSTimeInterval;
 
 typedef struct __NSObject NSObject;
 typedef struct __NSValue NSValue;
-// typedef struct __NSObject NSString;
-#define NSString const __CFString
+typedef struct __NSObject NSString;
+#define CFNSString const __CFString
 typedef struct __NSData NSData;
 typedef struct __NSArray NSArray;
 typedef struct __NSArray NSMutableArray;
@@ -115,7 +115,7 @@ typedef CGPoint NSPoint;
 typedef CGSize NSSize;
 typedef CGRect NSRect;
 
-typedef NSString *NSNotificationName;
+typedef CFNSString NSNotificationName;
 
 typedef void NSUncaughtExceptionHandler(NSException *exception);
 

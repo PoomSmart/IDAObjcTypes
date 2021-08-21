@@ -9,7 +9,7 @@ Boolean MRMediaRemoteSendCommand(MRMediaRemoteCommand command, NSDictionary *use
 Boolean MRMediaRemoteSetCanBeNowPlayingApplication(Boolean can);
 
 CFArrayRef MRMediaRemoteCopyPickableRoutes();
-CFArrayRef MRMediaRemoteCopyPickableRoutesForCategory(NSString *category);
+CFArrayRef MRMediaRemoteCopyPickableRoutesForCategory(CFNSString category);
 
 int MRMediaRemoteSelectSourceWithID(CFStringRef identifier);
 

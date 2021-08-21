@@ -25,6 +25,11 @@ typedef struct CGRect {
     CGSize size;
 } CGRect;
 
+typedef struct CGVector {
+   CGFloat dx;
+   CGFloat dy;
+} CGVector;
+
 typedef struct CGAffineTransform {
     CGFloat a;
     CGFloat b;
