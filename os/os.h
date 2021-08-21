@@ -78,6 +78,7 @@ void os_log_pack_send(os_log_pack_t pack, os_log_t log, os_log_type_t type);
 void os_log_shim_with_CFString(void *, os_log_type_t, const uint8_t, CFStringRef, va_list args, void *ret_addr);
 void os_log_with_args(os_log_t oslog, os_log_type_t type, const char *format, va_list args, void *ret_addr);
 void os_release(void *object);
+void os_state_remove_handler(os_state_handle_t);
 void os_unfair_lock_assert_not_owner(os_unfair_lock_t lock);
 void os_unfair_lock_assert_owner(os_unfair_lock_t lock);
 void os_unfair_lock_lock_with_options(os_unfair_lock_t lock, os_unfair_lock_options_t options);
