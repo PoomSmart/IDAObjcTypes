@@ -206,6 +206,15 @@ PS_ENUM(NSInteger, UIUserInterfaceLevel) {
     UIUserInterfaceLevelElevated
 };
 
+PS_ENUM(NSUInteger, UIRectEdge) {
+    UIRectEdgeNone   = 0,
+    UIRectEdgeTop    = 1 << 0,
+    UIRectEdgeLeft   = 1 << 1,
+    UIRectEdgeBottom = 1 << 2,
+    UIRectEdgeRight  = 1 << 3,
+    UIRectEdgeAll    = UIRectEdgeTop | UIRectEdgeLeft | UIRectEdgeBottom | UIRectEdgeRight
+};
+
 const UIOffset UIOffsetZero;
 
 const UIEdgeInsets UIEdgeInsetsZero;

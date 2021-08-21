@@ -63,6 +63,9 @@ CGPoint GSEventGetLocationInWindow(GSEventRef event);
 CGPoint GSEventGetOuterMostPathPosition(GSEventRef event);
 CGPoint GSEventGetInnerMostPathPosition(GSEventRef event);
 
+CGSize GSMainScreenPixelSize(void);
+CGSize GSMainScreenPointSize(void);
+
 OSStatus GSKeyTranslate(GSKeyboardRef keyboard, UInt16 virtualKeyCode, UInt16 keyAction, UInt32 modifierKeyState, UInt32 keyboardType, OptionBits keyTranslateOptions, UInt32 *deadKeyState, UniCharCount maxStringLength, UniCharCount *actualStringLength, UniChar unicodeString[]);
 OSStatus GSKeyboardTranslateKey(GSKeyboardRef keyboard, UInt16 virtualKeyCode, UInt16 unknown, OptionBits keyTranslateOptions, UniCharCount maxStringLength, UniCharCount *actualStringLength, UniChar unicodeString[], UniCharCount *actualStringLength2, UniChar unicodeString2[]);
 

@@ -19,7 +19,8 @@ UIImage *UIGraphicsGetImageFromCurrentImageContext(void);
 
 CGRect UIRectCenteredAboutPoint(CGRect, CGPoint, CGFloat, CGFloat);
 CGRect UIRectCenteredAboutPointScale(CGRect, CGPoint);
-CGRect UIRectInset(CGRect, CGFloat, CGFloat, CGFloat, CGFloat);
+CGRect UIRectInset(CGRect, CGFloat top, CGFloat right, CGFloat bottom, CGFloat left);
+CGRect UIRectInsetEdges(CGRect, UIRectEdge edges, CGFloat v);
 CGRect CGRectFromString(NSString *str);
 
 CGSize CGSizeFromString(NSString *str);
@@ -54,6 +55,7 @@ void UIRectFill(CGRect rect);
 void UIRectFillUsingBlendMode(CGRect rect, CGBlendMode blendMode);
 void UIRectClip(CGRect rect);
 void UIImageWriteToSavedPhotosAlbum(UIImage *image, id completionTarget, SEL completionSelector, void *contextInfo);
+void UIImageDataWriteToSavedPhotosAlbum(NSData *imageData, id completionTarget, SEL completionSelector, void *contextInfo);
 void UISaveVideoAtPathToSavedPhotosAlbum(NSString *videoPath, id completionTarget, SEL completionSelector, void *contextInfo);
 void UIGraphicsPushContext(CGContextRef context);
 void UIGraphicsPopContext(void);
