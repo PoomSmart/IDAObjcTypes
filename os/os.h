@@ -1,4 +1,5 @@
 #import "../BaseTypes.h"
+#import "../Darwin/Types.h"
 #import "../CoreFoundation/Types.h"
 #import "Types.h"
 
@@ -35,6 +36,8 @@ os_log_t os_log_create(const char *subsystem, const char *category);
 
 os_signpost_id_t os_signpost_id_generate(os_log_t log);
 os_signpost_id_t os_signpost_id_make_with_pointer(os_log_t log, const void *ptr);
+
+os_state_handle_t os_state_add_handler(dispatch_queue_t, os_state_block_t);
 
 os_transaction_t os_transaction_create(const char *description);
 

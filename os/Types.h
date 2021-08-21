@@ -52,35 +52,6 @@ typedef struct os_unfair_recursive_lock_s {
     uint32_t ourl_count;
 } os_unfair_recursive_lock, *os_unfair_recursive_lock_t;
 
-#ifdef _OS_STATE_API
-
-typedef struct os_state_hints_s {
-    unsigned int var0;
-    char *var1;
-    unsigned int var2;
-    unsigned int var3;
-} *os_state_hints_t;
-
-typedef struct os_state_data_decoder_s {
-    char var0[64];
-    char var1[64];
-} *os_state_data_decoder_t;
-
-union os_state_unk_stru_1 {
-    __int32 var0 : 32;
-    unsigned int var1;
-};
-
-typedef struct os_state_data_s {
-    unsigned int type;
-    os_state_unk_stru_1 var1;
-    os_state_data_decoder_s var2;
-    char osd_title[64];
-    unsigned __int8 osd_data[];
-} *os_state_data_t;
-
-#endif
-
 typedef NSObject *os_workgroup_t;
 typedef os_workgroup_t *os_workgroup_interval_t;
 
@@ -100,8 +71,58 @@ PS_ENUM(uint32_t, os_activity_flag_t) {
 
 PS_ENUM(uint32_t, os_unfair_lock_options_t) {
     OS_UNFAIR_LOCK_NONE = 0x00000000,
-	OS_UNFAIR_LOCK_DATA_SYNCHRONIZATION = 0x00010000
+    OS_UNFAIR_LOCK_DATA_SYNCHRONIZATION = 0x00010000
 };
+
+PS_ENUM(uint32_t, os_state_reason_t) {
+    OS_STATE_REASON_GENERAL          = 0x0001,
+    OS_STATE_REASON_NETWORKING       = 0x0002,
+    OS_STATE_REASON_CELLULAR         = 0x0004,
+    OS_STATE_REASON_AUTHENTICATION   = 0x0008,
+};
+
+PS_ENUM(uint32_t, os_state_api_t) {
+    OS_STATE_API_ERROR = 1,
+    OS_STATE_API_FAULT = 2,
+    OS_STATE_API_REQUEST = 3,
+};
+
+PS_ENUM(uint32_t, os_state_data_type_t) {
+    OS_STATE_DATA_SERIALIZED_NSCF_OBJECT = 1,
+    OS_STATE_DATA_PROTOCOL_BUFFER = 2,
+    OS_STATE_DATA_CUSTOM = 3,
+};
+
+typedef struct os_state_hints_s {
+    uint32_t osh_version;
+    const char *osh_requestor;
+    os_state_api_t osh_api;
+    os_state_reason_t osh_reason;
+} *os_state_hints_t;
+
+typedef struct os_state_data_decoder_s {
+    char osdd_library[64];
+    char osdd_type[64];
+} *os_state_data_decoder_t;
+
+union os_state_unk_stru_1 {
+    __int32 var0 : 32;
+    unsigned int var1;
+};
+
+typedef struct os_state_data_s {
+    os_state_data_type_t osd_type;
+    union {
+        uint64_t osd_size:32;
+        uint32_t osd_data_size;
+    } __attribute__((packed, aligned(4)));
+    struct os_state_data_decoder_s osd_decoder;
+    char osd_title[64];
+    uint8_t osd_data[];
+} *os_state_data_t;
+
+typedef uint64_t os_state_handle_t;
+typedef os_state_data_t (*os_state_block_t)(os_state_hints_t hints);
 
 typedef uint32_t os_workgroup_index;
 
@@ -118,8 +139,8 @@ PS_ENUM(uint8_t, os_signpost_type_t) {
 };
 
 struct _os_alloc_once_s {
-	os_alloc_token_t once;
-	void *ptr;
+    os_alloc_token_t once;
+    void *ptr;
 };
 
 typedef void (*os_function_t)(void *);
