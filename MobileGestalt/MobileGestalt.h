@@ -15,7 +15,7 @@ bool MGIsDeviceOneOfType(uint8_t *type, ...) __attribute__((sentinel));
 
 CFTypeRef MGCopyAnswer(CFStringRef key, CFDictionaryRef options);
 CFTypeRef MGCopyAnswerWithError(CFStringRef key, CFDictionaryRef options, int *error);
-CFPropertyListRef MGCopyMultipleAnswers(CFArrayRef keys, CFDictionaryRef unk);
+CFPropertyListRef MGCopyMultipleAnswers(CFArrayRef keys, CFDictionaryRef options);
 CFStringRef MGGetStringAnswer(CFStringRef key);
 
 // MGProductType MGGetProductType(void);
