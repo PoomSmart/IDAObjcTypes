@@ -6,6 +6,7 @@
 #import "Darwin/Darwin.h"
 #import "icu/icu.h"
 #import "AppSupport/AppSupport.h"
+#import "AssetsLibraryServices/AssetsLibraryServices.h"
 #import "AudioToolbox/AudioToolbox.h"
 #import "AVFoundation/AVFoundation.h"
 #import "CommonCrypto/CommonCrypto.h"
@@ -29,6 +30,7 @@
 #import "os/os.h"
 #import "sandbox/sandbox.h"
 #import "Security/Security.h"
+#import "SoftLinking/SoftLinking.h"
 #import "xpc/xpc.h"
 #import "sqlite/sqlite.h"
 #ifdef SWIFT

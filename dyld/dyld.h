@@ -22,4 +22,6 @@ const char *dyld_image_path_containing_address(const void *addr);
 
 const struct mach_header *dyld_image_header_containing_address(const void *addr);
 
+void *dlopen_from(const char *path, int mode, void *addressInCaller);
+
 void dyld_get_image_versions(const struct mach_header *mh, void (*callback)(dyld_platform_t platform, uint32_t sdk_version, uint32_t min_version));

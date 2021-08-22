@@ -24,6 +24,7 @@ You have to manually specify the size of enum members if what you get is incorre
 ## Included Frameworks/Libraries
 More to be added as the owner reverses more binaries.
 - AppSupport
+- AssetsLibraryServices
 - AudioToolbox
 - AVFoundation
 - CommonCrypto
@@ -45,6 +46,7 @@ More to be added as the owner reverses more binaries.
 - MediaRemote
 - MobileGestalt
 - Security
+- SoftLinking
 - SpringBoard
 - SpringBoardHome
 - Swift (WIP, PRs welcome)

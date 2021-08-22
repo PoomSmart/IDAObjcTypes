@@ -103,6 +103,7 @@ void xpc_connection_cancel(xpc_connection_t connection);
 void xpc_connection_send_barrier(xpc_connection_t connection, dispatch_block_t barrier);
 void xpc_connection_send_message(xpc_connection_t connection, xpc_object_t message);
 void xpc_connection_send_message_with_reply(xpc_connection_t connection, xpc_object_t message, dispatch_queue_t replyq, xpc_handler_t handler);
+void xpc_connection_send_notification(xpc_connection_t connection, xpc_object_t notification);
 void xpc_connection_set_context(xpc_connection_t connection, void *context);
 void xpc_connection_set_event_handler(xpc_connection_t connection, xpc_handler_t handler);
 void xpc_connection_set_target_queue(xpc_connection_t connection, dispatch_queue_t targetq);
