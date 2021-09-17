@@ -2,8 +2,8 @@
 #import "../Darwin/Types.h"
 #import "Types.h"
 
-bool pthread_main_np(void);
 
+int pthread_main_np(void);
 int pthread_attr_set_qos_class_np(pthread_attr_t *__attr, qos_class_t __qos_class, int __relative_priority);
 int pthread_cond_timedwait_relative_np(pthread_cond_t *cond, pthread_mutex_t *mutex, const struct timespec *abstime);
 int pthread_getname_np(pthread_t thread, char *name, size_t len);
