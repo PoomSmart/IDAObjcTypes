@@ -20,8 +20,11 @@ CFArrayRef SecTrustCopyProperties(SecTrustRef trust);
 CFDataRef SecCertificateCopyData(SecCertificateRef certificate);
 CFDataRef SecCertificateCopyNormalizedIssuerSequence(SecCertificateRef certificate);
 CFDataRef SecCertificateCopyNormalizedSubjectSequence(SecCertificateRef certificate);
+#ifdef TARGET_OS_MAC
 CFDataRef SecCertificateCopySerialNumber(SecCertificateRef certificate, CFErrorRef *error);
+#else
 CFDataRef SecCertificateCopySerialNumber(SecCertificateRef certificate);
+#endif
 CFDataRef SecCertificateCopySerialNumberData(SecCertificateRef certificate, CFErrorRef *error);
 CFDataRef SecTrustCopyExceptions(SecTrustRef trust);
 CFDataRef SecTrustSerialize(SecTrustRef trust, CFErrorRef *error);
