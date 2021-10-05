@@ -197,6 +197,7 @@ PS_ENUM(NSInteger, UIUserInterfaceIdiom) {
     UIUserInterfaceIdiomPad,
     UIUserInterfaceIdiomTV,
     UIUserInterfaceIdiomCarPlay,
+    UIUserInterfaceIdiomWatch,
     UIUserInterfaceIdiomMac = 5,
 };
 
