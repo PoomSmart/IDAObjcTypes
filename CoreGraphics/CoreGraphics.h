@@ -25,6 +25,8 @@ CFDictionaryRef CGPointCreateDictionaryRepresentation(CGPoint point);
 CFDictionaryRef CGImageSourceCopyProperties(CGImageSourceRef isrc, CFDictionaryRef options);
 CFDictionaryRef CGImageSourceCopyPropertiesAtIndex(CGImageSourceRef isrc, size_t index, CFDictionaryRef options);
 
+CFMutableArrayRef CGFontCreateFontsWithPath(CFStringRef path);
+
 CFMutableDictionaryRef CGCFDictionaryCreate(void);
 CFMutableDictionaryRef CGCFDictionaryCreateCopy(CFDictionaryRef theDict);
 
@@ -244,6 +246,8 @@ CGError CGSSetWindowWarp(CGSConnectionID, CGSWindowID, int w, int h, const float
 CGError CGSFetchDirtyScreenRegion(CGSConnectionID cid, CGSRegionRef *outDirtyRegion);
 
 CGFontAntialiasingStyle CGContextGetFontAntialiasingStyle(CGContextRef);
+
+CGFontRef CGFontCreateWithPathAndName(CFStringRef path, CFStringRef name);
 
 CGImageCachingFlags CGImageGetCachingFlags(CGImageRef image);
 

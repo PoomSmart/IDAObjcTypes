@@ -18,4 +18,24 @@ typedef struct dyld_unwind_sections {
     uintptr_t compact_unwind_section_length;
 } dyld_unwind_sections;
 
+typedef enum Platform {
+    unknown             = 0,
+    macOS               = 1,    // PLATFORM_MACOS
+    iOS                 = 2,    // PLATFORM_IOS
+    tvOS                = 3,    // PLATFORM_TVOS
+    watchOS             = 4,    // PLATFORM_WATCHOS
+    bridgeOS            = 5,    // PLATFORM_BRIDGEOS
+    iOSMac              = 6,    // PLATFORM_MACCATALYST
+    iOS_simulator       = 7,    // PLATFORM_IOSSIMULATOR
+    tvOS_simulator      = 8,    // PLATFORM_TVOSSIMULATOR
+    watchOS_simulator   = 9,    // PLATFORM_WATCHOSSIMULATOR
+    driverKit           = 10,   // PLATFORM_DRIVERKIT
+} Platform;
+
+typedef struct PlatformInfo {
+    const char* name;
+    Platform    platform;
+    uint32_t    loadCommand;
+} PlatformInfo;
+
 #endif
