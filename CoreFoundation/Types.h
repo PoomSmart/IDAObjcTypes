@@ -70,7 +70,11 @@ typedef CFTypeRef CFPropertyListRef;
 
 typedef int CFBundleRefNum;
 
+#ifdef __EA64__
 typedef long CFIndex;
+#else
+typedef __int32 CFIndex;
+#endif
 
 typedef unsigned long CFTypeID;
 typedef unsigned long CFOptionFlags;
