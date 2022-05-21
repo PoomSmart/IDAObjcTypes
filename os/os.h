@@ -14,7 +14,8 @@ bool os_unfair_recursive_lock_tryunlock4objc(os_unfair_recursive_lock_t lock);
 bool os_variant_allows_internal_security_policies(const char *subsystem);
 bool os_variant_has_internal_content(const char *subsystem);
 bool os_variant_has_internal_diagnostics(const char *subsystem);
-bool os_variant_has_internal_ui(const char *ubsystem);
+bool os_variant_has_internal_ui(const char *subsystem);
+bool os_variant_is_darwinos(const char *subsystem);
 bool os_workgroup_testcancel(os_workgroup_t wg);
 
 int os_workgroup_copy_port(os_workgroup_t wg, mach_port_t *mach_port_out);
