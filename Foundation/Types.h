@@ -16,7 +16,9 @@ typedef int NSInteger;
 
 typedef double NSTimeInterval;
 
-typedef struct __NSObject NSObject;
+typedef struct NSObject {
+    Class isa;
+} NSObject;
 typedef struct __NSValue NSValue;
 typedef struct __NSObject NSString;
 #define CFNSString const __CFString

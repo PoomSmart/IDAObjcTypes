@@ -13,7 +13,10 @@ struct objc_object {
 typedef void *id;
 #endif
 
-typedef struct objc_object Protocol;
+typedef struct Protocol {
+    NSObject super;
+} Protocol;
+
 // typedef struct objc_selector *SEL;
 typedef const char *SEL;
 typedef struct objc_ivar *Ivar;
@@ -23,7 +26,7 @@ typedef struct objc_method *Method;
 
 typedef uintptr_t objc_AssociationPolicy;
 
-typedef id (*IMP)(id, SEL, ...);
+typedef void (*IMP)(void);
 
 typedef struct objc_property_attribute {
     const char *name;
