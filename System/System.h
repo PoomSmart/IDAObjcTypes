@@ -1,4 +1,5 @@
 #import "../BaseTypes.h"
+#import "../Darwin/Types.h"
 #import "../Kernel/Types.h"
 #import "Types.h"
 
@@ -13,6 +14,8 @@ int csops(pid_t pid, unsigned int ops, void *useraddr, size_t usersize);
 int csops_audittoken(pid_t pid, unsigned int ops, void *useraddr, size_t usersize, audit_token_t *token);
 
 int _get_cpu_capabilities(void);
+
+const char *container_system_group_path_for_identifier(int, const char *group, container_error_t *error);
 
 asl_object_t asl_next(asl_object_t obj);
 

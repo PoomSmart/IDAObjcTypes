@@ -10,6 +10,7 @@ Boolean CVPixelBufferIsPlanar(CVPixelBufferRef pixelBuffer);
 
 CFDictionaryRef CVBufferGetAttachments(CVBufferRef buffer, CVAttachmentMode attachmentMode);
 CFDictionaryRef CVPixelBufferPoolGetPixelBufferAttributes(CVPixelBufferPoolRef pool);
+CFDictionaryRef CVPixelFormatDescriptionGetDescriptionWithPixelFormatType(OSType pixelFormatType);
 
 CFTypeID CVPixelBufferGetTypeID(void);
 

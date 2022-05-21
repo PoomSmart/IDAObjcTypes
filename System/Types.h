@@ -6,6 +6,7 @@
 typedef struct __asl_object_s *asl_object_t;
 
 typedef int clockid_t;
+typedef long container_error_t; // guessed
 
 typedef struct _malloc_zone_t {
     void *reserved1;
