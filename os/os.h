@@ -17,6 +17,7 @@ bool os_variant_has_internal_diagnostics(const char *subsystem);
 bool os_variant_has_internal_ui(const char *subsystem);
 bool os_variant_is_darwinos(const char *subsystem);
 bool os_workgroup_testcancel(os_workgroup_t wg);
+bool os_parse_boot_arg_int(const char *which, int64_t *where);
 
 int os_workgroup_copy_port(os_workgroup_t wg, mach_port_t *mach_port_out);
 int os_workgroup_interval_finish(os_workgroup_interval_t wg, os_workgroup_interval_data_t data);

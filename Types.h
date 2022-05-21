@@ -18,6 +18,7 @@
 #import "Foundation/Types.h"
 #import "GraphicsServices/Types.h"
 #import "MediaRemote/Types.h"
+#import "IOMobileFramebuffer/Types.h"
 #import "IOKit/Types.h"
 #import "IOSurface/Types.h"
 #import "Kernel/Types.h"

@@ -40,6 +40,7 @@ More to be added as the owner reverses more binaries.
 - Darwin
 - Foundation
 - GraphicsServices
+- IOMobileFramebuffer
 - IOKit
 - IOSurface
 - Kernel

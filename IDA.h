@@ -21,6 +21,7 @@
 #import "CydiaSubstrate/CydiaSubstrate.h"
 #import "Foundation/Foundation.h"
 #import "GraphicsServices/GraphicsServices.h"
+#import "IOMobileFramebuffer/IOMobileFramebuffer.h"
 #import "IOKit/IOKit.h"
 #import "IOSurface/IOSurface.h"
 #import "MediaRemote/MediaRemote.h"

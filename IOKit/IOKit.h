@@ -129,6 +129,7 @@ IOHIDEventRef IOHIDEventCreateTranslationEvent(CFAllocatorRef allocator, Absolut
 IOHIDEventRef IOHIDEventGetParent(IOHIDEventRef event);
 IOHIDEventRef IOHIDEventGetEventWithOptions(IOHIDEventRef event, IOHIDEventType type, IOOptionBits options);
 IOHIDEventRef IOHIDEventGetEvent(IOHIDEventRef event, IOHIDEventType type);
+IOHIDEventRef IOHIDServiceClientCopyEvent(IOHIDServiceClientRef, int64_t, int32_t, int64_t);
 
 IOHIDEventRef _IOHIDEventGetContext(IOHIDEventRef event); // get record size
 
@@ -199,6 +200,8 @@ IOHID3DPoint IOHIDEventGetPosition(IOHIDEventRef event, IOHIDEventField field);
 
 void *IOHIDEventGetDataValue(IOHIDEventRef event, IOHIDEventType type);
 
+bool IOPSDrawingUnlimitedPower(void);
+
 Boolean IOHIDDeviceConformsTo(IOHIDDeviceRef device, uint32_t usagePage, uint32_t usage);
 Boolean IOHIDEventIsAbsolute(IOHIDEventRef event);
 Boolean IOHIDEventConformsToWithOptions(IOHIDEventRef event, IOHIDEventType type, IOOptionBits options);
@@ -218,3 +221,4 @@ IOReturn IOHIDUserDeviceHandleReportAsync(IOHIDUserDeviceRef device, uint8_t *re
 IOReturn IOUSBDeviceControllerCreate(CFAllocatorRef allocator, IOUSBDeviceControllerRef *deviceRef);
 IOReturn IOUSBDeviceControllerSetDescription(IOUSBDeviceControllerRef device, IOUSBDeviceDescriptionRef description);
 IOReturn IOUSBDeviceControllerSendCommand(IOUSBDeviceControllerRef device, CFStringRef command, CFTypeRef param);
+IOReturn IOPSGetPercentRemaining(int *percent, bool *isCharging, bool *isFullyCharged);
