@@ -3,8 +3,6 @@
 
 #import "../BaseTypes.h"
 
-typedef struct objc_class *Class;
-
 struct objc_object {
     Class isa;
 };

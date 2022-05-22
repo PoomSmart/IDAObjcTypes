@@ -61,6 +61,12 @@ typedef ipc_port_t mach_port_t;
 // Just C
 typedef struct _OSObject *OSObject;
 
+typedef struct objc_class *Class;
+
+typedef struct NSObject {
+    Class isa;
+} NSObject;
+
 #ifdef __ARM__
 typedef bool BOOL;
 #else
