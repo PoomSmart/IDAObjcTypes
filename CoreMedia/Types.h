@@ -91,6 +91,7 @@ PS_ENUM(FourCharCode, CMVideoCodecType) {
     kCMVideoCodecType_HEVC             = 'hvc1',
     kCMVideoCodecType_HEVCWithAlpha    = 'muxa',
     kCMVideoCodecType_VP9              = 'vp09',
+    kCMVideoCodecType_AV1              = 'av01',
     kCMVideoCodecType_MPEG4Video       = 'mp4v',
     kCMVideoCodecType_MPEG2Video       = 'mp2v',
     kCMVideoCodecType_MPEG1Video       = 'mp1v',

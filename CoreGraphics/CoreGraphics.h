@@ -497,6 +497,7 @@ void CGCFDictionarySetCString(CFMutableDictionaryRef theDict, const char *cStr);
 void CGCFDictionarySetBoolean(CFMutableDictionaryRef theDict, const void *key, bool value);
 void CGCFDictionarySetFloat(CFMutableDictionaryRef theDict, const void *key, double value);
 void CGCFDictionarySetInteger(CFMutableDictionaryRef theDict, const void *key, int value);
+void CGCFDictionarySetLongInteger(CFMutableDictionaryRef theDict, const void *key, long value);
 void CGCFDictionarySetNumber(CFMutableDictionaryRef theDict, const void *key, CFNumberType type, const void *valuePtr);
 void CGCFDictionarySetCFTypeRef(CFMutableDictionaryRef theDict, const void *key, const void *value);
 
