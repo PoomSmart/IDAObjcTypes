@@ -39,6 +39,7 @@
 #endif
 #import "System/System.h"
 #import "SystemConfiguration/SystemConfiguration.h"
+#import "fishhook/fishhook.h"
 
 /*
 *  Copyright (C) Apple Inc. All rights reserved.

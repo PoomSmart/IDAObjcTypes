@@ -62,3 +62,4 @@ More to be added as the owner reverses more binaries.
 - sandbox
 - sqlite
 - xpc
+- fishhook
