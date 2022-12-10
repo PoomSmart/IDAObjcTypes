@@ -1,4 +1,5 @@
 // #define SWIFT
+// #define IOS14
 #import "Types.h"
 #import "Kernel/Kernel.h"
 #import "dyld/dyld.h"

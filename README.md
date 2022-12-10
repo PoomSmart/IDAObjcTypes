@@ -21,6 +21,10 @@ Or, run this IDA command: `idaapi.idc_parse_types("/path/to/IDAObjcTypes/IDA.h",
 ### Ghidra limitation
 You have to manually specify the size of enum members if what you get is incorrect.
 
+## iOS version-specific analysis
+
+Uncomment `// #define IOS14` inside `IDA.h` before you import it if you are reversing iOS 14 or lower binaries.
+
 ## Included Frameworks/Libraries
 More to be added as the owner reverses more binaries.
 - AppSupport
