@@ -12,6 +12,7 @@ bool os_unfair_lock_trylock(os_unfair_lock_t lock);
 bool os_unfair_recursive_lock_trylock(os_unfair_recursive_lock_t lock);
 bool os_unfair_recursive_lock_tryunlock4objc(os_unfair_recursive_lock_t lock);
 bool os_variant_allows_internal_security_policies(const char *subsystem);
+bool os_variant_has_factory_content(const char *subsystem);
 bool os_variant_has_internal_content(const char *subsystem);
 bool os_variant_has_internal_diagnostics(const char *subsystem);
 bool os_variant_has_internal_ui(const char *subsystem);
