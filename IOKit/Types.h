@@ -385,6 +385,14 @@ PS_ENUM(uint32_t, IOHIDDigitizerEventUpdateMask) {
     kIOHIDDigitizerEventUpdateQualityRadiiAccuracyMask = 1 << IOHIDEventFieldOffsetOf(kIOHIDEventFieldDigitizerQualityRadiiAccuracy),
 };
 
+PS_ENUM(int, IOHIDEventSystemClientType) {
+    kIOHIDEventSystemClientTypeMonitor = 1,
+    kIOHIDEventSystemClientTypeAdmin = 2,
+    kIOHIDEventSystemClientTypeSimple = 4
+};
+
+enum { kIOPMIdleSleepPreventers = 0, kIOPMSystemSleepPreventers = 1 };
+
 enum { kIOHIDGenericGestureTypeTap = 0, kIOHIDGenericGestureTypeSwipe };
 
 typedef struct IOHIDEventData {
@@ -405,5 +413,7 @@ typedef void (*IOHIDEventSystemClientEventCallback)(void *target, void *refcon, 
 typedef bool (*IOHIDEventSystemEventFilterCallback)(void *target, void *refcon, void *sender, IOHIDEventRef event);
 typedef IOReturn (*IOHIDUserDeviceReportCallback)(void *refcon, IOHIDReportType type, uint32_t reportID, uint8_t *report, CFIndex reportLength);
 typedef IOReturn (*IOHIDUserDeviceHandleReportAsyncCallback)(void *refcon, IOReturn result);
+
+typedef uintptr_t IOPMNotificationHandle;
 
 #endif

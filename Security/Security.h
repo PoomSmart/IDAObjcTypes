@@ -5,9 +5,6 @@
 #import "../xpc/Types.h"
 #import "Types.h"
 
-bool SecTaskLoadEntitlements(SecTaskRef task, CFErrorRef *error);
-bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
-
 Boolean SecTaskEntitlementsValidated(SecTaskRef task);
 
 CFAbsoluteTime SecTrustGetVerifyTime(SecTrustRef trust);
@@ -46,8 +43,6 @@ CFTypeID SecTaskGetTypeID(void);
 CFTypeID SecTrustGetTypeID(void);
 
 CFTypeRef SecTaskCopyValueForEntitlement(SecTaskRef task, CFStringRef entitlement, CFErrorRef *error);
-
-int SecRandomCopyBytes(SecRandomRef rnd, size_t count, void *bytes);
 
 OSStatus SecCertificateAddToKeychain(SecCertificateRef certificate, SecKeychainRef keychain);
 OSStatus SecCertificateCopyCommonName(SecCertificateRef certificate, CFStringRef *commonName);
@@ -111,5 +106,10 @@ SecTaskRef SecTaskCreateWithXPCMessage(xpc_object_t message);
 SecTrustRef SecTrustDeserialize(CFDataRef serializedTrust, CFErrorRef *error);
 
 uint32_t SecTaskGetCodeSignStatus(SecTaskRef task);
+
+int SecRandomCopyBytes(SecRandomRef rnd, size_t count, void *bytes);
+
+bool SecTaskLoadEntitlements(SecTaskRef task, CFErrorRef *error);
+bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
 
 void SecTaskFinalize(CFTypeRef cfTask);

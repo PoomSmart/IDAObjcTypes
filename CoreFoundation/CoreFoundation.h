@@ -221,6 +221,7 @@ Boolean _CFIsDeallocating(CFTypeRef);
 Boolean _CFIsObjC(CFTypeID typeID, CFTypeRef obj);
 Boolean _CFNonObjCEqual(CFTypeRef cf1, CFTypeRef cf2);
 Boolean _CFPreferencesAppSynchronizeWithContainer(CFStringRef appID, CFStringRef containerPath);
+Boolean _CFPreferencesSynchronizeWithContainer(CFStringRef applicationID, CFStringRef userName, CFStringRef hostName, CFStringRef containerPath);
 
 CFTypeRef CFRetain(CFTypeRef cf);
 CFTypeRef CFAutorelease(CFTypeRef arg);
@@ -237,6 +238,7 @@ CFTypeRef _CFRuntimeCreateInstance(CFAllocatorRef allocator, CFTypeID typeID, CF
 CFTypeRef _CFTryRetain(CFTypeRef);
 CFTypeRef _CFNonObjCRetain(CFTypeRef cf);
 CFTypeRef _CFXPCCreateCFObjectFromXPCObject(xpc_object_t xpcattrs);
+CFTypeRef _CFXPCCreateCFObjectFromXPCMessage(xpc_object_t message);
 
 CFTypeID CFGetTypeID(CFTypeRef cf);
 CFTypeID CFBooleanGetTypeID(void);
@@ -426,6 +428,7 @@ CFDictionaryRef CFUserNotificationGetResponseDictionary(CFUserNotificationRef us
 CFDictionaryRef CFErrorCopyUserInfo(CFErrorRef err);
 CFDictionaryRef CFAttributedStringGetAttributes(CFAttributedStringRef aStr, CFIndex loc, CFRange *effectiveRange);
 
+CFDictionaryRef _CFPreferencesCopyMultipleWithContainer(CFArrayRef keysToFetch, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName, CFStringRef containerPath);
 CFDictionaryRef _CFCopySystemVersionDictionary(void);
 
 CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFDictionaryKeyCallBacks *keyCallBacks, const CFDictionaryValueCallBacks *valueCallBacks);

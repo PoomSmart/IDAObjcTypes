@@ -30,6 +30,7 @@
 #import "UIKit/UIKit.h"
 #import "objc/objc.h"
 #import "os/os.h"
+#import "PowerLog/PowerLog.h"
 #import "sandbox/sandbox.h"
 #import "Security/Security.h"
 #import "SoftLinking/SoftLinking.h"

@@ -3,4 +3,6 @@
 
 typedef struct __SCDynamicStore *SCDynamicStoreRef;
 
+typedef void (*SCDynamicStoreDisconnectCallBack)(SCDynamicStoreRef store);
+
 #endif

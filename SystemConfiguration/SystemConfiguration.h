@@ -5,3 +5,5 @@ CFDictionaryRef SCDynamicStoreCopyDHCPInfo(SCDynamicStoreRef store, CFStringRef 
 CFDictionaryRef CNCopyCurrentNetworkInfo(CFStringRef interfaceName);
 
 CFArrayRef CNCopySupportedInterfaces(void);
+
+void SCDynamicStoreSetDisconnectCallBack(SCDynamicStoreRef store, SCDynamicStoreDisconnectCallBack callback);

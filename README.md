@@ -50,6 +50,7 @@ More to be added as the owner reverses more binaries.
 - Kernel
 - MediaRemote
 - MobileGestalt
+- PowerLog
 - Security
 - SoftLinking
 - SpringBoard

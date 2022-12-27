@@ -1,4 +1,5 @@
 #import "../BaseTypes.h"
+#import "../Darwin/Types.h"
 #import "../Kernel/Types.h"
 #import "../CoreFoundation/Types.h"
 #import "../Foundation/Types.h"
@@ -62,6 +63,10 @@ CFTypeID IOHIDManagerGetTypeID(void);
 CFTypeID IOHIDUserDeviceGetTypeID(void);
 CFTypeID IOUSBDeviceControllerGetTypeID(void);
 
+CFDictionaryRef IOPMCopyActivePMPreferences(void);
+CFDictionaryRef IOPMCopySystemPowerSettings(void);
+
+CFMutableDictionaryRef IOPMCopyPMPreferences(void);
 CFMutableDictionaryRef IOBSDNameMatching(mach_port_t masterPort, uint32_t options, const char *bsdName);
 CFMutableDictionaryRef IOServiceMatching(const char *name);
 CFMutableDictionaryRef IOServiceNameMatching(const char *name);
@@ -89,6 +94,7 @@ CFTypeRef IORegistryEntrySearchCFProperty(io_registry_entry_t entry, const io_na
 
 CFStringRef IORegistryEntryCopyPath(io_registry_entry_t entry, const io_name_t plane);
 CFStringRef IOHIDEventTypeGetName(IOHIDEventType type);
+CFStringRef IOPMSleepWakeCopyUUID(void);
 
 IOHIDUserDeviceRef IOHIDUserDeviceCreate(CFAllocatorRef allocator, CFDictionaryRef properties);
 
@@ -108,7 +114,7 @@ IOHIDEventRef IOHIDEventCreateSwipeEvent(CFAllocatorRef allocator, AbsoluteTime 
 IOHIDEventRef IOHIDEventCreateDigitizerEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, IOHIDDigitizerTransducerType type, uint32_t index, uint32_t identity, uint32_t eventMask, uint32_t buttonMask, IOHIDFloat x, IOHIDFloat y, IOHIDFloat z, IOHIDFloat tipPressure, IOHIDFloat barrelPressure, Boolean range, Boolean touch, IOOptionBits options);
 IOHIDEventRef IOHIDEventCreateDigitizerFingerEventWithQuality(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint32_t index, uint32_t identity, uint32_t eventMask, IOHIDFloat x, IOHIDFloat y, IOHIDFloat z, IOHIDFloat tipPressure, IOHIDFloat twist, IOHIDFloat minorRadius, IOHIDFloat majorRadius, IOHIDFloat quality, IOHIDFloat density, IOHIDFloat irregularity, Boolean range, Boolean touch, IOOptionBits options);
 IOHIDEventRef IOHIDEventCreateDigitizerFingerEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint32_t index, uint32_t identity, uint32_t eventMask, IOHIDFloat x, IOHIDFloat y, IOHIDFloat z, IOHIDFloat tipPressure, IOHIDFloat twist, Boolean range, Boolean touch, IOOptionBits options);
-IOHIDEventRef IOHIDEventCreateDigitizerStylusEventWithPolarOrientation(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint32_t index, uint32_t identity, uint32_t eventMask, uint32_t buttonMask, IOHIDFloat x, IOHIDFloat y, IOHIDFloat z, IOHIDFloat tipPressure, IOHIDFloat barrelPressure, IOHIDFloat twist, IOHIDFloat altitude, IOHIDFloat azimuth,  Boolean range, Boolean invert, IOOptionBits options);
+IOHIDEventRef IOHIDEventCreateDigitizerStylusEventWithPolarOrientation(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint32_t index, uint32_t identity, uint32_t eventMask, uint32_t buttonMask, IOHIDFloat x, IOHIDFloat y, IOHIDFloat z, IOHIDFloat tipPressure, IOHIDFloat barrelPressure, IOHIDFloat twist, IOHIDFloat altitude, IOHIDFloat azimuth, Boolean range, Boolean invert, IOOptionBits options);
 IOHIDEventRef IOHIDEventCreateDigitizerStylusEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, uint32_t index, uint32_t identity, uint32_t eventMask, uint32_t buttonMask, IOHIDFloat x, IOHIDFloat y, IOHIDFloat z, IOHIDFloat tipPressure, IOHIDFloat barrelPressure, IOHIDFloat twist, IOHIDFloat altitude, IOHIDFloat azimuth, Boolean range, Boolean invert, IOOptionBits options);
 IOHIDEventRef IOHIDEventCreateProximtyEvent(CFAllocatorRef allocator, AbsoluteTime timeStamp, IOHIDProximityDetectionMask detectionMask, IOOptionBits options);
 #define IOHIDEventCreateProximityEvent IOHIDEventCreateProximtyEvent
@@ -136,6 +142,8 @@ IOHIDEventRef _IOHIDEventGetContext(IOHIDEventRef event); // get record size
 IOHIDEventType IOHIDEventGetType(IOHIDEventRef event);
 
 IOHIDElementRef IOHIDValueGetElement(IOHIDValueRef value);
+
+IOPMNotificationHandle IOPMRegisterPrefsChangeNotification(dispatch_queue_t queue, void (*block)());
 
 int IOHIDEventSystemClientSetMatching(IOHIDEventSystemClientRef client, CFDictionaryRef match);
 int IOHIDServiceClientSetProperty(IOHIDServiceClientRef, CFStringRef, CFNumberRef);
@@ -201,6 +209,7 @@ IOHID3DPoint IOHIDEventGetPosition(IOHIDEventRef event, IOHIDEventField field);
 void *IOHIDEventGetDataValue(IOHIDEventRef event, IOHIDEventType type);
 
 bool IOPSDrawingUnlimitedPower(void);
+bool IOPMFeatureIsAvailableWithSupportedTable(CFStringRef PMFeature, CFStringRef power_source, CFDictionaryRef supportedFeatures);
 
 Boolean IOHIDDeviceConformsTo(IOHIDDeviceRef device, uint32_t usagePage, uint32_t usage);
 Boolean IOHIDEventIsAbsolute(IOHIDEventRef event);
@@ -209,7 +218,9 @@ Boolean IOHIDEventConformsTo(IOHIDEventRef event, IOHIDEventType type);
 
 IOHIDManagerRef IOHIDManagerCreate(CFAllocatorRef allocator, IOOptionBits options);
 
-IOUSBDeviceDescriptionRef IOUSBDeviceDescriptionCreateWithType(CFAllocatorRef al,  CFStringRef type);
+IOHIDEventSystemClientRef IOHIDEventSystemClientCreateWithType(CFAllocatorRef allocator, IOHIDEventSystemClientType type, void *unk);
+
+IOUSBDeviceDescriptionRef IOUSBDeviceDescriptionCreateWithType(CFAllocatorRef allocator, CFStringRef type);
 IOUSBDeviceDescriptionRef IOUSBDeviceDescriptionCreateFromController(CFAllocatorRef allocator, IOUSBDeviceControllerRef);
 
 IOReturn IOHIDDeviceOpen(IOHIDDeviceRef device, IOOptionBits options);
@@ -222,3 +233,7 @@ IOReturn IOUSBDeviceControllerCreate(CFAllocatorRef allocator, IOUSBDeviceContro
 IOReturn IOUSBDeviceControllerSetDescription(IOUSBDeviceControllerRef device, IOUSBDeviceDescriptionRef description);
 IOReturn IOUSBDeviceControllerSendCommand(IOUSBDeviceControllerRef device, CFStringRef command, CFTypeRef param);
 IOReturn IOPSGetPercentRemaining(int *percent, bool *isCharging, bool *isFullyCharged);
+IOReturn IOPSRequestBatteryUpdate(int type);
+IOReturn IOPMGetLastWakeTime(CFAbsoluteTime *whenWoke, CFTimeInterval *adjustedForPhysicalWake);
+IOReturn IOPMCopySleepPreventersList(int preventerType, CFArrayRef *outArray);
+IOReturn IOPMCopySleepPreventersListWithID(int preventerType, CFArrayRef *outArray);
