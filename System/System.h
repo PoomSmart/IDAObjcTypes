@@ -15,12 +15,15 @@ int csops_audittoken(pid_t pid, unsigned int ops, void *useraddr, size_t usersiz
 
 int _get_cpu_capabilities(void);
 
+bool malloc_zone_claimed_address(malloc_zone_t *zone, void *ptr);
+
 const char *container_system_group_path_for_identifier(int, const char *group, container_error_t *error);
 
 asl_object_t asl_next(asl_object_t obj);
 
 qos_class_t qos_class_main(void);
 
+kern_return_t bootstrap_register2(mach_port_t, name_t, mach_port_t, uint64_t);
 kern_return_t bootstrap_look_up2(mach_port_t bp, const name_t service_name, mach_port_t *sp, pid_t target_pid, uint64_t flags);
 
 boolean_t voucher_mach_msg_set(mach_msg_header_t *msg);

@@ -339,6 +339,9 @@ CFErrorRef CFErrorCreateWithUserInfoKeysAndValues(CFAllocatorRef allocator, CFEr
 CFErrorRef CFWriteStreamCopyError(CFWriteStreamRef stream);
 CFErrorRef CFReadStreamCopyError(CFReadStreamRef stream);
 
+CFErrorRef _CFBundleCreateError(CFAllocatorRef allocator, CFBundleRef bundle, CFIndex code);
+CFErrorRef _CFBundleCreateErrorDebug(CFAllocatorRef allocator, CFBundleRef bundle, CFIndex code, CFStringRef debugString);
+
 CFStreamStatus CFReadStreamGetStatus(CFReadStreamRef stream);
 CFStreamStatus CFWriteStreamGetStatus(CFWriteStreamRef stream);
 
@@ -468,6 +471,7 @@ CFMutableStringRef CFStringCreateMutableWithExternalCharactersNoCopy(CFAllocator
 CFStringRef CFCopySystemVersionString(void);
 CFStringRef CFCopyDescription(CFTypeRef cf);
 CFStringRef CFCopyTypeIDDescription(CFTypeID type_id);
+CFStringRef CFCopyUserName(void);
 CFStringRef CFErrorCopyDescription(CFErrorRef err);
 CFStringRef CFErrorCopyFailureReason(CFErrorRef err);
 CFStringRef CFAttributedStringGetString(CFAttributedStringRef aStr);

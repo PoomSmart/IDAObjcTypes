@@ -51,6 +51,8 @@ xpc_activity_state_t xpc_activity_get_state(xpc_activity_t activity);
 
 OS_xpc_mach_send *xpc_mach_send_create(mach_port_t);
 
+Class xpc_get_class4NSXPC(xpc_type_t type);
+
 pid_t xpc_connection_get_pid(xpc_connection_t connection);
 
 gid_t xpc_connection_get_egid(xpc_connection_t connection);
@@ -110,12 +112,14 @@ void xpc_connection_set_context(xpc_connection_t connection, void *context);
 void xpc_connection_set_event_handler(xpc_connection_t connection, xpc_handler_t handler);
 void xpc_connection_set_legacy(xpc_connection_t connection);
 void xpc_connection_set_target_queue(xpc_connection_t connection, dispatch_queue_t targetq);
+void xpc_connection_set_target_uid(xpc_connection_t connection, uid_t uid);
 void xpc_connection_set_bootstrap(xpc_connection_t, xpc_object_t bootstrap);
 void xpc_connection_set_instance(xpc_connection_t, uuid_t);
 void xpc_connection_set_oneshot_instance(xpc_connection_t, uuid_t instance);
+void xpc_connection_set_finalizer_f(xpc_connection_t connection, xpc_finalizer_t finalizer);
+void xpc_connection_set_privileged(xpc_connection_t connection);
 void xpc_connection_get_audit_token(xpc_connection_t, audit_token_t *);
 void xpc_connection_kill(xpc_connection_t, int);
-void xpc_connection_set_finalizer_f(xpc_connection_t connection, xpc_finalizer_t finalizer);
 
 void xpc_array_append_value(xpc_object_t xarray, xpc_object_t value);
 void xpc_array_set_double(xpc_object_t xarray, size_t index, double value);
@@ -152,6 +156,8 @@ void xpc_track_activity(void);
 void xpc_activity_register(const char *identifier, xpc_object_t criteria, xpc_activity_handler_t handler);
 void xpc_activity_unregister(const char *identifier);
 void xpc_activity_set_criteria(xpc_activity_t activity, xpc_object_t criteria);
+
+void xpc_handle_service(const char *service_name, void (*)(xpc_connection_t), int);
 
 const uint8_t *xpc_uuid_get_bytes(xpc_object_t xuuid);
 const void *xpc_data_get_bytes_ptr(xpc_object_t xdata);

@@ -1,9 +1,12 @@
 #import "../BaseTypes.h"
 #import "../Kernel/Types.h"
 #import "../System/Types.h"
+#import "../Foundation/Types.h"
 #import "Types.h"
 
 bool _objc_rootTryRetain(id obj);
+bool _objc_rootReleaseWasZero(id obj);
+bool _objc_rootIsDeallocating(id obj);
 
 BOOL class_addIvar(Class cls, const char *name, size_t size, uint8_t alignment, const char *types);
 BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types);
@@ -23,7 +26,10 @@ char *method_copyArgumentType(Method m, unsigned int index);
 char *method_copyReturnType(Method m);
 char *property_copyAttributeValue(objc_property_t property, const char *attributeName);
 
+const char **objc_copyClassNamesForImageHeader(const struct mach_header *mh, unsigned int *outCount);
+
 Class _objc_getClassForTag(objc_tag_index_t tag);
+Class _objc_getFreedObjectClass(void);
 Class class_getSuperclass(Class cls);
 Class class_setSuperclass(Class cls, Class newSuper);
 Class objc_allocateClassPair(Class superclass, const char *name, size_t extraBytes);
@@ -102,6 +108,9 @@ IMP object_getMethodImplementation(id obj, SEL name);
 int objc_getClassList(Class *buffer, int bufferCount);
 int objc_sync_enter(id obj);
 int objc_sync_exit(id obj);
+
+uintptr_t _objc_rootHash(id obj);
+uintptr_t _objc_rootRetainCount(id obj);
 
 Ivar *class_copyIvarList(Class cls, unsigned int *outCount);
 Ivar class_getClassVariable(Class cls, const char *name);
@@ -182,3 +191,7 @@ void object_setIvar(id obj, Ivar ivar, id value);
 void protocol_addMethodDescription(Protocol *proto, SEL name, const char *types, BOOL isRequiredMethod, BOOL isInstanceMethod);
 void protocol_addProperty(Protocol *proto, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount, BOOL isRequiredProperty, BOOL isInstanceProperty);
 void protocol_addProtocol(Protocol *proto, Protocol *addition);
+
+void _objc_rootFinalize(id obj);
+
+NSZone *_objc_rootZone(id obj);

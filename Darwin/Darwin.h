@@ -118,6 +118,7 @@ void dispatch_mach_reconnect(dispatch_mach_t channel, mach_port_t send, dispatch
 void dispatch_mach_send_barrier_f(dispatch_mach_t channel, void *context, dispatch_function_t barrier);
 void dispatch_mach_send_barrier(dispatch_mach_t channel, dispatch_block_t barrier);
 void dispatch_once(dispatch_once_t *predicate, dispatch_block_t block);
+void dispatch_queue_set_label_nocopy(dispatch_queue_t queue, const char *label);
 void dispatch_read(dispatch_fd_t fd, size_t length, dispatch_queue_t queue, void (*handler)(dispatch_data_t data, int error));
 void dispatch_set_qos_class_fallback(dispatch_object_t object, dispatch_qos_class_t qos_class);
 void dispatch_set_qos_class_floor(dispatch_object_t object, dispatch_qos_class_t qos_class, int relative_priority);
