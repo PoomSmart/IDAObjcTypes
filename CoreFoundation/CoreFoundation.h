@@ -44,6 +44,8 @@ mach_port_t CFMachPortGetPort(CFMachPortRef port);
 
 xpc_object_t _CFXPCCreateXPCObjectFromCFObject(CFTypeRef attrs);
 
+const CFRuntimeClass *_CFRuntimeGetClassWithTypeID(CFTypeID typeID);
+
 void CFLog(int32_t level, CFStringRef format, ...);
 void CFShow(CFTypeRef obj);
 void CFShowStr(CFStringRef str);
@@ -161,6 +163,7 @@ void CFMessagePortInvalidate(CFMessagePortRef ms);
 
 void CFDictionaryApply(CFHashRef hc, void (*block)(const void *key, const void *value, Boolean *stop));
 void _CFNonObjCRelease(CFTypeRef cf);
+void _CFRuntimeInitStaticInstance(void *memory, CFTypeID typeID);
 void _CFRuntimeBridgeClasses(CFTypeID cfType, const char *className);
 void _CFPreferencesSetValueWithContainer(CFStringRef key, CFPropertyListRef value, CFStringRef applicationID, CFStringRef userName, CFStringRef hostName, CFStringRef containerPath);
 
@@ -217,6 +220,7 @@ Boolean CFLocaleGetLanguageRegionEncodingForLocaleIdentifier(CFStringRef locale,
 Boolean CFMessagePortIsValid(CFMessagePortRef ms);
 
 Boolean _CFExecutableLinkedOnOrAfter(CFSystemVersion version);
+Boolean _CFDictionaryIsMutable(CFDictionaryRef dictionary);
 Boolean _CFIsDeallocating(CFTypeRef);
 Boolean _CFIsObjC(CFTypeID typeID, CFTypeRef obj);
 Boolean _CFNonObjCEqual(CFTypeRef cf1, CFTypeRef cf2);
@@ -524,6 +528,7 @@ CFBundleRef CFBundleGetMainBundle(void);
 CFBundleRef _CFBundleCreateUnique(CFAllocatorRef allocator, CFURLRef bundleURL);
 CFBundleRef _CFBundleCreateIfMightBeBundle(CFAllocatorRef allocator, CFURLRef url);
 CFBundleRef _CFBundleCreateWithExecutableURLIfMightBeBundle(CFAllocatorRef allocator, CFURLRef url);
+CFBundleRef _CFBundleGetMainBundleIfLooksLikeBundle(void);
 
 CFURLRef CFBundleCopyBundleURL(CFBundleRef bundle);
 CFURLRef CFBundleCopyResourcesDirectoryURL(CFBundleRef bundle);

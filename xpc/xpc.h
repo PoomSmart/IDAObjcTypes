@@ -92,6 +92,8 @@ int xpc_dictionary_dup_fd(xpc_object_t xdict, const char *key);
 int xpc_array_dup_fd(xpc_object_t xarray, size_t index);
 int xpc_fd_dup(xpc_object_t xfd);
 
+int _xpc_runtime_is_app_sandboxed();
+
 mach_port_t xpc_dictionary_copy_mach_send(xpc_object_t, const char *);
 mach_port_t xpc_mach_send_copy_right(OS_xpc_mach_send *);
 

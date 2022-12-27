@@ -72,7 +72,6 @@ void UIGraphicsPushContext(CGContextRef context);
 void UIGraphicsPopContext(void);
 void UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale);
 void UIGraphicsBeginImageContext(CGSize size);
-void UIGraphicsBeginImageContextWithOptions(CGSize size, BOOL opaque, CGFloat scale);
 void UIGraphicsEndImageContext(void);
 
 void _UIApplicationLoadWebKit(void);
