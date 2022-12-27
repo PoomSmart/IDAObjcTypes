@@ -50,6 +50,8 @@ typedef unsigned int mach_msg_trailer_type_t;
 typedef unsigned int mach_msg_trailer_size_t;
 typedef unsigned int mach_msg_bits_t;
 
+typedef vm_offset_t pointer_t;
+
 typedef SInt16 OSErr;
 typedef SInt32 OSStatus;
 typedef UInt32 OptionBits;

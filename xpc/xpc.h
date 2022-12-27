@@ -99,6 +99,8 @@ int _xpc_runtime_is_app_sandboxed();
 mach_port_t xpc_dictionary_copy_mach_send(xpc_object_t, const char *);
 mach_port_t xpc_mach_send_copy_right(OS_xpc_mach_send *);
 
+pointer_t xpc_array_get_pointer(xpc_object_t xarray, size_t index);
+
 void xpc_release(xpc_object_t object);
 void xpc_connection_activate(xpc_connection_t connection);
 void xpc_connection_resume(xpc_connection_t connection);
@@ -131,6 +133,7 @@ void xpc_array_set_string(xpc_object_t xarray, size_t index, const char *string)
 void xpc_array_set_data(xpc_object_t xarray, size_t index, const void *bytes, size_t length);
 void xpc_array_set_date(xpc_object_t xarray, size_t index, int64_t value);
 void xpc_array_set_value(xpc_object_t xarray, size_t index, xpc_object_t value);
+void xpc_array_set_pointer(xpc_object_t xarray, size_t index, pointer_t value);
 
 void xpc_dictionary_set_mach_send(xpc_object_t, const char *, mach_port_t);
 void xpc_dictionary_set_uuid(xpc_object_t xdict, const char *key, const uuid_t uuid);
