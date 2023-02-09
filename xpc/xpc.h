@@ -14,6 +14,7 @@ xpc_connection_t xpc_array_create_connection(xpc_object_t xarray, size_t index);
 xpc_endpoint_t xpc_endpoint_create(xpc_connection_t connection);
 
 xpc_object_t xpc_copy(xpc_object_t object);
+xpc_object_t xpc_copy_entitlement_for_self(const char *);
 xpc_object_t xpc_copy_entitlement_for_token(const char *, audit_token_t *);
 xpc_object_t xpc_data_create(const void *bytes, size_t length);
 xpc_object_t xpc_data_create_with_dispatch_data(dispatch_data_t ddata);
@@ -168,7 +169,9 @@ const void *xpc_dictionary_get_data(xpc_object_t xdict, const char *key, size_t 
 const void *xpc_array_get_data(xpc_object_t xarray, size_t index, size_t *length);
 void *xpc_connection_get_context(xpc_connection_t connection);
 
+char *xpc_activity_copy_identifier(xpc_activity_t activity);
 char *xpc_copy_description(xpc_object_t object);
+char *xpc_copy_short_description(xpc_object_t object);
 const char *xpc_connection_copy_bundle_id(xpc_object_t object);
 const char *xpc_connection_get_name(xpc_connection_t connection);
 const char *xpc_dictionary_get_string(xpc_object_t xdict, const char *key);

@@ -10,8 +10,10 @@ char *__strcpy_chk(char *dest, const char *src, size_t destlen);
 char *__strncat_chk(char *dest, const char *src, size_t len, size_t dstlen);
 char **backtrace_symbols(void * const *array, int size);
 
-dispatch_block_t dispatch_block_create_with_qos_class(dispatch_block_flags_t flags, dispatch_qos_class_t qos_class, int relative_priority, dispatch_block_t block);
 dispatch_block_t dispatch_block_create(dispatch_block_flags_t flags, dispatch_block_t block);
+dispatch_block_t dispatch_block_create_with_qos_class(dispatch_block_flags_t flags, dispatch_qos_class_t qos_class, int relative_priority, dispatch_block_t block);
+dispatch_block_t dispatch_block_create_with_voucher(dispatch_block_flags_t flags, voucher_t voucher, dispatch_block_t block);
+dispatch_block_t dispatch_block_create_with_voucher_and_qos_class(dispatch_block_flags_t flags, voucher_t voucher, dispatch_qos_class_t qos_class, int relative_priority, dispatch_block_t block);
 
 dispatch_data_t dispatch_data_copy_region(dispatch_data_t data, size_t location, size_t *offset_ptr);
 dispatch_data_t dispatch_data_create_alloc(size_t size, void** buffer_ptr);

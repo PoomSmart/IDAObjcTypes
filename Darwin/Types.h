@@ -42,6 +42,7 @@ typedef struct dispatch_queue_s *dispatch_queue_t;
 typedef struct dispatch_queue_attr_s *dispatch_queue_attr_t;
 typedef struct dispatch_mach_s *dispatch_mach_t;
 typedef struct dispatch_mach_msg_s *dispatch_mach_msg_t;
+typedef struct voucher_s *voucher_t;
 
 typedef struct dispatch_unfair_lock_s {
     dispatch_lock dul_lock;
