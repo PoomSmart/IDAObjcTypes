@@ -27,6 +27,10 @@ int os_workgroup_interval_update(os_workgroup_interval_t wg, uint64_t deadline, 
 int os_workgroup_join_self(os_workgroup_t wg, os_workgroup_join_token_t token_out, os_workgroup_index *id_out);
 int os_workgroup_max_parallel_threads(os_workgroup_t wh, os_workgroup_mpt_attr_t attr);
 
+uint64_t os_simple_hash(const void *buff, size_t len);
+uint64_t os_simple_hash_string(const char *string);
+uint64_t os_simple_hash_string_with_seed(const char *string, uint64_t seed);
+
 char *_os_assert_log(uint64_t code);
 
 os_activity_id_t os_activity_get_identifier(os_activity_t activity, os_activity_id_t *parent_id);

@@ -74,6 +74,7 @@ id objc_alloc(Class);
 id objc_allocWithZone(Class cls);
 id objc_autorelease(id value);
 id objc_autoreleaseReturnValue(id value);
+id objc_claimAutoreleasedReturnValue(id value);
 id objc_begin_catch(void *exc_buf);
 id objc_constructInstance(Class cls, void *bytes);
 id objc_getAssociatedObject(id object, const void *key);
