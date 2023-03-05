@@ -53,15 +53,15 @@ PS_ENUM(int, GSEventType) {
     kGSEventHeadsetAvailabilityChanged = 1021,
     kGSEventMediaKeyDown = 1022,
     kGSEventMediaKeyUp = 1023,
-    
+
     kGSEventVibrate = 1100,
     kGSEventSetBacklightFactor = 1102,
     kGSEventSetBacklightLevel = 1103,
-    
+
     kGSEventApplicationLaunch = 2000,
     kGSEventAnotherApplicationFinishedLaunching = 2001,
     kGSEventSetAppThreadPriority = 2002,
-    kGSEventApplicationResume = 2003,		
+    kGSEventApplicationResume = 2003,
     kGSEventApplicationDidEndResumeAnimation = 2004,
     kGSEventApplicationBeginSuspendAnimation = 2005,
     kGSEventApplicationHandleTestURL = 2006,
