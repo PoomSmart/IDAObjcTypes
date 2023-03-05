@@ -12,7 +12,7 @@ PS_ENUM(int, GSEventType) {
     kGSEventLeftMouseUp      = 2,
     kGSEventMouseMoved       = 5,
     kGSEventLeftMouseDragged = 6,
-    
+
     kGSEventKeyDown = 10,
     kGSEventKeyUp = 11,
     kGSEventModifiersChanged = 12,
@@ -24,13 +24,13 @@ PS_ENUM(int, GSEventType) {
     kGSEventDeviceOrientationChanged = 50,
     kGSAppPreferencesChanged = 60,
     kGSEventUserDefaultsDidChange = 60,
-    
+
     kGSEventResetIdleTimer = 100,
     kGSEventResetIdleDuration = 101,
     kGSEventProcessScript = 200,
     kGSEventDumpUIHierarchy = 500,
     kGSEventDumpScreenContents = 501,
-    
+
     kGSEventMenuButtonDown = 1000,
     kGSEventMenuButtonUp = 1001,
     kGSEventVolumeChanged = 1006,
@@ -70,18 +70,18 @@ PS_ENUM(int, GSEventType) {
     kGSEventApplicationExit = 2009,
     kGSEventQuitTopApplication = 2010,
     kGSEventApplicationUpdateSuspendedSettings = 2011,
-    
+
     kGSEventHand = 3001,
-    
+
     kGSEventAccessoryAvailabilityChanged = 4000,
     kGSEventAccessoryKeyStateChanged = 4001,
     kGSEventAccessory = 4002,
-    
+
     kGSEventOutOfLineDataRequest = 5000,
     kGSEventOutOfLineDataResponse = 5001,
-    
+
     kGSEventUrgentMemoryWarning = 6000,
-    
+
     kGSEventShouldRouteToFrontMost = 1<<17
 };
 
@@ -176,7 +176,7 @@ typedef struct GSEventRecord {
 #if !TARGET_OS_SIMULATOR && !TARGET_OS_OSX
     uint64_t    HIDtime;
 #endif
-    unit8_t data[];
+    uint8_t data[];
 } GSEventRecord;
 
 typedef struct __GSEvent *GSEventRef;
