@@ -137,7 +137,7 @@ IOHIDEventRef IOHIDEventGetEventWithOptions(IOHIDEventRef event, IOHIDEventType 
 IOHIDEventRef IOHIDEventGetEvent(IOHIDEventRef event, IOHIDEventType type);
 IOHIDEventRef IOHIDServiceClientCopyEvent(IOHIDServiceClientRef, int64_t, int32_t, int64_t);
 
-IOHIDEventRef _IOHIDEventGetContext(IOHIDEventRef event); // get record size
+IOHIDEventRef _IOHIDEventGetContext(IOHIDEventRef event);
 
 IOHIDEventType IOHIDEventGetType(IOHIDEventRef event);
 

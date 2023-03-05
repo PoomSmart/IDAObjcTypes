@@ -26,7 +26,7 @@ CFDictionaryRef CMCopyDictionaryOfAttachments(CFAllocatorRef allocator, CMAttach
 CFDictionaryRef CMFormatDescriptionGetExtensions(CMFormatDescriptionRef desc);
 CFDictionaryRef CMTimeCopyAsDictionary(CMTime time, CFAllocatorRef allocator);
 
-CFNotificationCenterRef CMNotificationCenterCreate(void); // CMNotificationCenterRef ?
+CMNotificationCenterRef CMNotificationCenterCreate(void);
 
 CFPropertyListRef CMFormatDescriptionGetExtension(CMFormatDescriptionRef desc, CFStringRef extensionKey);
 

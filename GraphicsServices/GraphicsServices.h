@@ -40,7 +40,7 @@ void GSEventSetBacklightLevel(float level);
 void GSEventSetBacklightFactor(int factor);
 void GSEventSetType(GSEventRef event, GSEventType type);
 void GSEventSetPathInfoAtIndex(GSEventRef event, GSPathInfo pathInfo, CFIndex index);
-// void GSEventSetSensitivity(int (float) sensitivity);
+void GSEventSetSensitivity(unsigned sensitivity);
 void GSEventSetHardwareKeyboardAttached(Boolean attached);
 void GSEventRemoveShouldRouteToFrontMost(GSEventRef event);
 void GSEventRotateSimulator(int x);

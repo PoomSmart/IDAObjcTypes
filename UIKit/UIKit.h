@@ -24,10 +24,15 @@ NSData *UIImageJPEGRepresentation(UIImage *image, CGFloat compressionQuality);
 
 UIImage *UIGraphicsGetImageFromCurrentImageContext(void);
 
-CGRect UIRectCenteredAboutPoint(CGRect, CGPoint, CGFloat, CGFloat);
-CGRect UIRectCenteredAboutPointScale(CGRect, CGPoint);
-CGRect UIRectInset(CGRect, CGFloat top, CGFloat right, CGFloat bottom, CGFloat left);
-CGRect UIRectInsetEdges(CGRect, UIRectEdge edges, CGFloat v);
+CGRect UIRectCenteredAboutPoint(CGRect rect, CGPoint center);
+CGRect UIRectCenteredAboutPointScale(CGRect rect, CGPoint center, CGFloat scale);
+CGRect UIRectCenteredXInRect(CGRect rect, CGRect bounds);
+CGRect UIRectCenteredYInRect(CGRect rect, CGRect bounds);
+CGRect UIRectCenteredIntegralRect(CGRect rect, CGRect bounds);
+CGRect UIRectCenteredIntegralRectScale(CGRect rect, CGRect bounds, CGFloat scale);
+CGRect UIRectInset(CGRect rect, CGFloat top, CGFloat right, CGFloat bottom, CGFloat left);
+CGRect UIRectInsetEdges(CGRect rect, UIRectEdge edges, CGFloat v);
+CGRect UIRectIntegralWithScale(CGRect rect, CGFloat scale);
 CGRect CGRectFromString(NSString *str);
 
 CGSize CGSizeFromString(NSString *str);
@@ -38,16 +43,15 @@ CGPoint CGPointFromString(NSString *str);
 
 CGVector CGVectorFromString(NSString *str);
 
-CGFloat UIRoundToScale(CGFloat, CGFloat);
-CGFloat UIRoundToViewScale(CGFloat);
-CGFloat UIRoundToScreenScale(CGFloat);
-CGFloat UIFloorToScale(CGFloat, CGFloat);
-CGFloat UIFloorToViewScale(CGFloat);
-CGFloat UIFloorToScreenScale(CGFloat);
-CGFloat UICeilToScale(CGFloat, CGFloat);
-CGFloat UICeilToViewScale(CGFloat);
-CGFloat UICeilToScreenScale(CGFloat);
-// CGFloat UIRectCenteredXInRect(CGRect);
+CGFloat UIRoundToScale(CGFloat value, CGFloat scale);
+CGFloat UIRoundToViewScale(CGFloat value, id view);
+CGFloat UIRoundToScreenScale(CGFloat value, id screen);
+CGFloat UIFloorToScale(CGFloat value, CGFloat scale);
+CGFloat UIFloorToViewScale(CGFloat value, id view);
+CGFloat UIFloorToScreenScale(CGFloat value, id screen);
+CGFloat UICeilToScale(CGFloat value, CGFloat scale);
+CGFloat UICeilToViewScale(CGFloat value, id view);
+CGFloat UICeilToScreenScale(CGFloat value, id screen);
 CGFloat UIAnimationDragCoefficient(void);
 CGFloat UIDistanceBetweenPoints(CGPoint a, CGPoint b);
 

@@ -162,7 +162,6 @@ typedef struct GSScrollWheelInfo {
     int deltaX;
 } GSScrollWheelInfo;
 
-// Suspect that there are more to this since OS 3.2
 typedef struct GSEventRecord {
     GSEventType type;
     GSEventSubType subtype;
@@ -172,14 +171,14 @@ typedef struct GSEventRecord {
     uint64_t timestamp;
     GSWindowRef window;
     GSEventFlags flags;
-    unsigned senderPID;
+    pid_t senderPID;
     CFIndex infoSize;
+#if !TARGET_OS_SIMULATOR && !TARGET_OS_OSX
+    uint64_t    HIDtime;
+#endif
+    unit8_t data[];
 } GSEventRecord;
 
-typedef struct GSEvent {
-    CFRuntimeBase _base;
-    GSEventRecord record;
-} GSEvent;
-typedef struct GSEvent *GSEventRef;
+typedef struct __GSEvent *GSEventRef;
 
 #endif
