@@ -179,6 +179,11 @@ typedef struct GSEventRecord {
     uint8_t data[];
 } GSEventRecord;
 
+typedef struct __GSEvent {
+    CFRuntimeBase _base;
+    GSEventRecord record;
+} GSEvent;
+
 typedef struct __GSEvent *GSEventRef;
 
 #endif
