@@ -152,6 +152,9 @@ void xpc_dictionary_set_mach_recv(xpc_object_t xdict, const char *, mach_port_t)
 void xpc_dictionary_set_mach_send(xpc_object_t xdict, const char *, mach_port_t);
 void xpc_dictionary_get_audit_token(xpc_object_t xdict, audit_token_t *);
 
+void xpc_set_event(const char *stream, const char *key, xpc_object_t event);
+void xpc_set_event_with_flags(const char *stream, const char *key, xpc_object_t event, uint64_t flags);
+
 void xpc_transaction_begin(void);
 void xpc_transaction_end(void);
 void xpc_transaction_exit_clean(void);

@@ -57,6 +57,7 @@ float __exp10f(float);
 
 int _stdlib_memcmp(const void *s1, const void *s2, size_t n);
 int backtrace(void **array, int size);
+int reboot3(uint64_t flags, ...);
 
 intptr_t dispatch_block_testcancel(dispatch_block_t block);
 intptr_t dispatch_block_wait(dispatch_block_t block, dispatch_time_t timeout);
