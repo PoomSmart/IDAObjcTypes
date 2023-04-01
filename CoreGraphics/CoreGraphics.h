@@ -25,13 +25,12 @@ CFDictionaryRef CGPointCreateDictionaryRepresentation(CGPoint point);
 CFDictionaryRef CGImageSourceCopyProperties(CGImageSourceRef isrc, CFDictionaryRef options);
 CFDictionaryRef CGImageSourceCopyPropertiesAtIndex(CGImageSourceRef isrc, size_t index, CFDictionaryRef options);
 
-CFMutableArrayRef CGFontCreateFontsWithPath(CFStringRef path);
-
 CFMutableDictionaryRef CGCFDictionaryCreate(void);
 CFMutableDictionaryRef CGCFDictionaryCreateCopy(CFDictionaryRef theDict);
 
 CFArrayRef CGCFDictionaryCopyKeys(CFDictionaryRef theDict, const CFArrayCallBacks *callBacks);
 CFArrayRef CGCFDictionaryCopyValues(CFDictionaryRef theDict, const CFArrayCallBacks *callBacks);
+CFArrayRef CGFontCreateFontsWithPath(CFStringRef path);
 CFArrayRef CGFontCopyTableTags(CGFontRef font);
 CFArrayRef CGFontCopyVariationAxes(CGFontRef font);
 
