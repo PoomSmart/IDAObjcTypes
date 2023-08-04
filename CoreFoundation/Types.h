@@ -31,6 +31,8 @@ typedef const __CFString *CFStringRef;
 typedef const __CFString *CFMutableStringRef;
 typedef const struct __CFDictionary *CFDictionaryRef;
 typedef struct __CFDictionary *CFMutableDictionaryRef;
+typedef struct _CFBurstTrie *CFBurstTrieRef;
+typedef struct _CFBurstTrieCursor *CFBurstTrieCursorRef;
 typedef struct __CFBundle *CFBundleRef;
 typedef struct __CFLocale *CFLocaleRef;
 typedef struct __CFBoolean *CFBooleanRef;
@@ -93,6 +95,13 @@ typedef CFIndex CFSystemVersion;
 PS_ENUM(CFOptionFlags, CFDataSearchFlags) {
     kCFDataSearchBackwards = 1UL << 0,
     kCFDataSearchAnchored = 1UL << 1
+};
+
+PS_ENUM(CFOptionFlags, CFBurstTrieOpts) {
+    kCFBurstTrieReadOnly            = 1<<1,
+    kCFBurstTrieBitmapCompression   = 1<<2,
+    kCFBurstTriePrefixCompression   = 1<<3,
+    kCFBurstTrieSortByKey = 1 << 4
 };
 
 PS_ENUM(CFIndex, CFNotificationSuspensionBehavior) {
@@ -446,6 +455,8 @@ extern const CFBooleanRef kCFBooleanFalse;
 
 extern const CFRunLoopMode kCFRunLoopDefaultMode;
 extern const CFRunLoopMode kCFRunLoopCommonModes;
+
+typedef void (*CFBurstTrieTraversalCallback)(void *context, const UInt8 *key, uint32_t keyLength, uint32_t payload, Boolean *stop);
 
 typedef const void *(*CFBagRetainCallBack)(CFAllocatorRef allocator, const void *value);
 typedef void (*CFBagReleaseCallBack)(CFAllocatorRef allocator, const void *value);

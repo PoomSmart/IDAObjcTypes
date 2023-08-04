@@ -70,6 +70,9 @@ void CFNotificationCenterAddObserver(CFNotificationCenterRef center, const void 
 void CFNotificationCenterPostNotification(CFNotificationCenterRef center, CFNotificationName name, const void *object, CFDictionaryRef userInfo, Boolean deliverImmediately);
 void CFNotificationCenterRemoveObserver(CFNotificationCenterRef center, const void *observer, CFNotificationName name, const void *object);
 void CFNotificationCenterRemoveEveryObserver(CFNotificationCenterRef center, const void *observer);
+void CFBurstTrieTraverseFromCursor(CFBurstTrieCursorRef cursor, void *ctx, CFBurstTrieTraversalCallback callback);
+void CFBurstTrieRelease(CFBurstTrieRef trie);
+void CFBurstTrieCursorRelease(CFBurstTrieCursorRef cursor);
 void CFCharacterSetAddCharactersInRange(CFMutableCharacterSetRef theSet, CFRange theRange);
 void CFCharacterSetAddCharactersInString(CFMutableCharacterSetRef theSet, CFStringRef theString);
 void CFCharacterSetRemoveCharactersInRange(CFMutableCharacterSetRef theSet, CFRange theRange);
@@ -174,6 +177,10 @@ Boolean CFPreferencesAppSynchronize(CFStringRef appID);
 Boolean CFPreferencesAppValueIsForced(CFStringRef key, CFStringRef applicationID);
 Boolean CFPreferencesGetAppBooleanValue(CFStringRef key, CFStringRef applicationID, Boolean *keyExistsAndHasValidFormat);
 Boolean CFPreferencesSynchronize(CFStringRef applicationID, CFStringRef userName, CFStringRef hostName);
+Boolean CFBurstTrieContainsUTF8String(CFBurstTrieRef trie, UInt8 *key, CFIndex length, uint32_t *payload);
+Boolean CFBurstTrieCursorGetPayload(CFBurstTrieCursorRef cursor, uint32_t *payload);
+Boolean CFBurstTrieCursorAdvanceForBytes(CFBurstTrieCursorRef cursor, const UInt8 *bytes, CFIndex length);
+Boolean CFBurstTrieSetCursorForBytes(CFBurstTrieRef trie, CFBurstTrieCursorRef cursor, const UInt8 *bytes, CFIndex length);
 Boolean CFCharacterSetHasMemberInPlane(CFCharacterSetRef theSet, CFIndex thePlane);
 Boolean CFCharacterSetIsCharacterMember(CFCharacterSetRef theSet, UniChar theChar);
 Boolean CFCharacterSetIsLongCharacterMember(CFCharacterSetRef theSet, UTF32Char theChar);
@@ -524,6 +531,11 @@ CFAttributedStringRef CFAttributedStringCreateCopy(CFAllocatorRef alloc, CFAttri
 CFAttributedStringRef CFAttributedStringCreateWithSubstring(CFAllocatorRef alloc, CFAttributedStringRef aStr, CFRange range);
 
 CFMutableAttributedStringRef CFAttributedStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFAttributedStringRef aStr);
+
+CFBurstTrieRef CFBurstTrieCreateFromMapBytes(char *mapBase);
+
+CFBurstTrieCursorRef CFBurstTrieCursorCreateByCopy(CFBurstTrieCursorRef cursor);
+CFBurstTrieCursorRef CFBurstTrieCreateCursorForBytes(CFBurstTrieRef trie, const UInt8 *bytes, CFIndex length);
 
 CFBundleRef CFBundleCreate(CFAllocatorRef allocator, CFURLRef bundleURL);
 CFBundleRef CFBundleGetBundleWithIdentifier(CFStringRef bundleID);
