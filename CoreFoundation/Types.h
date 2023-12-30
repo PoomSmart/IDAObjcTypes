@@ -7,18 +7,18 @@
 
 struct __CFString {
     void *isa;
-    __int64 info;
+    int64 info;
     char *data;
-    __int64 length;
+    int64 length;
 };
 
 #else
 
 struct __CFString {
     void *isa;
-    __int32 info;
+    int32 info;
     char *data;
-    __int32 length;
+    int32 length;
 };
 
 #endif
@@ -75,7 +75,7 @@ typedef int CFBundleRefNum;
 #ifdef __EA64__
 typedef long CFIndex;
 #else
-typedef __int32 CFIndex;
+typedef int32 CFIndex;
 #endif
 
 typedef unsigned long CFTypeID;

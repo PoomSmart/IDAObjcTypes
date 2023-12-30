@@ -7,7 +7,7 @@ struct objc_object {
     Class isa;
 };
 
-#ifdef GHIDRA
+#if defined(GHIDRA) || defined(BINJA)
 typedef void *id;
 #endif
 

@@ -106,7 +106,7 @@ typedef struct os_state_data_decoder_s {
 } *os_state_data_decoder_t;
 
 union os_state_unk_stru_1 {
-    __int32 var0 : 32;
+    int32 var0 : 32;
     unsigned int var1;
 };
 

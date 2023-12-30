@@ -9,10 +9,16 @@ Go to `File > Load file > Parse C header file` then choose `IDA.h` to import eve
 
 Or, run this IDA command: `idaapi.idc_parse_types("/path/to/IDAObjcTypes/IDA.h", idc.PT_FILE)`
 
+## Usage (Binja)
+1. Go to `Analysis > Import Header File...`.
+2. In `Header File(s)`, browse for `IDA.h` in this project.
+3. In `Compiler Flag(s)`, add `-D__EA64__ -D__BINJA__`.
+4. Click `Import` button.
+
 ## Usage (Ghidra)
 1. Go to `File > Parse C Source`.
 2. (Go to 6. if it's not the first time you do this) Clone `objc_mac_carbon.prf` profile into a new profile, called `OBJC.prf`, for example.
-3. Remove everything in `Source files to parse`, and add `IDA.h` to the list.
+3. Remove everything in `Source files to parse`, and add `IDA.h` in this project to the list.
 4. Add two additional flags: `-D__EA64__ -DGHIDRA` to Parse Options.
 5. Save `OBJC.prf` profile as you might use it later.
 6. Click `Parse to Program`, click `Proceed` if anything pops up.

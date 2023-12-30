@@ -16,7 +16,7 @@ typedef unsigned long uint32;
 typedef signed long long int64;
 typedef unsigned long long uint64;
 
-typedef unsigned __int64 __darwin_size_t;
+typedef uint64 __darwin_size_t;
 typedef __darwin_size_t size_t;
 
 typedef uint8 UInt8;
@@ -33,9 +33,9 @@ typedef signed short int16_t;
 typedef unsigned short uint16_t;
 typedef int int32_t;
 typedef unsigned int uint32_t;
-typedef signed __int64 int64_t;
-typedef unsigned __int64 uint64_t;
-typedef unsigned __int64 uintptr_t;
+typedef int64 int64_t;
+typedef uint64 uint64_t;
+typedef uint64 uintptr_t;
 typedef long intptr_t;
 
 typedef struct {
@@ -45,7 +45,14 @@ typedef struct {
     void *reg_save_area;
 } va_list[1];
 
-typedef unsigned __int8 Boolean;
+typedef int64 __darwin_time_t;
+
+struct timespec {
+    __darwin_time_t tv_sec;
+    int64 tv_nsec;
+};
+
+typedef uint8 Boolean;
 typedef int kern_return_t;
 typedef unsigned int __darwin_natural_t;
 typedef unsigned long long u_int64_t;

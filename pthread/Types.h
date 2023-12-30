@@ -1,6 +1,8 @@
 #ifndef DARWIN_H_
 #define DARWIN_H_
 
+#import "../BaseTypes.h"
+
 #ifdef __EA64__
 #define __PTHREAD_SIZE__ 8176
 #define __PTHREAD_ATTR_SIZE__ 56
@@ -29,7 +31,7 @@ struct _opaque_pthread_t {
 };
 
 struct _opaque_pthread_mutex_t {
-    __int64 __sig;
+    int64 __sig;
     char __opaque[56];
 };
 

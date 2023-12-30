@@ -46,7 +46,7 @@ xpc_object_t xpc_retain(xpc_object_t);
 xpc_object_t xpc_activity_copy_criteria(xpc_activity_t activity);
 xpc_object_t xpc_bundle_get_info_dictionary(xpc_bundle_t bundle);
 
-xpc_bundle_t xpc_bundle_create(const char *path, __int64 __unk);
+xpc_bundle_t xpc_bundle_create(const char *path, int64 __unk);
 
 xpc_activity_state_t xpc_activity_get_state(xpc_activity_t activity);
 
