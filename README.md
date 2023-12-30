@@ -9,7 +9,7 @@ Go to `File > Load file > Parse C header file` then choose `IDA.h` to import eve
 
 Or, run this IDA command: `idaapi.idc_parse_types("/path/to/IDAObjcTypes/IDA.h", idc.PT_FILE)`
 
-## Usage (Binja)
+## Usage (Binary Ninja)
 1. Go to `Analysis > Import Header File...`.
 2. In `Header File(s)`, browse for `IDA.h` in this project.
 3. In `Compiler Flag(s)`, add `-D__EA64__ -D__BINJA__`.
