@@ -237,7 +237,6 @@ CGError CGSXorRegion(CGSRegionRef region1, CGSRegionRef region2, CGSRegionRef *o
 CGError CGSOffsetRegion(CGSRegionRef region, CGFloat offsetLeft, CGFloat offsetTop, CGSRegionRef *outRegion);
 CGError CGSIntersectRegionWithRect(const CGSRegionObj region,const CGRect *rect, CGSRegionObj *intersectRegion);
 CGError CGSReleaseRegion(const CGRegionRef);
-CGError CGSReleaseRegionEnumerator(const CGSRegionEnumeratorObj);
 CGError CGSGetRegionBounds(CGSRegionRef region, CGRect *outRect);
 CGError CGSSetWindowAlpha(CGSConnectionID, CGSWindowID, float alpha);
 CGError CGSSetWindowClipShape(CGSConnectionID, CGSWindowID, CGRegionRef shape);
@@ -487,8 +486,6 @@ void CGFontGetGlyphsForUnichars(CGFontRef font, const UniChar chars[], CGGlyph g
 void CGFontRelease(CGFontRef font);
 void CGPostError(const char *format, ...);
 void CGIOSurfaceContextSetDisplayMask(CGContextRef, uint32_t mask);
-
-void CGSReleaseRegionEnumerator(CGSRegionEnumeratorRef enumerator);
 
 void CGCFRelease(CFTypeRef cf);
 void CGCFDictionaryApplyBlock(CFDictionaryRef theDict, void *context);

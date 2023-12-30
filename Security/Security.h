@@ -47,7 +47,6 @@ CFTypeRef SecTaskCopyValueForEntitlement(SecTaskRef task, CFStringRef entitlemen
 OSStatus SecCertificateAddToKeychain(SecCertificateRef certificate, SecKeychainRef keychain);
 OSStatus SecCertificateCopyCommonName(SecCertificateRef certificate, CFStringRef *commonName);
 OSStatus SecCertificateCopyEmailAddresses(SecCertificateRef certificate, CFArrayRef *emailAddresses);
-OSStatus SecCertificateCopyPublicKey(SecCertificateRef certificate, SecKeyRef *key);
 OSStatus SecCertificateGetData(SecCertificateRef certificate, CSSM_DATA_PTR data);
 OSStatus SecCodeCheckValidity(SecCodeRef code, SecCSFlags flags, SecRequirementRef requirement);
 OSStatus SecIdentityCopyCertificate(SecIdentityRef identityRef, SecCertificateRef *certificateRef);
@@ -89,7 +88,6 @@ SecCertificateRef SecCertificateCreateWithData(CFAllocatorRef allocator, CFDataR
 SecCertificateRef SecTrustGetCertificateAtIndex(SecTrustRef trust, CFIndex ix);
 
 SecKeyRef SecCertificateCopyKey(SecCertificateRef certificate);
-SecKeyRef SecCertificateCopyPublicKey(SecCertificateRef certificate);
 SecKeyRef SecKeyCreateRSAPublicKey(CFAllocatorRef allocator, const uint8_t *keyData, CFIndex keyDataLength, SecKeyEncoding encoding);
 SecKeyRef SecKeyCreateWithData(CFDataRef keyData, CFDictionaryRef attributes, CFErrorRef *error);
 SecKeyRef SecTrustCopyPublicKey(SecTrustRef trust);
@@ -113,3 +111,9 @@ bool SecTaskLoadEntitlements(SecTaskRef task, CFErrorRef *error);
 bool SecTrustSetExceptions(SecTrustRef trust, CFDataRef exceptions);
 
 void SecTaskFinalize(CFTypeRef cfTask);
+
+#if TARGET_OS_OSX
+OSStatus SecCertificateCopyPublicKey(SecCertificateRef certificate, SecKeyRef *key);
+#else
+SecKeyRef SecCertificateCopyPublicKey(SecCertificateRef certificate);
+#endif

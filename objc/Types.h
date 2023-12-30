@@ -7,9 +7,7 @@ struct objc_object {
     Class isa;
 };
 
-#if defined(GHIDRA) || defined(BINJA)
 typedef void *id;
-#endif
 
 typedef struct Protocol {
     NSObject super;
