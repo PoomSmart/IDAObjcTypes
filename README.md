@@ -5,10 +5,10 @@ A collection of (public and private) types and functions definitions useful for 
 Would you rather re-define the same functions or types over and over as you work with different binaries?
 
 ## Usage (IDA Pro 8+)
-1. Copy `IDA.til` to `til` folder inside IDA application directory.
+1. Copy `IDA.til` and `IDA32.til` to `til` folder inside IDA application directory.
 2. In IDA Pro, open `Type Libraries` window via `View > Open subviews > Type libraries` or press `Shift + F11`.
 3. Right-click the type list and select `Load type library...`.
-4. Select `IDA` and click `OK` button.
+4. Select `IDA` (or `IDA32` if you target 32-bit binaries) and click `OK` button.
 
 TIL created via this command:
 
