@@ -12,6 +12,7 @@ uint32_t dyld_get_program_min_os_version(void);
 
 intptr_t _dyld_get_image_slide(const struct mach_header *mh);
 
+bool dyld_program_minos_at_least(dyld_build_version_t version);
 bool dyld_program_sdk_at_least(dyld_build_version_t version);
 bool dyld_has_inserted_or_interposing_libraries(void);
 bool dyld_is_simulator_platform(dyld_platform_t platform);

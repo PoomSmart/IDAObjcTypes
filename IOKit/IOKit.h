@@ -234,6 +234,7 @@ IOReturn IOUSBDeviceControllerSetDescription(IOUSBDeviceControllerRef device, IO
 IOReturn IOUSBDeviceControllerSendCommand(IOUSBDeviceControllerRef device, CFStringRef command, CFTypeRef param);
 IOReturn IOPSGetPercentRemaining(int *percent, bool *isCharging, bool *isFullyCharged);
 IOReturn IOPSRequestBatteryUpdate(int type);
+IOReturn IOPMRequestSysWake(CFDictionaryRef request); 
 IOReturn IOPMGetLastWakeTime(CFAbsoluteTime *whenWoke, CFTimeInterval *adjustedForPhysicalWake);
 IOReturn IOPMCopySleepPreventersList(int preventerType, CFArrayRef *outArray);
 IOReturn IOPMCopySleepPreventersListWithID(int preventerType, CFArrayRef *outArray);

@@ -1,5 +1,7 @@
 #import "Types.h"
 
+int CCDigest(CCDigestAlgorithm alg, const uint8_t *data, size_t len, uint8_t *out);
+
 int CC_MD4_Init(CC_MD4_CTX *c);
 int CC_MD4_Update(CC_MD4_CTX *c, const void *data, CC_LONG len);
 int CC_MD4_Final(unsigned char *md, CC_MD4_CTX *c);

@@ -51,6 +51,8 @@ os_transaction_t os_transaction_create(const char *description);
 os_workgroup_t os_workgroup_create_with_port(const char *name, mach_port_t mach_port);
 os_workgroup_t os_workgroup_create_with_workgroup(const char *name, os_workgroup_t wg);
 
+_os_object_t _os_object_alloc(const void *cls, size_t size);
+
 size_t os_proc_available_memory(void);
 size_t _os_log_pack_size(size_t os_log_format_buffer_size);
 

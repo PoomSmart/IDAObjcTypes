@@ -6,4 +6,6 @@ CFDictionaryRef CNCopyCurrentNetworkInfo(CFStringRef interfaceName);
 
 CFArrayRef CNCopySupportedInterfaces(void);
 
+SCNetworkReachabilityRef SCNetworkReachabilityCreateWithOptions(CFAllocatorRef allocator, CFDictionaryRef options);
+
 void SCDynamicStoreSetDisconnectCallBack(SCDynamicStoreRef store, SCDynamicStoreDisconnectCallBack callback);

@@ -12,6 +12,9 @@ CFAbsoluteTime SecTrustGetVerifyTime(SecTrustRef trust);
 CFArrayRef CFArrayCreateForCFTypes(CFAllocatorRef allocator, ...);
 
 CFArrayRef SecCertificateCopyCommonNames(SecCertificateRef certificate);
+CFArrayRef SecCertificateCopyDNSNames(SecCertificateRef certificate);
+CFArrayRef SecCertificateCopyIPAddresses(SecCertificateRef certificate);
+CFArrayRef SecTrustCopyCertificateChain(SecTrustRef trust);
 CFArrayRef SecTrustCopyProperties(SecTrustRef trust);
 
 CFDataRef SecCertificateCopyData(SecCertificateRef certificate);

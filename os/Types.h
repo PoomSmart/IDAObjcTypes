@@ -14,6 +14,8 @@
 #define __OS_WORKGROUP_JOIN_TOKEN_SIZE__ 28
 #endif
 
+typedef struct _os_object_s *_os_object_t;
+
 typedef struct os_log_s *os_log_t;
 typedef struct os_activity_s *os_activity_t;
 typedef struct os_transaction_s *os_transaction_t;
