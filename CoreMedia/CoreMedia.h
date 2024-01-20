@@ -156,3 +156,7 @@ uint64_t CMClockConvertHostTimeToSystemUnits(CMTime hostTime);
 void CMNotificationCenterPostNotification(CFNotificationCenterRef center, CFNotificationName name, const void *object, CFDictionaryRef userInfo);
 void CMSetAttachment(CMAttachmentBearerRef target, CFStringRef key, CFTypeRef value, CMAttachmentMode attachmentMode);
 void CMTimeShow(CMTime time);
+
+void *CMBaseObjectGetDerivedStorage(CMBaseObjectRef o);
+
+const CMBaseVTable *CMBaseObjectGetVTable(CMBaseObjectRef o);

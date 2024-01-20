@@ -10,6 +10,9 @@ typedef int64_t CMTimeEpoch;
 
 typedef int32_t CMTimeScale;
 
+typedef uint32_t CMBaseClassVersion;
+typedef uint32_t CMStructVersion;
+
 typedef double Float64;
 
 typedef long CMItemCount;
@@ -123,15 +126,21 @@ typedef CFTypeRef CMAttachmentBearerRef;
 
 typedef CFStringRef CMSoundDescriptionFlavor;
 
+typedef struct OpaqueCMBaseObject *CMBaseObjectRef;
+typedef struct OpaqueCMBaseClass *CMBaseClassID;
 typedef struct OpaqueCMBlockBuffer *CMBlockBufferRef;
 typedef struct OpaqueCMClock *CMClockRef;
 typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
 typedef struct opaqueCMFormatDescription *CMFormatDescriptionRef;
 typedef struct opaqueCMNotificationCenter *CMNotificationCenterRef;
 
+typedef struct CMBaseProtocolTable CMBaseProtocolTable;
+
 typedef CMFormatDescriptionRef CMVideoFormatDescriptionRef;
 typedef CMFormatDescriptionRef CMAudioFormatDescriptionRef;
 
+typedef OSStatus (*CMBaseObjectCopyPropertyFunction)(CMBaseObjectRef object, CFStringRef propertyKey, CFAllocatorRef allocator, void *propertyValueOut);
+typedef OSStatus (*CMBaseObjectSetPropertyFunction)(CMBaseObjectRef object, CFStringRef propertyKey, CFTypeRef propertyValue);
 typedef OSStatus (*CMSampleBufferMakeDataReadyCallback)(CMSampleBufferRef sbuf, void *makeDataReadyRefcon);
 typedef void (*CMSampleBufferInvalidateHandler)(CMSampleBufferRef sbuf);
 typedef void (*CMSampleBufferInvalidateCallback)(CMSampleBufferRef sbuf, uint64_t invalidateRefCon);
@@ -159,6 +168,24 @@ typedef struct CMSampleTimingInfo {
     CMTime presentationTimeStamp;
     CMTime decodeTimeStamp;
 } CMSampleTimingInfo;
+
+typedef struct CMBaseClass {
+    CMBaseClassVersion version;
+    size_t derivedStorageSize;
+    Boolean (*equal)(CMBaseObjectRef o, CMBaseObjectRef compareTo);
+    OSStatus (*invalidate)(CMBaseObjectRef o);
+    void (*finalize)(CMBaseObjectRef o);
+    CFStringRef (*copyDebugDescription)(CMBaseObjectRef o);
+    CMBaseObjectCopyPropertyFunction copyProperty;
+    CMBaseObjectSetPropertyFunction setProperty;
+    OSStatus (*notificationBarrier)(CMBaseObjectRef o);
+    const CMBaseProtocolTable *protocolTable;
+} CMBaseClass;
+
+typedef struct CMBaseVTable {
+    const struct OpaqueCMBaseVTableReserved *reserved;
+    const CMBaseClass *baseClass;
+} CMBaseVTable;
 
 CMTime kCMTimeZero;
 
