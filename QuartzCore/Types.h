@@ -1,3 +1,6 @@
+#ifndef QUARTZCORE_H_
+#define QUARTZCORE_H_
+
 typedef struct CAFrameRateRange {
     float minimum;
     float maximum;
@@ -5,3 +8,5 @@ typedef struct CAFrameRateRange {
 } CAFrameRateRange;
 
 extern const CAFrameRateRange CAFrameRateRangeDefault;
+
+#endif
