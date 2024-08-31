@@ -14,4 +14,6 @@ typedef enum {
     MGDeviceClassiBridge            = 8,
     MGDeviceClassMac                = 9,
     MGDeviceClassAppleDisplay       = 10,
+    MGDeviceClassRealityDevice      = 11,
+    MGDeviceClassComputeModule      = 12,
 } MGDeviceClass;

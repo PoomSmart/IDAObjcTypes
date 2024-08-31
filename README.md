@@ -13,7 +13,8 @@ Would you rather re-define the same functions or types over and over as you work
 TIL created via this command:
 
 ```bash
-tilib -c -hIDA.h IDA.til -D__EA64__ -P
+tilib -c -hIDA.h IDA.til -D__EA64__ -P -tIDAObjcTypes
+tilib -c -hIDA.h IDA32.til -P -tIDAObjcTypes32
 ```
 
 ## Usage (IDA Pro 7)

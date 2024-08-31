@@ -41,7 +41,7 @@ PS_ENUM(UInt32, SystemSoundID) {
 PS_ENUM(UInt32, AudioServicesPropertyID) {
     kAudioServicesPropertyIsUISound = 'isui',
     kAudioServicesPropertyCompletePlaybackIfAppDies = 'ifdi',
-    kAudioServicesPropertyBeingActive = 'actt' // Research
+    kAudioServicesPropertyBeingActive = 'actt',
 };
 
 #endif
