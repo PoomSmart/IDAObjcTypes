@@ -16,6 +16,7 @@ xpc_endpoint_t xpc_endpoint_create(xpc_connection_t connection);
 xpc_object_t xpc_copy(xpc_object_t object);
 xpc_object_t xpc_copy_entitlement_for_self(const char *);
 xpc_object_t xpc_copy_entitlement_for_token(const char *, audit_token_t *);
+xpc_object_t xpc_create_from_plist(void *data, size_t size);
 xpc_object_t xpc_data_create(const void *bytes, size_t length);
 xpc_object_t xpc_data_create_with_dispatch_data(dispatch_data_t ddata);
 xpc_object_t xpc_connection_send_message_with_reply_sync(xpc_connection_t connection, xpc_object_t message);

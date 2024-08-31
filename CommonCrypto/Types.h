@@ -13,6 +13,11 @@ typedef struct _CNEncoder *CNEncoderRef;
 typedef struct CCKDFParameters *CCKDFParametersRef;
 typedef struct __CCRandom *CCRandomRef;
 
+#define CC_DIGEST_SIZE 1032 
+typedef struct CCDigestCtx_t {
+    uint8_t context[CC_DIGEST_SIZE];
+} CCDigestCtx, *CCDigestRef;
+
 #define CC_MD2_DIGEST_LENGTH 16
 #define CC_MD2_BLOCK_BYTES 64
 #define CC_MD2_BLOCK_LONG (CC_MD2_BLOCK_BYTES / sizeof(CC_LONG))

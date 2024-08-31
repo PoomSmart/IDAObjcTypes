@@ -70,4 +70,15 @@ CCCryptorStatus CCCryptorFinal(CCCryptorRef cryptorRef, void *dataOut, size_t da
 CCCryptorStatus CCCryptorReset(CCCryptorRef cryptorRef, const void *iv);
 CCCryptorStatus CCCrypt(CCOperation op, CCAlgorithm alg, CCOptions options, const void *key, size_t keyLength, const void *iv, const void *dataIn, size_t dataInLength, void *dataOut, size_t dataOutAvailable, size_t *dataOutMoved);
 
+CCDigestRef CCDigestCreate(CCDigestAlgorithm alg);
+
+int CCDigestInit(CCDigestAlgorithm algorithm, CCDigestRef ctx);
+int CCDigestFinal(CCDigestRef ctx, uint8_t *output);
+int CCDigestUpdate(CCDigestRef ctx, const void *data, size_t length);
+
+size_t CCDigestOutputSize(CCDigestRef ctx);
+
+void CCDigestDestroy(CCDigestRef ctx);
+void CCDigestReset(CCDigestRef ctx);
+
 CNStatus CNEncode(CNEncodings encoding, CNEncodingDirection direction, const void *in, const size_t inLen, void *out, size_t *outLen);
