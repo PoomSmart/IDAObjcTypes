@@ -1,5 +1,5 @@
 # IDAObjcTypes
-A collection of (public and private) types and functions definitions useful for Objective-C binaries analysis.
+A collection of (public and private) types and functions definitions useful for iOS/macOS binaries analysis.
 
 ## Why even?
 Would you rather re-define the same functions or types over and over as you work with different binaries?
