@@ -1,8 +1,8 @@
-typedef enum {
+typedef enum MGProductType {
     MGProductTypeUnknown = -1,
 } MGProductType;
 
-typedef enum {
+typedef enum MGDeviceClass {
     MGDeviceClassInvalid            = -1,
     MGDeviceClassiPhone             = 1,
     MGDeviceClassiPod               = 2,
