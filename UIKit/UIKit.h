@@ -33,6 +33,7 @@ CGRect UIRectCenteredIntegralRectScale(CGRect rect, CGRect bounds, CGFloat scale
 CGRect UIRectInset(CGRect rect, CGFloat top, CGFloat right, CGFloat bottom, CGFloat left);
 CGRect UIRectInsetEdges(CGRect rect, UIRectEdge edges, CGFloat v);
 CGRect UIRectIntegralWithScale(CGRect rect, CGFloat scale);
+CGRect UIRectRoundToScale(CGRect value, CGFloat scale);
 CGRect CGRectFromString(NSString *str);
 
 CGSize CGSizeFromString(NSString *str);

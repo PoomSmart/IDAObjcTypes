@@ -48,6 +48,14 @@ struct _NSMapNode {
 
 typedef NSObject *NSHashTable;
 
+typedef struct NSError {
+    NSObject super;
+    void *_reserved;
+    int64 _code;
+    NSString *_domain;
+    NSDictionary *_userInfo;
+} NSError;
+
 typedef struct _NSMapTableKeyCallBacks {
     unsigned (*hash)(struct _NSMapTable *table, const void *anObject);
     BOOL (*isEqual)(struct _NSMapTable *table, const void *anObject1, const void *anObject2);

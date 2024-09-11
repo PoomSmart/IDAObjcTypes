@@ -9,6 +9,7 @@
 #import "AppSupport/AppSupport.h"
 #import "AssetsLibraryServices/AssetsLibraryServices.h"
 #import "AudioToolbox/AudioToolbox.h"
+#import "AVFCapture/AVFCapture.h"
 #import "AVFoundation/AVFoundation.h"
 #import "CommonCrypto/CommonCrypto.h"
 #import "CoreAnimation/CoreAnimation.h"

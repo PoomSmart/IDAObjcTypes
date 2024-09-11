@@ -51,6 +51,7 @@ More to be added as the owner reverses more binaries.
 - AppSupport
 - AssetsLibraryServices
 - AudioToolbox
+- AVFCapture
 - AVFoundation
 - CommonCrypto
 - CoreAnimation
