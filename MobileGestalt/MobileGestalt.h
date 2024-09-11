@@ -18,7 +18,7 @@ CFTypeRef MGCopyAnswerWithError(CFStringRef key, CFDictionaryRef options, int *e
 CFPropertyListRef MGCopyMultipleAnswers(CFArrayRef keys, CFDictionaryRef options);
 CFStringRef MGGetStringAnswer(CFStringRef key);
 
-// MGProductType MGGetProductType(void);
+MGProductType MGGetProductType(void);
 
 int MGSetAnswer(CFStringRef key, CFTypeRef answer);
 
