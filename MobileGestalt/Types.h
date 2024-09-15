@@ -1,8 +1,10 @@
-typedef enum MGProductType {
-    MGProductTypeUnknown = -1,
-} MGProductType;
+#import "../BaseTypes.h"
 
-typedef enum MGDeviceClass {
+PS_ENUM(int, MGProductType) {
+    MGProductTypeUnknown = -1,
+};
+
+PS_ENUM(int, MGDeviceClass) {
     MGDeviceClassInvalid            = -1,
     MGDeviceClassiPhone             = 1,
     MGDeviceClassiPod               = 2,
@@ -16,4 +18,4 @@ typedef enum MGDeviceClass {
     MGDeviceClassAppleDisplay       = 10,
     MGDeviceClassRealityDevice      = 11,
     MGDeviceClassComputeModule      = 12,
-} MGDeviceClass;
+};
