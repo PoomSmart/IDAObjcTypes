@@ -7,8 +7,8 @@
 #import "../objc/Types.h"
 
 #ifdef __EA64__
-typedef unsigned long long NSUInteger;
-typedef long long NSInteger;
+typedef unsigned long NSUInteger;
+typedef unsigned int NSInteger;
 #else
 typedef unsigned int NSUInteger;
 typedef int NSInteger;

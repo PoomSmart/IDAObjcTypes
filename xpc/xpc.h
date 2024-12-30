@@ -137,6 +137,7 @@ void xpc_array_set_date(xpc_object_t xarray, size_t index, int64_t value);
 void xpc_array_set_value(xpc_object_t xarray, size_t index, xpc_object_t value);
 void xpc_array_set_pointer(xpc_object_t xarray, size_t index, pointer_t value);
 
+void xpc_dictionary_send_reply(xpc_object_t xdict);
 void xpc_dictionary_set_mach_send(xpc_object_t, const char *, mach_port_t);
 void xpc_dictionary_set_uuid(xpc_object_t xdict, const char *key, const uuid_t uuid);
 void xpc_dictionary_set_connection(xpc_object_t xdict, const char *key,	xpc_connection_t connection);
