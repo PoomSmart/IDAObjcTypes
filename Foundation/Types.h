@@ -8,7 +8,7 @@
 
 #ifdef __EA64__
 typedef unsigned long NSUInteger;
-typedef unsigned int NSInteger;
+typedef long NSInteger;
 #else
 typedef unsigned int NSUInteger;
 typedef int NSInteger;
