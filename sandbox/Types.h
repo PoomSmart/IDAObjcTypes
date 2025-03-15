@@ -31,7 +31,7 @@ typedef struct sandbox_params {
     const char **params;
     size_t size;
     size_t available;
-} * sandbox_params_t;
+} *sandbox_params_t;
 
 extern const char *const APP_SANDBOX_READ;
 extern const char *const APP_SANDBOX_READ_WRITE;
