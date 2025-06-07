@@ -65,6 +65,8 @@ typedef struct ipc_port *ipc_port_t;
 
 typedef ipc_port_t mach_port_t;
 
+typedef struct task *task_t;
+
 // Just C
 typedef struct _OSObject *OSObject;
 

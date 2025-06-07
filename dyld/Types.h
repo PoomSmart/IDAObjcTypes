@@ -10,6 +10,8 @@ typedef struct dyld_build_version_t {
     uint32_t version;
 } dyld_build_version_t;
 
+typedef const struct dyld_process_info_base *dyld_process_info;
+
 typedef struct dyld_unwind_sections {
     const struct mach_header *mh;
     const void *dwarf_section;

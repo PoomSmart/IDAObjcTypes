@@ -73,7 +73,8 @@ PS_ENUM(uint32_t, os_activity_flag_t) {
 
 PS_ENUM(uint32_t, os_unfair_lock_options_t) {
     OS_UNFAIR_LOCK_NONE = 0x00000000,
-    OS_UNFAIR_LOCK_DATA_SYNCHRONIZATION = 0x00010000
+    OS_UNFAIR_LOCK_DATA_SYNCHRONIZATION = 0x00010000,
+    OS_UNFAIR_LOCK_ADAPTIVE_SPIN = 0x0004000
 };
 
 PS_ENUM(uint32_t, os_state_reason_t) {
