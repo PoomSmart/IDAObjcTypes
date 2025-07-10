@@ -35,4 +35,13 @@ class EnumLayoutFlags;
 class ClassLayoutFlags;
 class StructLayoutFlags;
 
+struct HeapObject {
+    void *HeapMetadata_Kind;
+};
+
+struct MetadataResponse {
+    struct Metadata *Value;
+    size_t State;
+};
+
 #endif
