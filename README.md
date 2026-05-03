@@ -59,60 +59,51 @@ The defines cascade — uncommenting `IOS14` also suppresses iOS 15, 16, and 17 
 
 When analysing **arm64e** slices (iPhone XS / A12 and later), add `-D__ARM64E__` to your import flags. This enables the `ptrauth_strip` / `__ptrauth` annotation macros defined in `BaseTypes.h`.
 
-## Framework coverage
+## Included Frameworks/Libraries
 
-| Status | Meaning |
-|---|---|
-| ✅ Complete | Types and function declarations, regularly updated |
-| 🔶 Partial | Some types or functions missing |
-| 🔧 Stub | Minimal declarations; contributions welcome |
-| 🚧 WIP | Work in progress |
-
-| Framework | Coverage |
-|---|---|
-| AppSupport | 🔶 Partial |
-| AssetsLibraryServices | 🔶 Partial |
-| AudioToolbox | 🔶 Partial |
-| AVFCapture | 🔧 Stub |
-| AVFoundation | 🔧 Stub |
-| CommonCrypto | ✅ Complete |
-| CoreAnimation | 🔶 Partial |
-| CoreAudio | 🔶 Partial |
-| CoreFoundation | ✅ Complete |
-| CoreGraphics | ✅ Complete |
-| CoreMedia | 🔶 Partial |
-| CoreServices | 🔶 Partial |
-| CoreText | 🔶 Partial |
-| CoreVideo | 🔶 Partial |
-| CydiaSubstrate | ✅ Complete |
-| Darwin | ✅ Complete |
-| dyld | 🔶 Partial |
-| fishhook | ✅ Complete |
-| Foundation | ✅ Complete |
-| GraphicsServices | 🔶 Partial |
-| icu | 🔶 Partial |
-| IOMobileFramebuffer | 🔶 Partial |
-| IOKit | 🔶 Partial |
-| IOSurface | 🔶 Partial |
-| Kernel | 🔶 Partial |
-| MediaRemote | 🔶 Partial |
-| MobileGestalt | 🔶 Partial |
-| objc | ✅ Complete |
-| os | 🔶 Partial |
-| PowerLog | 🔶 Partial |
-| pthread | 🔶 Partial |
-| QuartzCore | 🔶 Partial |
-| sandbox | 🔶 Partial |
-| Security | ✅ Complete |
-| SoftLinking | 🔧 Stub |
-| SpringBoard | 🔶 Partial |
-| SpringBoardHome | 🔶 Partial |
-| sqlite | 🔶 Partial |
-| Swift | 🚧 WIP |
-| System (libSystem) | 🔶 Partial |
-| SystemConfiguration | 🔶 Partial |
-| UIKit | ✅ Complete |
-| xpc | 🔶 Partial |
+- AppSupport
+- AssetsLibraryServices
+- AudioToolbox
+- AVFCapture
+- AVFoundation
+- CommonCrypto
+- CoreAnimation
+- CoreAudio
+- CoreFoundation
+- CoreGraphics
+- CoreMedia
+- CoreServices
+- CoreText
+- CoreVideo
+- CydiaSubstrate (if you ever want to RE tweaks)
+- Darwin
+- dyld
+- fishhook
+- Foundation
+- GraphicsServices
+- icu
+- IOMobileFramebuffer
+- IOKit
+- IOSurface
+- Kernel
+- MediaRemote
+- MobileGestalt
+- objc
+- os
+- PowerLog
+- pthread
+- QuartzCore
+- sandbox
+- Security
+- SoftLinking
+- SpringBoard
+- SpringBoardHome
+- sqlite
+- Swift (WIP, PRs welcome)
+- System (libSystem)
+- SystemConfiguration
+- UIKit
+- xpc
 
 ## Contributing
 
