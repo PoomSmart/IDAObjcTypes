@@ -23,7 +23,7 @@ const char *dyld_image_path_containing_address(const void *addr);
 
 const struct mach_header *dyld_image_header_containing_address(const void *addr);
 
-dyld_process_info _dyld_process_info_create(task_t task, uint64_t timestamp, kern_return_t* kr);
+dyld_process_info _dyld_process_info_create(task_t task, uint64_t timestamp, kern_return_t *kr);
 
 void *dlopen_from(const char *path, int mode, void *addressInCaller);
 

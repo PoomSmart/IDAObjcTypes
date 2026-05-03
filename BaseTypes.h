@@ -1,6 +1,12 @@
 #ifndef BASE_TYPES_H_
 #define BASE_TYPES_H_
 
+// Source annotation convention used throughout this project:
+//   (no annotation)    — from Apple SDK / official headers
+//   // RE:             — reverse-engineered; accuracy not guaranteed
+//   // from research   — crowdsourced / community research
+//   // WIP             — incomplete; contributions welcome
+
 #ifndef GHIDRA
     #define PS_ENUM(_type, _name) enum _name : _type
 #else
@@ -80,6 +86,22 @@ typedef struct NSObject {
 typedef bool BOOL;
 #else
 typedef signed char BOOL;
+#endif
+
+// ARM64e pointer authentication (PAC) support.
+// Define __ARM64E__ when analysing arm64e slices (iPhone XS / A12 and later).
+// PAC strips the high bits of authenticated pointers; ptrauth_* macros let you
+// annotate pointer fields so IDA / other tools know they carry auth codes.
+#ifdef __ARM64E__
+    // Strip pointer-authentication bits from a signed pointer value.
+    #define ptrauth_strip(ptr, key)           ((void *)((uintptr_t)(ptr) & 0x0000007FFFFFFFFF))
+    // Annotate a pointer field as carrying a PAC (no-op for analysis purposes).
+    #define ptrauth_key_function_pointer       0
+    #define ptrauth_key_process_dependent_data 2
+    #define __ptrauth(key, addr, disc)         /* PAC-signed pointer */
+#else
+    #define ptrauth_strip(ptr, key)            (ptr)
+    #define __ptrauth(key, addr, disc)         /* not PAC */
 #endif
 
 typedef float Float32;

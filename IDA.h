@@ -1,5 +1,23 @@
 // #define SWIFT
+
+// Uncomment ONE of these to match the minimum iOS version you are targeting.
+// Cascading: defining IOS14 also implies IOS15, IOS16, IOS17.
 // #define IOS14
+// #define IOS15
+// #define IOS16
+// #define IOS17
+
+// Cascading version implication — do not edit
+#ifdef IOS14
+    #define IOS15
+#endif
+#ifdef IOS15
+    #define IOS16
+#endif
+#ifdef IOS16
+    #define IOS17
+#endif
+
 #import "Types.h"
 #import "Kernel/Kernel.h"
 #import "dyld/dyld.h"

@@ -44,49 +44,85 @@ You have to manually specify the size of enum members if what you get is incorre
 
 ## iOS version-specific analysis
 
-Uncomment `// #define IOS14` inside `IDA.h` before you import it if you are reversing iOS 14 or lower binaries.
+By default the headers target **iOS 17+**. If you are reversing an older binary, uncomment the matching `#define` near the top of `IDA.h`:
 
-## Included Frameworks/Libraries
-More to be added as the owner reverses more binaries.
-- AppSupport
-- AssetsLibraryServices
-- AudioToolbox
-- AVFCapture
-- AVFoundation
-- CommonCrypto
-- CoreAnimation
-- CoreAudio
-- CoreFoundation
-- CoreGraphics
-- CoreMedia
-- CoreServices
-- CoreText
-- CoreVideo
-- CydiaSubstrate (if you ever want to RE tweaks)
-- Darwin
-- Foundation
-- GraphicsServices
-- IOMobileFramebuffer
-- IOKit
-- IOSurface
-- Kernel
-- MediaRemote
-- MobileGestalt
-- PowerLog
-- Security
-- SoftLinking
-- SpringBoard
-- SpringBoardHome
-- Swift (WIP, PRs welcome)
-- System (libSystem)
-- SystemConfiguration
-- UIKit
-- dyld
-- icu
-- objc
-- os
-- pthread
-- sandbox
-- sqlite
-- xpc
-- fishhook
+| Target iOS | Line to uncomment |
+|---|---|
+| iOS 17 or lower | `// #define IOS17` |
+| iOS 16 or lower | `// #define IOS16` |
+| iOS 15 or lower | `// #define IOS15` |
+| iOS 14 or lower | `// #define IOS14` |
+
+The defines cascade — uncommenting `IOS14` also suppresses iOS 15, 16, and 17 additions automatically.
+
+## ARM64e / pointer authentication
+
+When analysing **arm64e** slices (iPhone XS / A12 and later), add `-D__ARM64E__` to your import flags. This enables the `ptrauth_strip` / `__ptrauth` annotation macros defined in `BaseTypes.h`.
+
+## Framework coverage
+
+| Status | Meaning |
+|---|---|
+| ✅ Complete | Types and function declarations, regularly updated |
+| 🔶 Partial | Some types or functions missing |
+| 🔧 Stub | Minimal declarations; contributions welcome |
+| 🚧 WIP | Work in progress |
+
+| Framework | Coverage |
+|---|---|
+| AppSupport | 🔶 Partial |
+| AssetsLibraryServices | 🔶 Partial |
+| AudioToolbox | 🔶 Partial |
+| AVFCapture | 🔧 Stub |
+| AVFoundation | 🔧 Stub |
+| CommonCrypto | ✅ Complete |
+| CoreAnimation | 🔶 Partial |
+| CoreAudio | 🔶 Partial |
+| CoreFoundation | ✅ Complete |
+| CoreGraphics | ✅ Complete |
+| CoreMedia | 🔶 Partial |
+| CoreServices | 🔶 Partial |
+| CoreText | 🔶 Partial |
+| CoreVideo | 🔶 Partial |
+| CydiaSubstrate | ✅ Complete |
+| Darwin | ✅ Complete |
+| dyld | 🔶 Partial |
+| fishhook | ✅ Complete |
+| Foundation | ✅ Complete |
+| GraphicsServices | 🔶 Partial |
+| icu | 🔶 Partial |
+| IOMobileFramebuffer | 🔶 Partial |
+| IOKit | 🔶 Partial |
+| IOSurface | 🔶 Partial |
+| Kernel | 🔶 Partial |
+| MediaRemote | 🔶 Partial |
+| MobileGestalt | 🔶 Partial |
+| objc | ✅ Complete |
+| os | 🔶 Partial |
+| PowerLog | 🔶 Partial |
+| pthread | 🔶 Partial |
+| QuartzCore | 🔶 Partial |
+| sandbox | 🔶 Partial |
+| Security | ✅ Complete |
+| SoftLinking | 🔧 Stub |
+| SpringBoard | 🔶 Partial |
+| SpringBoardHome | 🔶 Partial |
+| sqlite | 🔶 Partial |
+| Swift | 🚧 WIP |
+| System (libSystem) | 🔶 Partial |
+| SystemConfiguration | 🔶 Partial |
+| UIKit | ✅ Complete |
+| xpc | 🔶 Partial |
+
+## Contributing
+
+PRs are welcome! Please follow these guidelines:
+
+1. **File structure**: Each framework should have a `FrameworkName/FrameworkName.h` for function declarations and a `FrameworkName/Types.h` for type definitions. Import `Types.h` from the main header.
+2. **Source annotations**: Use the comment conventions defined in `BaseTypes.h`:
+   - No annotation — from Apple SDK / official headers
+   - `// RE:` — reverse-engineered; accuracy not guaranteed
+   - `// from research` — crowdsourced / community research
+   - `// WIP` — incomplete
+3. **Version guards**: Wrap definitions that first appeared in iOS 15/16/17 inside `#ifndef IOS15` / `#ifndef IOS16` / `#ifndef IOS17` guards respectively.
+4. **Regenerate .til files**: After changing headers, run `./build.sh /path/to/tilib` to update `IDA.til` and `IDA32.til`.
